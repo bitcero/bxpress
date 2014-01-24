@@ -1,0 +1,72 @@
+div#bbOptions{
+	padding: 6px;
+	max-width: 420px;
+	*width: 420px;
+	float: left;
+	margin-right: 10px;
+}
+div#bbOptions a{
+	width: 120px;
+	height: 100px;
+	display: block;
+	float: left;
+	padding: 5px;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	margin: 3px;
+	background: url(../images/bgoptions.png) no-repeat 0 115px;
+}
+div#bbOptions a img{
+	border: 0;
+	margin: 4px auto 8px auto;
+	display: block;
+}
+div#bbOptions a span{
+	font-size: 0.85em;
+	font-weight: normal;
+	display: block;
+	color: #ff4400;
+}
+div#bbOptions a:hover{
+	background-position: 0 0;
+	/*border: 1px solid #ccc;*/
+}
+div#bbOptions a:hover span{
+	color: #333;
+	text-decoration: underline;
+}
+div#bbVersionPosts{
+	font-size: 0.9em;
+	padding: 0 5px 0 30px;
+	height: 100%;
+	margin-left: 420px;
+	border-left: 2px solid #c8c8c8;
+	margin-bottom: 20px;
+}
+ul#bbRecents{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+ul#bbRecents li{
+	list-style: none;
+	margin-bottom: 10px;
+	font-size: 0.9em;
+	color: #333;
+}
+ul#bbRecents li a{
+	color: #FF4400;
+	display: block;
+	padding: 3px 0 3px 0;
+}
+ul#bbRecents li span{
+	font-size: 0.95em;
+	color: #666;
+	border-bottom: 1px dashed #ebebeb;
+	display: block;
+	padding: 4px 0 4px 0;
+}
+div#versionInfo div#xo-logger-output{
+	display: none;
+}

@@ -1,0 +1,87 @@
+<{include file="db:bxpress_header.html"}>
+
+<div id="bxpressOptions">
+	<a href="./"><{$forums_title}></a> &raquo;
+	<a href="forum.php?id=<{$forum.id}>"><{$forum.title}></a> &raquo;
+	<{$lang_moderating}>
+</div>
+<form name="frmTopics" method="post" action="moderate.php">
+<table class="outer" cellspacing="1" width="100%">
+	<tr>
+		<td colspan="6" align="right"><{$lang_pages}></td>
+		<td align="left">
+		<{$itemsNavPage}>
+		</td>
+	</tr>
+	<tr>
+		<th colspan="7">
+			<{$forum.title}>
+		</th>
+	</tr>
+	<tr class="head" align="center">
+		<td width="20"><input type="checkbox" name="checkall" onchange="xoopsCheckAll('frmTopics','checkall');" /></td>
+		<td colspan="2" align="left"><{$lang_topic}></td>
+		<td><{$lang_replies}></td>
+		<td><{$lang_views}></td>
+		<td><{$lang_approved}></td>
+		<td align="left"><{$lang_lastpost}></td>
+	</tr>
+	<{foreach item=topic from=$topics}>
+		<tr class="<{cycle values="even,odd"}>">
+			<td align="center"><input type="checkbox" name="topics[]" value="<{$topic.id}>" /></td>
+			<td width="26" align="center"><img src="images/<{if $topic.sticky}>sticky<{else}><{if $topic.popular}>hot<{else}>normal<{/if}><{if $topic.last.new}>withnew<{/if}><{/if}>.png" alt="" /></td>
+			<td class="lighter">
+			<{if $topic.closed}>
+				<img src="images/lock.png" align="absmiddle" alt="" />
+			<{elseif $topic.sticky}>
+				<{$lang_sticky}>
+			<{/if}>
+			<strong><a href="topic.php?id=<{$topic.id}>"><{$topic.title}></a></strong>
+			<{$topic.by}>
+			<{if $topic.last.new}>
+				[ <a href="topic.php?id=<{$topic.id}>&amp;op=new"><{$lang_newposts}></a> ]
+			<{/if}>
+			<{if $topic.tpages>1}>&nbsp;
+			[<{foreach item=page from=$topic.pages}>
+				<{if $page!='...'}>
+					<a href="topic.php?id=<{$topic.id}>&amp;pag=<{$page}>"><{$page}></a>
+				<{else}>
+					...
+				<{/if}>
+			<{/foreach}>]
+			<{/if}>
+			</td>
+			<td align="center"><{$topic.replies}></td>
+			<td align="center"><{$topic.views}></td>
+			<td align="center"><{if $topic.approved}><img src="images/ok.png" border="0" /><{else}><img src="images/no.png" border="0" /><{/if}>
+			<td class="lighter">
+				<a href="topic.php?id=<{$topic.id}>&amp;pid=<{$topic.last.id}>#post<{$topic.last.id}>"><{$topic.last.date}></a> <{$topic.last.by}>
+			</td>
+		</tr>
+	<{/foreach}>
+	<tr class="foot">
+		<td align="right">&nbsp;</td>
+		<td colspan="6">
+			<strong>
+				<a href="#" onclick="document.forms['frmTopics'].op.value='move'; document.forms['frmTopics'].submit();"><{$lang_move}></a> | 
+				<a href="#" onclick="document.forms['frmTopics'].op.value='delete'; if(confirm('<{$lang_confirm}>')) document.forms['frmTopics'].submit();"><{$lang_delete}></a> | 
+				<a href="#" onclick="document.forms['frmTopics'].op.value='open'; document.forms['frmTopics'].submit();"><{$lang_open}></a> | 
+				<a href="#" onclick="document.forms['frmTopics'].op.value='close'; document.forms['frmTopics'].submit();"><{$lang_close}></a> | 
+				<a href="#" onclick="document.forms['frmTopics'].op.value='sticky'; document.forms['frmTopics'].submit();"><{$lang_dosticky}></a> | 
+				<a href="#" onclick="document.forms['frmTopics'].op.value='unsticky'; document.forms['frmTopics'].submit();"><{$lang_dounsticky}></a> |
+				<a href="#" onclick="document.forms['frmTopics'].op.value='approved'; document.forms['frmTopics'].submit();"><{$lang_app}></a> |
+				<a href="#" onclick="document.forms['frmTopics'].op.value='noapproved'; document.forms['frmTopics'].submit();"><{$lang_noapp}></a>
+			</strong>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="6" align="right"><{$lang_pages}></td>
+		<td align="left">
+		<{$itemsNavPage}>
+		</td>
+	</tr>
+</table>
+<input type="hidden" name="op" value="" />
+<input type="hidden" name="id" value="<{$forum.id}>" />
+<{$token_input}>
+</form>

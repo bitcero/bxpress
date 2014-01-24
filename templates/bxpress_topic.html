@@ -1,0 +1,149 @@
+<{include file="db:bxpress_header.html"}>
+<div>
+<a href="./"><{$forums_title}></a> &raquo; <a href="forum.php?id=<{$forum.id}>"><{$forum.title}></a> &raquo;
+	<{$topic.title}> <a href="./moderate.php?id=<{$forum.id}>" ><{if !$topic.approved}>[<{$lang_noapproved}>]<{/if}></a>
+</div>
+<{include file="db:bxpress_announcements.html"}>
+<div id="bxpressOptions">
+	<{if $can_reply || $topic.closed}>
+	<div class="topics">
+		<{if $topic.closed}><img src="images/lock.png" align="absmiddle" alt="" /> <strong><{$lang_topicclosed}></strong><{/if}>
+		<{if $can_reply && !$topic.closed}>
+			<a href="post.php?tid=<{$topic.id}>" class="reply"><{$lang_reply}></a>
+		<{/if}>
+        <{if $can_topic && !$topic.closed}>
+            <{if $can_reply}> &nbsp; | &nbsp; <{/if}>
+            <a href="post.php?fid=<{$forum.id}>" class="newtopic"><{$lang_newtopic}></a>
+        <{/if}>
+	</div>
+	<{/if}>
+	<{$postsNavPage}>
+</div>
+
+<div class="outer bx_posts_container">
+<{foreach item=post from=$posts}>
+    <{if $post.approved || $post.canshow}>
+    <div class="outer bx_post">
+        <div class="head bx_post_head">
+            <{$post.date}><a name="p<{$post.id}>"></a>
+        </div>
+        <div class="bx_post_content">
+            <div class="bx_row">
+            <div class="odd bx_post_user">
+                <dl>
+                    <dt><strong><a href="<{if $post.poster.id>0}><{$xoops_url}>/userinfo.php?uid=<{$post.poster.id}><{/if}>"><{$post.poster.uname}></a></strong></dt>
+                    <dd><strong><{$post.poster.rank}></strong></dd>
+                    <dd><{if $post.poster.rank_image!=''}><img src="<{$xoops_url}>/uploads/<{$post.poster.rank_image}>" border="0" alt="<{$post.poster.rank}>" /><{/if}></dd>
+                    <dd class="bbAvatar"><{if $post.poster.avatar!=''}><img src="<{$post.poster.avatar}>" alt="<{$post.poster.uname}>" /><{/if}></dd>
+                    <dd><{$post.poster.registered}></dd>
+                    <dd><{$post.poster.posts}></dd>
+                    <{if $post.poster.ip!=''}><dd><{$post.poster.ip}></dd><{/if}>
+                    <dd class="<{if $post.poster.online}>bbOnline<{else}>bbOffline<{/if}>"><strong><{if $post.poster.online}><{$lang_online}><{else}><{$lang_offline}><{/if}></strong></dd>
+                </dl>
+            </div>
+            <div class="even bx_post_text">
+                <{$post.text}>
+                
+                <{if $post.edit}>
+                <fieldset>
+                    <legend><{$lang_edittext}></legend>
+                    <table cellpadding="2" cellspacing="1" border="0">
+                        <tr>
+                        <td><{$post.edit}></td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <{/if}>
+                
+                <!-- Attachments -->
+                <{if $post.attachscount>0}>
+                <fieldset>
+                    <legend><{$lang_attachments}></legend>
+                    <table cellpadding="2" cellspacing="1" border="0">
+                <{foreach item=a from=$post.attachs}>
+                        <tr>
+                        <td width="26" align="center">
+                            <img src="<{$a.icon}>" align="absmiddle" />
+                        </td>
+                        <td><a href="files.php?id=<{$a.id}>&amp;topic=<{$topic.id}>"><{$a.title}></a> (<{$a.size}>)</td>
+                        </tr>
+                <{/foreach}>
+                    </table>
+                </fieldset>
+                <{/if}>
+                <!--// Attachments -->
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="bx_options">
+        <{if $post.canreport}>
+            <a href="report.php?pid=<{$post.id}>&amp;op=report"><{$lang_report}></a>
+        <{/if}>
+        <{if $post.candelete}>
+            | <a href="delete.php?id=<{$post.id}>"><{$lang_delete}></a>
+        <{/if}>
+        <{if $post.canedit}>
+            | <a href="edit.php?id=<{$post.id}>"><{$lang_edit}></a>
+        <{/if}>
+        <{if $post.canreport}>
+            | <a href="post.php?tid=<{$topic.id}>&amp;quote=<{$post.id}>"><{$lang_quote}></a>
+        <{/if}>
+        <{if $post.edit || !$post.approved && $post.canedit}>
+            | <a href="moderate.php?posts=<{$post.id}>&amp;id=<{$forum.id}>&amp;op=approvedpost&amp;XOOPS_TOKEN_REQUEST=<{$token}>"><{$lang_app}></a>
+        <{elseif $post.edit || $post.approved && $post.canedit}>
+            | <a href="moderate.php?posts=<{$post.id}>&amp;id=<{$forum.id}>&amp;op=noapprovedpost&amp;XOOPS_TOKEN_REQUEST=<{$token}>"><{$lang_noapp}></a>
+        <{/if}>        
+    </div>
+    <{/if}>
+<{/foreach}>
+</div>
+
+
+<div id="bxpressOptions">
+   <{if $can_reply || $topic.closed}>
+	<div class="topics">
+		<{if $topic.closed}><img src="images/lock.png" align="absmiddle" alt="" /> <strong><{$lang_topicclosed}></strong><{/if}>
+        <{if $can_reply && !$topic.closed}>
+            <a href="post.php?tid=<{$topic.id}>" class="reply"><{$lang_reply}></a>
+        <{/if}>
+        <{if $can_topic && !$topic.closed}>
+            <{if $can_reply}> &nbsp; | &nbsp; <{/if}>
+            <a href="post.php?fid=<{$forum.id}>" class="newtopic"><{$lang_newtopic}></a>
+        <{/if}>
+	</div>
+	<{/if}>
+	<{$postsNavPage}>
+</div>
+
+<div class="outer bbouter">
+	<div class="odd">
+		<div class="bbcomboforums">
+			<form name="frmGo" method="get" action="forum.php" style="margin: 0;">
+			<{$lang_goto}>
+			<select name="id" onchange="submit();">
+				<{foreach item=foro from=$forums}>
+					<option value="<{$foro.id}>"<{if $foro.id==$forum.id}> selected="selected"<{/if}>><{$foro.title}></option>
+				<{/foreach}>
+			</select>
+			<input type="submit" value="<{$lang_go}>" class="formButton" />
+			</form>
+		</div>
+		<{if $forum.moderator}>
+			<a href="moderate.php?op=move&amp;topics=<{$topic.id}>&amp;id=<{$forum.id}>"><{$lang_move}></a><br />
+			<{if $topic.closed}>
+				<a href="moderate.php?op=open&amp;topics=<{$topic.id}>&amp;id=<{$forum.id}>"><{$lang_open}></a>
+			<{else}>
+				<a href="moderate.php?op=close&amp;topics=<{$topic.id}>&amp;id=<{$forum.id}>"><{$lang_close}></a>
+			<{/if}>
+			<br />
+			<{if $topic.sticky}>
+				<a href="moderate.php?op=unsticky&amp;topics=<{$topic.id}>&amp;id=<{$forum.id}>"><{$lang_unsticky}></a>
+			<{else}>
+				<a href="moderate.php?op=sticky&amp;topics=<{$topic.id}>&amp;id=<{$forum.id}>"><{$lang_sticky}></a>
+			<{/if}>
+		<{/if}>
+	</div>
+</div>
+
+<{include file="db:system_notification_select.html"}>

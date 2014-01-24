@@ -1,0 +1,13 @@
+<div class="bx_title_bx"><h2 style="margin: 0;"><{$forums_title}></h2></div>
+<div class="bx_header_options">
+<{if $can_search}>
+	<div style="float: right; text-align: right;">
+		<form name="frmSearch" method="get" action="search.php" style="margin: 0">
+		<{$lang_searchq}>
+		<input type="text" name="search" size="15" />
+		</form>
+	</div>
+<{/if}>
+<a href="./"><{$lang_index}></a>
+<{if $can_search}>&nbsp;&nbsp;&nbsp;&nbsp;<a href="search.php"><{$lang_search}></a><{/if}>
+</div>

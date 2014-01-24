@@ -1,0 +1,43 @@
+.overvitem{font-size: 1.2em;}
+.overvitem strong{font-size: 1.3em; color: #333; display: inline-block; }
+.overvitem li{
+    border-bottom: 1px dashed #DDDDDD;
+}
+.overvitem a{line-height: 32px;}
+.overvitem a:hover{text-decoration: none;}
+.overvitem a:hover strong{color: #333;}
+
+#activity-options{
+    list-style: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+    overflow: hidden;
+}
+#activity-options li{
+    float: left;
+    cursor: pointer;
+    padding: 4px 5px;
+    border: 1px outset #ccc;
+    margin: 0 1px;
+}
+#activity-options li.pressed{
+    background: #ebebeb;
+    border: 1px inset #CCC;
+    cursor: default;
+}
+#topten,#recent{display: none;line-height: 150%;}
+.tdata{font-size: 0.9em; display:block;color:#666;}
+
+support-me:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.support-me img.avatar{
+    float: left;
+    padding: 1px;
+    border: 1px solid #CCC;
+    border-radius: 2px;
+    margin: 0 5px 0 0;
+    width: 80px;
+}

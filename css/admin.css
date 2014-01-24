@@ -1,0 +1,61 @@
+.bxpress_options{
+    padding: 0 0 5px 0;
+}
+.bxpress_2cols{
+    overflow: hidden;
+}
+.bxpress_2cols .bxpress_colleft{
+    width: 30%;
+    float: left;
+    margin-right: 20px;
+}
+.bxpress_2cols .bxpress_colright{
+    width: 65%;
+    float: left;
+}
+
+.bxpress_2cols label{
+    display: block;
+    padding: 2px 0;
+    margin: 5px 0;
+    font-weight: bold;
+}
+.bxpress_colleft input[type='text'],
+.bxpress_colleft textarea{
+    width: 90%;
+}
+.bxpress_colleft textarea{
+    height: 70px;
+}
+.bxpress_colleft .groups{
+    overflow: hidden;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #CCC;
+}
+.bxpress_colleft .groups label{
+    font-weight: normal;
+    padding: 0;
+    margin: 2px 0;
+}
+.reporter{
+    font-size: 0.9em;
+    color: #666;
+}
+.report_message{
+    background: #FEFFE6;
+    padding: 6px;
+    display: block;
+    border: 1px solid #E6D190;
+    margin: 0 5px;
+}
+.report_message .brdcrm{
+    display: block;
+    padding: 4px 0;
+    border-bottom: 1px dashed #CCC;
+    margin: 0 0 5px 0;
+    font-size: 0.9em;
+}
+.read{background: #F4F9FD;border: 1px solid #DBE0E4;}
+.zapped{font-size: 0.9em; color: #666;}
+.groups_field_list{list-style: none;margin: 0;padding: 0;overflow: hidden;}
+.groups_field_list li{padding: 3px; float: left;}

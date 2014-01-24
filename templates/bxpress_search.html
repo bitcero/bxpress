@@ -1,0 +1,71 @@
+<{include file="db:bxpress_header.html"}>
+<{include file="db:bxpress_announcements.html"}>
+<form name="frmsearch" method="GET"  action="search.php">
+<table class="outer">
+	<tr class="odd">
+		<td><strong><{$lang_search}></strong>
+		    <input type="text" name="search" size="20" value="<{$search}>" >
+		    <label><input type="radio" name="type" value="0"<{if $type==0 }> checked="checked"<{/if}> /><{$lang_allwords}></label>
+		    <label><input type="radio" name="type" value="1"<{if $type==1 }> checked="checked"<{/if}> /><{$lang_anywords}></label>
+		    <label><input type="radio" name="type" value="2"<{if $type==2 }> checked="checked"<{/if}> /><{$lang_exactphrase}> </label>
+		    <input class="formButton" type="submit" name="sbt" value="<{$lang_search}>" />
+		</td>
+	</tr>
+	
+	<tr class="odd">
+		<td>
+		    <input type="radio" name="themes" value="0" <{if $themes==0 }>checked="checked"<{/if}> /><{$lang_alltopics}>
+		    <input type="radio" name="themes" value="1" <{if $themes==1 }>checked="checked"<{/if}> /><{$lang_recenttopics}>
+		    <input type="radio" name="themes" value="2" <{if $themes==2 }>checked="checked"<{/if}> /><{$lang_anunswered}>
+		</td>
+	</tr>
+
+</table>
+</form>
+<br />
+<{$itemsNavPage}>
+<table class="outer" cellspacing="1" width="100%">
+	<tr class="head" align="center">
+		<td colspan="2" align="left"><{$lang_topic}></td>
+		<td><{$lang_forum}></td>
+		<td><{$lang_replies}></td>
+		<td><{$lang_views}></td>
+		<td><{if $themes==0 && $search==''}><{$lang_last}><{else}><{$lang_date}><{/if}></td>
+	</tr>
+	<{foreach item=topic from=$topics}>
+	
+		<tr class="bxpress_listing">
+			<td width="26" align="center" class="even"><img src="images/<{if $topic.sticky}>sticky<{else}><{if $topic.popular}>hot<{else}>normal<{/if}><{if $topic.last.new}>withnew<{/if}><{/if}>.png" alt="" /></td>
+			<td class="odd">
+			<{if $topic.closed}>
+				<img src="images/lock.png" align="absmiddle" alt="" />
+			<{elseif $topic.sticky}>
+				<{$lang_sticky}>
+			<{/if}>
+			<span class="title"><{if $themes==0 && $search==''}><a href="topic.php?pid=<{$topic.firstpost}>#p<{$topic.firstpost}>"><{$topic.title}></a><{else}><a href="topic.php?pid=<{$topic.id_post}>#p<{$topic.id_post}>"><{$topic.title}></a><{/if}></span>
+                        <span class="by"><{$topic.by}></span>
+			<{if $topic.last.new}>
+				[ <a href="topic.php?id=<{$topic.id}>&amp;op=new"><{$lang_newposts}></a> ]
+			<{/if}>
+			<{if $topic.tpages>1}>&nbsp;
+                        <span class="pages">
+			[<{foreach item=page from=$topic.pages}>
+				<{if $page!='...'}>
+					<a href="topic.php?id=<{$topic.id}>&amp;pag=<{$page}>"><{$page}></a>
+				<{else}>
+					...
+				<{/if}>
+			<{/foreach}>]
+                        </span>
+			<{/if}>
+			<br />
+                        <span class="text"><{$topic.post_text}></span>
+			</td>
+			<td align="center" class="even"><{$topic.forum}></td>
+			<td align="center" class="odd"><{$topic.replies}></td>
+			<td align="center" class="even"><{$topic.views}></td>
+			<td align="center" class="odd"><{if $search=='' && $themes==0}><a href="topic.php?pid=<{$topic.last.id}>#p<{$topic.last.id}>"><{$topic.last.date}></a> <{$topic.last.by}><{else}><{$topic.date}><{/if}></td>
+		</tr>
+	<{/foreach}>
+</table>
+<{$itemsNavPage}>

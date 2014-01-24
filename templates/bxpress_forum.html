@@ -1,0 +1,92 @@
+<{include file="db:bxpress_header.html"}>
+<{include file="db:bxpress_announcements.html"}>
+
+<div id="bxpressOptions">
+	<{if $can_topic}>
+	<div class="topics">
+		<a href="post.php?fid=<{$forum.id}>" class="newtopic"><{$lang_newtopic}></a>
+	</div>
+	<{/if}>
+	<a href="./"><{$forums_title}></a> &raquo; <{$forum.title}>
+</div>
+
+<{$itemsNavPage}>
+
+<table class="outer" cellspacing="1" width="100%">
+	<tr>
+		<th colspan="5">
+			<{$forum.title}>
+		</th>
+	</tr>
+	<tr class="head" align="center">
+		<td colspan="2" align="left"><{$lang_topic}></td>
+		<td><{$lang_replies}></td>
+		<td><{$lang_views}></td>
+		<td align="left"><{$lang_lastpost}></td>
+	</tr>
+	<{foreach item=topic from=$topics}>
+		<tr class="<{cycle values="even,odd"}>">
+			<td width="26" align="center"><img src="images/<{if $topic.sticky}>sticky<{else}><{if $topic.popular}>hot<{else}>normal<{/if}><{if $topic.last.new}>withnew<{/if}><{/if}>.png" alt="" /></td>
+			<td class="lighter">
+			<{if $topic.closed}>
+				<img src="images/lock.png" align="absmiddle" alt="" />
+			<{elseif $topic.sticky}>
+				<{$lang_sticky}>
+			<{/if}>
+			<strong><a href="topic.php?id=<{$topic.id}>"><{$topic.title}></a></strong>
+			<{$topic.by}>
+			<{if $topic.last.new}>
+				[ <a href="topic.php?id=<{$topic.id}>&amp;op=new"><{$lang_newposts}></a> ]
+			<{/if}>
+			<{if $topic.tpages>1}>&nbsp;
+			[<{foreach item=page from=$topic.pages}>
+				<{if $page!='...'}>
+					<a href="topic.php?id=<{$topic.id}>&amp;pag=<{$page}>"><{$page}></a>
+				<{else}>
+					...
+				<{/if}>
+			<{/foreach}>]
+			<{/if}>
+			</td>
+			<td align="center"><{$topic.replies}></td>
+			<td align="center"><{$topic.views}></td>
+			<td class="lighter">
+				<a href="topic.php?pid=<{$topic.last.id}>#p<{$topic.last.id}>"><{$topic.last.date}></a> <{$topic.last.by}>
+			</td>
+		</tr>
+	<{/foreach}>
+</table>
+
+<{$itemsNavPage}>
+
+<div class="bxpressIcons">
+<img src="images/normal.png" align="absmiddle" alt="" /> <{$lang_nonew}>
+	<img src="images/normalwithnew.png" align="absmiddle" alt="" /> <{$lang_withnew}>
+	<img src="images/hot.png" align="absmiddle" alt="" /> <{$lang_hotnonew}>
+	<img src="images/hotwithnew.png" align="absmiddle" alt="" /> <{$lang_hotnew}>
+</div>
+<div id="bxpressOptions">
+	<{if $can_topic}>
+	<div class="topics">
+		<a href="post.php?fid=<{$forum.id}>" class="newtopic"><{$lang_newtopic}></a>
+	</div>
+	<{/if}>
+</div>
+<div class="outer bbouter">
+	<div class="odd">
+		<div class="bbcomboforums">
+			<form name="frmGo" method="get" action="forum.php" style="margin: 0;">
+			<{$lang_goto}>
+			<select name="id" onchange="submit();">
+				<{foreach item=foro from=$forums}>
+					<option value="<{$foro.id}>"<{if $foro.id==$forum.id}> selected="selected"<{/if}>><{$foro.title}></option>
+				<{/foreach}>
+			</select>
+			<input type="submit" value="<{$lang_go}>" class="formButton" />
+			</form>
+		</div>
+            <{if $forum.moderator}><span class="moderate_legend"><a href="moderate.php?id=<{$forum.id}>"><{$lang_moderate}></a></span><{/if}>
+	</div>
+</div>
+
+<{include file="db:system_notification_select.html"}>

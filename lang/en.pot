@@ -1,0 +1,1927 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bXpress Forum\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-17 11:47-0600\n"
+"PO-Revision-Date: 2012-09-17 11:48-0600\n"
+"Last-Translator: Eduardo Cortés <i.bitcero@gmail.com>\n"
+"Language-Team: Xoops Mexico <xoopsmexico@gmail.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.3\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\xm\\modules\\bxpress\n"
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:18
+msgid "Please specify a post id to delete!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:24
+#: C:\wamp\www\xm\modules\bxpress/edit.php:24
+#: C:\wamp\www\xm\modules\bxpress/report.php:69
+msgid "Specified post does not exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:33
+#: C:\wamp\www\xm\modules\bxpress/delete.php:39
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:27
+msgid "Sorry, you don't have permission to do this action!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:46
+#: C:\wamp\www\xm\modules\bxpress/edit.php:52
+#: C:\wamp\www\xm\modules\bxpress/edit.php:95
+#: C:\wamp\www\xm\modules\bxpress/edit.php:124
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:153
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:312
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:357
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:407
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:464
+#: C:\wamp\www\xm\modules\bxpress/post.php:56
+#: C:\wamp\www\xm\modules\bxpress/report.php:75
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:150
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:202
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:125
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:200
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:249
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:306
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:391
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:84
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:92
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:127
+msgid "Session token expired!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:59
+msgid "Topic deleted successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:59
+msgid "Post deleted successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:61
+msgid "The topic could not be deleted!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:61
+msgid "The post could not be deleted!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:72
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:120
+#: C:\wamp\www\xm\modules\bxpress/topic.php:231
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:10
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:52
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:65
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:35
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:81
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:95
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:10
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:56
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:76
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:13
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:56
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:73
+msgid "Delete"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:74
+#: C:\wamp\www\xm\modules\bxpress/delete.php:92
+#: C:\wamp\www\xm\modules\bxpress/edit.php:234
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:266
+#: C:\wamp\www\xm\modules\bxpress/post.php:251
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:124
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:98
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:146
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:368
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:60
+msgid "Cancel"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:78
+msgid "Dou you really wish to delete specified post?"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:80
+msgid ""
+"<strong>Warning:</strong> This is the first post in the topic. By deleting "
+"this all posts will be deleted also."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:86
+msgid "Delete post?"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:91
+msgid "Delete!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/delete.php:96
+msgid "Delete Post?"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:18
+msgid "No post has been specified!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:33
+#: C:\wamp\www\xm\modules\bxpress/edit.php:39
+msgid "You don't have permission to edit this post!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:80
+msgid "Changes could not be stored. Please try again!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:84
+msgid "Changes stored successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:102
+msgid "You have not selected any file to delete!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:111
+msgid "Errors ocurred during this operation!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:111
+msgid "Files deleted successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:132
+msgid "You have reached the maximum attachments number for this post"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:159
+msgid "The file was not saved."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:167
+msgid "Sorry, you do not have permission to do this action"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:170
+msgid "File attached successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:182
+msgid "Edit Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:185
+msgid "Topic Subject:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:191
+#: C:\wamp\www\xm\modules\bxpress/topic.php:258
+msgid "Sticky Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:205
+#: C:\wamp\www\xm\modules\bxpress/post.php:237
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:409
+msgid "Post"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:210
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:123
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:145
+msgid "Save Changes"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:216
+msgid "Attached Files"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:217
+#, php-format
+msgid ""
+"You can upload new files to this post. You have a limit of <strong>%s</"
+"strong> attachment per post."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:219
+msgid "Attach File:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:220
+#, php-format
+msgid "Allowed File Types: %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:225
+msgid "Cuerrent Attachments"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:232
+msgid "Upload File"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:233
+msgid "Delete File(s)"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/edit.php:242
+msgid "Topic Review (Newest First)"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/files.php:21
+msgid "No topic has been specified!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/files.php:27
+#: C:\wamp\www\xm\modules\bxpress/files.php:33
+msgid "Specified file does not exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:20
+msgid "No forum ID has been specified"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:26
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:164
+#: C:\wamp\www\xm\modules\bxpress/post.php:39
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:90
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:189
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:350
+msgid "Specified forum does not exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:35
+msgid "You are not allowed to view this forum!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:82
+#: C:\wamp\www\xm\modules\bxpress/forum.php:101
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:83
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:98
+#: C:\wamp\www\xm\modules\bxpress/search.php:158
+#: C:\wamp\www\xm\modules\bxpress/search.php:177
+#, php-format
+msgid "By: %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:114
+msgid "Pages:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:115
+#: C:\wamp\www\xm\modules\bxpress/index.php:98
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:347
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:408
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:23
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:36
+msgid "Topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:116
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:106
+#: C:\wamp\www\xm\modules\bxpress/search.php:197
+msgid "Replies"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:117
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:107
+#: C:\wamp\www\xm\modules\bxpress/search.php:198
+msgid "Views"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:118
+#: C:\wamp\www\xm\modules\bxpress/index.php:100
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:108
+msgid "Last Post"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:119
+msgid "No new posts"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:120
+msgid "New posts"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:121
+msgid "No hot topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:122
+msgid "New hot topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:123
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:109
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:115
+#: C:\wamp\www\xm\modules\bxpress/search.php:199
+msgid "Sticky"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:124
+msgid "Closed Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:126
+#: C:\wamp\www\xm\modules\bxpress/topic.php:118
+msgid "New Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:129
+#: C:\wamp\www\xm\modules\bxpress/search.php:204
+msgid "New Posts"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:135
+msgid "Moderate Forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:138
+msgid "Go to:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/forum.php:139
+#: C:\wamp\www\xm\modules\bxpress/topic.php:241
+msgid "Go!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/index.php:33
+#: C:\wamp\www\xm\modules\bxpress/index.php:66
+#, php-format
+msgid "by %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/index.php:97
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:237
+#: C:\wamp\www\xm\modules\bxpress/search.php:201
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:91
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:96
+#: C:\wamp\www\xm\modules\bxpress/admin/header.php:28
+msgid "Forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/index.php:99
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:24
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:37
+msgid "Posts"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/index.php:101
+msgid "Last registered user:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/index.php:102
+msgid "Registered users conected:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/index.php:103
+msgid "Anonymous users conected:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/index.php:104
+msgid "Registered users:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/index.php:105
+msgid "Total topics:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/index.php:106
+msgid "Total posts:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:15
+msgid "Please, specify the forum you want to moderate!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:21
+msgid "Specified forum doesn't exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:105
+#: C:\wamp\www\xm\modules\bxpress/search.php:196
+#: C:\wamp\www\xm\modules\bxpress/blocks/bxpress_recents.php:69
+msgid "Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:110
+msgid "Moderating Forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:111
+msgid "Pages"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:112
+msgid "Move"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:113
+msgid "Unlock"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:114
+msgid "Lock"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:116
+msgid "Unsticky"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:117
+#: C:\wamp\www\xm\modules\bxpress/topic.php:123
+msgid "Approved"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:118
+#: C:\wamp\www\xm\modules\bxpress/topic.php:260
+msgid "Approve"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:119
+msgid "Unapprove"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:121
+msgid "Do you really want to delete selected topics?"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:144
+msgid "Select at least a topic to moderate!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:158
+msgid "Please select the target forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:214
+msgid "Topics has been relocated!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:226
+msgid "Move Topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:236
+msgid "Select the forum where you wish to move selected topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:265
+msgid "Move Topics Now!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:286
+msgid "Select at least one topic to moderate!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:301
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:334
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:384
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:428
+msgid "Action completed!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:319
+msgid "Select at least one topic to set as sticky!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:348
+msgid "Select at least one topic to delete!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:400
+msgid "Select at least one topic to moderate"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:444
+msgid "Topic not valid!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:451
+msgid "Post doesn't exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:458
+msgid "You don't have permission to do this action!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/moderate.php:475
+msgid "Operation completed!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:19
+msgid "You must specify a forum in order to create a new topic!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:30
+#: C:\wamp\www\xm\modules\bxpress/topic.php:21
+#: C:\wamp\www\xm\modules\bxpress/topic.php:61
+msgid "Specified topic does not exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:44
+msgid "You do not have permission to do this!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:89
+#: C:\wamp\www\xm\modules\bxpress/post.php:115
+msgid "Message could not be posted! Please try again"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:188
+msgid "Your posts has been sent!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:188
+msgid "Message posted, however some errors ocurred while sending!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:201
+#: C:\wamp\www\xm\modules\bxpress/topic.php:122
+msgid "Reply"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:201
+msgid "Create New Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:202
+msgid "Write your post and send it"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:204
+msgid "Your name:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:205
+msgid "Your email:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:207
+msgid "Topic subject:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:215
+msgid "Sticky topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:241
+msgid "Attach file"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:242
+#, php-format
+msgid "Allowed file types: %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:250
+msgid "Send"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/post.php:270
+msgid "Topic review (newest first)"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/report.php:32
+#: C:\wamp\www\xm\modules\bxpress/report.php:50
+msgid "Report Post"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/report.php:34
+msgid "Your reasons to report this post"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/report.php:62
+msgid "Sepecified post is not valid!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/report.php:88
+msgid "Thanks for reporting! Moderators will be notified."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/report.php:91
+msgid "Report could not be sent! Please try again later."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/search.php:186
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:134
+msgid "Search:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/search.php:187
+msgid "Recent topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/search.php:188
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:50
+msgid "All topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/search.php:189
+msgid "Unanswered topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/search.php:193
+msgid "All words"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/search.php:194
+msgid "Any word"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/search.php:195
+msgid "Exact phrase"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/search.php:200
+msgid "Closed"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/search.php:202
+#: C:\wamp\www\xm\modules\bxpress/blocks/bxpress_recents.php:70
+msgid "Date"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/search.php:203
+msgid "Last post"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:55
+msgid "Specified topic is not valid!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:68
+msgid "This topic has not been approved yet!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:74
+msgid "Sorry, you don't have permission to view this forum!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:124
+msgid "Not approved"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:188
+#, php-format
+msgid "Registered: %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:190
+#: C:\wamp\www\xm\modules\bxpress/topic.php:201
+#, php-format
+msgid "Posts: %u"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:191
+#, php-format
+msgid "IP: %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:230
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:51
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:80
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:55
+msgid "Edit"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:232
+msgid "Report"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:233
+msgid "Quote"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:234
+msgid "Online!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:235
+msgid "Disconnected"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:236
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:27
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:40
+msgid "Attachments"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:239
+msgid "Edit Text"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:240
+msgid "Change Forum:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:243
+msgid "Locked Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:249
+msgid "Move Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:251
+msgid "Unlock Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:253
+msgid "Lock Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:256
+msgid "Unsticky Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/topic.php:261
+msgid "Unnaprove"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:30
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:32
+msgid "bXpress"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:31
+msgid "A simple forums module for XOOPS and common utilities."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:52
+msgid "BitCERO Twitter"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:53
+msgid "BitCERO LinkedIn"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:54
+msgid "Xoops Mexico Twitter"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:55
+msgid "Xoops Mexico Facebook"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:105
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:132
+msgid "Welcome to bXpress Forums"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:340
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:407
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:29
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:25
+msgid "Forums"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:341
+msgid "Notifications related to forums"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:348
+msgid "Notifications related to topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:354
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:34
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:34
+msgid "All forums"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:355
+msgid "Notifications related to all forums"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:362
+msgid "New Added Topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:363
+msgid "Notify when a new topic is created in this forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:364
+msgid "Sends a notification when a new topic is created in a given forum."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:367
+msgid "New Topic Added"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:371
+msgid "New Post sent"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:372
+msgid "Notify when a new post is sent in this topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:373
+msgid "Send a notification when a new post is sent on a topic"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:376
+msgid "A new post has been sent"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:380
+msgid "New post in any forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:381
+msgid "Notify when a new topic is sent in any forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:382
+msgid "Send a notification when a new topic is sent in any forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:385
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:394
+msgid "New topic sent"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:389
+msgid "New topic in forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:390
+msgid "Notify when a new topic is sent in this forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:391
+msgid "Sent a notification when a new topic is sent to this forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:406
+msgid "Index"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:410
+msgid "Edit Post"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:411
+msgid "Moderate"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:412
+msgid "Report post"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/xoops_version.php:413
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:133
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:86
+msgid "Search"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:44
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:4
+msgid "Announcements Management"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:65
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:157
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:84
+msgid "Provided ID is not valid!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:71
+msgid "Specified announcement does not exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:78
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:81
+msgid "Edit Announcement"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:78
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:81
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:15
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:70
+msgid "New Announcement"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:83
+msgid "Text"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:86
+msgid "Expire on"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:89
+msgid "Show on"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:90
+msgid "Module home page"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:92
+msgid "All module"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:97
+msgid ""
+"Please select the forum where this announcement will be shown. This option "
+"only is valid when \"In Forum\" has been selected."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:123
+msgid "Create Announcement"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:163
+msgid "Specified announcement does no exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:171
+msgid "The expiration time can not be minor than current time!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:187
+msgid "Announcement saved successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:190
+msgid "Announcement could not be saved!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:209
+msgid "You must select at least one announcement to delete!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:218
+msgid "Announcements deleted successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/announcements.php:220
+msgid "Errors ocurred while trying to delete announcements."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:41
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:19
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:24
+msgid "Categories"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:49
+msgid "You must select a category at least in order to run this action!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:50
+msgid ""
+"Do you really want to delete selected categories?\\n\\nAll forums under this "
+"category will be deleted also!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:70
+msgid "You had not provided a category ID"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:76
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:143
+msgid "Specified category does not exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:82
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:85
+msgid "Edit Category"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:82
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:85
+msgid "New Category"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:86
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:7
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:49
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:60
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:22
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:35
+msgid "Name"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:88
+msgid "Short name"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:90
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:9
+msgid "Description"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:91
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:17
+msgid "Show description"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:92
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:33
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:93
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:8
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:74
+msgid "Activate"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:93
+msgid "Groups"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:97
+msgid "Submit"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:130
+msgid "Please provide a name for this category!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:137
+msgid "The specified category ID is not valid!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:150
+msgid "Already exists a category with same name!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:165
+msgid "Already exist a category with the same short name!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:177
+msgid "Category saved succesfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:179
+msgid "Category could not be saved!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:195
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:244
+msgid "You must select at least one category"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:208
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:259
+#, php-format
+msgid "Category ID %s is not valid!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:215
+#, php-format
+msgid "Category with id %s does not exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:220
+#, php-format
+msgid "Category %s could not be deleted!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:225
+msgid "There was errors during this operation"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/categos.php:228
+msgid "Categories deleted successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:58
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:1
+msgid "Forums Management"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:65
+msgid "You must select one forum at least in order to run this action!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:66
+msgid ""
+"Do you really want to delete selected forums?\\n\\nAll posts sent in this "
+"forum will be deleted also!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:98
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:104
+msgid "Edit Forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:98
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:104
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:14
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:80
+msgid "New Forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:106
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:25
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:38
+msgid "Category"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:107
+msgid "Select category..."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:111
+msgid "Forum name"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:113
+msgid "Forum description"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:116
+msgid "Activate forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:118
+msgid "Allow signatures in the posts"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:120
+msgid "Answers to match a topic as popular"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:122
+msgid "Order in the list"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:124
+msgid "Allow attachments"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:125
+msgid "Maximum attachments file size"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:126
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:42
+msgid "Specify this value in Kilobytes"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:128
+msgid "Allowed file types"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:129
+msgid ""
+"Specified the extensions of allowed file types separating each one with \"|"
+"\" and without the dot."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:135
+msgid "Can view the forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:136
+msgid "Can start new topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:137
+msgid "Can answer"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:138
+msgid "Can edit their posts"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:139
+msgid "Can delete"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:140
+msgid "Can vote"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:141
+msgid "Can attach"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:142
+msgid "Can send without approval"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:145
+msgid "Create Forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:176
+msgid "Session token expired"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:183
+msgid "Specified id is not valid!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:226
+msgid "Forum saved successfully! Redirecting to moderators assignment..."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:228
+msgid "Changes saved successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:231
+msgid "Forum could not be saved!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:315
+#, php-format
+msgid "Forum with id \"%u\" does not exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:321
+#, php-format
+msgid "Forum \"%s\" could not be deleted!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:327
+msgid "Errors ocurred while trying to delete forums:"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:329
+msgid "Forums deleted without errors"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:344
+msgid "No forum ID has been provided!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:360
+#, php-format
+msgid "Forum \"%s\" Moderators"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:362
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:36
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:57
+msgid "Moderators"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:363
+msgid "Choose from the list the moderators users"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:367
+msgid "Save Moderators"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:378
+msgid "forum Moderators"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:401
+msgid "A forum ID has not been provided!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:408
+msgid "Sepecified forum does not exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:414
+msgid "Moderator saved successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/forums.php:417
+msgid "Moderators could not be saved!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/header.php:27
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:79
+msgid "Home Page"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/header.php:29
+msgid "All Module"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/index.php:71
+#, php-format
+msgid "Last post on %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/index.php:72
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:44
+#, php-format
+msgid "By %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/index.php:101
+#, php-format
+msgid "Created on %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:12
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:23
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:25
+msgid "Dashboard"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:24
+msgid "All categories"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:35
+msgid "New forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:42
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:26
+msgid "Announcements"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:47
+msgid "List all"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:48
+msgid "New message"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:53
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:27
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:85
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:5
+msgid "Reports"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:58
+msgid "All reports"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:59
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:18
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:78
+msgid "Read"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:60
+msgid "Not Read"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/menu.php:64
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:28
+msgid "Prune"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:23
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:29
+msgid "Prune Posts"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:32
+msgid "Prune from forum"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:33
+msgid "Select option..."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:43
+msgid "Days old"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:44
+msgid "Delete topics older than these days"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:48
+msgid "Topics to delete"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:49
+msgid "Select option"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:51
+msgid "Unanswered Topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:56
+msgid "Delete Sticky Topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:59
+msgid "Prune Now!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:59
+msgid ""
+"Do you really wish to delete the topics? \\nThis action will delete the data "
+"permanently."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/prune.php:105
+#, php-format
+msgid "Prune done! %u topics deleted"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:76
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:77
+msgid "Reports Management"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:98
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:121
+msgid "Select at least one report!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:104
+msgid "Database updated successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:106
+msgid "Errors ocurred"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:135
+#, php-format
+msgid "ID %s is not valid!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:142
+#, php-format
+msgid "Report with ID %s does not exists!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:147
+#, php-format
+msgid "Report %s could dot be deleted!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:153
+msgid "Errors ocurred while trying to delete selected reports."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/admin/reports.php:156
+msgid "Reports deleted successfully!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/blocks/bxpress_recents.php:52
+#, php-format
+msgid "Posted by: %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/blocks/bxpress_recents.php:71
+msgid "Poster"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:115
+#, php-format
+msgid "Today %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:117
+#, php-format
+msgid "Yesterday %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:130
+msgid "Forum Index"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:293
+msgid "New topic created"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/class/bxfunctions.class.php:296
+msgid "A unapproved message has been edited"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:20
+msgid "Forum Title"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:21
+msgid "This title will be show in the Home page and in special sections."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:22
+msgid "Enable URLs rewriting"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:23
+msgid "By enabling this option, bXpress will be capable to use friendly URLs."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:24
+msgid "Base path for URL rewriting"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:26
+msgid "Directory for the file storage"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:27
+msgid "In this folder will be stored the posts attachments."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:32
+msgid "Show Categories in the Home Page"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:33
+msgid ""
+"If this option is enable the forums will be ordered by categories in the "
+"Home Page."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:35
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:50
+msgid "Topics Number per Page"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:36
+msgid "Message Number per Page"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:38
+msgid "Enable search for anonymous users"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:40
+msgid "Allow HTML in the posts"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:41
+msgid "Maximum file size for the attachment"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:43
+msgid "Anonymous Users Prefix"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:44
+msgid "Time to mark a post as new"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:45
+msgid "Specify this value in seconds"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:46
+msgid "Post Limit in Review"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:47
+msgid "Post Maximun Number that will be shown in the post form."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:48
+msgid "Post Number per Page"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:49
+msgid "This value can be configured individually for every user."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:51
+msgid "Date Format"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:52
+msgid "Limit post attachments"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:53
+msgid "Directory to storage the attachment"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:54
+msgid ""
+"This directory must exist in the server and must have read and writing "
+"permisions."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:55
+msgid "Activate Sticky Posts"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:56
+msgid ""
+"By enabling this option, bXpress could create topics like \"sticky\". The "
+"sticky topics always will appear in the first positions. Even when this "
+"option is disabled with the administrators and moderators will create sticky "
+"posts."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:57
+msgid "Required post number for a user to publish sticky topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:58
+msgid "Activate announcements in the module"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:59
+msgid "Maximum number of announcements to show"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:60
+msgid "Mode to show announcements"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:61
+msgid "Recents"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:62
+msgid "Random"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:69
+msgid "Description of the Syndication option"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:72
+msgid "Order topics for recent post"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:73
+msgid "Indicate if the forum topics will be ordered per recent topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:76
+msgid "Topics with new Posts"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:80
+msgid "Forum Page"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:81
+msgid "Topic Page"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:82
+msgid "Post Page"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:83
+msgid "Post Editing"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/language/english/modinfo.php:84
+msgid "Forum Moderation"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:2
+msgid "Do you really wish to delete selected announcements?"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:9
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:64
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:32
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:92
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:7
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:73
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:10
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:70
+msgid "Bulk actions..."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:12
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:67
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:37
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:97
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:12
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:78
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:15
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:75
+msgid "Apply"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:14
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:69
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:39
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:99
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:17
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:77
+msgid "Show All"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:21
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:31
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:48
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:59
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:21
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:34
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:25
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:33
+msgid "ID"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:22
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:32
+msgid "Announcement"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:23
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:33
+msgid "Expire"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:24
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:34
+msgid "Location"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:25
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:35
+msgid "By"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_announcements.php:41
+msgid "There are not announcements created yet!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:1
+msgid "Categories Management"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:5
+msgid "Add Category"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:11
+msgid "Groups with access"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:21
+msgid "Activate category"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:25
+msgid "Create Category"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:34
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:94
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:9
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:75
+msgid "Disable"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:50
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:61
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:26
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:39
+msgid "Active"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:51
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:62
+msgid "Descripcion"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_categos.php:69
+msgid "There are not categories created yet!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:28
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:41
+msgid "Order"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_forums.php:46
+msgid "There are not forums created yet!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:36
+msgid "Overview"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:40
+#, php-format
+msgid "%s Categories"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:43
+#, php-format
+msgid "%s Forums Available"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:48
+#, php-format
+msgid "%s Topics Created"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:51
+#, php-format
+msgid "%s Posts Sent"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:56
+#, php-format
+msgid "%s Announcements Made"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:59
+#, php-format
+msgid "%s Files Attached"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:64
+#, php-format
+msgid "%s Reports Received"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:67
+#, php-format
+msgid "%s Days Running"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:75
+msgid "Activity"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:78
+msgid "Last 30 days"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:79
+msgid "Recent Posts in Topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:80
+msgid "Popular Topics"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:88
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:100
+#, php-format
+msgid "Forum: %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:101
+#, php-format
+msgid "Replies: %s"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:117
+msgid "About bXpress"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:121
+msgid ""
+"If you wish to support my work, you can send money to my PayPal&reg; account "
+"(i.bitcero@gmail.com)."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:127
+msgid "bXpress News"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_index.php:129
+msgid "Loading news..."
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:2
+msgid "Do you really want to delete selected reports?"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:3
+msgid "Select some report before!"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:11
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:71
+msgid "Mark as read"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:12
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:72
+msgid "Mark as not read"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:19
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:79
+msgid "Not read"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:26
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:34
+msgid "Reported"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:27
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:35
+msgid "Message"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:52
+#, php-format
+msgid "Post #%u"
+msgstr ""
+
+#: C:\wamp\www\xm\modules\bxpress/templates/admin/forums_reports.php:60
+#, php-format
+msgid "Read on %s by %s"
+msgstr ""

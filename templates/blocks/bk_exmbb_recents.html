@@ -1,0 +1,15 @@
+<table class="outer" cellspacing="1" cellpadding="0" width="100%">
+	<tr>
+		<th align="left"><{$block.lang_topic}></th>
+		<{if $block.showdates}><th><{$block.lang_date}></th><{/if}>
+		<{if $block.showuname}><th><{$block.lang_poster}></th><{/if}>
+	</tr>
+	<{foreach item=posti from=$block.topics}>
+		<tr class="<{cycle values="even,odd"}>">
+			<td><a href="<{$xoops_url}>/modules/exmbb/topic.php?pid=<{$posti.post}>#p<{$posti.post}>"><{$posti.title}></a>
+			<{if $block.showtext}><br /><{$posti.text}><{/if}></td>
+			<{if $block.showdates}><td align="center"><{$posti.date}></td><{/if}>
+			<{if $block.showuname}><td><{$posti.poster}></td><{/if}>
+		</tr>
+	<{/foreach}>
+</table>
