@@ -21,7 +21,7 @@ $adminmenu[] = array(
     'icon' => '../images/categos.png',
     'location' => "categories",
     'options' => array(
-        array('title'=>__('All categories','docs'), 'link'=>'categos.php', 'selected'=>'categories')
+        array('title'=>__('All categories','docs'), 'link'=>'admin/categos.php', 'selected'=>'categories')
     )
 );
 
@@ -31,9 +31,9 @@ $adminmenu[] = array(
     'icon' => '../images/forums.png',
     'location' => "forums",
     'options' => array(
-        array('title'=>__('All forums','bxpress'), 'link'=>'forums.php','selected'=>'forums'),
-        array('title'=>__('New forum','bxpress'), 'link'=>'forums.php?action=new','selected'=>'newforum'),
-        array('title'=>__('Moderators','bxpress'), 'link'=>'forums.php?action=moderators','selected'=>'moderators')
+        array('title'=>__('All forums','bxpress'), 'link'=>'admin/forums.php','selected'=>'forums'),
+        array('title'=>__('New forum','bxpress'), 'link'=>'admin/forums.php?action=new','selected'=>'newforum'),
+        array('title'=>__('Moderators','bxpress'), 'link'=>'admin/forums.php?action=moderators','selected'=>'moderators')
     )
 );
 

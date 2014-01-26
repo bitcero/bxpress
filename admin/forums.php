@@ -17,7 +17,7 @@ include 'header.php';
 function bx_show_forums(){
     global $xoopsModule, $xoopsSecurity;
     
-    $catid = rmc_server_var($_REQUEST, 'catid', 0);
+    $catid = RMHttpRequest::request( 'catid', 'integer', 0 );
 
     $db = XoopsDatabaseFactory::getDatabaseConnection();
     
@@ -54,17 +54,15 @@ function bx_show_forums(){
         );
     }
 
-    bXFunctions::menu_bar();
-    xoops_cp_location("<a href='./'>".$xoopsModule->name()."</a> &raquo; ".__('Forums Management','bxpress'));
+    $bc = RMBreadCrumb::get();
+    $bc->add_crumb( __('Forums', 'bxpress') );
     xoops_cp_header();
     
-    RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/');
-    RMTemplate::get()->add_local_script('jquery.checkboxes.js','rmcommon','include');
-    RMTemplate::get()->add_local_script('admin.js','bxpress');
-    RMTemplate::get()->add_head('<script type="text/javascript">
-        var bx_select_message = "'.__('You must select one forum at least in order to run this action!','bxpress').'";
-        var bx_message = "'.__('Do you really want to delete selected forums?\n\nAll posts sent in this forum will be deleted also!','bxpress').'";
-    </script>');
+    RMTemplate::get()->add_help(__('Forums Help', 'bxpress'), 'http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/');
+    RMTemplate::get()->add_script('admin.js','bxpress');
+    RMTemplate::get()->add_head_script('var bx_select_message = "'.__('You must select one forum at least in order to run this action!','bxpress').'";
+        var bx_message = "'.__('Do you really want to delete selected forums?\n\nAll posts sent in this forum will be deleted also!','bxpress').'";');
+
     include RMTemplate::get()->get_template('admin/forums_forums.php', 'module', 'bxpress');
     
     xoops_cp_footer();
@@ -79,21 +77,20 @@ function bx_show_form($edit = 0){
     global $xoopsModule, $xoopsConfig;
     
     if ($edit){
-        $id = rmc_server_var($_REQUEST, 'id', 0);
+        $id = RMHttpRequest::request( 'id', 'integer', 0 );
         if ($id<=0){
-            redirectMsg('forums.php', __('Provided ID is not valid!','bxpress'), 1);
+            RMUris::redirect_with_message( __('Provided ID is not valid!','bxpress'), 'forums.php', RMMSG_WARN );
             die();
         }
         
         $forum = new bXForum($id);
         if ($forum->isNew()){
-            redirectMsg('forums.php', __('Specified forum does not exists!','bxpress'), 1);
+            RMUris::redirect_with_message( __('Specified forum does not exists!','bxpress'), 'forums.php', RMMSG_ERROR );
             die();
         }
     }
-    
-    bXFunctions::menu_bar();
-    RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/#crear-foro');
+
+
     RMTemplate::get()->add_style('admin.css','bxpress');
     xoops_cp_location("<a href='./'>".$xoopsModule->name()."</a> &raquo; ".($edit ? __('Edit Forum','bxpress') : __('New Forum','bxpress')));
     xoops_cp_header();

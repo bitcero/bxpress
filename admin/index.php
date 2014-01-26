@@ -46,10 +46,10 @@ $daysnum = time() - $xoopsModule->getVar('last_update');
 $daysnum = ceil($daysnum/86400);
 
 //Lista de Mensajes recientes
-$tbl1= $db->prefix("mod_bxpress_posts');
-$tbl2= $db->prefix("mod_bxpress_topics');
-$tbl3=$db->prefix("mod_bxpress_posts_text');
-$tbl4=$db->prefix("mod_bxpress_forums');
+$tbl1= $db->prefix('mod_bxpress_posts');
+$tbl2= $db->prefix('mod_bxpress_topics');
+$tbl3=$db->prefix('mod_bxpress_posts_text');
+$tbl4=$db->prefix('mod_bxpress_forums');
 $sql = "SELECT a.*, b.*, c.post_text, d.* 
         FROM $tbl1 a, $tbl2 b, $tbl3 c, $tbl4 d 
         WHERE b.id_topic = a.id_topic AND c.post_id=a.id_post AND d.id_forum=b.id_forum

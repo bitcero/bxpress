@@ -352,5 +352,12 @@ class bXFunctions
         }
         
     }
-    
+
+    static public function help(){
+
+
+        RMTemplate::get()->add_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/#crear-foro');
+
+    }
+
 }

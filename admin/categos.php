@@ -108,10 +108,10 @@ function saveCatego($edit = 0){
     global $xoopsConfig, $xoopsModuleConfig, $xoopsSecurity;
     
     $db = XoopsDatabaseFactory::getDatabaseConnection();
-    
-    $friendname = '';
-    $showdesc = 0;
-    $status = 0;
+
+    $title = '';    $friendname = '';   $showdesc = 0;  $status = 0; $id = 0;
+    $desc = ''; $order = '';
+
     $q = ''; //Query string
     foreach ($_POST as $k => $v){
         $$k = $v;
@@ -120,32 +120,32 @@ function saveCatego($edit = 0){
     }
 
     if (!$xoopsSecurity->check()){
-        redirectMsg('categos.php', __('Session token expired!','bxpress'), 1);
+        RMUris::redirect_with_message( __('Session token expired!','bxpress'), 'categos.php', RMMSG_ERROR );
         die();
     }
     
     if($title==''){
-        redirectMsg('categos.php?'.$q, __('Please provide a name for this category!','bxpress'), RMMSG_ERROR);
+        RMUris::redirect_with_message( __('Please provide a name for this category!','bxpress'), 'categos.php?'.$q, RMMSG_ERROR);
         die();
     }
     
     if ($edit){
         
         if ($id<=0){
-            redirectMsg('categos.php', __('The specified category ID is not valid!','bxpress'), 1);
+            RMUris::redirect_with_message( __('The specified category ID is not valid!','bxpress'), 'categos.php', RMMSG_WARN );
             die();
         }
         
         $catego = new bXCategory($id);
         if ($catego->isNew()){
-            redirectMsg('categos.php', __('Specified category does not exists!','bxpress'), 1);
+            RMUris::redirect_with_message( __('Specified category does not exists!','bxpress'), 'categos.php', RMMSG_ERROR );
             die();
         }
         
         // Comprobamos que no exista el nombre
         list($num) = $db->fetchRow($db->query("SELECT COUNT(*) FROM ".$db->prefix("mod_bxpress_categories")." WHERE title='$title' AND id_cat<>'$id'"));
         if ($num>0){
-            redirectMsg('categos.php?'.$q, __('Already exists a category with same name!','bxpress'), 1);
+            RMUris::redirect_with_message( __('Already exists a category with same name!','bxpress'), 'categos.php?'.$q, RMMSG_ERROR );
             die();
         }
         
@@ -160,7 +160,7 @@ function saveCatego($edit = 0){
     // Comprobamos que el nombre no este asignada a otra categoría
     list($num) = $db->fetchRow($db->query("SELECT COUNT(*) FROM ".$db->prefix("mod_bxpress_categories")." WHERE friendname='$friendname' AND id_cat<>'$id'"));
     if ($num>0){
-        redirectMsg('categos.php?op=edit&id='.$id, __('Already exist a category with the same short name!','bxpress'), 1);
+        RMUris::redirect_with_message( __('Already exist a category with the same short name!','bxpress'), 'categos.php?op=edit&id='.$id, RMMSG_WARN );
         die();
     }
     
@@ -172,9 +172,9 @@ function saveCatego($edit = 0){
     $catego->setStatus($status);
     
     if ($catego->save()){
-        redirectMsg('categos.php', __('Category saved succesfully!','bxpress'), 0);
+        RMUris::redirect_with_message( __('Category saved succesfully!','bxpress'), 'categos.php', RMMSG_SUCCESS );
     } else {
-        redirectMsg('categos.php', __('Category could not be saved!','bxpress') . '<br />' . $catego->errors(), 1);
+        RMUris::redirect_with_message( __('Category could not be saved!','bxpress') . '<br />' . $catego->errors(), 'categos.php', RMMSG_ERROR );
     }
     
 }
@@ -186,16 +186,16 @@ function saveCatego($edit = 0){
 function deleteCatego(){
 	global $xoopsModule, $xoopsSecurity;	
 	
-	$ids = rmc_server_var($_POST, 'ids', array());
+	$ids = RMHttpRequest::post( 'ids', 'array', array() );
 	
 	//Verificamos si se ha proporcionado una categoría
 	if (empty($ids)){
-		redirectMsg('./categos.php',__('You must select at least one category','bxpress'),1);
+		RMUris::redirect_with_message( __('You must select at least one category','bxpress'), './categos.php', RMMSG_WARN );
 		die();		
 	}	
 
 	if (!$xoopsSecurity->check()){
-	    redirectMsg('categos.php', __('Session token expired!','bxpress'), 1);
+	    RMUris::redirect_with_message( __('Session token expired!','bxpress'), 'categos.php', RMMSG_ERROR );
 		die();
 	}
 
@@ -220,10 +220,10 @@ function deleteCatego(){
 	}
 	
 	if ($errors!=''){
-	    redirectMsg('./categos.php',__('There was errors during this operation','bxpress').'<br />'.$errors,1);
+	    RMUris::redirect_with_message( __('There was errors during this operation','bxpress').'<br />'.$errors, './categos.php', RMMSG_ERROR );
 		die();
 	}else{
-	    redirectMsg('./categos.php',__('Categories deleted successfully!','bxpress'),0);
+	    RMUris::redirect_with_message( __('Categories deleted successfully!','bxpress'), './categos.php', RMMSG_SUCCESS );
 		die();
 	}
 
@@ -235,17 +235,17 @@ function deleteCatego(){
 function activeCatego($act=0){
 	global $xoopsSecurity;
 
-	$cats = rmc_server_var($_REQUEST,'ids', array());
+	$cats = RMHttpRequest::request( 'ids', 'array', array() );
 
 	//Verificamos si se ha proporcionado una categoría
 	if (empty($cats)){
-		redirectMsg('./categos.php', __('You must select at least one category','bxpress'),1);
+		RMUris::redirect_with_message( __('You must select at least one category','bxpress'), './categos.php', RMMSG_WARN );
 		die();		
 	}
 
 	if (!$xoopsSecurity->check()){
-	        redirectMsg('categos.php', __('Session token expired!','bxpress'), 1);
-	        die();
+        RMUris::redirect_with_message( __('Session token expired!','bxpress'), 'categos.php', RMMSG_ERROR );
+	    die();
 	}
 
 	$errors='';
@@ -271,10 +271,10 @@ function activeCatego($act=0){
 	}
 	
 	if ($errors!=''){
-		redirectMsg('./categos.php',_AS_BB_ERRACTION.$errors,1);
+		RMUris::redirect_with_message( __('Errors ocurred while trying to change status','bxpress') . $errors, './categos.php', RMMSG_ERROR );
 		die();
 	}else{
-		redirectMsg('./categos.php',_AS_BB_DBOK,0);
+		RMUris::redirect_with_message( __('Database updates successfully!','bxpress'), './categos.php', RMMSG_SUCCESS );
 		die();
 	}
 	
@@ -286,53 +286,45 @@ function activeCatego($act=0){
 * @desc Almacena los camobios realizados en el orden de las categorías
 **/
 function updateOrderCatego(){
-	global $util;
+    global $xoopsSecurity;
 
 	$orders=isset($_POST['orders']) ? $_POST['orders'] : array();
 
-	if (!$util->validateToken()){
-		        redirectMsg('categos.php', _AS_BB_ERRTOKEN, 1);
-		        die();
-		}
-	
+	if (!$xoopsSecurity->check())
+        RMUris::redirect_with_message( __('Token session expired. Try again.','bxpress'), 'categos.php', RMMSG_ERROR );
+
+    $errors = '';
 
 	foreach ($orders as $k=>$v){
 
-				
 		//Verificamos que la categoría sea válida
 		if ($k<=0){
-			$errors.=sprintf(_AS_BB_ERRCATNOVALID,$k);
+			$errors .= sprintf( __('Category ID is not valid: %s', 'bxpress'), $k);
 			continue;
 		}	
 		//Verificamos que categoría exista
 		$cat=new bXCategory($k);
 		if ($cat->isNew()){
-			$errors.=sprintf(_AS_BB_ERRCATNOEXIST,$k);
+			$errors .= sprintf( __('Category with ID %u does not exists.', 'bxpress'),$k);
 			continue;
 		}
 
 		//Actualizamos el orden
 		$cat->setOrder($v);
 		if (!$cat->save()){
-			$errors.=sprintf(_AS_BB_ERRCATNOSAVE,$k);
+			$errors.=sprintf( __('Category %s could not be saved.', 'bxpress'),$k);
 		}
 	}
 	
-	if ($errors!=''){
-		redirectMsg('./categos.php',_AS_BB_ERRACTION.$errors,1);
-		die();
-	}else{
-		redirectMsg('./categos.php',_AS_BB_DBOK,0);
-		die();
-	}
-
-
-
+	if ($errors!='')
+		RMUris::redirect_with_message( __('Errors ocurred while trying to update categories order', 'bxpress') . $errors, './categos.php', RMMSG_ERROR );
+	else
+		RMUris::redirect_with_message( __('Database updated successfully!', 'bxpress'), './categos.php', RMMSG_SUCCESS );
 
 }
 
 
-$action = rmc_server_var($_REQUEST, 'action', '');
+$action = RMHttpRequest::request( 'action', 'string', '' );
 
 switch($action){
     case 'new':
