@@ -30,7 +30,6 @@ if(function_exists("load_mod_locale")) load_mod_locale('bxpress');
 $modversion['name'] = __('bXpress','bxpress');
 $modversion['description'] = __('A simple forums module for XOOPS and common utilities.','bxpress');
 $modversion['rmversion'] = array('major'=>1,'minor'=>0, 'revision'=>21,'stage'=>-2,'name'=>__('bXpress','bxpress'));
-$modversion['rewrite'] = 1;
 $modversion['rmnative'] = 1;
 $modversion['updateurl'] = 'http://bitcerolap/xoops/modules/vcontrol/';
 //$modversion['updateurl'] = 'http://www.xoopsmexico.net/modules/vcontrol/?action=check&id=8';
