@@ -21,4 +21,8 @@ $online->write($xoopsUser ? $xoopsUser->uid() : 0, $xoopsUser ? $xoopsUser->unam
 
 $mc =& $xoopsModuleConfig;
 
-RMTemplate::get()->add_xoops_style('style.css', 'bxpress');
+RMTemplate::get()->add_style('bxpress.min.css', 'bxpress');
+RMTemplate::get()->add_script('bxpress.min.js', 'bxpress', array('footer' => 1));
+
+// Header language
+$xoopsTpl->assign('lang_search_ph', __('Search for...', 'bxpress') ); // Search placeholder

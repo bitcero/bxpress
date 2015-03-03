@@ -10,7 +10,8 @@
 
 include '../../mainfile.php';
 
-$id = rmc_server_var($_REQUEST, 'id', 0);
+$id = RMHttpRequest::request( 'id', 'integer', 0 );
+
 if ($id<=0){
 	redirect_header('./', 2, __('Please, specify the forum you want to moderate!','bxpress'));
 	die();
@@ -35,7 +36,7 @@ function showItemsAndOptions(){
 	global $xoopsUser, $db, $xoopsOption, $tpl, $xoopsModule, $xoopsConfig, $xoopsSecurity;
 	global $xoopsModuleConfig, $forum;
 	
-	$xoopsOption['template_main'] = "bxpress_moderate.html";
+	$xoopsOption['template_main'] = "bxpress-moderate.tpl";
 	$xoopsOption['module_subpage'] = "moderate";
 	include 'header.php';
 	
@@ -218,7 +219,7 @@ function moveTopics(){
 		
 		global $xoopsTpl;
                 $tpl = $xoopsTpl;
-		$xoopsOption['template_main'] = "bxpress_moderateforms.html";
+		$xoopsOption['template_main'] = "bxpress-moderate-forms.tpl";
 		$xoopsOption['module_subpage'] = "moderate";
 		include 'header.php';
 		

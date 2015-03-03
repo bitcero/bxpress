@@ -1,14 +1,19 @@
-<{include file="db:bxpress_header.html"}>
-<{include file="db:bxpress_announcements.html"}>
-<table class="outer" cellspacing="1" width="100%">
-    <tr class="head even" align="center">
-        <td align="left"><{$lang_forum}></td>
+<{include file="db:bxpress-header.tpl"}>
+<{include file="db:bxpress-announcements.tpl"}>
+<{foreach item=catego from=$categos}>
+<table class="outer bx_table" cellspacing="1" width="100%" style="margin-bottom: 10px;">
+    <tr>
+        <th colspan="5"><{$catego.title}></th>
+    </tr>
+    <tr class="head" align="center">
+        <td align="left" colspan="2"><{$lang_forum}></td>
         <td><{$lang_topics}></td>
         <td><{$lang_posts}></td>
         <td align="left"><{$lang_lastpost}></td>
     </tr>
-    <{foreach item=forum from=$forums}>
+    <{foreach item=forum from=$catego.forums}>
         <tr>
+        	<td width="26" align="center" valign="top" class="even"><img src="<{$xoops_url}>/modules/bxpress/images/normal<{if $forum.last.new}>withnew<{/if}>.png" alt="" /></td>
             <td class="even"><strong><a href="<{$forum.link}>"><{$forum.name}></a></strong><br /><{$forum.desc}></td>
             <td align="center" class="odd" style="border-left: 1px solid #DADADA; border-right: 1px solid #DADADA;"><{$forum.topics}></td>
             <td align="center" class="odd" style="border-right: 1px solid #DADADA;"><{$forum.posts}></td>
@@ -17,7 +22,9 @@
             </td>
         </tr>
     <{/foreach}>
-</table><br />
+</table>
+<{/foreach}>
+
 <table class="outer" cellspacing="1" width="100%">
 <tr class="foot">
         <td width="50%">

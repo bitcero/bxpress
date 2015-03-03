@@ -11,8 +11,8 @@
 define('BB_LOCATION','posts');
 include '../../mainfile.php';
 
-$op = rmc_server_Var($_REQUEST, 'op', '');
-$id = rmc_server_Var($_REQUEST, 'id', 0);
+$op = RMHttpRequest::request( 'op', 'string', '');
+$id = RMHttpRequest::request( 'id', 'integer', 0);
 
 if ($id<=0){
 	redirect_header('./', 2, __('No post has been specified!','bxpress'));
@@ -176,7 +176,7 @@ switch($op){
 	
 	default:
 		
-		$xoopsOption['template_main'] = "bxpress_postform.html";
+		$xoopsOption['template_main'] = "bxpress-postform.tpl";
 		$xoopsOption['module_subpage'] = "edit";
 		include 'header.php';
 

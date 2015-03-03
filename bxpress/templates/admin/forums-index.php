@@ -27,9 +27,9 @@ function drawVisualization(w,h) {
     var xoops_url = '<?php echo XOOPS_URL; ?>';
 </script>
 
-<div class="row">
+<div class="row" data-news="load" data-boxes="load" data-module="bxpress" data-target="#bxpress-news">
 
-    <div class="col-md-4">
+    <div class="col-md-4" data-box="box-left">
 
         <div class="cu-box">
             <div class="box-header">
@@ -65,7 +65,7 @@ function drawVisualization(w,h) {
             </div>
         </div>
 
-        <div class="cu-box" data-load="news" data-module="bxpress" data-target="#bxpress-news">
+        <div class="cu-box">
             <div class="box-header">
                 <span class="fa fa-caret-up box-handler"></span>
                 <h3><?php _e('bXpress News','bxpress'); ?></h3>
@@ -78,7 +78,7 @@ function drawVisualization(w,h) {
     </div>
 
     <!-- Activity -->
-    <div class="col-md-5">
+    <div class="col-md-5" data-box="box-center">
 
         <div class="cu-box">
             <div class="box-header">
@@ -124,7 +124,7 @@ function drawVisualization(w,h) {
     <!--// Activity -->
 
     <!-- Other Info -->
-    <div class="col-md-3">
+    <div class="col-md-3" data-box="box-right">
 
         <div class="cu-box">
             <div class="box-header">

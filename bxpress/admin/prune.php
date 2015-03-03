@@ -19,11 +19,11 @@ include 'header.php';
 function prune(){
 
 	global $xoopsModule;
-        
-	xoops_cp_location("<a href='./'>".$xoopsModule->name()."</a> &raquo; ".__('Prune Posts','bxpress'));
+
+    $bc = RMBreadCrumb::get();
+    $bc->add_crumb( __('Prune forum', 'bxpress' ) );
+
 	xoops_cp_header();
-    
-    bXFunctions::menu_bar();
     
     $db = XoopsDatabaseFactory::getDatabaseConnection();
 	$form=new RMForm(__('Prune Posts','bxpress'),'frmprune','prune.php');

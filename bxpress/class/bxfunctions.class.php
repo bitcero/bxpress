@@ -18,15 +18,6 @@ class bXFunctions
     public function __construct(){
         $this->db = XoopsDatabaseFactory::getDatabaseConnection();
     }
-
-    public function menu_bar(){
-        RMTemplate::get()->add_tool(__('Dashboard','exmbb'), './index.php', '../images/dash.png', 'dashboard');
-        RMTemplate::get()->add_tool(__('Categories','exmbb'), './categos.php', '../images/categos.png', 'categories');
-        RMTemplate::get()->add_tool(__('Forums','exmbb'), './forums.php', '../images/forums.png', 'forums');
-        RMTemplate::get()->add_tool(__('Announcements','exmbb'), './announcements.php', '../images/bell.png', 'messages');
-        RMTemplate::get()->add_tool(__('Reports','exmbb'), './reports.php', '../images/reports.png', 'reports');
-        RMTemplate::get()->add_tool(__('Prune','exmbb'), './prune.php', '../images/prune.png', 'prune');
-    }
     
     public function get(){
         static $instance;
@@ -345,8 +336,8 @@ class bXFunctions
     public function url(){
         
         $mc = RMSettings::module_settings('bxpress');
-        if($mc['urlmode']){
-            return XOOPS_URL.'/'.$mc['htbase'];
+        if($mc->urlmode){
+            return XOOPS_URL.'/'.$mc->htbase;
         } else {
             return XOOPS_URL.'/modules/bxpress';
         }
@@ -357,6 +348,26 @@ class bXFunctions
 
 
         RMTemplate::get()->add_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/#crear-foro');
+
+    }
+
+    static function quote_code( $att, $content ){
+
+        if ( '' == $content )
+            return null;
+
+        extract( RMCustomCode::get()->atts( array(
+            'author' => ''
+        ), $att ) );
+
+        $author = urldecode( $author );
+
+        $ret = "<blockquote>
+                  <p>$content</p>
+                  <footer><cite>$author</cite></footer>
+                </blockquote>";
+
+        return $ret;
 
     }
 

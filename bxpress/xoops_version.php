@@ -1,20 +1,38 @@
 <?php
-// $Id: xoops_version.php 1063 2012-09-17 16:41:18Z i.bitcero $
-// --------------------------------------------------------------
-// bXpress
-// A simple forums module for XOOPS and Common Utilities
-// Author: Eduardo Cortés <i.bitcero@gmail.com>
-// Email: i.bitcero@gmail.com
-// License: GPL 2.0
-// --------------------------------------------------------------
+/**
+ * bXpress Forums
+ * A light weight and easy to use XOOPS module to create forums
+ * 
+ * Copyright © 2014 Eduardo Cortés https://eduardocortes.mx
+ * -----------------------------------------------------------------
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * -----------------------------------------------------------------
+ * @package    bXpress
+ * @author     Eduardo Cortés <i.bitcero@gmail.com>
+ * @since      1.2
+ * @license    GPL v2 (http://www.gnu.org/licenses/gpl-2.0.html)
+ * @link       https://github.com/bitcero/bxpress
+ */
 
 $amod = xoops_getActiveModules();
 if(!in_array("rmcommon",$amod)){
-    $error = "<strong>WARNING:</strong> bXpress requires %s to be installed!<br />Please install %s before trying to use bXpress";
-    $error = str_replace("%s", '<a href="http://www.redmexico.com.mx/w/common-utilities/" target="_blank">Common Utilities</a>', $error);
+    $error = "<strong>WARNING:</strong> bXpress requires that %s is installed!<br />Please install %s before trying to use bXpress";
+    $error = str_replace("%s", '<a href="http://rmcommon.com/" target="_blank">Common Utilities</a>', $error);
     xoops_error($error);
     $error = '%s is not installed! This might cause problems with functioning of bXpress and entire system. To solve, install %s or uninstall bXpress and then delete module folder.';
-    $error = str_replace("%s", '<a href="http://www.redmexico.com.mx/w/common-utilities/" target="_blank">Common Utilities</a>', $error);
+    $error = str_replace("%s", '<a href="http://rmcommon.com/" target="_blank">Common Utilities</a>', $error);
     trigger_error($error, E_USER_WARNING);
     echo "<br />";
 }
@@ -27,120 +45,205 @@ if (!function_exists("__")){
 
 if(function_exists("load_mod_locale")) load_mod_locale('bxpress');
 
-$modversion['name'] = __('bXpress','bxpress');
-$modversion['description'] = __('A simple forums module for XOOPS and common utilities.','bxpress');
-$modversion['rmversion'] = array('major'=>1,'minor'=>0, 'revision'=>21,'stage'=>-2,'name'=>__('bXpress','bxpress'));
-$modversion['rmnative'] = 1;
-$modversion['updateurl'] = 'http://bitcerolap/xoops/modules/vcontrol/';
-//$modversion['updateurl'] = 'http://www.xoopsmexico.net/modules/vcontrol/?action=check&id=8';
-$modversion['version'] = '1.0';
-$modversion['icon32'] = 'images/forum48.png';
-$modversion['icon24'] = 'images/forum.png';
-$modversion['icon16'] = 'images/forum16.png';
-$modversion['author'] = "BitC3R0";
-$modversion['authormail'] = "i.bitcero@gmail.com";
-$modversion['authorweb'] = "Red México";
-$modversion['authorurl'] = "http://www.redmexico.com.mx";
-$modversion['credits'] = "Red México";
-$modversion['help'] = "";
-$modversion['license'] = "GPL see LICENSE";
-$modversion['official'] = 0;
-$modversion['image'] = "images/logo.png";
-$modversion['dirname'] = "bxpress";
-$modversion['icon48'] = "images/icon48.png";
-$modversion['onInstall'] = 'include/install.php';
-$modversion['onUpdate'] = 'include/install.php';
-$modversion['releasedate'] = "2013-12-28";
+$modversion = array(
 
-// Social links
-$modversion['social'][0] = array('title' => __('Twitter', 'rmcommon'),'type' => 'twitter','url' => 'http://www.twitter.com/bitcero/');
-$modversion['social'][1] = array('title' => __('LinkedIn', 'rmcommon'),'type' => 'linkedin','url' => 'http://www.linkedin.com/bitcero/');
-$modversion['social'][2] = array('title' => __('Google+', 'rmcommon'),'type' => 'google-plus','url' => 'http://plus.google.com/100655708852776329288');
-$modversion['social'][3] = array('title' => __('Red México Twitter', 'rmcommon'),'type' => 'twitter','url' => 'http://www.twitter.com/redmexico/');
-$modversion['social'][4] = array('title' => __('Red México Facebook', 'rmcommon'),'type' => 'facebook','url' => 'http://www.facebook.com/redmexico/');
+    // General info
+    'name'          => __('bXpress','bxpress'),
+    'description'   => __('A simple forums module for XOOPS and common utilities.','bxpress'),
+    'version'       => 1.2,
+    'license'       => 'GPL 2',
+    'dirname'       => 'bxpress',
+    'official'      => 0,
 
-// Admin things
-$modversion['hasAdmin'] = 1;
-$modversion['adminindex'] = "admin/index.php";
-$modversion['adminmenu'] = "admin/menu.php";
+    // Install and update
+    'onInstall'     => 'include/install.php',
+    'onUpdate'      => 'include/install.php',
 
-// Main section
-$modversion['hasMain'] = 1;
+    // Common Utilities
+    'rmnative'      => 1,
+    'rmversion'     => array(
+        'major'     => 1,
+        'minor'     => 1,
+        'revision'  => 0,
+        'stage'     => -1,
+        'name'      => 'bXpress'
+    ),
+    'rewrite'       => 0,
+    'updateurl'     => "http://www.xoopsmexico.net/modules/vcontrol/",
+    'help'          => 'docs/readme.html',
 
-// Search
-$modversion['hasSearch'] = 1;
-$modversion['search']['file'] = "include/search.php";
-$modversion['search']['func'] = "bxpressSearch";
+    // Author information
+    'author'        => "Eduardo Cortes",
+    'authormail'    => "yo@eduardocortes.mx",
+    'authorweb'     => "EduardoCortes.mx",
+    'authorurl'     => "http://eduardocortes.mx",
+    'credits'       => "Eduardo Cortes",
 
-// SQL
-$modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
+    // Logo and icons
+    'image'         => "images/logo.png",
+    'icon16'        => "images/forum-16.png",
+    'icon24'        => 'images/forum-24.png',
+    'icon32'        => 'images/forum-32.png',
+    'icon48'        => "images/forum-48.png",
 
-// DB Tables
-$modversion['tables'][0] = 'bxpress_announcements';
-$modversion['tables'][1] = 'bxpress_attachments';
-$modversion['tables'][2] = 'bxpress_categories';
-$modversion['tables'][3] = 'bxpress_forums';
-$modversion['tables'][4] = 'bxpress_posts';
-$modversion['tables'][5] = 'bxpress_posts_text';
-$modversion['tables'][6] = 'bxpress_report';
-$modversion['tables'][7] = 'bxpress_topics';
+    // Social
+    'social'        => array(
+        array(
+            'title' => 'Twitter',
+            'type'  => 'twitter-square',
+            'url'   => 'http://www.twitter.com/bitcero/'
+        ),
+        array(
+            'title' => 'Facebook',
+            'type'  => 'facebook-square',
+            'url'   => 'http://www.facebook.com/eduardo.cortes.hervis/'
+        ),
+        array(
+            'title' => 'Instagram',
+            'type'  => 'instagram',
+            'url'   => 'http://www.instagram.com/eduardocortesh/'
+        ),
+        array(
+            'title' => 'LinkedIn',
+            'type'  => 'linkedin-square',
+            'url'   => 'http://www.linkedin.com/in/bitcero/'
+        ),
+        array(
+            'title' => 'GitHub',
+            'type'  => 'github',
+            'url'   => 'http://www.github.com/bitcero/'
+        ),
+        array(
+            'title' => 'Google+',
+            'type'  => 'google-plus-square',
+            'url'   => 'https://plus.google.com/100655708852776329288'
+        ),
+        array(
+            'title' => __('My Blog', 'works'),
+            'type'  => 'quote-left',
+            'url'   => 'http://eduardocortes.mx'
+        ),
+    ),
 
-$modversion['templates'][] = array('file'=>'bxpress_index_categos.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_index_forums.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_forum.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_header.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_postform.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_topic.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_powered.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_moderate.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_moderateforms.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_announcements.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_report.html','description'=>'');
-$modversion['templates'][] = array('file'=>'bxpress_search.html','description'=>'');
+    // Backend
+    'hasAdmin'      => 1,
+    'adminindex'    => "admin/index.php",
+    'adminmenu'     => "admin/menu.php",
+
+    // Front End
+    'hasMain'       => 1,
+
+    // Search
+    'hasSearch'     => 1,
+    'search'        => array(
+        'file'  => "include/search.php",
+        'func'  => "bxpress_perform_search"
+    ),
+
+    // SQL file
+    'sqlfile'       => array( 'mysql' => "sql/mysql.sql" ),
+
+    // Database tables
+    'tables'        => array(
+        'mod_bxpress_announcements',
+        'mod_bxpress_attachments',
+        'mod_bxpress_categories',
+        'mod_bxpress_forums',
+        'mod_bxpress_posts',
+        'mod_bxpress_posts_text',
+        'mod_bxpress_report',
+        'mod_bxpress_topics'
+    ),
+
+    // Smarty templates
+    'templates'     => array(
+        array(
+            'file'          => 'bxpress-index-categories.tpl',
+            'description'   => __('Categories index', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-index-forums.tpl',
+            'description'   => __('Forums index', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-forum.tpl',
+            'description'   => __('Show the forum topics', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-header.tpl',
+            'description'   => __('Forum header', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-postform.tpl',
+            'description'   => __('Post form template', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-topic.tpl',
+            'description'   => __('Shows topic contents', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-powered.tpl',
+            'description'   => __('Powered legend template', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-moderate.tpl',
+            'description'   => __('Moderator control panel', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-moderate-forms.tpl',
+            'description'   => __('Moderation forms', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-announcements.tpl',
+            'description'   => __('Annpuncements templates', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-report.tpl',
+            'description'   => __('Reporting form template', 'bxpress')
+        ),
+        array(
+            'file'          => 'bxpress-search.tpl',
+            'description'   => __('Standalone template for search', 'bxpress')
+        ),
+
+    )
+
+);
 
 /**
  * Settings
  */
 $modversion['config'][] = array(
     'name' => 'forum_title',
-    'title' => '_MI_BX_CNFTITLE',
-    'description' => '_MI_BX_CNFTITLE_DESC',
+    'title' => __('Title of the forum', 'bxpress'),
+    'description' => __('This title will be used in header of module', 'bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'text',
-    'default' => __('Welcome to bXpress Forums','bxpress'),
+    'default' => __('bXpress Forums','bxpress'),
 );
 
 // URL rewriting
 $modversion['config'][] = array( 
     'name' => 'urlmode',
-    'title' => '_MI_BX_URLMODE',
-    'description' => '_MI_BX_URLMODED',
+    'title' => __('Enable permalinks:', 'bxpress'),
+    'description' => __('When active, this option allow to module to manage shorter URLs', 'bxpress'),
     'formtype' => 'yesno',
     'valuetype' => 'int',
     'default' => 0,
 );
 $modversion['config'][] = array( 
     'name' => 'htbase',
-    'title' => '_MI_BX_BASEPATH',
-    'description' => '',
+    'title' => __('Relative path for module', 'bxpress'),
+    'description' => __('The relative path where module will respond to queries.', 'bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'text',
     'default' => '/modules/bxpress',
 );
 
 $modversion['config'][] = array(
-    'name' => 'forum_title',
-    'title' => '_MI_BX_CNFTITLE',
-    'description' => '_MI_BX_CNFTITLE_DESC',
-    'formtype' => 'textbox',
-    'valuetype' => 'text',
-    'default' => __('Welcome to bXpress Forums','bxpress')
-);
-
-$modversion['config'][] = array(
     'name' => 'maxfilesize',
-    'title' => '_MI_BX_CNFMAXFILESIZE',
-    'description' => '_MI_BX_CNFMAXFILESIZE_DESC',
+    'title' => __('Maximum allowed size for attached files (in KB)', 'bxpress'),
+    'description' => __('The files sent in the forums will be limited to this size, bigger file sizes will be ignored.', 'bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'text',
     'default' => 500
@@ -148,8 +251,8 @@ $modversion['config'][] = array(
 
 $modversion['config'][] = array(
     'name' => 'showcats',
-    'title' => '_MI_BX_SHOWCATS',
-    'description' => '_MI_BX_SHOWCATS_DESC',
+    'title' => __('Show categories in the Homepage', 'bxpress'),
+    'description' => __('If this option is enable the forums will be ordered by categories in the homepage.', 'bxpress'),
     'formtype' => 'yesno',
     'valuetype' => 'int',
     'default' => 0
@@ -158,7 +261,7 @@ $modversion['config'][] = array(
 // Búsqueda
 $modversion['config'][] = array(
     'name' => 'search',
-    'title' => '_MI_BX_SEARCHANON',
+    'title' => __('Enable search for anonymous users', 'bxpress'),
     'description' => '',
     'formtype' => 'yesno',
     'valuetype' => 'int',
@@ -168,7 +271,7 @@ $modversion['config'][] = array(
 // HTML
 $modversion['config'][] = array(
     'name' => 'html',
-    'title' => '_MI_BX_HTML',
+    'title' => __('Allow HTML in the posts', 'bxpress'),
     'description' => '',
     'formtype' => 'yesno',
     'valuetype' => 'int',
@@ -178,7 +281,7 @@ $modversion['config'][] = array(
 // Prefijo para usuarios Anónimos
 $modversion['config'][] = array(
     'name' => 'anonymous_prefix',
-    'title' => '_MI_BX_APREFIX',
+    'title' => __('Anonymous Users Prefix', 'bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'text',
@@ -188,8 +291,8 @@ $modversion['config'][] = array(
 // Mensajes Nuevos
 $modversion['config'][] = array(
     'name' => 'time_new',
-    'title' => '_MI_BX_TIMENEW',
-    'description' => '_MI_BX_TIMENEW_DESC',
+    'title' => __('Time to mark a post as new','bxpress'),
+    'description' => __('Specify this value in seconds','bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'int',
     'default' => 600
@@ -198,8 +301,8 @@ $modversion['config'][] = array(
 // Numero de mensajes en el formulario de envio
 $modversion['config'][] = array(
     'name' => 'numpost',
-    'title' => '_MI_BX_NUMPOST',
-    'description' => '_MI_BX_NUMPOST_DESC',
+    'title' => __('Post Limit in Review','bxpress'),
+    'description' => __('Post Maximun Number that will be shown in the post form.','bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'int',
     'default' => 10
@@ -208,8 +311,8 @@ $modversion['config'][] = array(
 // Numero de mensajes en cada página
 $modversion['config'][] = array(
     'name' => 'perpage',
-    'title' => '_MI_BX_PERPAGE',
-    'description' => '_MI_BX_PERPAGE_DESC',
+    'title' => __('Post Number per Page','bxpress'),
+    'description' => __('This value can be configured individually for every user.','bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'int',
     'default' => 15
@@ -218,7 +321,7 @@ $modversion['config'][] = array(
 // Numero de temas en cada página
 $modversion['config'][] = array(
     'name' => 'topicperpage',
-    'title' => '_MI_BX_TPERPAGE',
+    'title' => __('Topics Number per Page','bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'int',
@@ -228,7 +331,7 @@ $modversion['config'][] = array(
 // formato de Fechas
 $modversion['config'][] = array(
     'name' => 'dates',
-    'title' => '_MI_BX_DATES',
+    'title' => __('Date Format','bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'text',
@@ -238,7 +341,7 @@ $modversion['config'][] = array(
 // Límite de archivos adjuntos por mensaje
 $modversion['config'][] = array(
     'name' => 'attachlimit',
-    'title' => '_MI_BX_ATTACHLIMIT',
+    'title' => __('Limit post attachments','bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'int',
@@ -248,8 +351,8 @@ $modversion['config'][] = array(
 // Directorio para adjuntos
 $modversion['config'][] = array(
     'name' => 'attachdir',
-    'title' => '_MI_BX_ATTACHDIR',
-    'description' => '_MI_BX_ATTACHDIR_DESC',
+    'title' => __('Directory to storage the attachment','bxpress'),
+    'description' => __('This directory must exist in the server and must have read and writing permisions.','bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'text',
     'default' => XOOPS_UPLOAD_PATH.'/bxpress'
@@ -258,7 +361,7 @@ $modversion['config'][] = array(
 // Mensajes Fijos
 $modversion['config'][] = array(
     'name' => 'sticky',
-    'title' => '_MI_BX_STICKY',
+    'title' => __('Activate Sticky Posts','bxpress'),
     'description' => '_MI_BX_STICKY_DESC',
     'formtype' => 'yesno',
     'valuetype' => 'int',
@@ -268,7 +371,7 @@ $modversion['config'][] = array(
 // Rangos para mensajes fijos
 $modversion['config'][] = array(
     'name' => 'sticky_posts',
-    'title' => '_MI_BX_STICKYPOSTS',
+    'title' => __('By enabling this option, bXpress could create topics like "sticky". The sticky topics always will appear in the first positions. Even when this option is disabled with the administrators and moderators will create sticky posts.','bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'int',
@@ -278,7 +381,7 @@ $modversion['config'][] = array(
 // Anuncios en el módulo
 $modversion['config'][] = array(
     'name' => 'announcements',
-    'title' => '_MI_BX_ANNOUNCEMENTS',
+    'title' => __('Activate announcements in the module','bxpress'),
     'description' => '',
     'formtype' => 'yesno',
     'valuetype' => 'int',
@@ -288,7 +391,7 @@ $modversion['config'][] = array(
 // Numero de Anuncios en el módulo
 $modversion['config'][] = array(
     'name' => 'announcements_max',
-    'title' => '_MI_BX_ANNOUNCEMENTSMAX',
+    'title' => __('Maximum number of announcements to show','bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'int',
@@ -298,19 +401,19 @@ $modversion['config'][] = array(
 // Modo para los anuncios
 $modversion['config'][] = array(
     'name' => 'announcements_mode',
-    'title' => '_MI_BX_ANNOUNCEMENTSMODE',
+    'title' => __('Mode to show announcements','bxpress'),
     'description' => '',
     'formtype' => 'select',
     'valuetype' => 'int',
     'default' => 0,
-    'options' => array('_MI_BX_ANNOUNCEMENTSMODE1'=>0,'_MI_BX_ANNOUNCEMENTSMODE2'=>1)
+    'options' => array(__('Recents','bxpress')=>0,__('Random','bxpress')=>1)
 );
 
 //Tiempo de temas recientes
 $modversion['config'][] = array(
     'name' => 'time_topics',
-    'title' => '_MI_BX_TIMETOPICS',
-    'description' => '_MI_BX_DESCTIMETOPICS',
+    'title' => __('Recent topic time', 'bxpress'),
+    'description' => __('Time to mark a topic as recent.', 'bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'int',
     'default' => 24
@@ -319,7 +422,7 @@ $modversion['config'][] = array(
 //Tiempo de temas recientes
 $modversion['config'][] = array(
     'name' => 'rssdesc',
-    'title' => '_MI_BX_RSSDESC',
+    'title' => __('Description of the Syndication option','bxpress'),
     'description' => '',
     'formtype' => 'textarea',
     'valuetype' => 'text',
@@ -329,8 +432,8 @@ $modversion['config'][] = array(
 //Ordenar por mensajes recientes
 $modversion['config'][] = array(
     'name' => 'order_post',
-    'title' => '_MI_BX_ORDERPOST',
-    'description' => '_MI_BX_DESCORDERPOST',
+    'title' => __('Order topics for recent post','bxpress'),
+    'description' => __('Indicate if the forum topics will be ordered per recent topics','bxpress'),
     'formtype' => 'yesno',
     'valuetype' => 'int',
     'default' => '0'
@@ -399,13 +502,57 @@ $modversion['notification']['event'][4]['mail_template'] = 'new_postforum';
 $modversion['notification']['event'][4]['mail_subject'] = __('New topic sent','bxpress');
 
 // Bloque Recientes
-$modversion['blocks'][0]['file'] = "bxpress_recents.php";
-$modversion['blocks'][0]['name'] = '_MI_BX_BKRECENT';
-$modversion['blocks'][0]['description'] = "";
-$modversion['blocks'][0]['show_func'] = "bxpress_recents_show";
-$modversion['blocks'][0]['edit_func'] = "bxpress_recents_edit";
-$modversion['blocks'][0]['template'] = 'bk_bxpress_recents.html';
-$modversion['blocks'][0]['options'] = array(10,1,1,1,0);
+$modversion['blocks'] = array(
+
+    array(
+        'file'          => 'bxpress-topics.php',
+        'name'          => __('Forum topics list', 'bxpress'),
+        'description'   => __('Show a list with topis in forum according to configured options', 'bxpress'),
+        'show_func'     => 'bxpress_block_topics_show',
+        'edit_func'     => 'bxpress_block_topics_edit',
+        'template'      => 'block-bxpress-topics.tpl',
+        'options'       => array(
+            'type'  => 'recent',
+            'limit' => 10,
+            'days'  => 0,
+            'format'=> 'full',
+            'order' => 'DESC'
+        )
+    ),
+
+    array(
+        'file'          => 'bxpress-counter.php',
+        'name'          => __('Status counter', 'bxpress'),
+        'description'   => __('Shows the counters for forum status', 'bxpress'),
+        'show_func'     => 'bxpress_block_counter_show',
+        'edit_func'     => 'bxpress_block_counter_edit',
+        'template'      => 'block-bxpress-counter.tpl',
+        'options'       => array(
+            'members'           => 1,
+            'members_caption'   => __('members', 'bxpress'),
+            'topics'            => 1,
+            'topics_caption'    => __('topics', 'bxpress'),
+            'replies'           => 1,
+            'replies_caption'   => __('replies', 'bxpress'),
+        )
+    ),
+
+    array(
+        'file'          => 'bxpress-users.php',
+        'name'          => __('Users activity', 'bxpress'),
+        'description'   => __('Show the activity from users', 'bxpress'),
+        'show_func'     => 'bxpress_block_users_show',
+        'edit_func'     => 'bxpress_block_users_edit',
+        'template'      => 'block-bxpress-users.tpl',
+        'options'       => array(
+            'limit'     => 10,
+            'type'      => 'active'
+        )
+    )
+
+
+);
+
 
 //Páginas del Módulo
 $modversion['subpages']['index'] = __('Index','bxpress');

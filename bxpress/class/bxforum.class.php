@@ -323,8 +323,8 @@ class bXForum extends RMObject
         
         $mc = RMSettings::module_settings('bxpress');
         
-        if($mc['urlmode']){
-            $link = XOOPS_URL.$mc['htbase'].'/forum.php?id='.$this->id();
+        if( $mc->urlmode ) {
+            $link = XOOPS_URL.$mc->htbase . '/forum.php?id='.$this->id();
         } else {
             $link = XOOPS_URL.'/modules/bxpress/';
             $link .= "forum.php?id=".$this->id();

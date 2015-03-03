@@ -10,6 +10,33 @@
 
 class BxpressRmcommonPreload
 {
+
+    public function eventRmcommonSavedSettings( $dirname, $save, $add, $delete ){
+
+        if ( 'bxpress' != $dirname )
+            return $dirname;
+
+        // URL rewriting
+        $rule = "RewriteRule ^".trim($save['htbase'],'/')."/?(.*)$ modules/bxpress/$1 [L]";
+        if( 1 == $save['urlmode'] ){
+
+            $ht = new RMHtaccess('bxpress');
+            $htResult = $ht->write($rule);
+            if($htResult!==true)
+                showMessage(__('An error ocurred while trying to write .htaccess file!','bxpress'), RMMSG_ERROR);
+
+        } else {
+
+            $ht = new RMHtaccess( 'bxpress' );
+            $ht->removeRule();
+            $ht->write();
+
+        }
+
+        return null;
+
+    }
+
     public function eventRmcommonGetFeedsList($feeds){
         
         load_mod_locale('bxpress');

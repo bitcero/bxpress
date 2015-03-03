@@ -15,7 +15,7 @@ $op=isset($_REQUEST['op']) ? $_REQUEST['op'] : '';
 
 if ($op=='report'){
 		
-	$xoopsOption['template_main']='bxpress_report.html';
+	$xoopsOption['template_main']='bxpress-report.tpl';
 	$xoopsOption['module_subpage'] = "report";	
 
 	include 'header.php';
@@ -31,7 +31,7 @@ if ($op=='report'){
 
 	$form=new RMForm(__('Report Post','bxpress'),'formrep','report.php');
 	$form->styles('width: 30%;','odd');
-	$form->addElement(new RMFormEditor(__('Your reasons to report this post','bxpress'),'report','90%','300px','','textarea'),true);
+	$form->addElement(new RMFormEditor(__('Your reasons to report this post','bxpress'),'report','90%','300px', '','simple'),true);
 	$form->addElement(new RMFormHidden('op','savereport'));
 	$form->addElement(new RMFormHidden('pid',$pid));
 	$form->addElement(new RMFormHidden('id',$topic->id()));

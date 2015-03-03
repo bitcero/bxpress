@@ -167,7 +167,7 @@ class bXPost extends RMObject
             
             // Clean HTML
             $mc = RMSettings::module_settings('bxpress');
-            if(!$mc['html'])
+            if( !$mc->html )
                 $this->setVar('post_text', TextCleaner::getInstance()->specialchars ($this->getVar('post_text','n')));
                 
 	    $this->setVar('post_text', TextCleaner::getInstance()->to_display($this->getVar('post_text')));

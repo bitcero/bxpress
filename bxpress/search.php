@@ -9,7 +9,7 @@
 // --------------------------------------------------------------
 
 include '../../mainfile.php';
-$xoopsOption['template_main'] = "bxpress_search.html";
+$xoopsOption['template_main'] = "bxpress-search.tpl";
 $xoopsOption['module_subpage'] = "search";
 include 'header.php';
 
@@ -165,7 +165,7 @@ while ($rows=$db->fetchArray($result)){
 	
 	}
 	
-	$tpl->append('topics',array(
+	$tpl->append('posts',array(
             'id'=>$rows['id_topic'],
             'title'=>$rows['title'],
             'sticky'=>$rows['sticky'],

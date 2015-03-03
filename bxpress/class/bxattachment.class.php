@@ -83,8 +83,8 @@ class bXAttachment extends RMObject
 	* @desc Obtiene la URL del icono correcto para el nombre de archivo
 	*/
 	public function getIcon(){
-		if (file_exists(XOOPS_ROOT_PATH.'/modules/bxpress/images/ftypes/'.$this->extension().'.png')){
-			return XOOPS_URL.'/modules/bxpress/images/ftypes/'.$this->extension().'.png';
+		if (file_exists(XOOPS_ROOT_PATH.'/modules/bxpress/images/ftypes/'.strtolower($this->extension()).'.png')){
+			return XOOPS_URL.'/modules/bxpress/images/ftypes/'.strtolower($this->extension()).'.png';
 		} else {
 			return XOOPS_URL.'/modules/bxpress/images/ftypes/default.png';
 		}

@@ -14,7 +14,7 @@ if ($xoopsModuleConfig['showcats']){
     /**
     * Cargamos las categorías y los foros ordenados por categorías   
     */
-    $xoopsOption['template_main'] = 'bxpress_index_categos.html';
+    $xoopsOption['template_main'] = 'bxpress-index-categories.tpl';
     $xoopsOption['module_subpage'] = "index";
     include 'header.php';
     
@@ -52,29 +52,57 @@ if ($xoopsModuleConfig['showcats']){
     /**
     * Cargamos solo los foros
     */
-    $xoopsOption['template_main'] = 'bxpress_index_forums.html';
+    $xoopsOption['template_main'] = 'bxpress-index-forums.tpl';
     $xoopsOption['module_subpage'] = "index";
     include 'header.php';
     
     $fHand = new bXForumHandler();
     $forums = $fHand->getForums(0,1,true);
+    $posters = array();
+
     foreach ($forums as $forum){
     	$last = new bXPost($forum->lastPostId());
 		    $lastpost = array();
 		    if (!$last->isNew()){
+
+                if ( !isset($posters[$last->uid] ) )
+                    $posters[$last->uid] = new RMUser( $last->uid );
+
+                $user = $posters[$last->uid];
+
     			$lastpost['date'] = bXFunctions::formatDate($last->date());
     			$lastpost['by'] = sprintf(__('by %s','bxpress'), $last->uname());
     			$lastpost['id'] = $last->id();
     			$lastpost['topic'] = $last->topic();
+                $lastpost['user'] = array(
+                    'uname'     => $user->uname,
+                    'name'      => $user->name != '' ? $user->name : $user->uname,
+                    'avatar'    => $user ? RMEvents::get()->run_event( 'rmcommon.get.avatar', $user->getVar('email'), 50 ) : ''
+                );
+
     			if ($xoopsUser){
     				$lastpost['new'] = $last->date()>$xoopsUser->getVar('last_login') && (time()-$last->date()) < $xoopsModuleConfig['time_new'];
     			} else {
     				$lastpost['new'] = (time()-$last->date())<=$xoopsModuleConfig['time_new'];
 				}
 			}
-        $tpl->append('forums', array('id'=>$forum->id(),'idname'=>$forum->friendName(),
-                'name'=>$forum->name(), 'desc'=>$forum->description(),'topics'=>$forum->topics(),
-                'posts'=>$forum->posts(),'link'=>$forum->makeLink(),'last'=>$lastpost));
+
+        $category = new bXCategory( $forum->cat );
+
+        $tpl->append('forums', array(
+            'id'        =>$forum->id(),
+            'idname'    =>$forum->friendName(),
+            'name'      =>$forum->name(),
+            'desc'      =>$forum->description(),
+            'topics'    =>$forum->topics(),
+            'posts'     =>$forum->posts(),
+            'link'      =>$forum->makeLink(),
+            'last'      =>$lastpost,
+            'image'     => $forum->image,
+            'category'  => array(
+                'title' => $category->title
+            )
+        ));
     }
     
 }
@@ -104,10 +132,10 @@ $tpl->assign('lang_annum', __('Anonymous users conected:','bxpress'));
 $tpl->assign('lang_totalusers', __('Registered users:','bxpress'));
 $tpl->assign('lang_totaltopics', __('Total topics:','bxpress'));
 $tpl->assign('lang_totalposts', __('Total posts:','bxpress'));
+$tpl->assign('lang_ourforums', __('Our Forums','bxpress'));
+$tpl->assign('lang_foot', __('%s posts in %s topics. %s. Last post by %s %s','bxpress'));
 
 $tpl->assign('xoops_pagetitle', $xoopsModuleConfig['forum_title']);
-
-RMTemplate::get()->add_xoops_style('style.css', 'bxpress');
 
 bXFunctions::makeHeader();
 bXFunctions::loadAnnouncements(0);

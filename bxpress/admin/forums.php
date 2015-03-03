@@ -63,7 +63,7 @@ function bx_show_forums(){
     RMTemplate::get()->add_head_script('var bx_select_message = "'.__('You must select one forum at least in order to run this action!','bxpress').'";
         var bx_message = "'.__('Do you really want to delete selected forums?\n\nAll posts sent in this forum will be deleted also!','bxpress').'";');
 
-    include RMTemplate::get()->get_template('admin/forums_forums.php', 'module', 'bxpress');
+    include RMTemplate::get()->get_template('admin/forums-forums.php', 'module', 'bxpress');
     
     xoops_cp_footer();
     
@@ -107,7 +107,9 @@ function bx_show_form($edit = 0){
     // NOmbre
     $form->addElement(new RMFormText(__('Forum name','bxpress'), 'name', 50, 150, $edit ? $forum->name() : ''), true);
     // Descripcion
-    $form->addElement(new RMFormEditor(__('Forum description','bxpress'), 'desc', '90%', '300px', $edit ? $forum->description() : ''));
+    $form->addElement(new RMFormEditor(__('Forum description','bxpress'), 'desc', '90%', '300px', $edit ? $forum->getVar( 'desc', 'e' ) : ''));
+
+    $form->addElement( new RMFormImageUrl( __('Forum image', 'bxpress'), 'image', $edit ? $forum->image : '' ) );
 
     // Activo
     $form->addElement(new RMFormYesNo(__('Activate forum','bxpress'), 'active', $edit ? $forum->active() : 1));
@@ -192,6 +194,7 @@ function bx_save_forum($edit = 0){
     
     $forum->setName($name);
     $forum->setDescription($desc);
+    $forum->setVar('image', $image);
     if (!$edit){
         $forum->setTopics(0);
         $forum->setPosts(0);
@@ -349,7 +352,6 @@ function bx_moderators(){
 	}
 
     RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/#moderadores');
-	bXFunctions::menu_bar();
 	xoops_cp_header();
 
 

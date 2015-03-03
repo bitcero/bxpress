@@ -13,8 +13,10 @@ include '../../mainfile.php';
 
 $op = isset($_REQUEST['op']) ? $_REQUEST['op'] : '';
 
-$fid = isset($_REQUEST['fid']) ? intval($_REQUEST['fid']) : 0;
-$tid = isset($_REQUEST['tid']) ? intval($_REQUEST['tid']) : 0;
+$fid = RMHttpRequest::request( 'fid', 'integer', 0 ); // Forum ID
+$tid = RMHttpRequest::request( 'tid', 'integer', 0 ); // Topic ID
+$pid = RMHttpRequest::request( 'pid', 'integer', 0 ); // Post ID (replies)
+
 if ($fid<=0 && $tid<=0){
 	redirect_header('./', 2, __('You must specify a forum in order to create a new topic!','bxpress'));
 	die();
@@ -43,6 +45,13 @@ if ($forum->isNew()){
 if (!$forum->isAllowed($xoopsUser ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS, $fid>0 ? 'topic' : 'reply')){
 	redirect_header($retlink, 2, __('You do not have permission to do this!','bxpress'));
 	die();
+}
+
+// Load specified post
+if ( $pid > 0 ){
+    $parent = new bXPost( $pid );
+    if ( $parent->isNew() )
+        $pid = 0;
 }
 
 switch($op){
@@ -98,6 +107,7 @@ switch($op){
 		$post->setTopic($topic->id());
 		$post->setForum($forum->id());
 		$post->setDate(time());
+		$post->setVar( 'parent', $pid );
 		$post->setUser($xoopsUser ? $xoopsUser->uid() : 0);
 		$post->setUname($xoopsUser ? $xoopsUser->uname() : $name);
 		$post->setIP($_SERVER['REMOTE_ADDR']);
@@ -184,14 +194,14 @@ switch($op){
 			$not->triggerEvent('any_forum','', 'postanyforum',array('forum'=>$forum->id(),'post'=>$post->id()));
 			
 		}
-		
+
 		redirect_header('topic.php?pid='.$post->id().'#p'.$post->id(), 1, $errors == '' ? __('Your posts has been sent!','bxpress') : __('Message posted, however some errors ocurred while sending!','bxpress') .'<br />'.$errors);
 			
 		break;
 		
 	default:
 		
-		$xoopsOption['template_main'] = "bxpress_postform.html";
+		$xoopsOption['template_main'] = "bxpress-postform.tpl";
 		$xoopsOption['module_subpage'] = "post";
 
 		include 'header.php';
@@ -221,8 +231,11 @@ switch($op){
 		$idq = isset($_GET['quote']) ? intval($_GET['quote']) : 0;
 		if ($idq>0){
 			$post = new bXPost($idq);
+
+            $user = new RMUser( $post->uid );
+
 			if ($post->isNew()) break;
-			$quote = "[quote=".$post->uname()."]".$post->getVar('post_text','n')."[/quote]\n\n";
+			$quote = "[quote author=".str_replace(" ", "+", ($user->name != '' ? $user->name : $user->uname))."]".$post->getVar('post_text','n')."[/quote]\n\n";
 		}
                 
                 $type = $rmc_config['editor_type'];
@@ -245,6 +258,7 @@ switch($op){
 		}
 		
 		$form->addElement(new RMFormHidden('op','post'));
+		$form->addElement(new RMFormHidden('pid',$pid));
 		$form->addElement(new RMFormHidden($fid>0 ? 'fid' : 'tid', $fid>0 ? $fid : $tid));
 		$ele = new RMFormButtonGroup();
 		$ele->addButton('sbt', __('Send','bxpress'), 'submit');

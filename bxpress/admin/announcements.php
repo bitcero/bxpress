@@ -39,15 +39,20 @@ function showAnnounces(){
     
     $announcements = RMEvents::get()->run_event('bxpress.announcements.list', $announcements);
 	
-    RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/anuncios/standalone/1/');
-    bXFunctions::menu_bar();
-    xoops_cp_location("<a href='./'>".$xoopsModule->name()."</a> &raquo; ".__('Announcements Management','bxpress'));
+    RMTemplate::get()->add_help(array(
+        'caption'   => __('Announcements Help', 'bxpress' ),
+        'link'      => 'http://www.redmexico.com.mx/docs/bxpress-forums/anuncios/standalone/1/'
+    ));
+
+    $bc = RMBreadCrumb::get();
+    $bc->add_crumb( __('Announcements Management','bxpress') );
+
     xoops_cp_header();
 
     RMTemplate::get()->add_local_script('jquery.checkboxes.js','rmcommon','include');
     RMTemplate::get()->add_style('admin.css', 'bxpress');
     RMTemplate::get()->add_local_script('admin.js','bxpress');
-    include RMTemplate::get()->get_template("admin/forums_announcements.php", 'module', 'bxpress');
+    include RMTemplate::get()->get_template("admin/forums-announcements.php", 'module', 'bxpress');
 
 	xoops_cp_footer();
 	
@@ -74,8 +79,11 @@ function showForm($edit = 0){
 	}
 	
     RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/anuncios/standalone/1/#crear-un-anuncio');
-	bXFunctions::menu_bar();
-	xoops_cp_location("<a href='./'>".$xoopsModule->name()."</a> &raquo; ".($edit ? __('Edit Announcement','bxpress') : __('New Announcement','bxpress')));
+
+    $bc = RMBreadCrumb::get();
+    $bc->add_crumb( __('Announcements', 'bxpress'), 'announcements.php' );
+    $bc->add_crumb( $edit ? __('Edit Announcement','bxpress') : __('New Announcement','bxpress') );
+
 	xoops_cp_header();
 	
 	$form = new RMForm($edit ? __('Edit Announcement','bxpress') : __('New Announcement','bxpress'), 'frmAnnouncements', 'announcements.php');

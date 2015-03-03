@@ -113,7 +113,7 @@ unset($post,$pt,$topic,$result,$row,$sql,$tbl1,$tbl2,$tbl3);
 
 RMTemplate::get()->add_style('dashboard.css', 'bxpress');
 RMTemplate::get()->add_script('dashboard.js', 'bxpress');
-RMTemplate::get()->add_help('Ayuda de bXpress', 'http://www.redmexico.com.mx/docs/bxpress-forums/dashboard/standalone/1/');
+RMTemplate::get()->add_help('Ayuda de bXpress', 'http://www.xoopsmexico.net/docs/bxpress-forums/dashboard/standalone/1/');
 
 // Activity
 // 30 Days
@@ -152,19 +152,12 @@ for($i=30;$i>=0;$i--){
 unset($d,$posts);
 $max += 10-($max % 10);
 
-$donateButton = '<form id="paypal-form" name="_xclick" action="https://www.paypal.com/fr/cgi-bin/webscr" method="post">
-                    <input type="hidden" name="cmd" value="_xclick">
-                    <input type="hidden" name="business" value="ohervis@redmexico.com.mx">
-                    <input type="hidden" name="item_name" value="MyWords Support">
-                    <input type="hidden" name="amount" value=0>
-                    <input type="hidden" name="currency_code" value="USD">
-                    <img src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" onclick="$(\'#paypal-form\').submit()" alt="PayPal - The safer, easier way to pay online!" />
-    </form>';
-$myEmail = 'a888698732624c0a1d4da48f1e5c6bb4';
+$bc = RMBreadCrumb::get();
+$bc->add_crumb( __('Forum Dashboard', 'bxpress') );
 
 xoops_cp_header();
 
-include RMTemplate::get()->get_template("admin/forums_index.php", 'module', 'bxpress');
+include RMTemplate::get()->get_template("admin/forums-index.php", 'module', 'bxpress');
 
 xoops_cp_footer();
 

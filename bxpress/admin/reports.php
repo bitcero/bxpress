@@ -68,16 +68,18 @@ function showReports(){
                 );
 	}
 
-        RMTemplate::get()->add_local_script('jquery.checkboxes.js','rmcommon','include');
-        RMTemplate::get()->add_local_script('admin.js','bxpress');
-        RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/introduccion/standalone/1/');
-	bXFunctions::menu_bar();
+    RMTemplate::get()->add_local_script('jquery.checkboxes.js','rmcommon','include');
+    RMTemplate::get()->add_local_script('admin.js','bxpress');
+    RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/introduccion/standalone/1/');
         
-        RMTemplate::get()->assign('xoops_pagetitle', __('Reports Management','bxpress'));
-	xoops_cp_location("<a href='./'>".$xoopsModule->name()."</a> &raquo; ".__('Reports Management','bxpress'));
+    RMTemplate::get()->assign('xoops_pagetitle', __('Reports Management','bxpress'));
+
+    $bc = RMBreadCrumb::get();
+    $bc->add_crumb( __('Reports management', 'bxpress'));
+
 	xoops_cp_header();
         
-        include RMTemplate::get()->get_template('admin/forums_reports.php', 'module','bxpress');
+    include RMTemplate::get()->get_template('admin/forums-reports.php', 'module','bxpress');
         
 	xoops_cp_footer();
 

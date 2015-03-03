@@ -162,8 +162,8 @@ class bXTopic extends RMObject
     public function permalink(){
         $mc = RMSettings::module_settings('bxpress');
         
-        if($mc['urlmode']){
-            $link = XOOPS_URL.$mc['htbase'].'/topic.php?id='.$this->id();
+        if($mc->urlmode){
+            $link = XOOPS_URL.$mc->htbase.'/topic.php?id='.$this->id();
         } else {
             $link = XOOPS_URL.'/modules/bxpress/';
             $link .= "topic.php?id=".$this->id();

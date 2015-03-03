@@ -1,5 +1,5 @@
 <{foreach item=ann from=$announcements}>
-<div class="bbAnnouncement">
+<div class="alert alert-warning">
 <div class="bbAnnBody"><{$ann.text}></div>
 </div>
 <{/foreach}>

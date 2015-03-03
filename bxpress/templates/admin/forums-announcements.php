@@ -4,15 +4,21 @@
 <h1 class="cu-section-title"><?php _e('Announcements Management','bxpress'); ?></h1>
 
 <form name="frmAnnoun" id="frm-announ" method="post" action="announcements.php">
-    <div class="bxpress_options">
-        <select name="action" id="bulk-top">
+    <div class="cu-bulk-actions">
+        <select name="action" id="bulk-top" class="form-control">
             <option value=""><?php _e('Bulk actions...','bxpress'); ?></option>
             <option value="delete"><?php _e('Delete','bxpress'); ?></option>
         </select>
-        <input type="button" id="the-op-top" value="<?php _e('Apply','bxpress'); ?>" onclick="before_submit('frm-announ');" />
-        &nbsp; &nbsp;
-        <a href="announcements.php"><?php _e('Show All','bxpress'); ?></a> &nbsp; | &nbsp;
-        <a href="announcements.php?action=new"><?php _e('New Announcement','bxpress'); ?></a>
+        <button type="button" id="the-op-top"onclick="before_submit('frm-announ');" class="btn btn-info"><?php _e('Apply','bxpress'); ?></button>
+
+        <ul class="nav nav-pills pull-right">
+            <li>
+                <a href="announcements.php"><?php _e('Show All','bxpress'); ?></a>
+            </li>
+            <li>
+                <a href="announcements.php?action=new"><?php _e('New Announcement','bxpress'); ?></a>
+            </li>
+        </ul>
     </div>
 <table class="outer" cellspacing="1" width="100%">
     <thead>
@@ -59,15 +65,20 @@
 	<?php endforeach; ?>
     </tbody>
 </table>
-<div class="bxpress_options">
-        <select name="actionb" id="bulk-bottom">
+<div class="cu-bulk-actions">
+        <select name="actionb" id="bulk-bottom" class="form-control">
             <option value=""><?php _e('Bulk actions...','bxpress'); ?></option>
             <option value="delete"><?php _e('Delete','bxpress'); ?></option>
         </select>
-        <input type="button" id="the-op-bottom" value="<?php _e('Apply','bxpress'); ?>" onclick="before_submit('frm-announ');" />
-        &nbsp; &nbsp;
-        <a href="resources.php"><?php _e('Show All','bxpress'); ?></a> &nbsp; | &nbsp;
-        <a href="announcements.php?action=new"><?php _e('New Announcement','bxpress'); ?></a>
-    </div>
+        <button type="button" id="the-op-bottom" onclick="before_submit('frm-announ');" class="btn btn-info"><?php _e('Apply','bxpress'); ?></button>
+    <ul class="nav nav-pills pull-right">
+        <li>
+            <a href="announcements.php"><?php _e('Show All','bxpress'); ?></a>
+        </li>
+        <li>
+            <a href="announcements.php?action=new"><?php _e('New Announcement','bxpress'); ?></a>
+        </li>
+    </ul>
+</div>
 <?php echo $xoopsSecurity->getTokenHTML(); ?>
 </form>

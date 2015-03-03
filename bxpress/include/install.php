@@ -52,6 +52,21 @@ function xoops_module_update_bxpress($mod, $pre){
     $db->queryF('RENAME TABLE `'.$db->prefix("mod_bxpress_topics").'` TO  `'.$db->prefix("mod_bxpress_topics").'` ;');
     $db->queryF('ALTER TABLE `'.$db->prefix("mod_bxpress_topics").'`  ENGINE = INNODB;;');
 
+    $db->queryF("ALTER TABLE `" . $db->prefix("mod_bxpress_forums") . "` ADD `image` varchar(255) NOT NULL AFTER `desc`;");
+    $db->queryF("ALTER TABLE `" . $db->prefix("mod_bxpress_posts") . "` ADD `parent` int(11) NOT NULL DEFAULT '0' AFTER `require_reply`;");
+    $db->queryF("ALTER TABLE `" . $db->prefix("mod_bxpress_posts") . "` ADD `likes` int(11) NOT NULL DEFAULT '0' AFTER `parent`;");
+
+    // Add likes table
+    $db->queryF( "CREATE TABLE `". $db->prefix("mod_bxpress_likes") . "` (
+  `id_like` int(11) NOT NULL AUTO_INCREMENT,
+  `post` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
+  PRIMARY KEY (`id_like`),
+  KEY `post` (`post`),
+  KEY `uid` (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+
     return true;
 
 }
