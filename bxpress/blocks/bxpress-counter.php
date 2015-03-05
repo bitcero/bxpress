@@ -35,49 +35,42 @@ function bxpress_block_counter_show( $options ){
     $counters = array();
     $db = XoopsDatabaseFactory::getDatabaseConnection();
 
-    /*
-     * Load members stats
-     */
-    if ( $options['members'] ){
+    $tbp = $db->prefix("mod_bxpress_posts");
+    $tbt = $db->prefix("mod_bxpress_topics");
+    $tbl = $db->prefix("mod_bxpress_likes");
+    $tbf = $db->prefix("mod_bxpress_attachments");
 
-        $sql = "SELECT COUNT(*) FROM " . $db->prefix("mod_bxpress_posts") . ' GROUP BY uid';
-        $count = $db->getRowsNum( ( $db->query( $sql ) ) );
+    $sql = '';
 
+    if ( $options['members'] )
+        $sql = "(SELECT COUNT(DISTINCT id_post) FROM $tbp) as members";
+
+    if ( $options['topics'] )
+        $sql .= ", (SELECT COUNT(*) FROM $tbt) as topics";
+
+    if ( $options['replies'] )
+        $sql .= ", (SELECT COUNT(*) FROM $tbp) as replies";
+
+    if ( $options['likes'] )
+        $sql .= ", (SELECT COUNT(*) FROM $tbl) as likes";
+
+    if ( $options['files'] )
+        $sql .= ", (SELECT COUNT(*) FROM $tbf) as files";
+
+    if ( '' == $sql )
+        return null;
+
+    $sql = "SELECT " . $sql;
+
+    $result = $db->query( $sql );
+
+    $row = $db->fetchArray( $result );
+
+    foreach( $row as $counter => $value ){
         $counters[] = array(
-            'count'     => $count,
-            'caption'   => $options['members_caption']
+            'count'     => $value,
+            'caption'   => $options[$counter.'_caption']
         );
-
-    }
-
-    /*
-     * Load topics stats
-     */
-    if ( $options['topics'] ){
-
-        $sql = "SELECT COUNT(*) FROM " . $db->prefix("mod_bxpress_topics");
-        list($count) = $db->fetchRow( $db->query( $sql ) );
-
-        $counters[] = array(
-            'count'     => $count,
-            'caption'   => $options['topics_caption']
-        );
-
-    }
-
-    /*
-     * Load replies stats
-     */
-    if ( $options['replies'] ){
-
-        $sql = "SELECT COUNT(*) FROM " . $db->prefix("mod_bxpress_posts");
-        list($count) = $db->fetchRow( $db->query( $sql ) );
-
-        $counters[] = array(
-            'count'     => $count,
-            'caption'   => $options['replies_caption']
-        );
-
     }
 
     return array('counters' => $counters);
@@ -167,6 +160,60 @@ function bxpress_block_counter_edit( $options ){
         </div>
         <div class="col-sm-8 col-lg-9">
             <input type="text" name="options[replies_caption]" value="<?php echo $options['replies_caption']; ?>" class="form-control">
+        </div>
+
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-4 col-lg-3">
+            <label><?php _e('Show likes counter:', 'bxpress'); ?></label>
+        </div>
+        <div class="col-sm-8 col-lg-9">
+            <label class="radio-inline">
+                <input type="radio" name="options[likes]" value="1"<?php echo $options['likes']==1?' checked':''; ?>>
+                <?php _e('Yes', 'bxpress'); ?>
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="options[likes]" value="0"<?php echo $options['likes']==0?' checked':''; ?>>
+                <?php _e('No', 'bxpress'); ?>
+            </label>
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col-sm-4 col-lg-3">
+            <label><?php _e('Likes counter caption:', 'bxpress'); ?></label>
+        </div>
+        <div class="col-sm-8 col-lg-9">
+            <input type="text" name="options[likes_caption]" value="<?php echo $options['likes_caption']; ?>" class="form-control">
+        </div>
+
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-4 col-lg-3">
+            <label><?php _e('Show files counter:', 'bxpress'); ?></label>
+        </div>
+        <div class="col-sm-8 col-lg-9">
+            <label class="radio-inline">
+                <input type="radio" name="options[files]" value="1"<?php echo $options['files']==1?' checked':''; ?>>
+                <?php _e('Yes', 'bxpress'); ?>
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="options[files]" value="0"<?php echo $options['files']==0?' checked':''; ?>>
+                <?php _e('No', 'bxpress'); ?>
+            </label>
+        </div>
+    </div>
+
+    <div class="row form-group">
+
+        <div class="col-sm-4 col-lg-3">
+            <label><?php _e('files counter caption:', 'bxpress'); ?></label>
+        </div>
+        <div class="col-sm-8 col-lg-9">
+            <input type="text" name="options[files_caption]" value="<?php echo $options['files_caption']; ?>" class="form-control">
         </div>
 
     </div>

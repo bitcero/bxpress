@@ -170,19 +170,22 @@ $sql = "SELECT
           posts.*,
           texts.*,
           (SELECT COUNT(*) FROM $tbl1 WHERE parent=posts.id_post) as replies,
-          (SELECT COUNT(*) FROM $tbl3 WHERE post=posts.id_post) as likes
+          GROUP_CONCAT(tlikes.uid ORDER BY ".( $xoopsUser ? "tlikes.uid=" . $xoopsUser->uid() . ' DESC' : 'tlikes.uid' ).") as liked
         FROM
-          $tbl1 as posts,
-          $tbl2 as texts
+          $tbl1 posts
+        LEFT JOIN $tbl3 tlikes ON tlikes.post=posts.id_post
+        INNER JOIN $tbl2 texts ON texts.post_id=posts.id_post
         WHERE
             posts.id_topic='".$topic->id()."'
-            AND
-                texts.post_id=posts.id_post
-            ORDER BY
-                posts.post_time ASC,
-                posts.parent ASC
-            LIMIT
-                $start,$limit";
+        AND
+            texts.post_id=posts.id_post
+        GROUP BY
+            posts.id_post
+        ORDER BY
+            posts.post_time ASC,
+            posts.parent ASC
+        LIMIT
+            $start,$limit";
 
 $result = $db->query($sql);
 $users = array();
@@ -192,6 +195,7 @@ $posts = array();
 while ($row = $db->fetchArray($result)){
 	$post = new bXPost();
 	$post->assignVars($row);
+
 	// Permisos de edición y eliminación
 	$canedit = $moderator || $admin ? true : $edit && $post->isOwner();
 	$candelete = $moderator || $admin ? true : $delete && $post->isOwner();
@@ -208,8 +212,8 @@ while ($row = $db->fetchArray($result)){
 		$userData['id'] = $bbUser->uid();
 		$userData['uname'] = $bbUser->uname();
 		$userData['name'] = $bbUser->getVar('name') != '' ? $bbUser->getVar('name') : $bbUser->uname();
-		$userData['rank'] = $ranks[$bbUser->getVar('rank')]['title'];
-		$userData['rank_image'] = $ranks[$bbUser->getVar('rank')]['image'];
+		//$userData['rank'] = $ranks[$bbUser->getVar('rank')]['title'];
+		//$userData['rank_image'] = $ranks[$bbUser->getVar('rank')]['image'];
 		$userData['registered'] = sprintf(__('Registered: %s','bxpress'), date($mc['dates'], $bbUser->getVar('user_regdate')));
         $userData['avatar'] = RMEvents::get()->run_event("rmcommon.get.avatar", $bbUser->getVar('email'), 0);
 		$userData['posts'] = sprintf(__('Posts: %u','bxpress'), $bbUser->getVar('posts'));
@@ -220,8 +224,8 @@ while ($row = $db->fetchArray($result)){
 		$userData = array();
 		$userData['id'] = 0;
 		$userData['uname'] = $xoopsModuleConfig['anonymous_prefix'].$post->uname();
-		$userData['rank'] = $xoopsConfig['anonymous'];
-		$userData['rank_image'] = '';
+		//$userData['rank'] = $xoopsConfig['anonymous'];
+		//$userData['rank_image'] = '';
 		$userData['registered'] = '';
 		$userData['avatar'] = RMEvents::get()->run_event("rmcommon.get.avatar", '', 0);;
 		$userData['posts'] = sprintf(__('Posts: %u','bxpress'), 0);
@@ -237,6 +241,29 @@ while ($row = $db->fetchArray($result)){
 	}
 
     $tf = new RMTimeFormatter( 0, __('%T% %d%, %Y%', 'bxpress') );
+
+    // Likes parsing
+    if ( !is_null( $row['liked'] ) )
+        $likes_ids = explode(",", $row['liked'], 3);
+    else
+        $likes_ids = array();
+    $likes = array();
+
+    foreach( $likes_ids as $like ){
+
+        if (!isset($users[$like])){
+            $users[$like] = new XoopsUser($like);
+        }
+        $like_user = $users[$like];
+
+        $likes[] = array(
+            'uid'       => $like,
+            'uname'     => $like_user->getVar('uname'),
+            'name'      => $like_user->getVar('name') != '' ? $like_user->getVar('name') : $like_user->getVar('uname'),
+            'avatar'    => RMEvents::get()->run_event("rmcommon.get.avatar", $like_user->getVar('email'), 40)
+        );
+
+    }
 	
 	$posts[$post->id()] = array(
         'id'=>$post->id(),
@@ -253,13 +280,15 @@ while ($row = $db->fetchArray($result)){
         'attachscount'=>count($attachs),
         'parent' => $post->parent,
         'replies' => $row['replies'],
-        'likes_count' => $row['likes']
+        'likes_count' => $row['likes'],
+        'likes' => $likes
     );
 
     $posts_ids[] = $post->id();
 }
 
-$sql = "SELECT * FROM $tbl3 WHERE post IN (".implode(",", $posts_ids).")";
+/*$sql = "SELECT * FROM $tbl3 WHERE post IN (".implode(",", $posts_ids).") ORDER BY ";
+$sql .= $xoopsUser ? "uid=" . $xoopsUser->uid() . ' DESC' : 'uid';
 $result = $db->query( $sql );
 $posts_likes = array(); // Likes container
 
@@ -278,7 +307,7 @@ while( $row = $db->fetchArray( $result ) ){
         'avatar'    => RMEvents::get()->run_event("rmcommon.get.avatar", $user->getVar('email'), 40)
     );
 
-}
+}*/
 
 $tpl->assign( 'posts', $posts );
 
@@ -305,6 +334,10 @@ $tpl->assign('lang_admin', __('Admin','bxpress'));
 $tpl->assign('lang_moderator', __('Mod','bxpress'));
 $tpl->assign('lang_anonymous', __('Anonymous','bxpress'));
 $tpl->assign('lang_likedby', __('Liked by','bxpress'));
+$tpl->assign('lang_likedmore', __('and %u more.','bxpress'));
+
+// Security token
+$tpl->assign('bxpress_token', $xoopsSecurity->createToken(0, 'BXTOKEN'));
 
 bXFunctions::forumList();
 
@@ -327,5 +360,6 @@ if ($xoopsUser){
 }
 
 bXFunctions::loadAnnouncements(1, $forum->id());
+bXFunctions::include_js_language();
 
 include 'footer.php';

@@ -41,8 +41,14 @@ list($attnum) = $db->fetchRow($db->query($sql));
 $sql = "SELECT COUNT(*) FROM ".$db->prefix("mod_bxpress_report");
 list($repnum) = $db->fetchRow($db->query($sql));
 
+// Likes
+$sql = "SELECT COUNT(*) FROM ".$db->prefix("mod_bxpress_likes");
+list($likes_num) = $db->fetchRow($db->query($sql));
+
 // Days running
-$daysnum = time() - $xoopsModule->getVar('last_update');
+$sql = "SELECT post_time FROM ".$db->prefix("mod_bxpress_posts"). ' ORDER BY post_time ASC LIMIT 0, 1';
+list( $daysnum ) = $db->fetchRow( $db->query( $sql ) );
+$daysnum = time() - $daysnum;
 $daysnum = ceil($daysnum/86400);
 
 //Lista de Mensajes recientes

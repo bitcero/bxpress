@@ -47,7 +47,7 @@
 
                 <div class="media">
                     <div class="media-left">
-                        <a href="<{$xoops_url}>/userinfo.php?uid=<{$post.poster.uid}>">
+                        <a href="<{$xoops_url}>/userinfo.php?uid=<{$post.poster.id}>">
                             <img src="<{$post.poster.avatar}>" class="media-object post-poster-avatar" alt="<{$post.poster.name}>">
                         <span class="poster-legend">
                             <{if $post.poster.type=='admin'}>
@@ -68,10 +68,10 @@
                             <a href="<{$post.poster.link}>"><{$post.poster.name}></a>
                             <span class="separator"><span class="fa fa-comment"></span> <{$post.replies}></span>
                         <span class="separator">
-                            <a href="#" class="like-this-post" data-post-id="<{$post.id}>">
+                            <a href="#" class="like-this-post"<{if $xoops_isuser}> data-post-id="<{$post.id}>"<{/if}>>
                                 <span class="fa fa-heart<{if $post.likes_count<=0}> text-muted<{/if}>"></span>
                             </a>
-                            <{$post.likes_count}>
+                            <span class="likes-counter"><{$post.likes_count}></span>
                         </span>
                             <span class="separator"><span class="fa fa-clock-o"></span> <{$post.date}></span>
                             <{if $post.parent>0}>
@@ -148,10 +148,15 @@
                                 <{if $post.likes}>
                                     <{$lang_likedby}>
                                     <{foreach item=like from=$post.likes}>
-                                        <a href="<{$xoops_url}>/userinfo.php?uid=<{$like.uid}>" data-toggle="tooltip" title="<{$like.name}>">
+                                        <a href="<{$xoops_url}>/userinfo.php?uid=<{$like.uid}>" data-user="<{$like.uid}>" data-toggle="tooltip" title="<{$like.name}>">
                                             <img src="<{$like.avatar|replace:"s=50":"s=40"}>" alt="<{$like.name}>">
                                         </a>
                                     <{/foreach}>
+                                    <span class="likes-more">
+                                        <{if $post.likes_count>3}>
+                                            <{$lang_likedmore|sprintf:$post.likes_count-3}>
+                                        <{/if}>
+                                    </span>
                                 <{/if}>
                             </div>
                         </footer>
@@ -216,5 +221,5 @@
         <{/if}>
     </div>
 </div>
-
+<input type="hidden" id="bxpress-token" value="<{$bxpress_token}>">
 <{include file="db:system_notification_select.html"}>

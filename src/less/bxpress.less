@@ -96,6 +96,10 @@ header.bx-header{
         border-radius: 50%;
       }
 
+      > a{
+        text-decoration: none;
+      }
+
       .poster-legend{
         background-color: #a9a9a9;
         text-align: center;
@@ -209,6 +213,10 @@ header.bx-header{
       border-radius: 50%;
     }
 
+    > a{
+      text-decoration: none;
+    }
+
     .poster-legend{
       background-color: #a9a9a9;
       text-align: center;
@@ -302,7 +310,52 @@ header.bx-header{
     background-color: rgba(0,0,0,0.05);
   }
 
-} /* ------ End bxpress post list
+} /* ------ End bxpress post list */
+
+.notifier-blocker{
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.85);
+  z-index: 1031;
+}
+.notifier-content{
+  display: block;
+  position: fixed;
+  top: 20%;
+  left: 30%;
+  right: 30%;
+  padding: 20px 20px 20px 80px;
+  background-color: #f5f5f5;
+  z-index: 1032;
+  min-height: 80px;
+
+  &:before{
+    content: "\f071";
+    display: block;
+    width: 40px; height: 40px;
+    font-size: 40px;
+    position: absolute;
+    top: 20px; left: 20px;
+    font-family: FontAwesome;
+    line-height: 1;
+    color: #E79A42;
+  }
+
+  > .close{
+    position: absolute;
+    top: 6px; right: 8px;
+  }
+
+  @media(max-width: 767px){
+    left: 5%;
+    right: 5%;
+  }
+
+  @media(min-width: 768px) and (max-width: 991px){
+    left: 10%;
+    right: 10%;
+  }
+}
 
 .moderator-list{
   font-size: 0.9em;
@@ -372,5 +425,22 @@ header.bx-header{
 
   .pagination{
     margin: 0;
+  }
+}
+
+.like-this-post{
+
+  text-decoration: none;
+
+  &:hover{
+    text-decoration: none;
+  }
+
+  > .fa{
+    transition: ease-in-out all 250ms;
+
+    &.clicked{
+      transform: scale(1.5);
+    }
   }
 }

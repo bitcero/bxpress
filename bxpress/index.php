@@ -10,6 +10,61 @@
 
 include '../../mainfile.php';
 
+function forums_data( $data ){
+
+    if(empty($data)) return;
+
+    $forums = array();
+
+    foreach ($data as $forum){
+        $last = new bXPost($forum->lastPostId());
+        $lastpost = array();
+        if (!$last->isNew()){
+
+            if ( !isset($posters[$last->uid] ) )
+                $posters[$last->uid] = new RMUser( $last->uid );
+
+            $user = $posters[$last->uid];
+
+            $lastpost['date'] = bXFunctions::formatDate($last->date());
+            $lastpost['by'] = sprintf(__('by %s','bxpress'), $last->uname());
+            $lastpost['id'] = $last->id();
+            $lastpost['topic'] = $last->topic();
+            $lastpost['user'] = array(
+                'uname'     => $user->uname,
+                'name'      => $user->name != '' ? $user->name : $user->uname,
+                'avatar'    => $user ? RMEvents::get()->run_event( 'rmcommon.get.avatar', $user->getVar('email'), 50 ) : ''
+            );
+
+            if ($xoopsUser){
+                $lastpost['new'] = $last->date()>$xoopsUser->getVar('last_login') && (time()-$last->date()) < $xoopsModuleConfig['time_new'];
+            } else {
+                $lastpost['new'] = (time()-$last->date())<=$xoopsModuleConfig['time_new'];
+            }
+        }
+
+        $category = new bXCategory( $forum->cat );
+
+        $forums[] = array(
+            'id'        =>$forum->id(),
+            'idname'    =>$forum->friendName(),
+            'name'      =>$forum->name(),
+            'desc'      =>$forum->description(),
+            'topics'    =>$forum->topics(),
+            'posts'     =>$forum->posts(),
+            'link'      =>$forum->makeLink(),
+            'last'      =>$lastpost,
+            'image'     => $forum->image,
+            'category'  => array(
+                'title' => $category->title
+            )
+        );
+    }
+
+    return $forums;
+
+}
+
 if ($xoopsModuleConfig['showcats']){
     /**
     * Cargamos las categorías y los foros ordenados por categorías   
@@ -24,28 +79,7 @@ if ($xoopsModuleConfig['showcats']){
         if (!$catego->groupAllowed($xoopsUser ? $xoopsUser->getGroups() : array(0,XOOPS_GROUP_ANONYMOUS))) continue;
         
         $forums = bXForumHandler::getForums($catego->id(), 1, true);
-        $ret = array(); 
-        foreach ($forums as $forum){
-        	$last = new bXPost($forum->lastPostId());
-		    $lastpost = array();
-		    if (!$last->isNew()){
-    			$lastpost['date'] = bXFunctions::formatDate($last->date());
-    			$lastpost['by'] = sprintf(__('by %s','bxpress'), $last->uname());
-    			$lastpost['id'] = $last->id();
-    			$lastpost['topic'] = $last->topic();
-    			if ($xoopsUser){
-    				$lastpost['new'] = $last->date()>$xoopsUser->getVar('last_login') && (time()-$last->date()) < $xoopsModuleConfig['time_new'];
-    			} else {
-    				$lastpost['new'] = (time()-$last->date())<=$xoopsModuleConfig['time_new'];
-				}
-			}
-            $ret[] = array('id'=>$forum->id(),'idname'=>$forum->friendName(),
-                    'name'=>$forum->name(), 'desc'=>$forum->description(),'topics'=>$forum->topics(),
-                    'posts'=>$forum->posts(),'link'=>$forum->makeLink(1),'last'=>$lastpost);
-        }
-        unset($forums);   
-        
-        $tpl->append('categos', array('id'=>$catego->id(), 'title'=>$catego->title(), 'forums'=>$ret));
+        $tpl->append('categos', array('id'=>$catego->id(), 'title'=>$catego->title(), 'forums'=>forums_data($forums)));
     }
        
 } else {
@@ -60,50 +94,7 @@ if ($xoopsModuleConfig['showcats']){
     $forums = $fHand->getForums(0,1,true);
     $posters = array();
 
-    foreach ($forums as $forum){
-    	$last = new bXPost($forum->lastPostId());
-		    $lastpost = array();
-		    if (!$last->isNew()){
-
-                if ( !isset($posters[$last->uid] ) )
-                    $posters[$last->uid] = new RMUser( $last->uid );
-
-                $user = $posters[$last->uid];
-
-    			$lastpost['date'] = bXFunctions::formatDate($last->date());
-    			$lastpost['by'] = sprintf(__('by %s','bxpress'), $last->uname());
-    			$lastpost['id'] = $last->id();
-    			$lastpost['topic'] = $last->topic();
-                $lastpost['user'] = array(
-                    'uname'     => $user->uname,
-                    'name'      => $user->name != '' ? $user->name : $user->uname,
-                    'avatar'    => $user ? RMEvents::get()->run_event( 'rmcommon.get.avatar', $user->getVar('email'), 50 ) : ''
-                );
-
-    			if ($xoopsUser){
-    				$lastpost['new'] = $last->date()>$xoopsUser->getVar('last_login') && (time()-$last->date()) < $xoopsModuleConfig['time_new'];
-    			} else {
-    				$lastpost['new'] = (time()-$last->date())<=$xoopsModuleConfig['time_new'];
-				}
-			}
-
-        $category = new bXCategory( $forum->cat );
-
-        $tpl->append('forums', array(
-            'id'        =>$forum->id(),
-            'idname'    =>$forum->friendName(),
-            'name'      =>$forum->name(),
-            'desc'      =>$forum->description(),
-            'topics'    =>$forum->topics(),
-            'posts'     =>$forum->posts(),
-            'link'      =>$forum->makeLink(),
-            'last'      =>$lastpost,
-            'image'     => $forum->image,
-            'category'  => array(
-                'title' => $category->title
-            )
-        ));
-    }
+    $tpl->assign( 'forums', forums_data( $forums ) );
     
 }
 

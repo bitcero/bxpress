@@ -40,4 +40,4 @@ if (!file_exists($mc['attachdir'])){
 }
 
 // Add css
-RMTemplate::get()->add_style('admin.css', 'bxpress');
+RMTemplate::get()->add_style('admin.min.css', 'bxpress');

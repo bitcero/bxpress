@@ -29,37 +29,85 @@ function drawVisualization(w,h) {
 
 <div class="row" data-news="load" data-boxes="load" data-module="bxpress" data-target="#bxpress-news">
 
-    <div class="col-md-4" data-box="box-left">
+    <div class="col-sm-5" data-box="box-left">
 
         <div class="cu-box">
             <div class="box-header">
                 <h3><?php _e('Overview','bxpress'); ?></h3>
             </div>
             <div class="box-content">
-                <ul class="list-unstyled overvitem">
+                <ul class="bxpress-overview">
                     <li>
-                        <a href="categos.php"><?php echo sprintf(__('%s Categories','bxpress'), '<strong>'.$catnum.'</strong>'); ?></a>
+                        <a href="categories.php">
+                            <span class="fa fa-folder">
+                                <span class="badge"><?php echo $catnum; ?></span>
+                            </span>
+                            <h5><?php _e('Categories','bxpress'); ?></h5>
+                        </a>
                     </li>
                     <li>
-                        <a href="forums.php"><?php echo sprintf(__('%s Forums Available','bxpress'), '<strong>'.$forumnum.'</strong>'); ?></a>
+                        <a href="forums.php">
+                            <span class="fa fa-comments">
+                                <span class="badge"><?php echo $forumnum; ?></span>
+                            </span>
+                            <h5><?php _e('Forums','bxpress'); ?></h5>
+                        </a>
                     </li>
                     <li>
-                        <?php echo sprintf(__('%s Topics Created','bxpress'), '<strong>'.$topicnum.'</strong>'); ?>
+                        <span>
+                            <span class="fa fa-comments-o">
+                                <span class="badge"><?php echo $topicnum; ?></span>
+                            </span>
+                            <h5><?php echo _e('Topics','bxpress'); ?></h5>
+                        </span>
                     </li>
                     <li>
-                        <?php echo sprintf(__('%s Posts Sent','bxpress'), '<strong>'.$postnum.'</strong>'); ?>
+                        <span>
+                            <span class="fa fa-reply">
+                                <span class="badge"><?php echo $postnum; ?></span>
+                            </span>
+                            <h5><?php _e('Posts','bxpress'); ?></h5>
+                        </span>
                     </li>
                     <li>
-                        <a href="announcements.php"><?php echo sprintf(__('%s Announcements Made','bxpress'), '<strong>'.$annum.'</strong>'); ?></a>
+                        <a href="announcements.php">
+                            <span class="fa fa-bullhorn">
+                                <span class="badge"><?php echo $annum; ?></span>
+                            </span>
+                            <h5><?php _e('Announcements','bxpress'); ?></h5>
+                        </a>
                     </li>
                     <li>
-                        <?php echo sprintf(__('%s Files Attached','bxpress'), '<strong>'.$attnum.'</strong>'); ?>
+                        <span>
+                            <span class="fa fa-paperclip">
+                                <span class="badge"><?php echo $attnum; ?></span>
+                            </span>
+                            <h5><?php _e('Files','bxpress'); ?></h5>
+                        </span>
                     </li>
                     <li>
-                        <a href="reports.php"><?php echo sprintf(__('%s Reports Received','bxpress'), '<strong>'.$repnum.'</strong>'); ?></a>
+                        <a href="reports.php">
+                            <span class="fa fa-exclamation">
+                                <span class="badge"><?php echo $repnum; ?></span>
+                            </span>
+                            <h5><?php _e('Reports','bxpress'); ?></h5>
+                        </a>
                     </li>
                     <li>
-                        <?php echo sprintf(__('%s Days Running','bxpress'), '<strong>'.$daysnum.'</strong>'); ?>
+                        <span>
+                            <span class="fa fa-heart">
+                                <span class="badge"><?php echo $likes_num; ?></span>
+                            </span>
+                            <h5><?php _e('Likes', 'bxpress'); ?></h5>
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            <span class="fa fa-calendar">
+                                <span class="badge"><?php echo $daysnum; ?></span>
+                            </span>
+                            <h5><?php _e('Days','bxpress'); ?></h5>
+                        </span>
                     </li>
                 </ul>
             </div>
@@ -77,69 +125,72 @@ function drawVisualization(w,h) {
 
     </div>
 
-    <!-- Activity -->
-    <div class="col-md-5" data-box="box-center">
+    <div class="col-sm-7">
 
-        <div class="cu-box">
-            <div class="box-header">
-                <span class="fa fa-caret-up box-handler"></span>
-                <h3><?php _e('Activity','bxpress'); ?></h3>
-            </div>
-            <div class="box-content">
-                <ul id="activity-options">
-                    <li class="activity pressed"><?php _e('Last 30 days','bxpress'); ?></li>
-                    <li class="recent"><?php _e('Recent Posts in Topics','bxpress'); ?></li>
-                    <li class="topten"><?php _e('Popular Topics','bxpress'); ?></li>
-                </ul>
-                <div id="activity"></div>
-                <div id="recent">
-                    <?php foreach($topics as $t): ?>
-                        <div class="<?php echo tpl_cycle("even,odd"); ?>">
-                            <strong><a href="<?php echo $t['link']; ?>"><?php echo $t['title']; ?></a></strong>
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="cu-box">
+                    <div class="box-header">
+                        <span class="fa fa-caret-up box-handler"></span>
+                        <h3><?php _e('Activity','bxpress'); ?></h3>
+                    </div>
+                    <div class="box-content">
+                        <ul id="activity-options">
+                            <li class="activity pressed"><?php _e('Last 30 days','bxpress'); ?></li>
+                            <li class="recent"><?php _e('Recent Posts in Topics','bxpress'); ?></li>
+                            <li class="topten"><?php _e('Popular Topics','bxpress'); ?></li>
+                        </ul>
+                        <div id="activity"></div>
+                        <div id="recent">
+                            <?php foreach($topics as $t): ?>
+                                <div class="<?php echo tpl_cycle("even,odd"); ?>">
+                                    <strong><a href="<?php echo $t['link']; ?>"><?php echo $t['title']; ?></a></strong>
                             <span class="tdata">
                             <?php echo sprintf(__('Forum: %s','bxpress'), '<a href="'.$t['forum']['link'].'">'.$t['forum']['name'].'</a>'); ?><br />
                                 <?php echo $t['post']['date']; ?> |
                             <em><a target="_blank" href="<?php echo XOOPS_URL; ?>/userinfo.php?uid=<?php echo $t['post']['uid']; ?>"><?php echo $t['post']['by']; ?></a></em>
                             </span>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
-                    <?php endforeach; ?>
-                </div>
-                <div id="topten">
-                    <?php foreach($poptops as $t): ?>
-                        <div class="<?php echo tpl_cycle("even,odd"); ?>">
-                            <strong><a href="<?php echo $t['link']; ?>"><?php echo $t['title']; ?></a></strong>
+                        <div id="topten">
+                            <?php foreach($poptops as $t): ?>
+                                <div class="<?php echo tpl_cycle("even,odd"); ?>">
+                                    <strong><a href="<?php echo $t['link']; ?>"><?php echo $t['title']; ?></a></strong>
                             <span class="tdata">
                             <?php echo sprintf(__('Forum: %s','bxpress'), '<a href="'.$t['forum']['link'].'">'.$t['forum']['name'].'</a>'); ?><br />
                                 <?php echo $t['date']; ?> | <?php echo sprintf(__('Replies: %s','bxpress'), '<strong>'.$t['replies'].'</strong>'); ?>
                             </span>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
                 </div>
+
             </div>
         </div>
 
-        <?php RMEvents::get()->run_event("bxpress.dashboard.left.blocks"); ?>
+        <div class="row">
 
-    </div>
-    <!--// Activity -->
+            <!-- Activity -->
+            <div class="col-md-7" data-box="box-center">
 
-    <!-- Other Info -->
-    <div class="col-md-3" data-box="box-right">
+                <?php RMEvents::get()->run_event("bxpress.dashboard.left.blocks"); ?>
 
-        <div class="cu-box">
-            <div class="box-header">
-                <h3><i class="fa fa-thumbs-up"></i> <?php _e('Support my Work','dtransport'); ?></h3>
             </div>
-            <div class="box-content support-me">
-                <img class="avatar" src="http://www.gravatar.com/avatar/<?php echo $myEmail; ?>?s=80" alt="Eduardo Cortés (bitcero)" />
-                <p><?php _e('Do you like my work? Then maybe you want support me to continue developing new modules.','dtransport'); ?></p>
-                <?php echo $donateButton; ?>
+            <!--// Activity -->
+
+            <!-- Other Info -->
+            <div class="col-md-5" data-box="box-right">
+
+                <div data-load="boxes"></div>
+
             </div>
+            <!--// Other info -->
+
         </div>
 
-        <div data-load="boxes"></div>
-
     </div>
-    <!--// Other info -->
 
 </div>

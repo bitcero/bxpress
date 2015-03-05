@@ -371,4 +371,12 @@ class bXFunctions
 
     }
 
+    /**
+     * This function adds a script with language for bxpress
+     */
+    static function include_js_language(){
+        global $rmTpl;
+        $rmTpl->add_head_script(include_once(XOOPS_ROOT_PATH . '/modules/bxpress/include/js-lang.php'));
+    }
+
 }

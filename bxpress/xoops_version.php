@@ -63,8 +63,8 @@ $modversion = array(
     'rmnative'      => 1,
     'rmversion'     => array(
         'major'     => 1,
-        'minor'     => 1,
-        'revision'  => 0,
+        'minor'     => 2,
+        'revision'  => 15,
         'stage'     => -1,
         'name'      => 'bXpress'
     ),
@@ -534,6 +534,10 @@ $modversion['blocks'] = array(
             'topics_caption'    => __('topics', 'bxpress'),
             'replies'           => 1,
             'replies_caption'   => __('replies', 'bxpress'),
+            'likes'             => 1,
+            'likes_caption'     => __('likes', 'bxpress'),
+            'files'             => 1,
+            'files_caption'     => __('files', 'bxpress'),
         )
     ),
 
