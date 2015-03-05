@@ -1,0 +1,446 @@
+/*!
+ * bXpress Forums (http://xoopsmexico.net)
+ * Copyright 2009-2015 © Eduardo Cortés
+ * Licensed under GPL v2 (http://www.gnu.org/licenses/gpl-2.0.html)
+ */
+header.bx-header{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 0 0 20px 0;
+    margin-bottom: 20px;
+    h2{
+        margin: 0 0 5px 0;
+    }
+    .bx-options{
+        font-size: 0.8em!important;
+        line-height: 34px;
+        margin-bottom: 0;
+    }
+}
+
+.bxpress-forums-list{
+
+  margin-bottom: 50px;
+
+  .list-title{
+    margin: 0 0 30px 0;
+  }
+
+  .forum-item{
+    margin-bottom: 30px;
+
+    .forum-image{
+      max-width: 60px;
+      max-height: 60px;
+    }
+
+    .forum-name{
+      margin: 0;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    p{
+      margin: 0;
+      font-size: 0.85em;
+      color: #727272;
+      margin-bottom: 0;
+    }
+
+    footer{
+      font-size: 0.8em;
+      margin-top: 5px;
+      color: #959595;
+
+      .circle{
+        display: inline-block;
+        background-color: #2bb3ff;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        border-radius: 50%;
+        text-align: center;
+        color: #FFF;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+    }
+
+  }
+
+}
+
+.bxpress-topics-list{
+
+  margin-bottom: 30px;
+
+  .list-title{
+    margin: 0 0 30px 0;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    padding-bottom: 15px;
+  }
+
+  .topic-item{
+
+    margin-bottom: 2px;
+    padding: 15px;
+    background: #f5f5f5;
+
+    .media-left{
+
+      position: relative;
+
+      .topic-poster-avatar{
+        max-width: 64px;
+        max-height: 64px;
+        border-radius: 50%;
+      }
+
+      > a{
+        text-decoration: none;
+      }
+
+      .poster-legend{
+        background-color: #a9a9a9;
+        text-align: center;
+        font-size: 0.7em;
+        color: #FFF;
+        display: block;
+        margin-top: -10px;
+        position: relative;
+      }
+
+    }
+
+    .media-body{
+
+      position: relative;
+
+      .topic-title{
+        font-size: 1.15em;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      footer{
+        font-size: 0.8em;
+        color: #898989;
+
+        .separator{
+
+          display: inline-block;
+          margin-right: 5px;
+
+          &:last-child{
+            margin-right: 0;
+          }
+
+        }
+      }
+
+      .topic-indicators{
+        display: block;
+        position: absolute;
+        top: 15px; right: 15px;
+
+        > span{
+          display: inline-block;
+          font-size: 14px;
+          line-height: 28px;
+          width: 28px;
+          border-radius: 15px;
+          font-size: 14px;
+          text-align: center;
+        }
+
+        > .popular{
+          background-color: #2cbbff;
+          color: #FFF;
+        }
+
+        > .new{
+          background-color: #07ca47;
+          color: #FFF;
+        }
+
+        > .closed{
+          background-color: #ffb300;
+          color: #FFF;
+        }
+      }
+
+    }
+
+    &.sticky{
+      padding-left: 0;
+
+      .media{
+        border-left: 6px solid #ffa845;
+        padding-left: 15px;
+      }
+    }
+
+  }
+
+}
+
+
+.bxpress-posts-list{
+
+  margin-bottom: 50px;
+
+  .list-title{
+    margin: 0 0 30px 0;
+  }
+
+  .post-item{
+    padding: 15px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+
+    &:nth-child(2){
+      border-top: 0;
+    }
+  }
+
+  .media-left{
+
+    position: relative;
+
+    .post-poster-avatar{
+      max-width: 64px;
+      max-height: 64px;
+      border-radius: 50%;
+    }
+
+    > a{
+      text-decoration: none;
+    }
+
+    .poster-legend{
+      background-color: #a9a9a9;
+      text-align: center;
+      font-size: 0.7em;
+      color: #FFF;
+      display: block;
+      margin-top: -10px;
+      position: relative;
+    }
+
+  }
+
+  .media-body{
+
+    padding-left: 10px;
+
+    header{
+      font-size: 0.8em;
+      color: #898989;
+      margin-bottom: 10px;
+
+      > a{
+        font-weight: bold;
+        font-size: 1.1em;
+        display: inline-block;
+        margin-right: 5px;
+      }
+
+      .separator{
+        display: inline-block;
+        margin: 0 4px;
+
+        &:last-child{
+          margin-right: 0;
+        }
+      }
+    }
+
+    .post-attachments{
+      font-size: 0.8em;
+      padding: 5px 10px;
+      background-color: rgba(0,0,0,0.05);
+
+      > strong{
+        display: inline-block;
+        padding: 5px 10px;
+        margin: -5px 5px -5px -10px;
+        background-color: rgba(29, 167, 244, 0.50);
+        color: #FFF;
+      }
+    }
+
+    footer{
+      font-size: 0.8em;
+      color: #898989;
+      overflow: hidden;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      margin-top: 20px;
+      line-height: 30px;
+      padding-top: 10px;
+
+      li:nth-child(n+2) > a{
+        color: #898989;
+      }
+
+      .post-likes{
+        float: right;
+
+        a{
+          text-decoration: none;
+        }
+
+        img{
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          margin: 0 5px;
+        }
+      }
+    }
+
+    p{
+      line-height: 1.5em;
+    }
+
+  }
+
+  blockquote{
+    font-size: 1em;
+    color: #666;
+    background-color: rgba(0,0,0,0.05);
+  }
+
+} /* ------ End bxpress post list */
+
+.notifier-blocker{
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.85);
+  z-index: 1031;
+}
+.notifier-content{
+  display: block;
+  position: fixed;
+  top: 20%;
+  left: 30%;
+  right: 30%;
+  padding: 20px 20px 20px 80px;
+  background-color: #f5f5f5;
+  z-index: 1032;
+  min-height: 80px;
+
+  &:before{
+    content: "\f071";
+    display: block;
+    width: 40px; height: 40px;
+    font-size: 40px;
+    position: absolute;
+    top: 20px; left: 20px;
+    font-family: FontAwesome;
+    line-height: 1;
+    color: #E79A42;
+  }
+
+  > .close{
+    position: absolute;
+    top: 6px; right: 8px;
+  }
+
+  @media(max-width: 767px){
+    left: 5%;
+    right: 5%;
+  }
+
+  @media(min-width: 768px) and (max-width: 991px){
+    left: 10%;
+    right: 10%;
+  }
+}
+
+.moderator-list{
+  font-size: 0.9em;
+
+  .indicators{
+    > span{
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      font-size: 14px;
+      text-align: center;
+      line-height: 22px;
+      border-radius: 50%;
+    }
+
+    > .popular{
+      background-color: #2cbbff;
+      color: #FFF;
+    }
+
+    > .new{
+      background-color: #07ca47;
+      color: #FFF;
+    }
+
+    > .closed{
+      background-color: #ffb300;
+      color: #FFF;
+    }
+
+    > .sticky{
+      background-color: #ff5415;
+      color: #FFF;
+    }
+
+  }
+
+} /* ---- ENd moderator list */
+
+.results-list{
+
+  .by{
+    font-size: 0.8em;
+  }
+
+}
+
+.info-forums{
+  border-top: 2px solid #d6d6d6;
+  padding-top: 15px;
+}
+
+.bxpress-options{
+  .breadcrumb{
+    font-size: 0.8em;
+  }
+}
+
+.tooltip{
+  .tooltip-inner{
+    font-size: 0.8em!important;
+  }
+}
+
+.pagination-container{
+  text-align: inherit;
+
+  .pagination{
+    margin: 0;
+  }
+}
+
+.like-this-post{
+
+  text-decoration: none;
+
+  &:hover{
+    text-decoration: none;
+  }
+
+  > .fa{
+    transition: ease-in-out all 250ms;
+
+    &.clicked{
+      transform: scale(1.5);
+    }
+  }
+}

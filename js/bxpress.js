@@ -1,5 +1,0 @@
-function confirm_delete(){
-    
-    
-    
-}

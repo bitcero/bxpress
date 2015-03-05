@@ -1,0 +1,179 @@
+.bxpress-counters{
+
+  ul{
+    li{
+      .number{
+        text-transform: uppercase;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+      .caption{
+        text-transform: uppercase;
+        font-weight: normal;
+      }
+    }
+  }
+
+}
+
+.bxpress-block-topics{
+  counter-reset: topics-counter;
+
+  ol{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    > li{
+      padding: 2px 0;
+
+      &:before{
+        counter-increment: topics-counter;
+        content: counter(topics-counter);
+        display: inline-block;
+        background-color: #ccc;
+        color: #FFF;
+        border-radius: 50%;
+        height: 20px;
+        line-height: 20px;
+        width: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        margin-right: 6px;
+      }
+
+      &:nth-child(10n+1){
+        &:before{
+          background-color: #1abc9c;
+        }
+      }
+
+      &:nth-child(10n+2){
+        &:before{
+          background-color: #3498db;
+        }
+      }
+
+      &:nth-child(10n+3){
+        &:before{
+          background-color: #9b59b6;
+        }
+      }
+
+      &:nth-child(10n+4){
+        &:before{
+          background-color: #f39c12;
+        }
+      }
+
+      &:nth-child(10n+5){
+        &:before{
+          background-color: #e67e22;
+        }
+      }
+
+      &:nth-child(10n+6){
+        &:before{
+          background-color: #e74c3c;
+        }
+      }
+
+      &:nth-child(10n+7){
+        &:before{
+          background-color: #03A678;
+        }
+      }
+
+      &:nth-child(10n+8){
+        &:before{
+          background-color: #1BA2CA;
+        }
+      }
+
+      &:nth-child(10n+9){
+        &:before{
+          background-color: #C85038;
+        }
+      }
+
+      &:nth-child(10n+10){
+        &:before{
+          background-color: #D82B2D;
+        }
+      }
+
+      .details{
+        font-size: 0.8em;
+        color: #999;
+        margin-bottom: 5px;
+
+        .separator{
+          display: inline-block;
+          margin-right: 5px;
+
+          &:last-child{
+            margin-right: 0;
+          }
+        }
+      }
+
+    }
+
+    &.full{
+
+      > li{
+
+        padding: 10px 10px 10px 35px;
+        position: relative;
+        background-color: #f5f5f5;
+        margin-bottom: 2px;
+
+        &:before{
+          counter-increment: topics-counter;
+          content: counter(topics-counter);
+          display: block;
+          position: absolute;
+          top: 12px; left: 10px;
+        }
+      }
+
+    }
+
+  }
+}
+
+.bxpress-block-users{
+
+  ol{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li{
+      padding: 2px 0;
+
+      .avatar{
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+      }
+
+      .separator{
+        color: #999;
+        font-size: 0.8em;
+        display: inline-block;
+        margin-right: 5px;
+
+        &:first-child{
+          margin-left: 5px;
+        }
+        &:last-child{
+          margin-right: 0;
+        }
+      }
+
+    }
+  }
+
+}
