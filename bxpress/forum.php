@@ -28,6 +28,16 @@ if ($forum->isNew()){
 }
 
 /**
+ * Check if module is inactive
+ */
+$isModerator = $xoopsUser && ( $xoopsUser->isAdmin() || $forum->isModerator( $xoopsUser->uid() ) );
+if ( !$forum->active && !$isModerator )
+    RMUris::redirect_with_message(
+        __('This forum is closed and you don\'t have permissions to view it', 'bxpress'),
+        BX_URL, RMMSG_WARN
+    );
+
+/**
 * Comprobamos que el usuario actual tenga permisos
 * de acceso al foro
 */
@@ -82,7 +92,7 @@ while ($row = $db->fetchArray($result)){
     $topic->assignVars($row);
     $last = new bXPost($topic->lastPost());
 
-    if ( isset( $posters[ $topic->poster ] ) )
+    if ( !isset( $posters[ $topic->poster ] ) )
         $posters[$topic->poster] = new RMUser( $topic->poster );
 
     if ( !isset( $posters[ $last->uid ] ) )

@@ -17,7 +17,9 @@
 <table class="table">
     <thead>
     <tr>
-        <th width="20" class="text-center"><input type="checkbox" id="checkall" onchange="$('#frm-forums').toggleCheckboxes(':not(#checkall)');"></th>
+        <th width="20" class="text-center">
+            <input type="checkbox" id="checkall" data-oncheck="chk-forums" data-checkbox="chk-forums">
+        </th>
         <th width="50" class="text-center"><?php _e('ID','bxpress'); ?></th>
         <th align="left"><?php _e('Name','bxpress'); ?></th>
         <th width="50" class="text-center"><?php _e('Topics','bxpress'); ?></th>
@@ -30,7 +32,9 @@
     </thead>
     <tfoot>
     <tr>
-        <th width="20" class="text-center"><input type="checkbox" id="checkall" onchange="$('#frm-forums').toggleCheckboxes(':not(#checkall)');"></th>
+        <th width="20" class="text-center">
+            <input type="checkbox" id="checkall" data-oncheck="chk-forums" data-checkbox="chk-forums">
+        </th>
         <th width="50" class="text-center"><?php _e('ID','bxpress'); ?></th>
         <th align="left"><?php _e('Name','bxpress'); ?></th>
         <th width="50" class="text-center"><?php _e('Topics','bxpress'); ?></th>
@@ -49,7 +53,9 @@
     <?php endif; ?>
     <?php foreach($forums as $forum): ?>
         <tr class="text-center">
-            <td><input type="checkbox" name="ids[]" id="item-<?php echo $forum['id']; ?>" value="<?php echo $forum['id']; ?>" /></td>
+            <td>
+                <input type="checkbox" name="ids[]" id="item-<?php echo $forum['id']; ?>" value="<?php echo $forum['id']; ?>" data-oncheck="chk-forums">
+            </td>
             <td><strong><?php echo $forum['id']; ?></strong></td>
             <td class="text-left">
                 <a href="../forum.php?id=<?php echo $forum['id']; ?>"><?php echo $forum['title']; ?></a>

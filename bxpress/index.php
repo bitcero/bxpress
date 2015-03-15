@@ -11,12 +11,18 @@
 include '../../mainfile.php';
 
 function forums_data( $data ){
+    global $xoopsUser;
 
     if(empty($data)) return;
 
     $forums = array();
 
     foreach ($data as $forum){
+
+        $isModerator = $xoopsUser && ( $xoopsUser->isAdmin() || $forum->isModerator( $xoopsUser->uid() ) );
+        if ( !$forum->active && !$isModerator )
+            continue;
+
         $last = new bXPost($forum->lastPostId());
         $lastpost = array();
         if (!$last->isNew()){
@@ -55,6 +61,7 @@ function forums_data( $data ){
             'link'      =>$forum->makeLink(),
             'last'      =>$lastpost,
             'image'     => $forum->image,
+            'active'    => $forum->active,
             'category'  => array(
                 'title' => $category->title
             )
@@ -78,7 +85,7 @@ if ($xoopsModuleConfig['showcats']){
     foreach ($categos as $catego){
         if (!$catego->groupAllowed($xoopsUser ? $xoopsUser->getGroups() : array(0,XOOPS_GROUP_ANONYMOUS))) continue;
         
-        $forums = bXForumHandler::getForums($catego->id(), 1, true);
+        $forums = bXForumHandler::getForums($catego->id(), $xoopsModuleConfig['show_inactive'] ? -1 : 1, true);
         $tpl->append('categos', array('id'=>$catego->id(), 'title'=>$catego->title(), 'forums'=>forums_data($forums)));
     }
        
@@ -91,7 +98,7 @@ if ($xoopsModuleConfig['showcats']){
     include 'header.php';
     
     $fHand = new bXForumHandler();
-    $forums = $fHand->getForums(0,1,true);
+    $forums = $fHand->getForums(0,$xoopsModuleConfig['show_inactive'] ? -1 : 1,true);
     $posters = array();
 
     $tpl->assign( 'forums', forums_data( $forums ) );

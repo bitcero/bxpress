@@ -11,8 +11,8 @@
 function exmbb_rssdesc(){
 	global $util;
 	
-	$mc =& $util->moduleConfig('exmbb');
-	return $mc['rssdesc'];
+	$mc = RMSettings::module_settings('exmbb');
+	return $mc->rssdesc;
 }
 
 /**
@@ -90,7 +90,7 @@ function &exmbb_rssshow($limit){
 		$feed['link'] = XOOPS_URL.'/modules/exmbb/forum.php?id='.$forum->id();
 		$feed['description'] = htmlspecialchars($forum->description());
 		
-		$sql = "SELECT a.*, b.title FROM ".$db->prefix("exmbb_posts")." a,".$db->prefix("exmbb_topics")." b WHERE a.id_forum='$id' AND a.approved='1' AND b.id_topic=a.id_topic ORDER BY a.post_time DESC LIMIT 0,$limit";
+		$sql = "SELECT a.*, b.title FROM ".$db->prefix("mod_bxpress_posts")." a,".$db->prefix("mod_bxpress_topics")." b WHERE a.id_forum='$id' AND a.approved='1' AND b.id_topic=a.id_topic ORDER BY a.post_time DESC LIMIT 0,$limit";
 		
 	}
 	
