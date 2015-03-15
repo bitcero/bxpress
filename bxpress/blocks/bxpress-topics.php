@@ -112,7 +112,7 @@ function bxpress_block_topics_show($options){
     $block['format'] = $options['format'];
 
     // Add css styles
-    RMTemplate::get()->add_style( 'bxpress-blocks-min.css', 'bxpress' );
+    RMTemplate::get()->add_style( 'bxpress-blocks.min.css', 'bxpress' );
 
     return $block;
 

@@ -91,7 +91,7 @@ switch($show){
     default:
     
         $rss_channel['title'] = $xoopsModule->name();
-        $rss_channel['link'] = XOOPS_URL.($config['urlmode'] ? $config['htbase'] : '/modules/bxpress');
+        $rss_channel['link'] = XOOPS_URL.($config->urlmode ? $config->htbase : '/modules/bxpress');
         $rss_channel['description'] = __('All recent messages posted on forum','bxpress');
         $rss_channel['lastbuild'] = formatTimestamp(time(), 'rss');
         $rss_channel['webmaster'] = checkEmail($xoopsConfig['adminmail'], true);

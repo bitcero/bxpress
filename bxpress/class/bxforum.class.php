@@ -460,12 +460,12 @@ class bXForumHandler
     * @param int $activo -1 devuelve todos los foros, 0 solo los inactivos y 1 solo activos
     * @param bool $object Indica si se devueven los objetos bXForum
     */
-    public function getForums($category=0, $active=-1, $object = false){
+    static public function getForums($category=0, $active=-1, $object = false){
         
         $db = XoopsDatabaseFactory::getDatabaseConnection();
         
-        $sql = "SELECT * FROM ".$db->prefix("mod_bxpress_forums")." WHERE ".($active>-1 ? " active='$active' " : '').
-                ($category>0 ? " AND cat='$category' " : '')." ORDER BY `cat`,`order`";
+        $sql = "SELECT * FROM ".$db->prefix("mod_bxpress_forums").($active > -1 || $category > 0 ? " WHERE " : '').($active>-1 ? " active='$active' " : '').
+                ($category>0 ? ( $active > -1 ? ' AND ' : '' )." cat='$category' " : '')." ORDER BY `active` DESC, `cat`,`order`";
         
         $result = $db->queryF($sql);
         $retorno = array();

@@ -6,13 +6,15 @@
     <h3 class="list-title"><{$lang_ourforums}></h3>
 
     <{foreach item=forum from=$forums}>
-        <div class="forum-item">
+        <div class="forum-item<{if $forum.active!=1}> forum-inactive<{/if}>">
             <div class="media">
+                <{if $forum.image}>
                 <div class="media-left">
                     <a href="<{$forum.link}>">
                         <img src="<{$forum.image}>" class="media-object forum-image" alt="<{$forum.name}>">
                     </a>
                 </div>
+                <{/if}>
                 <div class="media-body">
                     <h5 class="forum-name"><a href="<{$forum.link}>"><{$forum.name}></a></h5>
                     <{$forum.desc}>

@@ -29,7 +29,7 @@
 function bxpress_block_users_show( $options ){
 
     // Add css styles
-    RMTemplate::get()->add_style( 'bxpress-blocks-min.css', 'bxpress' );
+    RMTemplate::get()->add_style( 'bxpress-blocks.min.css', 'bxpress' );
 
     $db = XoopsDatabaseFactory::getDatabaseConnection();
 

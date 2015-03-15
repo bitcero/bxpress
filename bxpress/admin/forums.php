@@ -269,28 +269,24 @@ function bx_save_changes(){
 * @desc Activa o desactiva un foro
 */
 function bx_activate_forums($status=1){
-	global $db,$util;
+	global $xoopsDB, $xoopsSecurity;
 	
-	if (!$util->validateToken()){
-    	redirectMsg('forums.php', _AS_BB_ERRTOKEN, 1);
-    	die();
-    }
+	if ( !$xoopsSecurity->check() )
+    	RMUris::redirect_with_message( __('Session token expired! Try again.', 'bxpress'), 'forums.php', RMMSG_ERROR );
 	
-	$forums = isset($_POST['forums']) ? $_POST['forums'] : null;
+	$forums = RMHttpRequest::post( 'ids', 'array', null );
 	
-	if (!is_array($forums) || empty($forums)){
-		redirectMsg('forums.php', _AS_BB_NOSELECTFORUM, 1);
-		die();
-	}
+	if (!is_array($forums) || empty($forums))
+        RMUris::redirect_with_message( __('No forum has been selected.', 'bxpress'), 'forums.php', RMMSG_ERROR );
 	
-	$sql = "UPDATE ".$db->prefix("mod_bxpress_forums")." SET active='$status' WHERE ";
+	$sql = "UPDATE ".$xoopsDB->prefix("mod_bxpress_forums")." SET active='$status' WHERE ";
 	$sql1 = '';
 	foreach ($forums as $k => $v){
 		$sql1.= $sql1 == '' ? "id_forum='$v' " : "OR id_forum='$v' ";
 	}
 	
-	$db->queryF($sql . $sql1);
-	redirectMsg('forums.php', _AS_BB_DBOK, 0);
+	$xoopsDB->queryF($sql . $sql1);
+    RMUris::redirect_with_message( __('Database updated successfully!', 'bxpress'), 'forums.php', RMMSG_INFO );
 	
 }
 
@@ -420,7 +416,7 @@ function bx_save_moderators(){
 }
 
 
-$action = rmc_server_var($_REQUEST, 'action', '');
+$action = RMHttpRequest::request( 'action', 'string', '' );
 
 switch($action){
     case 'new':
@@ -438,11 +434,11 @@ switch($action){
     case 'savechanges':
     	saveChanges();
     	break;
-    case 'activate':
-    	activateForum(1);
+    case 'enable':
+        bx_activate_forums(1);
     	break;
-    case 'deactivate':
-    	activateForum(0);
+    case 'disable':
+        bx_activate_forums(0);
     	break;
     case 'delete':
     	bx_delete_forums();

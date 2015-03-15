@@ -66,6 +66,30 @@ header.bx-header{
 
     }
 
+    &.forum-inactive{
+
+      border: 1px dashed rgba(0,0,0,0.15);
+      padding: 5px;
+      font-style: italic;
+      position: relative;
+
+      &:after{
+        content: "\f070";
+        font-family: FontAwesome;
+        display: block;
+        position: absolute;
+        right: 6px; top: 50%;
+        color: #ff2200;
+        font-size: 24px;
+        text-align: center;
+        line-height: 30px;
+        width: 30px;
+        margin-top: -15px;
+        font-style: normal;
+      }
+
+    }
+
   }
 
 }

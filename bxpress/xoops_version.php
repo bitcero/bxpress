@@ -241,6 +241,15 @@ $modversion['config'][] = array(
 );
 
 $modversion['config'][] = array(
+    'name' => 'show_inactive',
+    'title' => __('Show inactive forums for webmasters and moderators', 'bxpress'),
+    'description' => __('When this option is enabled the inactive forums will be shown to webmasters and moderators for administrative purposes. For all other users, the inactive forums remain hidden.', 'bxpress'),
+    'formtype' => 'yesno',
+    'valuetype' => 'int',
+    'default' => 1,
+);
+
+$modversion['config'][] = array(
     'name' => 'maxfilesize',
     'title' => __('Maximum allowed size for attached files (in KB)', 'bxpress'),
     'description' => __('The files sent in the forums will be limited to this size, bigger file sizes will be ignored.', 'bxpress'),
@@ -362,7 +371,7 @@ $modversion['config'][] = array(
 $modversion['config'][] = array(
     'name' => 'sticky',
     'title' => __('Activate Sticky Posts','bxpress'),
-    'description' => '_MI_BX_STICKY_DESC',
+    'description' => __('By enabling this option, bXpress could create topics like "sticky". The sticky topics always will appear in the first positions. Even when this option is disabled with the administrators and moderators will create sticky posts.','bxpress'),
     'formtype' => 'yesno',
     'valuetype' => 'int',
     'default' => 1
@@ -371,7 +380,7 @@ $modversion['config'][] = array(
 // Rangos para mensajes fijos
 $modversion['config'][] = array(
     'name' => 'sticky_posts',
-    'title' => __('By enabling this option, bXpress could create topics like "sticky". The sticky topics always will appear in the first positions. Even when this option is disabled with the administrators and moderators will create sticky posts.','bxpress'),
+    'title' => __('Previous messages sent to can create sticky posts', 'bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'int',

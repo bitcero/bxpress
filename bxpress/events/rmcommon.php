@@ -43,9 +43,9 @@ class BxpressRmcommonPreload
         include_once XOOPS_ROOT_PATH.'/modules/bxpress/class/bxfunctions.class.php';
         include_once XOOPS_ROOT_PATH.'/modules/bxpress/class/bxforum.class.php';
         
-        $module = RMFunctions::load_module('bxpress');
+        $module = RMModules::load_module( 'bxpress' );
         $config = RMSettings::module_settings('bxpress');
-        $url = XOOPS_URL.'/'.($config['bxpress'] ? $config['htbase'] : 'modules/bxpress').'/';
+        $url = XOOPS_URL.'/'.($config->urlmode ? $config->htbase : 'modules/bxpress').'/';
         $bxFunc = new bXFunctions();
 
         $data = array(
