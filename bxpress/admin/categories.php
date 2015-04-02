@@ -274,7 +274,7 @@ function activeCatego($act=0){
 		RMUris::redirect_with_message( __('Errors ocurred while trying to change status','bxpress') . $errors, './categories.php', RMMSG_ERROR );
 		die();
 	}else{
-		RMUris::redirect_with_message( __('Database updates successfully!','bxpress'), './categories.php', RMMSG_SUCCESS );
+		RMUris::redirect_with_message( __('Database updated successfully!','bxpress'), './categories.php', RMMSG_SUCCESS );
 		die();
 	}
 	

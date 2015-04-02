@@ -100,8 +100,7 @@ CREATE TABLE `mod_bxpress_posts_text` (
   `post_id` int(8) NOT NULL default '0',
   `post_text` text collate utf8_spanish_ci,
   `post_edit` text collate utf8_spanish_ci,
-  PRIMARY KEY  (`post_id`),
-  FULLTEXT KEY `search` (`post_text`)
+  PRIMARY KEY  (`post_id`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `mod_bxpress_report` (
