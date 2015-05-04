@@ -178,24 +178,46 @@ switch($op){
 		}
 		
 		// Notificaciones
-        include_once XOOPS_ROOT_PATH.'/kernel/notification.php';
-		$not = new XoopsNotificationHandler($xoopsDB);
-		if ($create){
-			//Notificacion de nuevo tema en foro
-			$not->triggerEvent('forum',$forum->id(), 'newtopic',array('topic'=>$topic->id()));
-			//Notificación de nuevo mensaje en cualquier foro
-			$not->triggerEvent('any_forum','', 'postanyforum',array('forum'=>$forum->id(),'post'=>$post->id()));
-		}else{
-			//Notificación de nuevo mensaje en tema
-			$not->triggerEvent('topic',$topic->id(), 'newpost',array('post'=>$post->id()));
-			//Notificación de nuevo mensaje en foro especificado
-			$not->triggerEvent('forum',$forum->id(), 'postforum',array('post'=>$post->id()));
-			//Notificación de nuevo mensaje en cualquier foro
-			$not->triggerEvent('any_forum','', 'postanyforum',array('forum'=>$forum->id(),'post'=>$post->id()));
-			
-		}
+        $notifications = RMNotifications::get();
+        $events = Bxpress_Notifications::get();
+        $event = $events->event('newtopic')
+            ->parameters($forum->id())
+            ->permissions( array(
+                'users' => $forum->moderators(),
+                'groups' => array(XOOPS_GROUP_ADMIN)
+            ));
 
-		redirect_header('topic.php?pid='.$post->id().'#p'.$post->id(), 1, $errors == '' ? __('Your posts has been sent!','bxpress') : __('Message posted, however some errors ocurred while sending!','bxpress') .'<br />'.$errors);
+        // Notificar cuando se crea un tema
+        if ( $create ){
+            $notifications->notify( $event, array('forum' => $forum, 'topic' => $topic, 'post' => $post) );
+        }
+
+        // Notificar cuando se envía un mensaje en el foro
+        $event = $events->event('forum-newpost')
+            ->parameters($forum->id())
+            ->permissions( array(
+                'users' => $forum->moderators(),
+                'groups' => array(XOOPS_GROUP_ADMIN)
+            ));
+
+        if ( !$create )
+            $notifications->notify( $event, array('forum' => $forum, 'topic' => $topic, 'post' => $post) );
+
+        // Notificar cuando una respuesta es enviada en un tema
+        $permissions = $forum->permissions();
+        $event = $events->event('reply')
+            ->parameters($topic->id())
+            ->permissions( array(
+                'groups' => in_array(0, $permissions['view']) ? array() : $permissions['view']
+            ));
+        $notifications->notify( $event, array('forum' => $forum, 'topic' => $topic, 'post' => $post) );
+
+        // Redirect to topic
+        RMUris::redirect_with_message(
+            $errors == '' ? __('Your posts has been sent!','bxpress') : __('Message posted, however some errors ocurred while sending!','bxpress'),
+            'topic.php?pid='.$post->id().'#p'.$post->id(),
+            $errors == '' ? RMMSG_SUCCESS : RMMSG_ERROR
+        );
 			
 		break;
 		

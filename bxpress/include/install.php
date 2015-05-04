@@ -28,44 +28,54 @@ function xoops_module_update_bxpress($mod, $pre){
 
     $db = $xoopsDB;
 
-    $db->queryF('RENAME TABLE `'.$db->prefix("bxpress_announcements").'` TO  `'.$db->prefix("mod_bxpress_announcements").'` ;');
-    $db->queryF('ALTER TABLE `'.$db->prefix("mod_bxpress_announcements").'` ENGINE = INNODB;');
+    $result = $db->query("SHOW TABLES LIKE '" . $db->prefix("bxpress_announcements")."'");
 
-    $db->queryF('RENAME TABLE `'.$db->prefix("bxpress_attachments").'` TO  `'.$db->prefix("mod_bxpress_attachments").'` ;');
-    $db->queryF('ALTER TABLE `'.$db->prefix("mod_bxpress_attachments").'`  ENGINE = INNODB;;');
+    if ( $db->getRowsNum($result) > 0 ) {
+        $db->queryF('RENAME TABLE `' . $db->prefix("bxpress_announcements") . '` TO  `' . $db->prefix("mod_bxpress_announcements") . '` ;');
+        $db->queryF('ALTER TABLE `' . $db->prefix("mod_bxpress_announcements") . '` ENGINE = INNODB;');
 
-    $db->queryF('RENAME TABLE `'.$db->prefix("bxpress_categories").'` TO  `'.$db->prefix("mod_bxpress_categories").'` ;');
-    $db->queryF('ALTER TABLE `'.$db->prefix("mod_bxpress_categories").'`  ENGINE = INNODB;;');
+        $db->queryF('RENAME TABLE `' . $db->prefix("bxpress_attachments") . '` TO  `' . $db->prefix("mod_bxpress_attachments") . '` ;');
+        $db->queryF('ALTER TABLE `' . $db->prefix("mod_bxpress_attachments") . '`  ENGINE = INNODB;;');
 
-    $db->queryF('RENAME TABLE `'.$db->prefix("bxpress_forums").'` TO  `'.$db->prefix("mod_bxpress_forums").'` ;');
-    $db->queryF('ALTER TABLE `'.$db->prefix("mod_bxpress_forums").'`  ENGINE = INNODB;;');
+        $db->queryF('RENAME TABLE `' . $db->prefix("bxpress_categories") . '` TO  `' . $db->prefix("mod_bxpress_categories") . '` ;');
+        $db->queryF('ALTER TABLE `' . $db->prefix("mod_bxpress_categories") . '`  ENGINE = INNODB;;');
 
-    $db->queryF('RENAME TABLE `'.$db->prefix("bxpress_posts").'` TO  `'.$db->prefix("mod_bxpress_posts").'` ;');
-    $db->queryF('ALTER TABLE `'.$db->prefix("mod_bxpress_posts").'`  ENGINE = INNODB;;');
+        $db->queryF('RENAME TABLE `' . $db->prefix("bxpress_forums") . '` TO  `' . $db->prefix("mod_bxpress_forums") . '` ;');
+        $db->queryF('ALTER TABLE `' . $db->prefix("mod_bxpress_forums") . '`  ENGINE = INNODB;;');
 
-    $db->queryF('RENAME TABLE `'.$db->prefix("bxpress_posts_text").'` TO  `'.$db->prefix("mod_bxpress_posts_text").'` ;');
-    $db->queryF('ALTER TABLE `'.$db->prefix("mod_bxpress_posts_text").'` ENGINE = INNODB;;');
+        $db->queryF('RENAME TABLE `' . $db->prefix("bxpress_posts") . '` TO  `' . $db->prefix("mod_bxpress_posts") . '` ;');
+        $db->queryF('ALTER TABLE `' . $db->prefix("mod_bxpress_posts") . '`  ENGINE = INNODB;;');
 
-    $db->queryF('RENAME TABLE `'.$db->prefix("bxpress_report").'` TO  `'.$db->prefix("mod_bxpress_report").'` ;');
-    $db->queryF('ALTER TABLE `'.$db->prefix("mod_bxpress_report").'` ENGINE = INNODB;;');
+        $db->queryF('RENAME TABLE `' . $db->prefix("bxpress_posts_text") . '` TO  `' . $db->prefix("mod_bxpress_posts_text") . '` ;');
+        $db->queryF('ALTER TABLE `' . $db->prefix("mod_bxpress_posts_text") . '` ENGINE = INNODB;;');
 
-    $db->queryF('RENAME TABLE `'.$db->prefix("bxpress_topics").'` TO  `'.$db->prefix("mod_bxpress_topics").'` ;');
-    $db->queryF('ALTER TABLE `'.$db->prefix("mod_bxpress_topics").'`  ENGINE = INNODB;;');
+        $db->queryF('RENAME TABLE `' . $db->prefix("bxpress_report") . '` TO  `' . $db->prefix("mod_bxpress_report") . '` ;');
+        $db->queryF('ALTER TABLE `' . $db->prefix("mod_bxpress_report") . '` ENGINE = INNODB;;');
 
-    $db->queryF("ALTER TABLE `" . $db->prefix("mod_bxpress_forums") . "` ADD `image` varchar(255) NOT NULL AFTER `desc`;");
-    $db->queryF("ALTER TABLE `" . $db->prefix("mod_bxpress_posts") . "` ADD `parent` int(11) NOT NULL DEFAULT '0' AFTER `require_reply`;");
-    $db->queryF("ALTER TABLE `" . $db->prefix("mod_bxpress_posts") . "` ADD `likes` int(11) NOT NULL DEFAULT '0' AFTER `parent`;");
+        $db->queryF('RENAME TABLE `' . $db->prefix("bxpress_topics") . '` TO  `' . $db->prefix("mod_bxpress_topics") . '` ;');
+        $db->queryF('ALTER TABLE `' . $db->prefix("mod_bxpress_topics") . '`  ENGINE = INNODB;;');
 
-    // Add likes table
-    $db->queryF( "CREATE TABLE `". $db->prefix("mod_bxpress_likes") . "` (
-  `id_like` int(11) NOT NULL AUTO_INCREMENT,
-  `post` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `time` int(11) NOT NULL,
-  PRIMARY KEY (`id_like`),
-  KEY `post` (`post`),
-  KEY `uid` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+        $db->queryF("ALTER TABLE `" . $db->prefix("mod_bxpress_forums") . "` ADD `image` varchar(255) NOT NULL AFTER `desc`;");
+        $db->queryF("ALTER TABLE `" . $db->prefix("mod_bxpress_posts") . "` ADD `parent` int(11) NOT NULL DEFAULT '0' AFTER `require_reply`;");
+        $db->queryF("ALTER TABLE `" . $db->prefix("mod_bxpress_posts") . "` ADD `likes` int(11) NOT NULL DEFAULT '0' AFTER `parent`;");
+    }
+
+    $result = $db->query("SHOW TABLES LIKE '" . $db->prefix("mod_bxpress_likes")."'");
+    if ( $db->getRowsNum($result) <= 0 ) {
+        // Add likes table
+        $db->queryF( "CREATE TABLE `". $db->prefix("mod_bxpress_likes") . "` (
+          `id_like` int(11) NOT NULL AUTO_INCREMENT,
+          `post` int(11) NOT NULL,
+          `uid` int(11) NOT NULL,
+          `time` int(11) NOT NULL,
+          PRIMARY KEY (`id_like`),
+          KEY `post` (`post`),
+          KEY `uid` (`uid`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+    }
+
+    // Delete column friendname
+    $db->queryF( "ALTER TABLE " . $db->prefix("mod_bxpress_forums") . " DROP 'friendname'");
 
     return true;
 

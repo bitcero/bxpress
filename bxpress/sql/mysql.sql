@@ -55,7 +55,6 @@ CREATE TABLE `mod_bxpress_forums` (
   `attach_maxkb` int(10) NOT NULL default '1000',
   `attach_ext` text NOT NULL,
   `subforums` int(10) NOT NULL default '0',
-  `friendname` varchar(150) NOT NULL,
   `permissions` text NOT NULL,
   PRIMARY KEY  (`id_forum`),
   UNIQUE KEY `friendname` (`friendname`)

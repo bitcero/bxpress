@@ -333,11 +333,11 @@ class bXFunctions
         
     }
     
-    public function url(){
+    static public function url(){
         
         $mc = RMSettings::module_settings('bxpress');
         if($mc->urlmode){
-            return XOOPS_URL.'/'.$mc->htbase;
+            return XOOPS_URL.'/'. trim($mc->htbase, '/');
         } else {
             return XOOPS_URL.'/modules/bxpress';
         }

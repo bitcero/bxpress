@@ -97,4 +97,4 @@
     </div>
 </div>
 
-<{include file="db:system_notification_select.html"}>
+<{$notifications}>

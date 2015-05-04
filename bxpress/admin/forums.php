@@ -168,40 +168,44 @@ function bx_save_forum($edit = 0){
         }
 
         if($k=='XOOPS_TOKEN_REQUEST' || $k=='action') continue;
-        $q = '&'.$k.'='.$v;
+        $q .= '&'.$k.'='.$v;
     }
 
-    if (!$xoopsSecurity->check()){
-    	redirectMsg('forums.php?'.$q, __('Session token expired','bxpress'), 1);
-    	die();
-    }
-    
+    if (!$xoopsSecurity->check())
+        RMUris::redirect_with_message(
+            __('Session token expired','bxpress'), 'forums.php?'.$q, RMMSG_ERROR
+        );
+
     if ($edit){
-        $id = rmc_server_var($_REQUEST, 'id', 0);
-        if ($id<=0){
-            redirectMsg('forums.php', __('Specified id is not valid!','bxpress'), 1);
-            die();
-        }
+        $id = RMHttpRequest::request( 'id', 'integer', 0 );
+
+        if ($id<=0)
+            RMUris::redirect_with_message(
+                __('Specified id is not valid!','bxpress'), 'forums.php', RMMSG_ERROR
+            );
         
         $forum = new bXForum($id);
-        if ($forum->isNew()){
-            redirectMsg('forums.php', __('Specified forum does not exists!','bxpress'), 1);
-            die();
-        }
+        if ($forum->isNew())
+            RMUris::redirect_with_message(
+                __('Specified forum does not exists!','bxpress'), 'forums.php', RMMSG_ERROR
+            );
+
     } else {
         $forum = new bXForum();
     }
     
-    $forum->setName($name);
-    $forum->setDescription($desc);
-    $forum->setVar('image', $image);
+    $forum->setVar( 'name', $name );
+    $forum->setVar( 'desc', $desc );
+    $forum->setVar( 'image', $image );
+
     if (!$edit){
-        $forum->setTopics(0);
-        $forum->setPosts(0);
-        $forum->setPostId(0);
-        $forum->setSubforums(0);
+        $forum->setVar( 'topics', 0 );
+        $forum->setVar( 'posts', 0 );
+        $forum->setVar( 'last_post_id', 0 );
+        $forum->setVar( 'subforums', 0 );
     }
-    $forum->setCategory($cat);
+
+    $forum->setVar( 'cat', $cat );
     $forum->setActive($active);
     $forum->setSignature($sig);
     $forum->setPrefix($prefix);
@@ -210,8 +214,20 @@ function bx_save_forum($edit = 0){
     $forum->setAttachments($attachments);
     $forum->setMaxSize($attach_maxkb);
     $forum->setExtensions(explode('|',$attach_ext));
-    $forum->setFriendName(TextCleaner::getInstance()->sweetstring($name));
     $forum->setPermissions($permissions);
+
+    // Check if forum exists
+    $db = XoopsDatabaseFactory::getDatabaseConnection();
+    $sql = "SELECT COUNT(*) FROM " . $db->prefix("mod_bxpress_forums") . " WHERE name='$name' AND cat=$cat";
+    if ( $edit )
+        $sql .= " AND id_forum != " . $forum->id();
+
+    list($exists) = $db->fetchRow( $db->query( $sql ) );
+    if ( $exists ){
+        RMUris::redirect_with_message(
+            sprintf( __('Another forum with name "%s" already exists in this category.','bxpress'), $name ), 'forums.php?'.$q, RMMSG_ERROR
+        );
+    }
     
     if ($forum->save()){
         if ($parent>0){

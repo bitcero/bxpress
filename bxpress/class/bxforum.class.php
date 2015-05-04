@@ -43,14 +43,9 @@ class bXForum extends RMObject
         /**
          * Cargamos los datos del foro
          */
-        if (is_numeric($id)){
-            if (!$this->loadValues($id)) return;     
-            $this->unsetNew();
-        } else {
-            $this->primary = 'friendname';
-            if ($this->loadValues($id)) $this->unsetNew();
-            $this->primary = 'id_cat';   
-        }
+        if (!$this->loadValues($id)) return;
+        $this->unsetNew();
+
     }
     
     /**
@@ -67,7 +62,7 @@ class bXForum extends RMObject
         return $this->getVar('name');
     }
     public function setName($value){
-        return $this->setVar('name', $value);   
+        return $this->setVar('name', $value);
     }
     /**
     * @desc Descripción del Foro
@@ -278,7 +273,7 @@ class bXForum extends RMObject
         }
         return $this->setVar('attach_ext', $value);
     }
-    
+
     /**
     * @desc Numero de subforos
     * @return int
@@ -288,17 +283,6 @@ class bXForum extends RMObject
     }
     public function setSubforums($value){
         return $this->setVar('subforums', $value);
-    }
-    
-    /**
-    * @desc Nombre amigable para urls
-    * @return int
-    */
-    public function friendName(){
-        return $this->getVar('friendname');
-    }
-    public function setFriendName($value){
-        return $this->setVar('friendname', $value);
     }
     
     /**

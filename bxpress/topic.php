@@ -287,31 +287,24 @@ while ($row = $db->fetchArray($result)){
     $posts_ids[] = $post->id();
 }
 
-/*$sql = "SELECT * FROM $tbl3 WHERE post IN (".implode(",", $posts_ids).") ORDER BY ";
-$sql .= $xoopsUser ? "uid=" . $xoopsUser->uid() . ' DESC' : 'uid';
-$result = $db->query( $sql );
-$posts_likes = array(); // Likes container
-
-while( $row = $db->fetchArray( $result ) ){
-
-    if ( !$users[ $row['uid'] ] )
-        $users[ $row['uid'] ] = new XoopsUser( $row['uid'] );
-
-    $user = $users[$row['uid']];
-
-    $posts[ $row['post'] ]['likes'][] = array(
-        'time'      => $row['time'],
-        'uid'       => $row['uid'],
-        'uname'     => $user->getVar('uname'),
-        'name'      => $user->getVar('name') != '' ? $user->getVar('name') : $user->getVar('uname'),
-        'avatar'    => RMEvents::get()->run_event("rmcommon.get.avatar", $user->getVar('email'), 40)
-    );
-
-}*/
-
 $tpl->assign( 'posts', $posts );
 
 unset($userData, $bbUser, $users);
+
+// Common Utilities Notifications
+$notifications = RMNotifications::get();
+$events = Bxpress_Notifications::get();
+$permissions = $forum->permissions();
+
+// New topics notifications
+$event = $events->event('reply')
+    ->parameters($topic->id())
+    ->permissions( array(
+        'groups' => in_array(0, $permissions['view']) ? array() : $permissions['view']
+    ));
+$notifications->add_item( $event );
+unset($event,$permissions);
+$tpl->assign( 'notifications', $notifications->render() );
 
 $tpl->assign('lang_edit', __('Edit','bxpress'));
 $tpl->assign('lang_delete', __('Delete','bxpress'));
