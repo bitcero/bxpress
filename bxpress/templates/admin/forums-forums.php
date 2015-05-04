@@ -11,7 +11,7 @@
     </select>
     <button type="button" id="the-op-top" class="btn btn-default" onclick="before_submit('frm-forums');"><?php _e('Apply','bxpress'); ?></button>
 
-    <a href="forums.php?action=new" class="btn btn-info pull-right"><?php _e('New Forum','dtransport'); ?></a>
+    <a href="forums.php?action=new" class="btn btn-success pull-right"><span class="fa fa-plus"></span> <?php _e('Create Forum','dtransport'); ?></a>
 </div>
 <!--//-->
 <table class="table">
@@ -84,7 +84,7 @@
         <option value="delete"><?php _e('Delete','bxpress'); ?></option>
     </select>
     <button type="button" id="the-op-bottom" class="btn btn-default" onclick="before_submit('frm-forums');"><?php _e('Apply','bxpress'); ?></button>
-    <a href="forums.php?action=new" class="btn btn-info pull-right"><?php _e('New Forum','dtransport'); ?></a>
+    <a href="forums.php?action=new" class="btn btn-success pull-right"><span class="fa fa-plus"></span> <?php _e('Create Forum','dtransport'); ?></a>
 </div>
 <!--//-->
 <?php echo $xoopsSecurity->getTokenHTML(); ?>

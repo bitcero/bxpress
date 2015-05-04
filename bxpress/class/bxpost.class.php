@@ -170,9 +170,9 @@ class bXPost extends RMObject
             if( !$mc->html )
                 $this->setVar('post_text', TextCleaner::getInstance()->specialchars ($this->getVar('post_text','n')));
                 
-	    $this->setVar('post_text', TextCleaner::getInstance()->to_display($this->getVar('post_text')));
+	    //$this->setVar('post_text', TextCleaner::getInstance()->to_display($this->getVar('post_text')));
             
-            return $this->getVar('post_text');
+            return $this->getVar('post_text', 's');
 	}
 	public function setText($value){
 		$this->havetext = true;

@@ -55,9 +55,9 @@ class BxpressRmcommonPreload
         );
         
         $options[] = array(
-            'title'    => __('All Recent Messages', 'dtransport'),
+            'title'    => __('All Recent Messages', 'bxpress'),
             'params' => 'show=all',
-            'description' => __('Show all recent downloads','dtransport')
+            'description' => __('Show all recent messages','bxpress')
         );
         
         $forums = $bxFunc->forumList('',false);
@@ -75,8 +75,8 @@ class BxpressRmcommonPreload
         $table .= '</tr></table>';
         
         $options[] = array(
-            'title' => __('Posts by forum','dtransport'),
-            'description' => __('Select a forum to see the messages posted recently.','dtransport').' <a href="javascript:;" onclick="$(\'#bxforums-feed\').slideToggle(\'slow\');">Show Forums</a>
+            'title' => __('Posts by forum','bxpress'),
+            'description' => __('Select a forum to see the messages posted recently.','bxpress').' <a href="javascript:;" onclick="$(\'#bxforums-feed\').slideToggle(\'slow\');">Show Forums</a>
                             <div id="bxforums-feed" style="padding: 10px; display: none;">'.$table.'</div>'
         );
         

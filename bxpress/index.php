@@ -53,7 +53,6 @@ function forums_data( $data ){
 
         $forums[] = array(
             'id'        =>$forum->id(),
-            'idname'    =>$forum->friendName(),
             'name'      =>$forum->name(),
             'desc'      =>$forum->description(),
             'topics'    =>$forum->topics(),

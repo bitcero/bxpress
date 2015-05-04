@@ -337,7 +337,7 @@ switch($action){
         showForm(1);
         break;
     case 'saveedit':
-        saveCatego(1);
+        bxpress_save_category(1);
         break;
     case 'savechanges':
 	    updateOrderCatego();

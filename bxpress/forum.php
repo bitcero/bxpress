@@ -41,8 +41,8 @@ if ( !$forum->active && !$isModerator )
 * Comprobamos que el usuario actual tenga permisos
 * de acceso al foro
 */
-if (!$forum->isAllowed($xoopsUser ? $xoopsUser->getGroups() : array(0, XOOPS_GROUP_ANONYMOUS), BXPRESS_PERM_VIEW) && !$xoopsUser->isAdmin()){
-    redirect_header(BB_URL, 2, __('You are not allowed to view this forum!','bxpress'));
+if (!$forum->isAllowed($xoopsUser ? $xoopsUser->getGroups() : array(0, XOOPS_GROUP_ANONYMOUS), BXPRESS_PERM_VIEW) ){
+    RMUris::redirect_with_message( __('You are not allowed to view this forum!','bxpress'), BX_URL, RMMSG_WARN );
     die();
 }
 
@@ -152,6 +152,34 @@ while ($row = $db->fetchArray($result)){
 
 // Datos del Foro
 $tpl->assign('forum', array('id'=>$forum->id(), 'title'=>$forum->name(),'moderator'=>$xoopsUser ? $forum->isModerator($xoopsUser->uid()) || $xoopsUser->isAdmin() : false));
+
+// Notificaciones de Common Utilities
+$notifications = RMNotifications::get();
+$events = Bxpress_Notifications::get();
+
+
+// New topics notifications
+$event = $events->event('newtopic')
+    ->parameters($forum->id())
+    ->permissions( array(
+        'users' => $forum->moderators(),
+        'groups' => array(XOOPS_GROUP_ADMIN)
+    ));
+$notifications->add_item( $event );
+
+// New posts notification
+$event = $events->event('forum-newpost')
+    ->parameters($forum->id())
+    ->permissions( array(
+        'users' => $forum->moderators(),
+        'groups' => array(XOOPS_GROUP_ADMIN)
+    ));
+
+$notifications->add_item( $event );
+
+// Assign output to a Smarty variable
+$tpl->assign('notifications', $notifications->render());
+
 
 $tpl->assign('lang_pages', __('Pages:','bxpress'));
 $tpl->assign('lang_topic', __('Topics','bxpress'));

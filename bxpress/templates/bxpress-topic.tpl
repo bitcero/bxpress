@@ -130,7 +130,7 @@
                                 <{/if}>
                                 <{if $post.canreport}>
                                     <li>
-                                        <a href="post.php?tid=<{$topic.id}>&amp;quote=<{$post.id}>"><span class="fa fa-quote-left"></span> <{$lang_quote}></a>
+                                        <a href="post.php?tid=<{$topic.id}>&amp;quote=<{$post.id}>&amp;pid=<{$post.id}>"><span class="fa fa-quote-left"></span> <{$lang_quote}></a>
                                     </li>
                                 <{/if}>
                                 <{if $post.edit || !$post.approved && $post.canedit}>
@@ -222,4 +222,4 @@
     </div>
 </div>
 <input type="hidden" id="bxpress-token" value="<{$bxpress_token}>">
-<{include file="db:system_notification_select.html"}>
+<{$notifications}>

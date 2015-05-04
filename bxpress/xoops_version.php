@@ -61,10 +61,11 @@ $modversion = array(
 
     // Common Utilities
     'rmnative'      => 1,
+    'url'           => 'https://github.com/bitcero/bxpress',
     'rmversion'     => array(
         'major'     => 1,
         'minor'     => 2,
-        'revision'  => 15,
+        'revision'  => 18,
         'stage'     => -1,
         'name'      => 'bXpress'
     ),
@@ -74,7 +75,7 @@ $modversion = array(
 
     // Author information
     'author'        => "Eduardo Cortes",
-    'authormail'    => "yo@eduardocortes.mx",
+    'authormail'    => "i.bitcero@gmail.com",
     'authorweb'     => "EduardoCortes.mx",
     'authorurl'     => "http://eduardocortes.mx",
     'credits'       => "Eduardo Cortes",
@@ -516,7 +517,7 @@ $modversion['blocks'] = array(
     array(
         'file'          => 'bxpress-topics.php',
         'name'          => __('Forum topics list', 'bxpress'),
-        'description'   => __('Show a list with topis in forum according to configured options', 'bxpress'),
+        'description'   => __('Show a list with topics in forum according to configured options', 'bxpress'),
         'show_func'     => 'bxpress_block_topics_show',
         'edit_func'     => 'bxpress_block_topics_edit',
         'template'      => 'block-bxpress-topics.tpl',
