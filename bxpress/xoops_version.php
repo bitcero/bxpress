@@ -153,7 +153,8 @@ $modversion = array(
         'mod_bxpress_posts',
         'mod_bxpress_posts_text',
         'mod_bxpress_report',
-        'mod_bxpress_topics'
+        'mod_bxpress_topics',
+        'mod_bxpress_likes'
     ),
 
     // Smarty templates

@@ -56,8 +56,7 @@ CREATE TABLE `mod_bxpress_forums` (
   `attach_ext` text NOT NULL,
   `subforums` int(10) NOT NULL default '0',
   `permissions` text NOT NULL,
-  PRIMARY KEY  (`id_forum`),
-  UNIQUE KEY `friendname` (`friendname`)
+  PRIMARY KEY  (`id_forum`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `mod_bxpress_likes` (
