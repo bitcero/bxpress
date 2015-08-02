@@ -65,7 +65,7 @@ $modversion = array(
     'rmversion'     => array(
         'major'     => 1,
         'minor'     => 2,
-        'revision'  => 18,
+        'revision'  => 19,
         'stage'     => -1,
         'name'      => 'bXpress'
     ),
@@ -449,68 +449,6 @@ $modversion['config'][] = array(
     'valuetype' => 'int',
     'default' => '0'
 );
-
-// Notificaciones
-$modversion['hasNotification'] = 1;
-$modversion['notification']['lookup_file'] = 'include/notification.php';
-$modversion['notification']['lookup_func'] = 'bxNotifications';
-
-$modversion['notification']['category'][1]['name'] = 'forum';
-$modversion['notification']['category'][1]['title'] = __('Forums','bxpress');
-$modversion['notification']['category'][1]['description'] = __('Notifications related to forums','bxpress');
-$modversion['notification']['category'][1]['subscribe_from'] = 'forum.php';
-$modversion['notification']['category'][1]['item_name'] = 'id';
-$modversion['notification']['category'][1]['allow_bookmark'] = 1;
-
-$modversion['notification']['category'][2]['name'] = 'topic';
-$modversion['notification']['category'][2]['title'] = __('Topics','bxpress');
-$modversion['notification']['category'][2]['description'] = __('Notifications related to topics','bxpress');
-$modversion['notification']['category'][2]['subscribe_from'] = 'topic.php';
-$modversion['notification']['category'][2]['item_name'] = 'id';
-$modversion['notification']['category'][2]['allow_bookmark'] = 1;
-
-$modversion['notification']['category'][3]['name'] = 'any_forum';
-$modversion['notification']['category'][3]['title'] = __('All forums','bxpress');
-$modversion['notification']['category'][3]['description'] = __('Notifications related to all forums','bxpress');
-$modversion['notification']['category'][3]['subscribe_from'] = 'index.php';
-$modversion['notification']['category'][3]['item_name'] = '';
-$modversion['notification']['category'][3]['allow_bookmark'] = 1;
-
-$modversion['notification']['event'][1]['name'] = 'newtopic';
-$modversion['notification']['event'][1]['category'] = 'forum';
-$modversion['notification']['event'][1]['title'] = __('New Added Topic','bxpress');
-$modversion['notification']['event'][1]['caption'] = __('Notify when a new topic is created in this forum','bxpress');
-$modversion['notification']['event'][1]['description'] = __('Sends a notification when a new topic is created in a given forum.','bxpress');
-$modversion['notification']['event'][1]['mail_template_dir'] = XOOPS_ROOT_PATH.'/modules/bxpress/lang/'.RMCLANG;
-$modversion['notification']['event'][1]['mail_template'] = 'new_topic';
-$modversion['notification']['event'][1]['mail_subject'] = __('New Topic Added','bxpress');
-
-$modversion['notification']['event'][2]['name'] = 'newpost';
-$modversion['notification']['event'][2]['category'] = 'topic';
-$modversion['notification']['event'][2]['title'] = __('New Post sent','bxpress');
-$modversion['notification']['event'][2]['caption'] = __('Notify when a new post is sent in this topic','bxpress');
-$modversion['notification']['event'][2]['description'] = __('Send a notification when a new post is sent on a topic','bxpress');
-$modversion['notification']['event'][2]['mail_template_dir'] = XOOPS_ROOT_PATH.'/modules/bxpress/lang/'.RMCLANG;
-$modversion['notification']['event'][2]['mail_template'] = 'new_post';
-$modversion['notification']['event'][2]['mail_subject'] = __('A new post has been sent','bxpress');
-
-$modversion['notification']['event'][3]['name'] = 'postanyforum';
-$modversion['notification']['event'][3]['category'] = 'any_forum';
-$modversion['notification']['event'][3]['title'] = __('New post in any forum','bxpress');
-$modversion['notification']['event'][3]['caption'] = __('Notify when a new topic is sent in any forum','bxpress');
-$modversion['notification']['event'][3]['description'] = __('Send a notification when a new topic is sent in any forum','bxpress');
-$modversion['notification']['event'][3]['mail_template_dir'] = XOOPS_ROOT_PATH.'/modules/bxpress/lang/'.RMCLANG;
-$modversion['notification']['event'][3]['mail_template'] = 'new_postanyforum';
-$modversion['notification']['event'][3]['mail_subject'] = __('New topic sent','bxpress');
-
-$modversion['notification']['event'][4]['name'] = 'postforum';
-$modversion['notification']['event'][4]['category'] = 'forum';
-$modversion['notification']['event'][4]['title'] = __('New topic in forum','bxpress');
-$modversion['notification']['event'][4]['caption'] = __('Notify when a new topic is sent in this forum','bxpress');
-$modversion['notification']['event'][4]['description'] = __('Sent a notification when a new topic is sent to this forum','bxpress');
-$modversion['notification']['event'][4]['mail_template_dir'] = XOOPS_ROOT_PATH.'/modules/bxpress/lang/'.RMCLANG;
-$modversion['notification']['event'][4]['mail_template'] = 'new_postforum';
-$modversion['notification']['event'][4]['mail_subject'] = __('New topic sent','bxpress');
 
 // Bloque Recientes
 $modversion['blocks'] = array(

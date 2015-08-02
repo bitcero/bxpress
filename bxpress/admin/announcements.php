@@ -39,19 +39,19 @@ function showAnnounces(){
     
     $announcements = RMEvents::get()->run_event('bxpress.announcements.list', $announcements);
 	
-    RMTemplate::get()->add_help(array(
-        'caption'   => __('Announcements Help', 'bxpress' ),
-        'link'      => 'http://www.redmexico.com.mx/docs/bxpress-forums/anuncios/standalone/1/'
-    ));
+    RMTemplate::get()->add_help(
+		__('Announcements Help', 'bxpress' ),
+        'http://www.redmexico.com.mx/docs/bxpress-forums/anuncios/standalone/1/'
+    );
 
     $bc = RMBreadCrumb::get();
     $bc->add_crumb( __('Announcements Management','bxpress') );
 
     xoops_cp_header();
 
-    RMTemplate::get()->add_local_script('jquery.checkboxes.js','rmcommon','include');
+    RMTemplate::get()->add_script('jquery.checkboxes.js','rmcommon',array('directory' => 'include'));
     RMTemplate::get()->add_style('admin.css', 'bxpress');
-    RMTemplate::get()->add_local_script('admin.js','bxpress');
+    RMTemplate::get()->add_script('admin.js','bxpress');
     include RMTemplate::get()->get_template("admin/forums-announcements.php", 'module', 'bxpress');
 
 	xoops_cp_footer();
