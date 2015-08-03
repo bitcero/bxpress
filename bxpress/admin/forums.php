@@ -75,6 +75,15 @@ function bx_show_forums(){
 */
 function bx_show_form($edit = 0){
     global $xoopsModule, $xoopsConfig;
+
+    if( !RMfunctions::plugin_installed('advform') ){
+        RMUris::redirect_with_message(
+            sprintf(
+                __('<a href="%s">AdvancedForms</a> must be installed before to create any forum. Please download and install it.', 'bxpress'),
+                'https://github.com/bitcero/advform'
+            ), 'forums.php', RMMSG_ERROR
+        );
+    }
     
     if ($edit){
         $id = RMHttpRequest::request( 'id', 'integer', 0 );
@@ -354,7 +363,7 @@ function bx_moderators(){
 	
 	if ($id<=0){
 		redirectMsg('forums.php', __('No forum ID has been provided!','bxpress'), 1);
-		break;
+		die();
 	}
 	
 	$forum = new bXForum($id);

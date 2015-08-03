@@ -41,7 +41,7 @@ function showAnnounces(){
 	
     RMTemplate::get()->add_help(
 		__('Announcements Help', 'bxpress' ),
-        'http://www.redmexico.com.mx/docs/bxpress-forums/anuncios/standalone/1/'
+        '#'
     );
 
     $bc = RMBreadCrumb::get();
