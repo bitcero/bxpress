@@ -119,7 +119,7 @@ unset($post,$pt,$topic,$result,$row,$sql,$tbl1,$tbl2,$tbl3);
 
 RMTemplate::get()->add_style('dashboard.css', 'bxpress');
 RMTemplate::get()->add_script('dashboard.js', 'bxpress');
-RMTemplate::get()->add_help('Ayuda de bXpress', 'http://www.xoopsmexico.net/docs/bxpress-forums/dashboard/standalone/1/');
+RMTemplate::get()->add_help('Ayuda de bXpress', 'http://www.xoopsmexico.net/docs/bitcero/bxpress-forums/standalone/1/');
 
 // Activity
 // 30 Days
