@@ -65,7 +65,7 @@ $modversion = array(
     'rmversion'     => array(
         'major'     => 1,
         'minor'     => 2,
-        'revision'  => 23,
+        'revision'  => 28,
         'stage'     => -1,
         'name'      => 'bXpress'
     ),
@@ -82,10 +82,7 @@ $modversion = array(
 
     // Logo and icons
     'image'         => "images/logo.png",
-    'icon16'        => "images/forum-16.png",
-    'icon24'        => 'images/forum-24.png',
-    'icon32'        => 'images/forum-32.png',
-    'icon48'        => "images/forum-48.png",
+    'icon'          => "svg-rmcommon-bubbles text-danger",
 
     // Social
     'social'        => array(

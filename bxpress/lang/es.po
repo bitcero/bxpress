@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bXpress Forum\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-03 22:05-0600\n"
-"PO-Revision-Date: 2015-05-03 22:14-0600\n"
+"POT-Creation-Date: 2016-01-04 17:29-0600\n"
+"PO-Revision-Date: 2016-01-04 17:31-0600\n"
 "Last-Translator: Eduardo Cortés <me@eduardocortes.mx>\n"
 "Language-Team: Red Mexico <i.bitcero@gmail.com>\n"
 "Language: es\n"
@@ -11,76 +11,68 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _e;__\n"
-"X-Poedit-Basepath: .\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.7.6\n"
-"X-Poedit-SearchPath-0: Y:\\modules\\bxpress\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: Y:\modules\bxpress/admin/announcements.php:43
+#: admin/announcements.php:43
 msgid "Announcements Help"
 msgstr "Ayuda para anuncios"
 
-#: Y:\modules\bxpress/admin/announcements.php:48
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:4
+#: admin/announcements.php:48 templates/admin/forums-announcements.php:4
 msgid "Announcements Management"
 msgstr "Administración de Anuncios"
 
-#: Y:\modules\bxpress/admin/announcements.php:70
-#: Y:\modules\bxpress/admin/announcements.php:165
-#: Y:\modules\bxpress/admin/forums.php:82
+#: admin/announcements.php:70 admin/announcements.php:165 admin/forums.php:91
 msgid "Provided ID is not valid!"
 msgstr "¡El ID proporcionado no es válido!"
 
-#: Y:\modules\bxpress/admin/announcements.php:76
+#: admin/announcements.php:76
 msgid "Specified announcement does not exists!"
 msgstr "¡El anuncio especificaco no existe!"
 
-#: Y:\modules\bxpress/admin/announcements.php:84
-#: Y:\modules\bxpress/admin/menu.php:34
-#: Y:\modules\bxpress/templates/admin/forums-index.php:77
+#: admin/announcements.php:84 admin/menu.php:34
+#: templates/admin/forums-index.php:80
 msgid "Announcements"
 msgstr "Anuncios"
 
-#: Y:\modules\bxpress/admin/announcements.php:85
-#: Y:\modules\bxpress/admin/announcements.php:89
+#: admin/announcements.php:85 admin/announcements.php:89
 msgid "Edit Announcement"
 msgstr "Editar Anuncio"
 
-#: Y:\modules\bxpress/admin/announcements.php:85
-#: Y:\modules\bxpress/admin/announcements.php:89
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:19
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:79
+#: admin/announcements.php:85 admin/announcements.php:89
+#: templates/admin/forums-announcements.php:19
+#: templates/admin/forums-announcements.php:88
 msgid "New Announcement"
 msgstr "Nuevo Anuncio"
 
-#: Y:\modules\bxpress/admin/announcements.php:91
+#: admin/announcements.php:91
 msgid "Text"
 msgstr "Texto"
 
-#: Y:\modules\bxpress/admin/announcements.php:94
+#: admin/announcements.php:94
 msgid "Expire on"
 msgstr "Expira el"
 
-#: Y:\modules\bxpress/admin/announcements.php:97
+#: admin/announcements.php:97
 msgid "Show on"
 msgstr "Mostrar en"
 
-#: Y:\modules\bxpress/admin/announcements.php:98
+#: admin/announcements.php:98
 msgid "Module home page"
 msgstr "Página inicial del módulo"
 
-#: Y:\modules\bxpress/admin/announcements.php:99
-#: Y:\modules\bxpress/admin/announcements.php:104
-#: Y:\modules\bxpress/admin/header.php:28 Y:\modules\bxpress/index.php:122
-#: Y:\modules\bxpress/moderate.php:238 Y:\modules\bxpress/search.php:201
+#: admin/announcements.php:99 admin/announcements.php:104 admin/header.php:28
+#: index.php:122 moderate.php:238 search.php:201
 msgid "Forum"
 msgstr "Foro"
 
-#: Y:\modules\bxpress/admin/announcements.php:100
+#: admin/announcements.php:100
 msgid "All module"
 msgstr "Todo el módulo"
 
-#: Y:\modules\bxpress/admin/announcements.php:105
+#: admin/announcements.php:105
 msgid ""
 "Please select the forum where this announcement will be shown. This option "
 "only is valid when \"In Forum\" has been selected."
@@ -88,330 +80,304 @@ msgstr ""
 "Por favor selecciona el foro donde el anuncio deberá ser mostrado. Esta "
 "opción solo es válida cuando \"En Foro\" ha sido seleccionado."
 
-#: Y:\modules\bxpress/admin/announcements.php:131
-#: Y:\modules\bxpress/admin/forums.php:144 Y:\modules\bxpress/edit.php:213
+#: admin/announcements.php:131 admin/forums.php:153 edit.php:213
 msgid "Save Changes"
 msgstr "Guardar Cambios"
 
-#: Y:\modules\bxpress/admin/announcements.php:131
+#: admin/announcements.php:131
 msgid "Create Announcement"
 msgstr "Crear Anuncio"
 
-#: Y:\modules\bxpress/admin/announcements.php:132
-#: Y:\modules\bxpress/admin/categories.php:96
-#: Y:\modules\bxpress/admin/forums.php:145
-#: Y:\modules\bxpress/admin/forums.php:379
-#: Y:\modules\bxpress/admin/prune.php:60 Y:\modules\bxpress/delete.php:74
-#: Y:\modules\bxpress/delete.php:92 Y:\modules\bxpress/edit.php:237
-#: Y:\modules\bxpress/moderate.php:267 Y:\modules\bxpress/post.php:287
+#: admin/announcements.php:132 admin/categories.php:96 admin/forums.php:154
+#: admin/forums.php:388 admin/prune.php:60 delete.php:74 delete.php:92
+#: edit.php:237 moderate.php:267 post.php:287
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: Y:\modules\bxpress/admin/announcements.php:158
-#: Y:\modules\bxpress/admin/announcements.php:210
-#: Y:\modules\bxpress/admin/categories.php:123
-#: Y:\modules\bxpress/admin/categories.php:198
-#: Y:\modules\bxpress/admin/categories.php:247
-#: Y:\modules\bxpress/admin/forums.php:318
-#: Y:\modules\bxpress/admin/forums.php:402
-#: Y:\modules\bxpress/admin/prune.php:84
-#: Y:\modules\bxpress/admin/reports.php:94
-#: Y:\modules\bxpress/admin/reports.php:129 Y:\modules\bxpress/delete.php:46
-#: Y:\modules\bxpress/edit.php:52 Y:\modules\bxpress/edit.php:98
-#: Y:\modules\bxpress/edit.php:127 Y:\modules\bxpress/moderate.php:154
-#: Y:\modules\bxpress/moderate.php:313 Y:\modules\bxpress/moderate.php:358
-#: Y:\modules\bxpress/moderate.php:408 Y:\modules\bxpress/moderate.php:465
-#: Y:\modules\bxpress/post.php:65 Y:\modules\bxpress/report.php:75
+#: admin/announcements.php:158 admin/announcements.php:210
+#: admin/categories.php:123 admin/categories.php:198 admin/categories.php:247
+#: admin/forums.php:327 admin/forums.php:411 admin/prune.php:84
+#: admin/reports.php:94 admin/reports.php:129 delete.php:46 edit.php:52
+#: edit.php:98 edit.php:127 moderate.php:154 moderate.php:313 moderate.php:358
+#: moderate.php:408 moderate.php:465 post.php:65 report.php:75
 msgid "Session token expired!"
 msgstr "¡Identificador de sesión no válido!"
 
-#: Y:\modules\bxpress/admin/announcements.php:171
+#: admin/announcements.php:171
 msgid "Specified announcement does no exists!"
 msgstr "¡El anuncio especificaco no existe!"
 
-#: Y:\modules\bxpress/admin/announcements.php:179
+#: admin/announcements.php:179
 msgid "The expiration time can not be minor than current time!"
 msgstr "¡El tiempo de expiración no puede ser anterior al tiempo actual!"
 
-#: Y:\modules\bxpress/admin/announcements.php:195
+#: admin/announcements.php:195
 msgid "Announcement saved successfully!"
 msgstr "¡Anuncio almacenado correctamente!"
 
-#: Y:\modules\bxpress/admin/announcements.php:198
+#: admin/announcements.php:198
 msgid "Announcement could not be saved!"
 msgstr "¡El anuncio no pudo ser almacenado!"
 
-#: Y:\modules\bxpress/admin/announcements.php:217
+#: admin/announcements.php:217
 msgid "You must select at least one announcement to delete!"
 msgstr "¡Debes seleccionar al menos un anuncio para eliminar!"
 
-#: Y:\modules\bxpress/admin/announcements.php:226
+#: admin/announcements.php:226
 msgid "Announcements deleted successfully!"
 msgstr "¡Anuncios eliminados correctamente!"
 
-#: Y:\modules\bxpress/admin/announcements.php:228
+#: admin/announcements.php:228
 msgid "Errors ocurred while trying to delete announcements."
 msgstr "Ocurrieron errores mientras se intentaba eliminar los anuncios."
 
-#: Y:\modules\bxpress/admin/categories.php:40
-#: Y:\modules\bxpress/admin/categories.php:45
-#: Y:\modules\bxpress/admin/categories.php:79
-#: Y:\modules\bxpress/admin/menu.php:19
-#: Y:\modules\bxpress/templates/admin/forums-index.php:45
+#: admin/categories.php:40 admin/categories.php:45 admin/categories.php:79
+#: admin/menu.php:19 templates/admin/forums-index.php:48
 msgid "Categories"
 msgstr "Categorías"
 
-#: Y:\modules\bxpress/admin/categories.php:47
+#: admin/categories.php:47
 msgid "You must select a category at least in order to run this action!"
 msgstr ""
 "¡Debes seleccionar al menos una categoría para poder ejecutar esta acción!"
 
-#: Y:\modules\bxpress/admin/categories.php:48
+#: admin/categories.php:48
 msgid ""
 "Do you really want to delete selected categories?\\n\\nAll forums under this "
 "category will be deleted also!"
 msgstr "¿Realmente deseas eliminar las categorías seleccionadas?\\n\\n"
 
-#: Y:\modules\bxpress/admin/categories.php:67
+#: admin/categories.php:67
 msgid "You had not provided a category ID"
 msgstr "No has proporcionado un ID de categoría"
 
-#: Y:\modules\bxpress/admin/categories.php:73
-#: Y:\modules\bxpress/admin/categories.php:141
+#: admin/categories.php:73 admin/categories.php:141
 msgid "Specified category does not exists!"
 msgstr "¡La categorías especificada no existe!"
 
-#: Y:\modules\bxpress/admin/categories.php:80
+#: admin/categories.php:80
 msgid "Edit category"
 msgstr "Editar categoría"
 
-#: Y:\modules\bxpress/admin/categories.php:83
+#: admin/categories.php:83
 msgid "Edit Category"
 msgstr "Editar Categoría"
 
-#: Y:\modules\bxpress/admin/categories.php:83
+#: admin/categories.php:83
 msgid "New Category"
 msgstr "Nueva Categoría"
 
-#: Y:\modules\bxpress/admin/categories.php:84
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:9
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:65
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:76
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:24
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:39
+#: admin/categories.php:84 templates/admin/forums-categories.php:13
+#: templates/admin/forums-categories.php:72
+#: templates/admin/forums-categories.php:83
+#: templates/admin/forums-forums.php:32 templates/admin/forums-forums.php:47
 msgid "Name"
 msgstr "Nombre"
 
-#: Y:\modules\bxpress/admin/categories.php:86
+#: admin/categories.php:86
 msgid "Short name"
 msgstr "Nombre corto"
 
-#: Y:\modules\bxpress/admin/categories.php:88
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:14
+#: admin/categories.php:88 templates/admin/forums-categories.php:18
 msgid "Description"
 msgstr "Descripción"
 
-#: Y:\modules\bxpress/admin/categories.php:89
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:26
+#: admin/categories.php:89 templates/admin/forums-categories.php:30
 msgid "Show description"
 msgstr "Mostrar descripción"
 
-#: Y:\modules\bxpress/admin/categories.php:90
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:50
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:113
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:8
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:82
+#: admin/categories.php:90 templates/admin/forums-categories.php:56
+#: templates/admin/forums-categories.php:121
+#: templates/admin/forums-forums.php:8 templates/admin/forums-forums.php:93
 msgid "Activate"
 msgstr "Activar"
 
-#: Y:\modules\bxpress/admin/categories.php:91
+#: admin/categories.php:91
 msgid "Groups"
 msgstr "Grupos"
 
-#: Y:\modules\bxpress/admin/categories.php:95
+#: admin/categories.php:95
 msgid "Submit"
 msgstr "Enviar"
 
-#: Y:\modules\bxpress/admin/categories.php:128
+#: admin/categories.php:128
 msgid "Please provide a name for this category!"
 msgstr "¡Por favor proporciona un nombre para esta categoría!"
 
-#: Y:\modules\bxpress/admin/categories.php:135
+#: admin/categories.php:135
 msgid "The specified category ID is not valid!"
 msgstr "¡No es válido el ID de categoría especificado!"
 
-#: Y:\modules\bxpress/admin/categories.php:148
+#: admin/categories.php:148
 msgid "Already exists a category with same name!"
 msgstr "¡Ya existe una categoría con el mismo nombre!"
 
-#: Y:\modules\bxpress/admin/categories.php:163
+#: admin/categories.php:163
 msgid "Already exist a category with the same short name!"
 msgstr "¡Ya existe una categoría con el mismo nombre corto!"
 
-#: Y:\modules\bxpress/admin/categories.php:175
+#: admin/categories.php:175
 msgid "Category saved succesfully!"
 msgstr "¡Categoría almacenada satisfactoriamente!"
 
-#: Y:\modules\bxpress/admin/categories.php:177
+#: admin/categories.php:177
 msgid "Category could not be saved!"
 msgstr "¡No se pudo almacenar la categoría!"
 
-#: Y:\modules\bxpress/admin/categories.php:193
-#: Y:\modules\bxpress/admin/categories.php:242
+#: admin/categories.php:193 admin/categories.php:242
 msgid "You must select at least one category"
 msgstr "Debes seleccionar al menos una categoría"
 
-#: Y:\modules\bxpress/admin/categories.php:206
-#: Y:\modules\bxpress/admin/categories.php:257
+#: admin/categories.php:206 admin/categories.php:257
 #, php-format
 msgid "Category ID %s is not valid!"
 msgstr "¡El ID de categoría %s no es válido!"
 
-#: Y:\modules\bxpress/admin/categories.php:213
+#: admin/categories.php:213
 #, php-format
 msgid "Category with id %s does not exists!"
 msgstr "¡La categoría con ID %s no existe!"
 
-#: Y:\modules\bxpress/admin/categories.php:218
+#: admin/categories.php:218
 #, php-format
 msgid "Category %s could not be deleted!"
 msgstr "¡No se pudo eliminar la categoría %s!"
 
-#: Y:\modules\bxpress/admin/categories.php:223
+#: admin/categories.php:223
 msgid "There was errors during this operation"
 msgstr "Ocurrieron errores durante esta operación"
 
-#: Y:\modules\bxpress/admin/categories.php:226
+#: admin/categories.php:226
 msgid "Categories deleted successfully!"
 msgstr "¡Categorías eliminadas correctamente!"
 
-#: Y:\modules\bxpress/admin/categories.php:274
+#: admin/categories.php:274
 msgid "Errors ocurred while trying to change status"
 msgstr "Ocurrieron errores al intentar cambiar el estado"
 
-#: Y:\modules\bxpress/admin/categories.php:277
-#: Y:\modules\bxpress/admin/categories.php:322
-#: Y:\modules\bxpress/admin/forums.php:305
-#: Y:\modules\bxpress/admin/reports.php:106
+#: admin/categories.php:277 admin/categories.php:322 admin/forums.php:314
+#: admin/reports.php:106
 msgid "Database updated successfully!"
 msgstr "¡Base de datos actualizada correctamente!"
 
-#: Y:\modules\bxpress/admin/categories.php:294
+#: admin/categories.php:294
 msgid "Token session expired. Try again."
 msgstr "Expiró el identificador de sesión. Inténtelo nuevamente."
 
-#: Y:\modules\bxpress/admin/categories.php:302
+#: admin/categories.php:302
 #, php-format
 msgid "Category ID is not valid: %s"
 msgstr "¡El ID de categoría %s no es válido!"
 
-#: Y:\modules\bxpress/admin/categories.php:308
+#: admin/categories.php:308
 #, php-format
 msgid "Category with ID %u does not exists."
 msgstr "¡La categoría con ID %u no existe!"
 
-#: Y:\modules\bxpress/admin/categories.php:315
+#: admin/categories.php:315
 #, php-format
 msgid "Category %s could not be saved."
 msgstr "La categoría %s no pudo ser guardada."
 
-#: Y:\modules\bxpress/admin/categories.php:320
+#: admin/categories.php:320
 msgid "Errors ocurred while trying to update categories order"
 msgstr "Ocurrieron errores al intentar actualizar el orden de los categorías"
 
-#: Y:\modules\bxpress/admin/forums.php:58 Y:\modules\bxpress/admin/menu.php:26
-#: Y:\modules\bxpress/templates/admin/forums-index.php:53
-#: Y:\modules\bxpress/xoops_version.php:458
-#: Y:\modules\bxpress/xoops_version.php:573
+#: admin/forums.php:58 admin/menu.php:26 templates/admin/forums-index.php:56
+#: xoops_version.php:509
 msgid "Forums"
 msgstr "Foros"
 
-#: Y:\modules\bxpress/admin/forums.php:61
+#: admin/forums.php:61
 msgid "Forums Help"
 msgstr "Ayuda de Foros"
 
-#: Y:\modules\bxpress/admin/forums.php:63
+#: admin/forums.php:63
 msgid "You must select one forum at least in order to run this action!"
 msgstr "¡Debes seleccionar al menos un foro para poder ejecutar esta acción!"
 
-#: Y:\modules\bxpress/admin/forums.php:64
+#: admin/forums.php:64
 msgid ""
 "Do you really want to delete selected forums?\\n\\nAll posts sent in this "
 "forum will be deleted also!"
 msgstr "¿Realmente deseas eliminar los foros seleccionados?\\n\\n"
 
-#: Y:\modules\bxpress/admin/forums.php:88
-#: Y:\modules\bxpress/admin/forums.php:190
-#: Y:\modules\bxpress/admin/forums.php:362 Y:\modules\bxpress/forum.php:26
-#: Y:\modules\bxpress/moderate.php:165 Y:\modules\bxpress/post.php:41
+#: admin/forums.php:82
+#, php-format
+msgid ""
+"<a href=\"%s\">AdvancedForms</a> must be installed before to create any "
+"forum. Please download and install it."
+msgstr ""
+"<a href=\"%s\">AdvancedForms</a> debe instalarse antes de crear cualquier "
+"foro."
+
+#: admin/forums.php:97 admin/forums.php:199 admin/forums.php:371 forum.php:26
+#: moderate.php:165 post.php:41
 msgid "Specified forum does not exists!"
 msgstr "¡El foro especificado no existe!"
 
-#: Y:\modules\bxpress/admin/forums.php:95
-#: Y:\modules\bxpress/admin/forums.php:101
+#: admin/forums.php:104 admin/forums.php:110
 msgid "Edit Forum"
 msgstr "Editar Foro"
 
-#: Y:\modules\bxpress/admin/forums.php:95
-#: Y:\modules\bxpress/admin/forums.php:101
+#: admin/forums.php:104 admin/forums.php:110
 msgid "New Forum"
 msgstr "Nuevo Foro"
 
-#: Y:\modules\bxpress/admin/forums.php:103
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:27
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:42
+#: admin/forums.php:112 templates/admin/forums-forums.php:35
+#: templates/admin/forums-forums.php:50
 msgid "Category"
 msgstr "Categoría"
 
-#: Y:\modules\bxpress/admin/forums.php:104
+#: admin/forums.php:113
 msgid "Select category..."
 msgstr "Selecciona una categoría..."
 
-#: Y:\modules\bxpress/admin/forums.php:108
+#: admin/forums.php:117
 msgid "Forum name"
 msgstr "Nombre del foro"
 
-#: Y:\modules\bxpress/admin/forums.php:110
+#: admin/forums.php:119
 msgid "Forum description"
 msgstr "Descripción del foro"
 
-#: Y:\modules\bxpress/admin/forums.php:112
+#: admin/forums.php:121
 msgid "Forum image"
 msgstr "Imagen del foro"
 
-#: Y:\modules\bxpress/admin/forums.php:115
+#: admin/forums.php:124
 msgid "Activate forum"
 msgstr "Activar foro"
 
-#: Y:\modules\bxpress/admin/forums.php:117
+#: admin/forums.php:126
 msgid "Allow signatures in the posts"
 msgstr "Permitir firmas en los mensajes"
 
-#: Y:\modules\bxpress/admin/forums.php:119
+#: admin/forums.php:128
 msgid "Answers to match a topic as popular"
 msgstr "Número de respuestas para marcar un tema como popular"
 
-#: Y:\modules\bxpress/admin/forums.php:121
+#: admin/forums.php:130
 msgid "Order in the list"
 msgstr "Orden en la lista"
 
-#: Y:\modules\bxpress/admin/forums.php:123
+#: admin/forums.php:132
 msgid "Allow attachments"
 msgstr "Permitir adjuntos"
 
-#: Y:\modules\bxpress/admin/forums.php:124
+#: admin/forums.php:133
 msgid "Maximum attachments file size"
 msgstr "Tamaño máximo del adjunto"
 
-#: Y:\modules\bxpress/admin/forums.php:125
+#: admin/forums.php:134
 msgid "Specify this value in Kilobytes"
 msgstr "Especifica este valor en kilobytes"
 
-#: Y:\modules\bxpress/admin/forums.php:127
+#: admin/forums.php:136
 msgid "Allowed file types"
 msgstr "Tipos de archivos permitidos"
 
-#: Y:\modules\bxpress/admin/forums.php:128
+#: admin/forums.php:137
 msgid ""
 "Specified the extensions of allowed file types separating each one with \"|"
 "\" and without the dot."
@@ -419,250 +385,252 @@ msgstr ""
 "Especifica las extensiones para los tipos de archivos permitidos y separa "
 "cada una con \"|\". Recuerda que no debes incluir el punto en la extensión."
 
-#: Y:\modules\bxpress/admin/forums.php:134
+#: admin/forums.php:143
 msgid "Can view the forum"
 msgstr "Pueden ver el foro"
 
-#: Y:\modules\bxpress/admin/forums.php:135
+#: admin/forums.php:144
 msgid "Can start new topics"
 msgstr "Pueden iniciar nuevos temas"
 
-#: Y:\modules\bxpress/admin/forums.php:136
+#: admin/forums.php:145
 msgid "Can answer"
 msgstr "Puden responder"
 
-#: Y:\modules\bxpress/admin/forums.php:137
+#: admin/forums.php:146
 msgid "Can edit their posts"
 msgstr "Pueden editar sus mensajes"
 
-#: Y:\modules\bxpress/admin/forums.php:138
+#: admin/forums.php:147
 msgid "Can delete"
 msgstr "Pueden eliminar"
 
-#: Y:\modules\bxpress/admin/forums.php:139
+#: admin/forums.php:148
 msgid "Can vote"
 msgstr "Pueden votar"
 
-#: Y:\modules\bxpress/admin/forums.php:140
+#: admin/forums.php:149
 msgid "Can attach"
 msgstr "Pueden adjuntar"
 
-#: Y:\modules\bxpress/admin/forums.php:141
+#: admin/forums.php:150
 msgid "Can send without approval"
 msgstr "Pueden enviar sin aprobación"
 
-#: Y:\modules\bxpress/admin/forums.php:144
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:14
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:87
+#: admin/forums.php:153 templates/admin/forums-forums.php:14
+#: templates/admin/forums-forums.php:98
 msgid "Create Forum"
 msgstr "Crear Foro"
 
-#: Y:\modules\bxpress/admin/forums.php:176
+#: admin/forums.php:185
 msgid "Session token expired"
 msgstr "¡Identificador de sesión no válido!"
 
-#: Y:\modules\bxpress/admin/forums.php:184
+#: admin/forums.php:193
 msgid "Specified id is not valid!"
 msgstr "¡El id especificado no es válido!"
 
-#: Y:\modules\bxpress/admin/forums.php:228
+#: admin/forums.php:237
 #, php-format
 msgid "Another forum with name \"%s\" already exists in this category."
 msgstr "Ya existe otro foro con el nombre \"%s\" en esta categoría."
 
-#: Y:\modules\bxpress/admin/forums.php:242
+#: admin/forums.php:251
 msgid "Forum saved successfully! Redirecting to moderators assignment..."
 msgstr ""
 "¡El foro se almacenó correctamente! Redireccionando a la asignación de "
 "moderadores..."
 
-#: Y:\modules\bxpress/admin/forums.php:244
+#: admin/forums.php:253
 msgid "Changes saved successfully!"
 msgstr "¡Cambios almacenados correctamente!"
 
-#: Y:\modules\bxpress/admin/forums.php:247
+#: admin/forums.php:256
 msgid "Forum could not be saved!"
 msgstr "¡El foro no pudo ser almacenado!"
 
-#: Y:\modules\bxpress/admin/forums.php:291
+#: admin/forums.php:300
 msgid "Session token expired! Try again."
 msgstr "El identificador de sesión ha caducado. Vuelva a intentarlo."
 
-#: Y:\modules\bxpress/admin/forums.php:296
+#: admin/forums.php:305
 msgid "No forum has been selected."
 msgstr "No se ha seleccionado ningún foro."
 
-#: Y:\modules\bxpress/admin/forums.php:327
+#: admin/forums.php:336
 #, php-format
 msgid "Forum with id \"%u\" does not exists!"
 msgstr "¡El foro con el ID \"%u\" no existe!"
 
-#: Y:\modules\bxpress/admin/forums.php:333
+#: admin/forums.php:342
 #, php-format
 msgid "Forum \"%s\" could not be deleted!"
 msgstr "¡No pudo ser eliminado el foro \"%s\"!"
 
-#: Y:\modules\bxpress/admin/forums.php:339
+#: admin/forums.php:348
 msgid "Errors ocurred while trying to delete forums:"
 msgstr "Ocurrieron errores al intentar eliminar los foros:"
 
-#: Y:\modules\bxpress/admin/forums.php:341
+#: admin/forums.php:350
 msgid "Forums deleted without errors"
 msgstr "Foros eliminados correctamente"
 
-#: Y:\modules\bxpress/admin/forums.php:356
+#: admin/forums.php:365
 msgid "No forum ID has been provided!"
 msgstr "¡No se proporciono un ID de foro!"
 
-#: Y:\modules\bxpress/admin/forums.php:371
+#: admin/forums.php:380
 #, php-format
 msgid "Forum \"%s\" Moderators"
 msgstr "Moderadores del Foro \"%s\""
 
-#: Y:\modules\bxpress/admin/forums.php:373
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:65
+#: admin/forums.php:382 templates/admin/forums-forums.php:73
 msgid "Moderators"
 msgstr "Moderadores"
 
-#: Y:\modules\bxpress/admin/forums.php:374
+#: admin/forums.php:383
 msgid "Choose from the list the moderators users"
 msgstr "Seleccione de la lista de usuarios a los moderadores del foro"
 
-#: Y:\modules\bxpress/admin/forums.php:378
+#: admin/forums.php:387
 msgid "Save Moderators"
 msgstr "Guardar Moderadores"
 
-#: Y:\modules\bxpress/admin/forums.php:389
+#: admin/forums.php:398
 msgid "forum Moderators"
 msgstr "Moderadores del foro"
 
-#: Y:\modules\bxpress/admin/forums.php:412
+#: admin/forums.php:421
 msgid "A forum ID has not been provided!"
 msgstr "¡No se porporcionó un ID del foro!"
 
-#: Y:\modules\bxpress/admin/forums.php:419
+#: admin/forums.php:428
 msgid "Sepecified forum does not exists!"
 msgstr "¡El foro especificado no existe!"
 
-#: Y:\modules\bxpress/admin/forums.php:425
+#: admin/forums.php:434
 msgid "Moderator saved successfully!"
 msgstr "¡Moderador almacenado correctamente!"
 
-#: Y:\modules\bxpress/admin/forums.php:428
+#: admin/forums.php:437
 msgid "Moderators could not be saved!"
 msgstr "¡No se pudo asignar a los moderadores!"
 
-#: Y:\modules\bxpress/admin/header.php:27
+#: admin/header.php:27
 msgid "Home Page"
 msgstr "Página Inicial"
 
-#: Y:\modules\bxpress/admin/header.php:29
+#: admin/header.php:29
 msgid "All Module"
 msgstr "Todo el módulo"
 
-#: Y:\modules\bxpress/admin/index.php:77
+#: admin/header.php:48
+#, php-format
+msgid ""
+"<a href=\"%s\">AdvancedForms</a> must be installed in order to get bXpress "
+"working properly"
+msgstr ""
+"<a href=\"%s\">AdvancedForms</a> debe instalarse para que bXpress funcione "
+"correctamente."
+
+#: admin/index.php:77
 #, php-format
 msgid "Last post on %s"
 msgstr "Último mensaje el %s"
 
-#: Y:\modules\bxpress/admin/index.php:78
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:60
+#: admin/index.php:78 templates/admin/forums-reports.php:66
 #, php-format
 msgid "By %s"
 msgstr "Por %s"
 
-#: Y:\modules\bxpress/admin/index.php:107
+#: admin/index.php:107
 #, php-format
 msgid "Created on %s"
 msgstr "Creado el %s"
 
-#: Y:\modules\bxpress/admin/index.php:162
+#: admin/index.php:164
 msgid "Forum Dashboard"
 msgstr "Tablero del Foro"
 
-#: Y:\modules\bxpress/admin/menu.php:12
-#: Y:\modules\bxpress/templates/admin/forums-index.php:25
+#: admin/menu.php:12 templates/admin/forums-index.php:29
 msgid "Dashboard"
 msgstr "Tablero"
 
-#: Y:\modules\bxpress/admin/menu.php:41
-#: Y:\modules\bxpress/templates/admin/forums-index.php:93
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:5
+#: admin/menu.php:41 templates/admin/forums-index.php:96
+#: templates/admin/forums-reports.php:5
 msgid "Reports"
 msgstr "Reportes"
 
-#: Y:\modules\bxpress/admin/menu.php:46
+#: admin/menu.php:46
 msgid "All reports"
 msgstr "Todos los reportes"
 
-#: Y:\modules\bxpress/admin/menu.php:47
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:22
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:99
+#: admin/menu.php:47 templates/admin/forums-reports.php:22
+#: templates/admin/forums-reports.php:108
 msgid "Read"
 msgstr "Leídos"
 
-#: Y:\modules\bxpress/admin/menu.php:48
+#: admin/menu.php:48
 msgid "Not Read"
 msgstr "No leídos"
 
-#: Y:\modules\bxpress/admin/menu.php:52
+#: admin/menu.php:52
 msgid "Prune"
 msgstr "Limpieza"
 
-#: Y:\modules\bxpress/admin/prune.php:24
+#: admin/prune.php:24
 msgid "Prune forum"
 msgstr "Limpiar foro"
 
-#: Y:\modules\bxpress/admin/prune.php:29
+#: admin/prune.php:29
 msgid "Prune Posts"
 msgstr "Limpiar Mensajes"
 
-#: Y:\modules\bxpress/admin/prune.php:32
+#: admin/prune.php:32
 msgid "Prune from forum"
 msgstr "Limpiar el foro"
 
-#: Y:\modules\bxpress/admin/prune.php:33
+#: admin/prune.php:33
 msgid "Select option..."
 msgstr "Seleccionar opción..."
 
-#: Y:\modules\bxpress/admin/prune.php:34
-#: Y:\modules\bxpress/xoops_version.php:472
+#: admin/prune.php:34
 msgid "All forums"
 msgstr "Todos los foros"
 
-#: Y:\modules\bxpress/admin/prune.php:43
+#: admin/prune.php:43
 msgid "Days old"
 msgstr "Días de antiguedad"
 
-#: Y:\modules\bxpress/admin/prune.php:44
+#: admin/prune.php:44
 msgid "Delete topics older than these days"
 msgstr "Eliminar temas anteriores a estos días"
 
-#: Y:\modules\bxpress/admin/prune.php:48
+#: admin/prune.php:48
 msgid "Topics to delete"
 msgstr "Temas a eliminar"
 
-#: Y:\modules\bxpress/admin/prune.php:49
+#: admin/prune.php:49
 msgid "Select option"
 msgstr "Seleccionar opción"
 
-#: Y:\modules\bxpress/admin/prune.php:50 Y:\modules\bxpress/search.php:188
+#: admin/prune.php:50 search.php:188
 msgid "All topics"
 msgstr "Todos los temas"
 
-#: Y:\modules\bxpress/admin/prune.php:51
+#: admin/prune.php:51
 msgid "Unanswered Topics"
 msgstr "Temas sin respuestas"
 
-#: Y:\modules\bxpress/admin/prune.php:56
+#: admin/prune.php:56
 msgid "Delete Sticky Topics"
 msgstr "Eliminar Temas Pegadizos"
 
-#: Y:\modules\bxpress/admin/prune.php:59
+#: admin/prune.php:59
 msgid "Prune Now!"
 msgstr "¡Limpiar Ahora!"
 
-#: Y:\modules\bxpress/admin/prune.php:59
+#: admin/prune.php:59
 msgid ""
 "Do you really wish to delete the topics? \\nThis action will delete the data "
 "permanently."
@@ -670,175 +638,168 @@ msgstr ""
 "¿Realmente deseas eliminar los temas seleccionados?\\nEsta acción eliminará "
 "los datos permanentemente."
 
-#: Y:\modules\bxpress/admin/prune.php:105
+#: admin/prune.php:105
 #, php-format
 msgid "Prune done! %u topics deleted"
 msgstr "¡Limpieza terminada! %u temas eliminados"
 
-#: Y:\modules\bxpress/admin/reports.php:75
+#: admin/reports.php:75
 msgid "Reports Management"
 msgstr "Administración de Reportes"
 
-#: Y:\modules\bxpress/admin/reports.php:78
+#: admin/reports.php:78
 msgid "Reports management"
 msgstr "Administración de Reportes"
 
-#: Y:\modules\bxpress/admin/reports.php:100
-#: Y:\modules\bxpress/admin/reports.php:123
+#: admin/reports.php:100 admin/reports.php:123
 msgid "Select at least one report!"
 msgstr "¡Selecciona al menos un reporte!"
 
-#: Y:\modules\bxpress/admin/reports.php:108
+#: admin/reports.php:108
 msgid "Errors ocurred"
 msgstr "Ocurrieron errores"
 
-#: Y:\modules\bxpress/admin/reports.php:137
+#: admin/reports.php:137
 #, php-format
 msgid "ID %s is not valid!"
 msgstr "¡El ID %s no es válido!"
 
-#: Y:\modules\bxpress/admin/reports.php:144
+#: admin/reports.php:144
 #, php-format
 msgid "Report with ID %s does not exists!"
 msgstr "¡El reporte con ID %s no existe!"
 
-#: Y:\modules\bxpress/admin/reports.php:149
+#: admin/reports.php:149
 #, php-format
 msgid "Report %s could dot be deleted!"
 msgstr "¡El reporte %s no pudo ser eliminado!"
 
-#: Y:\modules\bxpress/admin/reports.php:155
+#: admin/reports.php:155
 msgid "Errors ocurred while trying to delete selected reports."
 msgstr "Ocurrieron errores al intentar eliminar los reportes seleccionados."
 
-#: Y:\modules\bxpress/admin/reports.php:158
+#: admin/reports.php:158
 msgid "Reports deleted successfully!"
 msgstr "¡Reportes eliminados correctamente!"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:88
+#: blocks/bxpress-counter.php:88
 msgid "Show members counter:"
 msgstr "Mostrar el contador de miembros"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:93
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:120
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:147
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:174
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:201
+#: blocks/bxpress-counter.php:93 blocks/bxpress-counter.php:120
+#: blocks/bxpress-counter.php:147 blocks/bxpress-counter.php:174
+#: blocks/bxpress-counter.php:201
 msgid "Yes"
 msgstr "Sí"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:97
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:124
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:151
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:178
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:205
+#: blocks/bxpress-counter.php:97 blocks/bxpress-counter.php:124
+#: blocks/bxpress-counter.php:151 blocks/bxpress-counter.php:178
+#: blocks/bxpress-counter.php:205
 msgid "No"
 msgstr "No"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:105
+#: blocks/bxpress-counter.php:105
 msgid "Members counter caption:"
 msgstr "Leyenda para el contador de nombres:"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:115
+#: blocks/bxpress-counter.php:115
 msgid "Show topics counter:"
 msgstr "Mostrar contador de temas:"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:132
+#: blocks/bxpress-counter.php:132
 msgid "Topics counter caption:"
 msgstr "Leyenda para el contador de temas:"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:142
+#: blocks/bxpress-counter.php:142
 msgid "Show replies counter:"
 msgstr "Mostrar contador de respuestas:"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:159
+#: blocks/bxpress-counter.php:159
 msgid "Replies counter caption:"
 msgstr "Leyenda para el contador de respuestas:"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:169
+#: blocks/bxpress-counter.php:169
 msgid "Show likes counter:"
 msgstr "Mostrar contador de likes:"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:186
+#: blocks/bxpress-counter.php:186
 msgid "Likes counter caption:"
 msgstr "Leyenda para el contador de likes:"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:196
+#: blocks/bxpress-counter.php:196
 msgid "Show files counter:"
 msgstr "Mostrar contador de archivos:"
 
-#: Y:\modules\bxpress/blocks/bxpress-counter.php:213
+#: blocks/bxpress-counter.php:213
 msgid "files counter caption:"
 msgstr "Leyenda para el contador de archivos:"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:105
+#: blocks/bxpress-topics.php:105
 #, php-format
 msgid "Updated on %s"
 msgstr "Actualizado el %s"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:129
-#: Y:\modules\bxpress/blocks/bxpress-users.php:78
+#: blocks/bxpress-topics.php:129 blocks/bxpress-users.php:78
 msgid "List type:"
 msgstr "Tipo de lista:"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:133
-#: Y:\modules\bxpress/search.php:187
+#: blocks/bxpress-topics.php:133 search.php:187
 msgid "Recent topics"
 msgstr "Temas recientes"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:134
+#: blocks/bxpress-topics.php:134
 msgid "Hot topics"
 msgstr "Temas populares"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:135
+#: blocks/bxpress-topics.php:135
 msgid "Most viewed topics"
 msgstr "Temas más vistos"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:136
+#: blocks/bxpress-topics.php:136
 msgid "Most likely topics"
 msgstr "Temas con más likes"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:143
+#: blocks/bxpress-topics.php:143
 msgid "Number of items:"
 msgstr "Número de elementos:"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:154
+#: blocks/bxpress-topics.php:154
 msgid "Limit period in days"
 msgstr "Período límite en días"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:159
+#: blocks/bxpress-topics.php:159
 msgid "Leave this value in 0 for no limit."
 msgstr "Deje este valor en 0 para no limitar."
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:168
+#: blocks/bxpress-topics.php:168
 msgid "Display order:"
 msgstr "Orden de presentación:"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:173
+#: blocks/bxpress-topics.php:173
 msgid "Descending"
 msgstr "Descendente"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:177
+#: blocks/bxpress-topics.php:177
 msgid "Ascending"
 msgstr "Ascendente"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:185
+#: blocks/bxpress-topics.php:185
 msgid "Display format:"
 msgstr "Presentación:"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:190
+#: blocks/bxpress-topics.php:190
 msgid "Full"
 msgstr "Completo"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:194
+#: blocks/bxpress-topics.php:194
 msgid "Medium"
 msgstr "Mediano"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:198
+#: blocks/bxpress-topics.php:198
 msgid "Compact"
 msgstr "Compacto"
 
-#: Y:\modules\bxpress/blocks/bxpress-topics.php:201
+#: blocks/bxpress-topics.php:201
 msgid ""
 "Determines the way in that the block will be displayed. Full format shows "
 "all information about topics."
@@ -846,129 +807,121 @@ msgstr ""
 "Determina el formato con el que el bloque será mostrado. El formarto "
 "completo muestra toda la información del tema."
 
-#: Y:\modules\bxpress/blocks/bxpress-users.php:82
+#: blocks/bxpress-users.php:82
 msgid "Most active users"
 msgstr "Usuarios más activos"
 
-#: Y:\modules\bxpress/blocks/bxpress-users.php:83
+#: blocks/bxpress-users.php:83
 msgid "Recent users"
 msgstr "Usuarios recientes"
 
-#: Y:\modules\bxpress/blocks/bxpress-users.php:90
+#: blocks/bxpress-users.php:90
 msgid "Number of users:"
 msgstr "Número de usuarios:"
 
-#: Y:\modules\bxpress/class/bxfunctions.class.php:106
+#: class/bxfunctions.class.php:106
 #, php-format
 msgid "Today %s"
 msgstr "Hoy %s"
 
-#: Y:\modules\bxpress/class/bxfunctions.class.php:108
+#: class/bxfunctions.class.php:108
 #, php-format
 msgid "Yesterday %s"
 msgstr "Ayer %s"
 
-#: Y:\modules\bxpress/class/bxfunctions.class.php:121
+#: class/bxfunctions.class.php:121
 msgid "Forum Index"
 msgstr "Índice del Foro"
 
-#: Y:\modules\bxpress/class/bxfunctions.class.php:124
-#: Y:\modules\bxpress/xoops_version.php:579
+#: class/bxfunctions.class.php:124 xoops_version.php:515
 msgid "Search"
 msgstr "Buscar"
 
-#: Y:\modules\bxpress/class/bxfunctions.class.php:125
-#: Y:\modules\bxpress/search.php:186
+#: class/bxfunctions.class.php:125 search.php:186
 msgid "Search:"
 msgstr "Buscar:"
 
-#: Y:\modules\bxpress/class/bxfunctions.class.php:293
+#: class/bxfunctions.class.php:293
 msgid "New topic created"
 msgstr "Nuevo tema creado"
 
-#: Y:\modules\bxpress/class/bxfunctions.class.php:296
+#: class/bxfunctions.class.php:296
 msgid "A unapproved message has been edited"
 msgstr "Un mensaje no aprobado ha sido editado"
 
-#: Y:\modules\bxpress/class/bxpress.notifications.class.php:37
+#: class/notifications.class.php:37
 msgid "Notify me when new topic is created in this forum"
 msgstr "Notificarme cuando se crea un nuevo tema en este foro"
 
-#: Y:\modules\bxpress/class/bxpress.notifications.class.php:46
+#: class/notifications.class.php:46
 msgid "Notify me when new message is posted in this forum"
 msgstr "Notificarme cuando se envie un nuevo mensaje en el foro"
 
-#: Y:\modules\bxpress/class/bxpress.notifications.class.php:56
+#: class/notifications.class.php:56
 msgid "Notify me when new reply is sent in this topic"
 msgstr "Notificarme cuando una respuesta es enviada en el foro"
 
-#: Y:\modules\bxpress/class/bxpress.notifications.class.php:83
+#: class/notifications.class.php:83
 #, php-format
 msgid "New topic created in forum \"%s\""
 msgstr "Nuevo tema creado en el foro \"%s\""
 
-#: Y:\modules\bxpress/class/bxpress.notifications.class.php:86
+#: class/notifications.class.php:86
 #, php-format
 msgid "New post sent in forum \"%s\""
 msgstr "Nuevo mensaje enviado en el foro \"%s\""
 
-#: Y:\modules\bxpress/class/bxpress.notifications.class.php:89
+#: class/notifications.class.php:89
 #, php-format
 msgid "New reply in topic \"%s\" from forum \"%s\""
 msgstr "Nueva respuesta en el tema \"%s\" del foro \"%s\""
 
-#: Y:\modules\bxpress/delete.php:18
+#: delete.php:18
 msgid "Please specify a post id to delete!"
 msgstr "¡Por favor especifica un ID de mensaje para eleminar!"
 
-#: Y:\modules\bxpress/delete.php:24 Y:\modules\bxpress/edit.php:24
-#: Y:\modules\bxpress/report.php:69
+#: delete.php:24 edit.php:24 report.php:69
 msgid "Specified post does not exists!"
 msgstr "¡El mensaje especificado no existe!"
 
-#: Y:\modules\bxpress/delete.php:33 Y:\modules\bxpress/delete.php:39
-#: Y:\modules\bxpress/moderate.php:28
+#: delete.php:33 delete.php:39 moderate.php:28
 msgid "Sorry, you don't have permission to do this action!"
 msgstr "Lo sentimos ¡No tienes permiso para ejecutar esta acción!"
 
-#: Y:\modules\bxpress/delete.php:59
+#: delete.php:59
 msgid "Topic deleted successfully!"
 msgstr "¡Tema eliminado correctamente!"
 
-#: Y:\modules\bxpress/delete.php:59
+#: delete.php:59
 msgid "Post deleted successfully!"
 msgstr "¡Mensaje eliminado correctamente!"
 
-#: Y:\modules\bxpress/delete.php:61
+#: delete.php:61
 msgid "The topic could not be deleted!"
 msgstr "¡El tema no pudo ser eliminado!"
 
-#: Y:\modules\bxpress/delete.php:61
+#: delete.php:61
 msgid "The post could not be deleted!"
 msgstr "¡El mensaje no pudo ser eliminado!"
 
-#: Y:\modules\bxpress/delete.php:72 Y:\modules\bxpress/moderate.php:121
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:10
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:58
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:71
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:52
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:97
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:115
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:10
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:64
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:84
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:13
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:72
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:90
-#: Y:\modules\bxpress/topic.php:310
+#: delete.php:72 moderate.php:121 templates/admin/forums-announcements.php:10
+#: templates/admin/forums-announcements.php:64
+#: templates/admin/forums-announcements.php:80
+#: templates/admin/forums-categories.php:58
+#: templates/admin/forums-categories.php:104
+#: templates/admin/forums-categories.php:123
+#: templates/admin/forums-forums.php:10 templates/admin/forums-forums.php:72
+#: templates/admin/forums-forums.php:95 templates/admin/forums-reports.php:13
+#: templates/admin/forums-reports.php:78 templates/admin/forums-reports.php:99
+#: topic.php:310
 msgid "Delete"
 msgstr "Eliminar"
 
-#: Y:\modules\bxpress/delete.php:78
+#: delete.php:78
 msgid "Dou you really wish to delete specified post?"
 msgstr "¿Realmente deseas eliminar el mensaje especificado?"
 
-#: Y:\modules\bxpress/delete.php:80
+#: delete.php:80
 msgid ""
 "<strong>Warning:</strong> This is the first post in the topic. By deleting "
 "this all posts will be deleted also."
@@ -976,89 +929,88 @@ msgstr ""
 "<strong>Advertencia:</strong> Este es el primer mensaje del tema. Al "
 "eliminarlo, todos los mensajes se eliminarán también."
 
-#: Y:\modules\bxpress/delete.php:86
+#: delete.php:86
 msgid "Delete post?"
 msgstr "¿Eliminar Mensaje?"
 
-#: Y:\modules\bxpress/delete.php:91
+#: delete.php:91
 msgid "Delete!"
 msgstr "¡Eliminar!"
 
-#: Y:\modules\bxpress/delete.php:96
+#: delete.php:96
 msgid "Delete Post?"
 msgstr "¿Eliminar Mensaje?"
 
-#: Y:\modules\bxpress/edit.php:18
+#: edit.php:18
 msgid "No post has been specified!"
 msgstr "¡No se ha especificado un mensaje!"
 
-#: Y:\modules\bxpress/edit.php:33 Y:\modules\bxpress/edit.php:39
+#: edit.php:33 edit.php:39
 msgid "You don't have permission to edit this post!"
 msgstr "¡No tienes permiso para editar este mensaje!"
 
-#: Y:\modules\bxpress/edit.php:57
+#: edit.php:57
 msgid "You must provide a message text!"
 msgstr "¡Debes proporcionar un texto para el mensaje!"
 
-#: Y:\modules\bxpress/edit.php:83
+#: edit.php:83
 msgid "Changes could not be stored. Please try again!"
 msgstr ""
 "¡Los cambios no pudieron ser almacenados! Por favor inténtalo de nuevo."
 
-#: Y:\modules\bxpress/edit.php:87
+#: edit.php:87
 msgid "Changes stored successfully!"
 msgstr "¡Los cambios se han almacenado correctamente!"
 
-#: Y:\modules\bxpress/edit.php:105
+#: edit.php:105
 msgid "You have not selected any file to delete!"
 msgstr "¡No has seleccionado archivo alguno para eliminar!"
 
-#: Y:\modules\bxpress/edit.php:114
+#: edit.php:114
 msgid "Errors ocurred during this operation!"
 msgstr "¡Ocurrieron errores durante esta operación!"
 
-#: Y:\modules\bxpress/edit.php:114
+#: edit.php:114
 msgid "Files deleted successfully!"
 msgstr "¡Archivos eliminados correctamente!"
 
-#: Y:\modules\bxpress/edit.php:135
+#: edit.php:135
 msgid "You have reached the maximum attachments number for this post"
 msgstr "Has alcanzado el número máximo de adjuntos para este mensaje"
 
-#: Y:\modules\bxpress/edit.php:162
+#: edit.php:162
 msgid "The file was not saved."
 msgstr "No se almacenó el archivo."
 
-#: Y:\modules\bxpress/edit.php:170
+#: edit.php:170
 msgid "Sorry, you do not have permission to do this action"
 msgstr "Lo sentimos, no tienes permiso para ejecutar esta acción"
 
-#: Y:\modules\bxpress/edit.php:173
+#: edit.php:173
 msgid "File attached successfully!"
 msgstr "¡Archivo ha sido adjuntado correctamente!"
 
-#: Y:\modules\bxpress/edit.php:185
+#: edit.php:185
 msgid "Edit Topic"
 msgstr "Editar Tema"
 
-#: Y:\modules\bxpress/edit.php:188
+#: edit.php:188
 msgid "Topic Subject:"
 msgstr "Asunto del Tema:"
 
-#: Y:\modules\bxpress/edit.php:194 Y:\modules\bxpress/topic.php:348
+#: edit.php:194 topic.php:348
 msgid "Sticky Topic"
 msgstr "Tema Pegadizo"
 
-#: Y:\modules\bxpress/edit.php:208 Y:\modules\bxpress/post.php:272
-#: Y:\modules\bxpress/xoops_version.php:575
+#: edit.php:208 post.php:272 xoops_version.php:511
 msgid "Post"
 msgstr "Mensaje"
 
-#: Y:\modules\bxpress/edit.php:219
+#: edit.php:219
 msgid "Attached Files"
 msgstr "Archivos Adjuntos"
 
-#: Y:\modules\bxpress/edit.php:220
+#: edit.php:220
 #, php-format
 msgid ""
 "You can upload new files to this post. You have a limit of <strong>%s</"
@@ -1067,776 +1019,753 @@ msgstr ""
 "Puedes cargar nuevos archivos en este mensaje. Tienes un límite de <strong>"
 "%s</strong> archivos por mensaje."
 
-#: Y:\modules\bxpress/edit.php:222
+#: edit.php:222
 msgid "Attach File:"
 msgstr "Adjuntar Archivo:"
 
-#: Y:\modules\bxpress/edit.php:223
+#: edit.php:223
 #, php-format
 msgid "Allowed File Types: %s"
 msgstr "Tipos de Archivos Permitidos: %s"
 
-#: Y:\modules\bxpress/edit.php:228
+#: edit.php:228
 msgid "Cuerrent Attachments"
 msgstr "Adjuntos Actuales"
 
-#: Y:\modules\bxpress/edit.php:235
+#: edit.php:235
 msgid "Upload File"
 msgstr "Cargar Archivo"
 
-#: Y:\modules\bxpress/edit.php:236
+#: edit.php:236
 msgid "Delete File(s)"
 msgstr "Eliminar Archivo(s)"
 
-#: Y:\modules\bxpress/edit.php:245
+#: edit.php:245
 msgid "Topic Review (Newest First)"
 msgstr "Revisión del Tema (Nuevos primero)"
 
-#: Y:\modules\bxpress/events/rmcommon.php:26
+#: events/rmcommon.php:26
 msgid "An error ocurred while trying to write .htaccess file!"
 msgstr "¡Ocurrieron errores al intentar escribir en el archivo htaccess!"
 
-#: Y:\modules\bxpress/events/rmcommon.php:58
+#: events/rmcommon.php:58
 msgid "All Recent Messages"
 msgstr "Todo los Mensajes Recientes"
 
-#: Y:\modules\bxpress/events/rmcommon.php:60
+#: events/rmcommon.php:60
 msgid "Show all recent messages"
 msgstr "Mostrar todos los mensajes recientes"
 
-#: Y:\modules\bxpress/events/rmcommon.php:78
+#: events/rmcommon.php:78
 msgid "Posts by forum"
 msgstr "Mensajes por foro"
 
-#: Y:\modules\bxpress/events/rmcommon.php:79
+#: events/rmcommon.php:79
 msgid "Select a forum to see the messages posted recently."
 msgstr "Seleccione un foro para ver los mensajes enviados recientemente."
 
-#: Y:\modules\bxpress/files.php:21
+#: files.php:21
 msgid "No topic has been specified!"
 msgstr "¡No se ha especificado un tema!"
 
-#: Y:\modules\bxpress/files.php:27 Y:\modules\bxpress/files.php:33
+#: files.php:27 files.php:33
 msgid "Specified file does not exists!"
 msgstr "¡No existe el archivo especificado!"
 
-#: Y:\modules\bxpress/forum.php:20
+#: forum.php:20
 msgid "No forum ID has been specified"
 msgstr "¡No se especifico el ID del foro!"
 
-#: Y:\modules\bxpress/forum.php:36
+#: forum.php:36
 msgid "This forum is closed and you don't have permissions to view it"
 msgstr "Este foro está cerrado y no cuentas con permisos para verlo"
 
-#: Y:\modules\bxpress/forum.php:45
+#: forum.php:45
 msgid "You are not allowed to view this forum!"
 msgstr "¡No tienes permiso para ver este foro!"
 
-#: Y:\modules\bxpress/forum.php:106
+#: forum.php:106
 msgid "M d, Y"
 msgstr "M d, Y"
 
-#: Y:\modules\bxpress/forum.php:135 Y:\modules\bxpress/moderate.php:84
-#: Y:\modules\bxpress/moderate.php:99 Y:\modules\bxpress/search.php:158
-#: Y:\modules\bxpress/search.php:177
+#: forum.php:135 moderate.php:84 moderate.php:99 search.php:158 search.php:177
 #, php-format
 msgid "By: %s"
 msgstr "Por: %s"
 
-#: Y:\modules\bxpress/forum.php:184
+#: forum.php:184
 msgid "Pages:"
 msgstr "Páginas:"
 
-#: Y:\modules\bxpress/forum.php:185 Y:\modules\bxpress/index.php:123
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:25
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:40
-#: Y:\modules\bxpress/templates/admin/forums-index.php:61
-#: Y:\modules\bxpress/xoops_version.php:465
-#: Y:\modules\bxpress/xoops_version.php:574
+#: forum.php:185 index.php:123 templates/admin/forums-forums.php:33
+#: templates/admin/forums-forums.php:48 templates/admin/forums-index.php:64
+#: xoops_version.php:510
 msgid "Topics"
 msgstr "Temas"
 
-#: Y:\modules\bxpress/forum.php:186 Y:\modules\bxpress/moderate.php:107
-#: Y:\modules\bxpress/search.php:197
+#: forum.php:186 moderate.php:107 search.php:197
 msgid "Replies"
 msgstr "Respuestas"
 
-#: Y:\modules\bxpress/forum.php:187 Y:\modules\bxpress/moderate.php:108
-#: Y:\modules\bxpress/search.php:198
+#: forum.php:187 moderate.php:108 search.php:198
 msgid "Views"
 msgstr "Lecturas"
 
-#: Y:\modules\bxpress/forum.php:188 Y:\modules\bxpress/index.php:125
-#: Y:\modules\bxpress/moderate.php:109
+#: forum.php:188 index.php:125 moderate.php:109
 msgid "Last Post"
 msgstr "Último Mensaje"
 
-#: Y:\modules\bxpress/forum.php:189
+#: forum.php:189
 msgid "No new posts"
 msgstr "Sin mensajes nuevos"
 
-#: Y:\modules\bxpress/forum.php:190
+#: forum.php:190
 msgid "New posts"
 msgstr "Nuevos mensajes"
 
-#: Y:\modules\bxpress/forum.php:191
+#: forum.php:191
 msgid "No hot topics"
 msgstr "Sin temas calientes"
 
-#: Y:\modules\bxpress/forum.php:192
+#: forum.php:192
 msgid "New hot topics"
 msgstr "Nuevos temas calientes"
 
-#: Y:\modules\bxpress/forum.php:193 Y:\modules\bxpress/moderate.php:110
-#: Y:\modules\bxpress/moderate.php:116 Y:\modules\bxpress/search.php:199
+#: forum.php:193 moderate.php:110 moderate.php:116 search.php:199
 msgid "Sticky"
 msgstr "Pegadizo"
 
-#: Y:\modules\bxpress/forum.php:194
+#: forum.php:194
 msgid "Closed Topic"
 msgstr "Tema Cerrado"
 
-#: Y:\modules\bxpress/forum.php:196 Y:\modules\bxpress/topic.php:120
+#: forum.php:196 topic.php:120
 msgid "New Topic"
 msgstr "Nuevo Tema"
 
-#: Y:\modules\bxpress/forum.php:199 Y:\modules\bxpress/search.php:204
+#: forum.php:199 search.php:204
 msgid "New Posts"
 msgstr "Nuevos Mensajes"
 
-#: Y:\modules\bxpress/forum.php:205 Y:\modules\bxpress/xoops_version.php:577
+#: forum.php:205 xoops_version.php:513
 msgid "Moderate"
 msgstr "Moderar"
 
-#: Y:\modules\bxpress/forum.php:208
+#: forum.php:208
 msgid "Go to:"
 msgstr "Ir a:"
 
-#: Y:\modules\bxpress/forum.php:209 Y:\modules\bxpress/topic.php:320
+#: forum.php:209 topic.php:320
 msgid "Go!"
 msgstr "Ir!"
 
-#: Y:\modules\bxpress/forum.php:210
+#: forum.php:210
 #, php-format
 msgid "Updated on %s."
 msgstr "Actualizado el %s"
 
-#: Y:\modules\bxpress/forum.php:211
+#: forum.php:211
 msgid "Last reply"
 msgstr "Última respuesta"
 
-#: Y:\modules\bxpress/forum.php:212
+#: forum.php:212
 #, php-format
 msgid "%s by %s"
 msgstr "%s por %s"
 
-#: Y:\modules\bxpress/forum.php:213
+#: forum.php:213
 msgid "No replies yet"
 msgstr "Sin respuestas"
 
-#: Y:\modules\bxpress/forum.php:214 Y:\modules\bxpress/topic.php:326
+#: forum.php:214 topic.php:326
 msgid "Admin"
 msgstr "Admin"
 
-#: Y:\modules\bxpress/forum.php:215 Y:\modules\bxpress/topic.php:327
+#: forum.php:215 topic.php:327
 msgid "Mod"
 msgstr "Mod"
 
-#: Y:\modules\bxpress/forum.php:216 Y:\modules\bxpress/topic.php:325
+#: forum.php:216 topic.php:325
 msgid "User"
 msgstr "Usuario"
 
-#: Y:\modules\bxpress/header.php:28
+#: header.php:28
 msgid "Search for..."
 msgstr "Buscar..."
 
-#: Y:\modules\bxpress/index.php:36
+#: index.php:36
 #, php-format
 msgid "by %s"
 msgstr "por %s"
 
-#: Y:\modules\bxpress/index.php:124
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:26
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:41
-#: Y:\modules\bxpress/templates/admin/forums-index.php:69
+#: index.php:124 templates/admin/forums-forums.php:34
+#: templates/admin/forums-forums.php:49 templates/admin/forums-index.php:72
 msgid "Posts"
 msgstr "Mensajes"
 
-#: Y:\modules\bxpress/index.php:126
+#: index.php:126
 msgid "Last registered user:"
 msgstr "Último usuario registrado:"
 
-#: Y:\modules\bxpress/index.php:127
+#: index.php:127
 msgid "Registered users conected:"
 msgstr "Usuarios conectados:"
 
-#: Y:\modules\bxpress/index.php:128
+#: index.php:128
 msgid "Anonymous users conected:"
 msgstr "Usuarios anónimos:"
 
-#: Y:\modules\bxpress/index.php:129
+#: index.php:129
 msgid "Registered users:"
 msgstr "Usuarios registrados:"
 
-#: Y:\modules\bxpress/index.php:130
+#: index.php:130
 msgid "Total topics:"
 msgstr "Temas totales:"
 
-#: Y:\modules\bxpress/index.php:131
+#: index.php:131
 msgid "Total posts:"
 msgstr "Mensajes totales:"
 
-#: Y:\modules\bxpress/index.php:132
+#: index.php:132
 msgid "Our Forums"
 msgstr "Nuestros Foros"
 
-#: Y:\modules\bxpress/index.php:133
+#: index.php:133
 #, php-format
 msgid "%s posts in %s topics. %s. Last post by %s %s"
 msgstr "%s mensajes en %s temas. %s. Último mensaje por %s %s"
 
-#: Y:\modules\bxpress/likes.php:55
+#: likes.php:55
 msgid "Please refresh the page in order to register your likes."
 msgstr "Por favor actualiza la página para poder registrar tus likes."
 
-#: Y:\modules\bxpress/likes.php:63
+#: likes.php:63
 msgid "The specified post does not exists! Verify it!"
 msgstr "¡El mensaje especificado no existe!"
 
-#: Y:\modules\bxpress/likes.php:80
+#: likes.php:80
 msgid "We could not register your like for this post. Please try again."
 msgstr ""
 "No podemos registrar tu like para este mensaje. Por favor inténtalo de nuevo."
 
-#: Y:\modules\bxpress/likes.php:96
+#: likes.php:96
 msgid "Your like has been registered successfully!"
 msgstr "¡Like registrado correctamente!"
 
-#: Y:\modules\bxpress/likes.php:106
+#: likes.php:106
 msgid "We could not remove your like from this post. Please try again."
 msgstr ""
 "No pudimos remover el like de este mensaje. Por favor inténtalo de nuevo."
 
-#: Y:\modules\bxpress/likes.php:125
+#: likes.php:125
 msgid "Your like has been removed successfully!"
 msgstr "¡Like eliminado correctamente!"
 
-#: Y:\modules\bxpress/moderate.php:16
+#: moderate.php:16
 msgid "Please, specify the forum you want to moderate!"
 msgstr "¡Por favor especifica el tema que deseas moderar!"
 
-#: Y:\modules\bxpress/moderate.php:22
+#: moderate.php:22
 msgid "Specified forum doesn't exists!"
 msgstr "¡El foro especificado no existe!"
 
-#: Y:\modules\bxpress/moderate.php:106 Y:\modules\bxpress/search.php:196
+#: moderate.php:106 search.php:196
 msgid "Topic"
 msgstr "Tema"
 
-#: Y:\modules\bxpress/moderate.php:111
+#: moderate.php:111
 msgid "Moderating Forum"
 msgstr "Moderando Foro"
 
-#: Y:\modules\bxpress/moderate.php:112
+#: moderate.php:112
 msgid "Pages"
 msgstr "Páginas"
 
-#: Y:\modules\bxpress/moderate.php:113
+#: moderate.php:113
 msgid "Move"
 msgstr "Mover"
 
-#: Y:\modules\bxpress/moderate.php:114
+#: moderate.php:114
 msgid "Unlock"
 msgstr "Desbloquear"
 
-#: Y:\modules\bxpress/moderate.php:115
+#: moderate.php:115
 msgid "Lock"
 msgstr "Bloquear"
 
-#: Y:\modules\bxpress/moderate.php:117
+#: moderate.php:117
 msgid "Unsticky"
 msgstr "No pegadizo"
 
-#: Y:\modules\bxpress/moderate.php:118 Y:\modules\bxpress/topic.php:125
+#: moderate.php:118 topic.php:125
 msgid "Approved"
 msgstr "Aprobado"
 
-#: Y:\modules\bxpress/moderate.php:119 Y:\modules\bxpress/topic.php:350
+#: moderate.php:119 topic.php:350
 msgid "Approve"
 msgstr "Aprobar"
 
-#: Y:\modules\bxpress/moderate.php:120
+#: moderate.php:120
 msgid "Unapprove"
 msgstr "Desaprobar"
 
-#: Y:\modules\bxpress/moderate.php:122
+#: moderate.php:122
 msgid "Do you really want to delete selected topics?"
 msgstr "¿Realmente deseas eliminar los temas seleccionados?"
 
-#: Y:\modules\bxpress/moderate.php:145
+#: moderate.php:145
 msgid "Select at least a topic to moderate!"
 msgstr "¡Selecciona al menos un tema para moderar!"
 
-#: Y:\modules\bxpress/moderate.php:159
+#: moderate.php:159
 msgid "Please select the target forum"
 msgstr "Selecciona el foro destino"
 
-#: Y:\modules\bxpress/moderate.php:215
+#: moderate.php:215
 msgid "Topics has been relocated!"
 msgstr "¡Los temas han sido reubicados!"
 
-#: Y:\modules\bxpress/moderate.php:227
+#: moderate.php:227
 msgid "Move Topics"
 msgstr "Mover Temas"
 
-#: Y:\modules\bxpress/moderate.php:237
+#: moderate.php:237
 msgid "Select the forum where you wish to move selected topics"
 msgstr "Selecciona el foro donde deseas mover los temas seleccionados"
 
-#: Y:\modules\bxpress/moderate.php:266
+#: moderate.php:266
 msgid "Move Topics Now!"
 msgstr "¡Mover Temas Ahora!"
 
-#: Y:\modules\bxpress/moderate.php:287
+#: moderate.php:287
 msgid "Select at least one topic to moderate!"
 msgstr "¡Selecciona al menos un tema para moderar!"
 
-#: Y:\modules\bxpress/moderate.php:302 Y:\modules\bxpress/moderate.php:335
-#: Y:\modules\bxpress/moderate.php:385 Y:\modules\bxpress/moderate.php:429
+#: moderate.php:302 moderate.php:335 moderate.php:385 moderate.php:429
 msgid "Action completed!"
 msgstr "¡Acción completada!"
 
-#: Y:\modules\bxpress/moderate.php:320
+#: moderate.php:320
 msgid "Select at least one topic to set as sticky!"
 msgstr "¡Selecciona al menos un tema para establecer como pegadizo!"
 
-#: Y:\modules\bxpress/moderate.php:349
+#: moderate.php:349
 msgid "Select at least one topic to delete!"
 msgstr "¡Selecciona la menos un tema para eliminar!"
 
-#: Y:\modules\bxpress/moderate.php:401
+#: moderate.php:401
 msgid "Select at least one topic to moderate"
 msgstr "Selecciona al menos un tema para moderar"
 
-#: Y:\modules\bxpress/moderate.php:445
+#: moderate.php:445
 msgid "Topic not valid!"
 msgstr "¡Tema no válido!"
 
-#: Y:\modules\bxpress/moderate.php:452
+#: moderate.php:452
 msgid "Post doesn't exists!"
 msgstr "¡El mensaje no existe!"
 
-#: Y:\modules\bxpress/moderate.php:459
+#: moderate.php:459
 msgid "You don't have permission to do this action!"
 msgstr "¡No tienes permiso para realizar esta acción!"
 
-#: Y:\modules\bxpress/moderate.php:476
+#: moderate.php:476
 msgid "Operation completed!"
 msgstr "¡Operación Completada!"
 
-#: Y:\modules\bxpress/post.php:21
+#: post.php:21
 msgid "You must specify a forum in order to create a new topic!"
 msgstr "¡Debes especificar un foro para crear un nuevo tema!"
 
-#: Y:\modules\bxpress/post.php:32 Y:\modules\bxpress/topic.php:23
-#: Y:\modules\bxpress/topic.php:63
+#: post.php:32 topic.php:23 topic.php:63
 msgid "Specified topic does not exists!"
 msgstr "¡El tema especificado no existe!"
 
-#: Y:\modules\bxpress/post.php:46
+#: post.php:46
 msgid "You do not have permission to do this!"
 msgstr "¡No tienes permiso!"
 
-#: Y:\modules\bxpress/post.php:98 Y:\modules\bxpress/post.php:125
+#: post.php:98 post.php:125
 msgid "Message could not be posted! Please try again"
 msgstr "¡El mensaje no pudo ser enviado! Intenta de nuevo"
 
-#: Y:\modules\bxpress/post.php:217
+#: post.php:217
 msgid "Your posts has been sent!"
 msgstr "¡Tu mensaje ha sido enviado!"
 
-#: Y:\modules\bxpress/post.php:217
+#: post.php:217
 msgid "Message posted, however some errors ocurred while sending!"
 msgstr "Mensaje enviado, sin embargo ocurrieron algunos errores."
 
-#: Y:\modules\bxpress/post.php:233 Y:\modules\bxpress/topic.php:124
+#: post.php:233 topic.php:124
 msgid "Reply"
 msgstr "Responder"
 
-#: Y:\modules\bxpress/post.php:233
+#: post.php:233
 msgid "Create New Topic"
 msgstr "Crear Nuevo Tema"
 
-#: Y:\modules\bxpress/post.php:234
+#: post.php:234
 msgid "Write your post and send it"
 msgstr "Escribe tu mensaje y envialo"
 
-#: Y:\modules\bxpress/post.php:236
+#: post.php:236
 msgid "Your name:"
 msgstr "Tu nombre:"
 
-#: Y:\modules\bxpress/post.php:237
+#: post.php:237
 msgid "Your email:"
 msgstr "Tu email:"
 
-#: Y:\modules\bxpress/post.php:239
+#: post.php:239
 msgid "Topic subject:"
 msgstr "Asunto del tema:"
 
-#: Y:\modules\bxpress/post.php:247
+#: post.php:247
 msgid "Sticky topic"
 msgstr "Tema pegadizo"
 
-#: Y:\modules\bxpress/post.php:276
+#: post.php:276
 msgid "Attach file"
 msgstr "Adjuntar archivo"
 
-#: Y:\modules\bxpress/post.php:277
+#: post.php:277
 #, php-format
 msgid "Allowed file types: %s"
 msgstr "Tipo de archivo permitidos: %s"
 
-#: Y:\modules\bxpress/post.php:286
+#: post.php:286
 msgid "Send"
 msgstr "Enviar"
 
-#: Y:\modules\bxpress/post.php:306
+#: post.php:306
 msgid "Topic review (newest first)"
 msgstr "Revisión del tema (nuevos primero)"
 
-#: Y:\modules\bxpress/report.php:32 Y:\modules\bxpress/report.php:50
+#: report.php:32 report.php:50
 msgid "Report Post"
 msgstr "Reportar Mesaje"
 
-#: Y:\modules\bxpress/report.php:34
+#: report.php:34
 msgid "Your reasons to report this post"
 msgstr "Razón por la cual reportas este mensaje"
 
-#: Y:\modules\bxpress/report.php:62
+#: report.php:62
 msgid "Sepecified post is not valid!"
 msgstr "¡El tema especificado no es válido!"
 
-#: Y:\modules\bxpress/report.php:88
+#: report.php:88
 msgid "Thanks for reporting! Moderators will be notified."
 msgstr "¡Gracias por tu reporte! Los moderadores serán notificados."
 
-#: Y:\modules\bxpress/report.php:91
+#: report.php:91
 msgid "Report could not be sent! Please try again later."
 msgstr "¡El reporte no pudo ser enviado! Por favor intenta de nuevo."
 
-#: Y:\modules\bxpress/rss.php:40 Y:\modules\bxpress/rss.php:46
+#: rss.php:40 rss.php:46
 msgid "Sorry, specified forum was not foud!"
 msgstr "Lo sentimos, no se encontró el foro especificado."
 
-#: Y:\modules\bxpress/rss.php:50
+#: rss.php:50
 #, php-format
 msgid "%s :: Posts on forum %s"
 msgstr "%s :: Mensajes en el foro %s"
 
-#: Y:\modules\bxpress/rss.php:52
+#: rss.php:52
 #, php-format
 msgid "All recent messages posted on %s"
 msgstr "Todos los mensajes enviados recientemente en %s"
 
-#: Y:\modules\bxpress/rss.php:78 Y:\modules\bxpress/rss.php:122
+#: rss.php:78 rss.php:122
 #, php-format
 msgid "Posted on: %s :: %s"
 msgstr "Enviado el: %s :: %s"
 
-#: Y:\modules\bxpress/rss.php:95
+#: rss.php:95
 msgid "All recent messages posted on forum"
 msgstr "Todos los mensajes enviados recientemente en el foro"
 
-#: Y:\modules\bxpress/search.php:189
+#: search.php:189
 msgid "Unanswered topics"
 msgstr "Temas sin respuesta"
 
-#: Y:\modules\bxpress/search.php:193
+#: search.php:193
 msgid "All words"
 msgstr "Todas las palabras"
 
-#: Y:\modules\bxpress/search.php:194
+#: search.php:194
 msgid "Any word"
 msgstr "Cualquier palabra"
 
-#: Y:\modules\bxpress/search.php:195
+#: search.php:195
 msgid "Exact phrase"
 msgstr "Frase exacta"
 
-#: Y:\modules\bxpress/search.php:200
+#: search.php:200
 msgid "Closed"
 msgstr "Cerrado"
 
-#: Y:\modules\bxpress/search.php:202
+#: search.php:202
 msgid "Date"
 msgstr "Fecha"
 
-#: Y:\modules\bxpress/search.php:203
+#: search.php:203
 msgid "Last post"
 msgstr "Último mensaje"
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:2
+#: templates/admin/forums-announcements.php:2
 msgid "Do you really wish to delete selected announcements?"
 msgstr "¿Realmente deseas eliminar los anuncios seleccionados?"
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:9
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:70
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:49
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:112
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:7
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:81
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:10
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:87
+#: templates/admin/forums-announcements.php:9
+#: templates/admin/forums-announcements.php:79
+#: templates/admin/forums-categories.php:55
+#: templates/admin/forums-categories.php:120
+#: templates/admin/forums-forums.php:7 templates/admin/forums-forums.php:92
+#: templates/admin/forums-reports.php:10 templates/admin/forums-reports.php:96
 msgid "Bulk actions..."
 msgstr "Acciones en bloque..."
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:12
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:73
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:54
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:117
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:12
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:86
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:15
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:92
+#: templates/admin/forums-announcements.php:12
+#: templates/admin/forums-announcements.php:82
+#: templates/admin/forums-categories.php:60
+#: templates/admin/forums-categories.php:125
+#: templates/admin/forums-forums.php:12 templates/admin/forums-forums.php:97
+#: templates/admin/forums-reports.php:15 templates/admin/forums-reports.php:101
 msgid "Apply"
 msgstr "Aplicar"
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:16
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:76
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:19
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:96
+#: templates/admin/forums-announcements.php:16
+#: templates/admin/forums-announcements.php:85
+#: templates/admin/forums-reports.php:19 templates/admin/forums-reports.php:105
 msgid "Show All"
 msgstr "Mostrar todo"
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:27
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:37
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:64
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:75
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:23
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:38
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:33
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:41
+#: templates/admin/forums-announcements.php:26
+msgid "Existing Announcements"
+msgstr "Anuncios Existentes"
+
+#: templates/admin/forums-announcements.php:33
+#: templates/admin/forums-announcements.php:43
+#: templates/admin/forums-categories.php:71
+#: templates/admin/forums-categories.php:82
+#: templates/admin/forums-forums.php:31 templates/admin/forums-forums.php:46
+#: templates/admin/forums-reports.php:39 templates/admin/forums-reports.php:47
 msgid "ID"
 msgstr "ID"
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:28
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:38
+#: templates/admin/forums-announcements.php:34
+#: templates/admin/forums-announcements.php:44
 msgid "Announcement"
 msgstr "Anuncio"
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:29
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:39
+#: templates/admin/forums-announcements.php:35
+#: templates/admin/forums-announcements.php:45
 msgid "Expire"
 msgstr "Expira"
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:30
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:40
+#: templates/admin/forums-announcements.php:36
+#: templates/admin/forums-announcements.php:46
 msgid "Location"
 msgstr "Ubicación"
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:31
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:41
+#: templates/admin/forums-announcements.php:37
+#: templates/admin/forums-announcements.php:47
 msgid "By"
 msgstr "Por"
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:47
+#: templates/admin/forums-announcements.php:53
 msgid "There are not announcements created yet!"
 msgstr "¡No se han creado anuncios todavía!"
 
-#: Y:\modules\bxpress/templates/admin/forums-announcements.php:57
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:96
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:63
-#: Y:\modules\bxpress/topic.php:309
+#: templates/admin/forums-announcements.php:63
+#: templates/admin/forums-categories.php:103
+#: templates/admin/forums-forums.php:71 topic.php:309
 msgid "Edit"
 msgstr "Editar"
 
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:1
+#: templates/admin/forums-categories.php:1
 msgid "Categories Management"
 msgstr "Administración de Categorías"
 
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:6
+#: templates/admin/forums-categories.php:8
 msgid "Add Category"
 msgstr "Agregar Categoría"
 
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:19
+#: templates/admin/forums-categories.php:23
 msgid "Groups with access"
 msgstr "Grupos con acceso"
 
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:32
+#: templates/admin/forums-categories.php:36
 msgid "Activate category"
 msgstr "Activar categoría"
 
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:37
+#: templates/admin/forums-categories.php:41
 msgid "Create Category"
 msgstr "Crear Categoría"
 
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:51
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:114
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:9
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:83
+#: templates/admin/forums-categories.php:57
+#: templates/admin/forums-categories.php:122
+#: templates/admin/forums-forums.php:9 templates/admin/forums-forums.php:94
 msgid "Disable"
 msgstr "Inhabilitar"
 
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:66
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:77
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:28
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:43
+#: templates/admin/forums-categories.php:73
+#: templates/admin/forums-categories.php:84
+#: templates/admin/forums-forums.php:36 templates/admin/forums-forums.php:51
 msgid "Active"
 msgstr "Activo"
 
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:67
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:78
+#: templates/admin/forums-categories.php:74
+#: templates/admin/forums-categories.php:85
 msgid "Descripcion"
 msgstr "Descripción"
 
-#: Y:\modules\bxpress/templates/admin/forums-categories.php:85
+#: templates/admin/forums-categories.php:92
 msgid "There are not categories created yet!"
 msgstr "¡Aún no se han creado categorías!"
 
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:1
+#: templates/admin/forums-forums.php:1
 msgid "Forums Management"
 msgstr "Administración de Foros"
 
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:29
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:44
-#: Y:\modules\bxpress/topic.php:315
+#: templates/admin/forums-forums.php:20
+msgid "Existing Forums"
+msgstr "Foros Existentes"
+
+#: templates/admin/forums-forums.php:37 templates/admin/forums-forums.php:52
+#: topic.php:315
 msgid "Attachments"
 msgstr "Adjuntos"
 
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:30
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:45
+#: templates/admin/forums-forums.php:38 templates/admin/forums-forums.php:53
 msgid "Order"
 msgstr "Orden"
 
-#: Y:\modules\bxpress/templates/admin/forums-forums.php:51
+#: templates/admin/forums-forums.php:59
 msgid "There are not forums created yet!"
 msgstr "¡Aún no se han creado foros!"
 
-#: Y:\modules\bxpress/templates/admin/forums-index.php:36
+#: templates/admin/forums-index.php:39
 msgid "Overview"
 msgstr "Panorama General"
 
-#: Y:\modules\bxpress/templates/admin/forums-index.php:85
+#: templates/admin/forums-index.php:88
 msgid "Files"
 msgstr "Archivos"
 
-#: Y:\modules\bxpress/templates/admin/forums-index.php:101
+#: templates/admin/forums-index.php:104
 msgid "Likes"
 msgstr "Likes"
 
-#: Y:\modules\bxpress/templates/admin/forums-index.php:109
+#: templates/admin/forums-index.php:112
 msgid "Days"
 msgstr "Días"
 
-#: Y:\modules\bxpress/templates/admin/forums-index.php:119
-msgid "bXpress News"
-msgstr "Noticias relacionadas con bXpress"
-
-#: Y:\modules\bxpress/templates/admin/forums-index.php:136
+#: templates/admin/forums-index.php:124
 msgid "Activity"
 msgstr "Actividad"
 
-#: Y:\modules\bxpress/templates/admin/forums-index.php:140
-msgid "Last 30 days"
-msgstr "Últimos 30 días"
+#: templates/admin/forums-index.php:136
+msgid "Recent Topics"
+msgstr "Temas Recientes"
 
-#: Y:\modules\bxpress/templates/admin/forums-index.php:141
-msgid "Recent Posts in Topics"
-msgstr "Mensajes recientes en temas"
-
-#: Y:\modules\bxpress/templates/admin/forums-index.php:142
-msgid "Popular Topics"
-msgstr "Temas populares"
-
-#: Y:\modules\bxpress/templates/admin/forums-index.php:150
-#: Y:\modules\bxpress/templates/admin/forums-index.php:162
+#: templates/admin/forums-index.php:144 templates/admin/forums-index.php:167
 #, php-format
 msgid "Forum: %s"
 msgstr "Foro: %s"
 
-#: Y:\modules\bxpress/templates/admin/forums-index.php:163
+#: templates/admin/forums-index.php:159
+msgid "Popular Topics"
+msgstr "Temas populares"
+
+#: templates/admin/forums-index.php:168
 #, php-format
 msgid "Replies: %s"
 msgstr "Respuestas: %s"
 
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:2
+#: templates/admin/forums-index.php:181
+msgid "bXpress News"
+msgstr "Noticias relacionadas con bXpress"
+
+#: templates/admin/forums-reports.php:2
 msgid "Do you really want to delete selected reports?"
 msgstr "¿Realmente deseas eliminar los reportes seleccionados?"
 
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:3
+#: templates/admin/forums-reports.php:3
 msgid "Select some report before!"
 msgstr "¡Primero selecciona algún reporte!"
 
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:11
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:88
+#: templates/admin/forums-reports.php:11 templates/admin/forums-reports.php:97
 msgid "Mark as read"
 msgstr "Marcar como leído"
 
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:12
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:89
+#: templates/admin/forums-reports.php:12 templates/admin/forums-reports.php:98
 msgid "Mark as not read"
 msgstr "Marcar como no leído"
 
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:25
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:102
+#: templates/admin/forums-reports.php:25 templates/admin/forums-reports.php:111
 msgid "Not read"
 msgstr "No leídos"
 
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:34
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:42
+#: templates/admin/forums-reports.php:32
+msgid "Existing Reports"
+msgstr "Reportes Existentes"
+
+#: templates/admin/forums-reports.php:40 templates/admin/forums-reports.php:48
 msgid "Reported"
 msgstr "Reportado"
 
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:35
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:43
+#: templates/admin/forums-reports.php:41 templates/admin/forums-reports.php:49
 msgid "Message"
 msgstr "Mensaje"
 
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:51
+#: templates/admin/forums-reports.php:57
 msgid "There are not reports registered yet!"
 msgstr "¡Todavía no hay reportes registrados!"
 
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:68
+#: templates/admin/forums-reports.php:74
 #, php-format
 msgid "Post #%u"
 msgstr "Mensaje #%u"
 
-#: Y:\modules\bxpress/templates/admin/forums-reports.php:76
+#: templates/admin/forums-reports.php:82
 #, php-format
 msgid "Read on %s by %s"
 msgstr "Leído el %s por %s"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-post.php:2
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-post.php:933
+#: templates/email/bxpress-notify-forum-post.php:2
+#: templates/email/bxpress-notify-forum-post.php:933
 msgid "New Post in Forum!"
 msgstr "¡Nuevo Mensaje en el Foro!"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-post.php:935
+#: templates/email/bxpress-notify-forum-post.php:935
 #, php-format
 msgid "A new post has been sent in forum \"%s\":"
 msgstr "Un nuevo mensaje ha sido enviado en el foro \"%s\""
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-post.php:955
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-topic.php:958
-#: Y:\modules\bxpress/templates/email/bxpress-notify-reply.php:953
+#: templates/email/bxpress-notify-forum-post.php:955
+#: templates/email/bxpress-notify-forum-topic.php:958
+#: templates/email/bxpress-notify-reply.php:953
 #, php-format
 msgid "Click here to %s in %s"
 msgstr "Click aquí para %s en %s"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-post.php:956
+#: templates/email/bxpress-notify-forum-post.php:956
 msgid "view the post"
 msgstr "ver el mensaje"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-post.php:961
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-topic.php:964
-#: Y:\modules\bxpress/templates/email/bxpress-notify-reply.php:959
+#: templates/email/bxpress-notify-forum-post.php:961
+#: templates/email/bxpress-notify-forum-topic.php:964
+#: templates/email/bxpress-notify-reply.php:959
 #, php-format
 msgid "The %s team."
 msgstr "El equipo de %s."
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-post.php:995
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-topic.php:998
-#: Y:\modules\bxpress/templates/email/bxpress-notify-reply.php:993
+#: templates/email/bxpress-notify-forum-post.php:995
+#: templates/email/bxpress-notify-forum-topic.php:998
+#: templates/email/bxpress-notify-reply.php:993
 msgid ""
 "You are receiving this message because you are subscribed to our forum "
 "notifications."
@@ -1844,250 +1773,250 @@ msgstr ""
 "Estas recibiendo este mensaje porque te has suscrito a las notificaciones de "
 "nuestro foro."
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-post.php:999
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-topic.php:1002
-#: Y:\modules\bxpress/templates/email/bxpress-notify-reply.php:997
+#: templates/email/bxpress-notify-forum-post.php:999
+#: templates/email/bxpress-notify-forum-topic.php:1002
+#: templates/email/bxpress-notify-reply.php:997
 msgid "Unsubscribe"
 msgstr "Dar de baja"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-post.php:999
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-topic.php:1002
-#: Y:\modules\bxpress/templates/email/bxpress-notify-reply.php:997
+#: templates/email/bxpress-notify-forum-post.php:999
+#: templates/email/bxpress-notify-forum-topic.php:1002
+#: templates/email/bxpress-notify-reply.php:997
 msgid "Your Account"
 msgstr "Tu Cuenta"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-topic.php:2
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-topic.php:933
+#: templates/email/bxpress-notify-forum-topic.php:2
+#: templates/email/bxpress-notify-forum-topic.php:933
 msgid "New Topic!"
 msgstr "¡Nuevo Tema!"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-topic.php:935
+#: templates/email/bxpress-notify-forum-topic.php:935
 #, php-format
 msgid "A new topic has been created in forum %s:"
 msgstr "Un nuevo tema ha sido creado en el foro %s:"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-topic.php:959
+#: templates/email/bxpress-notify-forum-topic.php:959
 msgid "view the topic"
 msgstr "ver el tema"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-forum-topic.php:960
-#: Y:\modules\bxpress/templates/email/bxpress-notify-reply.php:955
+#: templates/email/bxpress-notify-forum-topic.php:960
+#: templates/email/bxpress-notify-reply.php:955
 msgid "our forum"
 msgstr "nuestro foro"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-reply.php:2
-#: Y:\modules\bxpress/templates/email/bxpress-notify-reply.php:933
+#: templates/email/bxpress-notify-reply.php:2
+#: templates/email/bxpress-notify-reply.php:933
 msgid "New Reply!"
 msgstr "¡Nueva Respuesta!"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-reply.php:935
+#: templates/email/bxpress-notify-reply.php:935
 #, php-format
 msgid "A new reply has been sent in topic %s from forum %s:"
 msgstr "Una nueva respuesta ha sido enviada en el tema %s del foro %s:"
 
-#: Y:\modules\bxpress/templates/email/bxpress-notify-reply.php:954
+#: templates/email/bxpress-notify-reply.php:954
 msgid "view the message"
 msgstr "ver el mensaje"
 
-#: Y:\modules\bxpress/topic.php:57
+#: topic.php:57
 msgid "Specified topic is not valid!"
 msgstr "¡El tema especificado no es válido!"
 
-#: Y:\modules\bxpress/topic.php:70
+#: topic.php:70
 msgid "This topic has not been approved yet!"
 msgstr "¡Este tema aún no ha sido aprobado!"
 
-#: Y:\modules\bxpress/topic.php:76
+#: topic.php:76
 msgid "Sorry, you don't have permission to view this forum!"
 msgstr "¡No tienes permiso para ver este foro!"
 
-#: Y:\modules\bxpress/topic.php:126
+#: topic.php:126
 msgid "Not approved"
 msgstr "No aprobado"
 
-#: Y:\modules\bxpress/topic.php:217
+#: topic.php:217
 #, php-format
 msgid "Registered: %s"
 msgstr "Registrado: %s"
 
-#: Y:\modules\bxpress/topic.php:219 Y:\modules\bxpress/topic.php:231
+#: topic.php:219 topic.php:231
 #, php-format
 msgid "Posts: %u"
 msgstr "Mensajes: %u"
 
-#: Y:\modules\bxpress/topic.php:220
+#: topic.php:220
 #, php-format
 msgid "IP: %s"
 msgstr "IP: %s"
 
-#: Y:\modules\bxpress/topic.php:243
+#: topic.php:243
 msgid "%T% %d%, %Y%"
 msgstr "%T% %d%, %Y%"
 
-#: Y:\modules\bxpress/topic.php:311
+#: topic.php:311
 msgid "Report"
 msgstr "Reportar"
 
-#: Y:\modules\bxpress/topic.php:312
+#: topic.php:312
 msgid "Quote"
 msgstr "Cita"
 
-#: Y:\modules\bxpress/topic.php:313
+#: topic.php:313
 msgid "Online!"
 msgstr "¡En línea!"
 
-#: Y:\modules\bxpress/topic.php:314
+#: topic.php:314
 msgid "Disconnected"
 msgstr "Desconectado"
 
-#: Y:\modules\bxpress/topic.php:318
+#: topic.php:318
 msgid "Edit Text"
 msgstr "Editar Texto"
 
-#: Y:\modules\bxpress/topic.php:319
+#: topic.php:319
 msgid "Change Forum:"
 msgstr "Cambiar Foro:"
 
-#: Y:\modules\bxpress/topic.php:322
+#: topic.php:322
 msgid "Locked Topic"
 msgstr "Tema Bloqueado"
 
-#: Y:\modules\bxpress/topic.php:323
+#: topic.php:323
 #, php-format
 msgid "In reply to %s."
 msgstr "En respuesta a %s."
 
-#: Y:\modules\bxpress/topic.php:324
+#: topic.php:324
 #, php-format
 msgid "post #%u"
 msgstr "mensaje #%u"
 
-#: Y:\modules\bxpress/topic.php:328
+#: topic.php:328
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: Y:\modules\bxpress/topic.php:329
+#: topic.php:329
 msgid "Liked by"
 msgstr "Le gusta a"
 
-#: Y:\modules\bxpress/topic.php:330
+#: topic.php:330
 #, php-format
 msgid "and %u more."
 msgstr "y %u más."
 
-#: Y:\modules\bxpress/topic.php:339
+#: topic.php:339
 msgid "Move Topic"
 msgstr "Mover Tema"
 
-#: Y:\modules\bxpress/topic.php:341
+#: topic.php:341
 msgid "Unlock Topic"
 msgstr "Desbloquear Tema"
 
-#: Y:\modules\bxpress/topic.php:343
+#: topic.php:343
 msgid "Lock Topic"
 msgstr "Bloquear Tema"
 
-#: Y:\modules\bxpress/topic.php:346
+#: topic.php:346
 msgid "Unsticky Topic"
 msgstr "Tema no Pegadizo"
 
-#: Y:\modules\bxpress/topic.php:351
+#: topic.php:351
 msgid "Unnaprove"
 msgstr "Desaprobar"
 
-#: Y:\modules\bxpress/xoops_version.php:51
+#: xoops_version.php:51
 msgid "bXpress"
 msgstr "bXpress"
 
-#: Y:\modules\bxpress/xoops_version.php:52
+#: xoops_version.php:52
 msgid "A simple forums module for XOOPS and common utilities."
 msgstr "Un sencillo módulo para crear un foro en XOOPS con Common Utilities."
 
-#: Y:\modules\bxpress/xoops_version.php:123
+#: xoops_version.php:120
 msgid "My Blog"
 msgstr "Mi Blog"
 
-#: Y:\modules\bxpress/xoops_version.php:163
+#: xoops_version.php:161
 msgid "Categories index"
 msgstr "Índicie de categorías"
 
-#: Y:\modules\bxpress/xoops_version.php:167
+#: xoops_version.php:165
 msgid "Forums index"
 msgstr "Índice de foros"
 
-#: Y:\modules\bxpress/xoops_version.php:171
+#: xoops_version.php:169
 msgid "Show the forum topics"
 msgstr "Mostrar los temas del foro"
 
-#: Y:\modules\bxpress/xoops_version.php:175
+#: xoops_version.php:173
 msgid "Forum header"
 msgstr "Encabezado del foro"
 
-#: Y:\modules\bxpress/xoops_version.php:179
+#: xoops_version.php:177
 msgid "Post form template"
 msgstr "Plantilla del formulario del mensaje"
 
-#: Y:\modules\bxpress/xoops_version.php:183
+#: xoops_version.php:181
 msgid "Shows topic contents"
 msgstr "Mostrar contenido del tema"
 
-#: Y:\modules\bxpress/xoops_version.php:187
+#: xoops_version.php:185
 msgid "Powered legend template"
 msgstr "Leyenda para la plantialla \"impulsado por\""
 
-#: Y:\modules\bxpress/xoops_version.php:191
+#: xoops_version.php:189
 msgid "Moderator control panel"
 msgstr "Pandel de control del moderador"
 
-#: Y:\modules\bxpress/xoops_version.php:195
+#: xoops_version.php:193
 msgid "Moderation forms"
 msgstr "Formulario para moderación de foros"
 
-#: Y:\modules\bxpress/xoops_version.php:199
+#: xoops_version.php:197
 msgid "Annpuncements templates"
 msgstr "Plantillas de anuncios"
 
-#: Y:\modules\bxpress/xoops_version.php:203
+#: xoops_version.php:201
 msgid "Reporting form template"
 msgstr "Plantilla para el formulario de reportes"
 
-#: Y:\modules\bxpress/xoops_version.php:207
+#: xoops_version.php:205
 msgid "Standalone template for search"
 msgstr "Plantilla para búsqueda independiente"
 
-#: Y:\modules\bxpress/xoops_version.php:219
+#: xoops_version.php:217
 msgid "Title of the forum"
 msgstr "Título del foro"
 
-#: Y:\modules\bxpress/xoops_version.php:220
+#: xoops_version.php:218
 msgid "This title will be used in header of module"
 msgstr "Este título será mostrado como encabezado el módulo"
 
-#: Y:\modules\bxpress/xoops_version.php:223
+#: xoops_version.php:221
 msgid "bXpress Forums"
 msgstr "Foro bXpress"
 
-#: Y:\modules\bxpress/xoops_version.php:229
+#: xoops_version.php:227
 msgid "Enable permalinks:"
 msgstr "Activar permalinks:"
 
-#: Y:\modules\bxpress/xoops_version.php:230
+#: xoops_version.php:228
 msgid "When active, this option allow to module to manage shorter URLs"
 msgstr "Esta opción permite al módulo manejar URLs cortas."
 
-#: Y:\modules\bxpress/xoops_version.php:237
+#: xoops_version.php:235
 msgid "Relative path for module"
 msgstr "Ruta relativa para el módulo"
 
-#: Y:\modules\bxpress/xoops_version.php:238
+#: xoops_version.php:236
 msgid "The relative path where module will respond to queries."
 msgstr "La ruta relativa donde el módulo recibira las peticiones."
 
-#: Y:\modules\bxpress/xoops_version.php:246
+#: xoops_version.php:244
 msgid "Show inactive forums for webmasters and moderators"
 msgstr "Mostrar los módulos inactivas a los administradores y moderadores"
 
-#: Y:\modules\bxpress/xoops_version.php:247
+#: xoops_version.php:245
 msgid ""
 "When this option is enabled the inactive forums will be shown to webmasters "
 "and moderators for administrative purposes. For all other users, the "
@@ -2097,11 +2026,11 @@ msgstr ""
 "moderadores con propósitos administrativos. Para todos los demás usuarios, "
 "los foros inactivos permanecerán ocultos."
 
-#: Y:\modules\bxpress/xoops_version.php:255
+#: xoops_version.php:253
 msgid "Maximum allowed size for attached files (in KB)"
 msgstr "Tamaño máximo permitido para los archivos adjuntos (en KB)"
 
-#: Y:\modules\bxpress/xoops_version.php:256
+#: xoops_version.php:254
 msgid ""
 "The files sent in the forums will be limited to this size, bigger file sizes "
 "will be ignored."
@@ -2109,11 +2038,11 @@ msgstr ""
 "Los archivos enviados en los foros deberán estar limitados a este tamaño. "
 "Tamaños más grandes serán ignorados."
 
-#: Y:\modules\bxpress/xoops_version.php:264
+#: xoops_version.php:262
 msgid "Show categories in the Homepage"
 msgstr "Mostrar categorías en la página inicial"
 
-#: Y:\modules\bxpress/xoops_version.php:265
+#: xoops_version.php:263
 msgid ""
 "If this option is enable the forums will be ordered by categories in the "
 "homepage."
@@ -2121,61 +2050,61 @@ msgstr ""
 "Si esta opción se activa, los foros serán ordenados por categorías en la "
 "página inicial."
 
-#: Y:\modules\bxpress/xoops_version.php:274
+#: xoops_version.php:272
 msgid "Enable search for anonymous users"
 msgstr "Activar búsqueda para usuarios anónimos"
 
-#: Y:\modules\bxpress/xoops_version.php:284
+#: xoops_version.php:282
 msgid "Allow HTML in the posts"
 msgstr "Permitir HTML en los mensajes"
 
-#: Y:\modules\bxpress/xoops_version.php:294
+#: xoops_version.php:292
 msgid "Anonymous Users Prefix"
 msgstr "Prefijo para usuarios anónimos"
 
-#: Y:\modules\bxpress/xoops_version.php:304
+#: xoops_version.php:302
 msgid "Time to mark a post as new"
 msgstr "Tiempo para marcar un mensaje como nuevo"
 
-#: Y:\modules\bxpress/xoops_version.php:305
+#: xoops_version.php:303
 msgid "Specify this value in seconds"
 msgstr "Especificar este valor en segundos"
 
-#: Y:\modules\bxpress/xoops_version.php:314
+#: xoops_version.php:312
 msgid "Post Limit in Review"
 msgstr "Número de mensajes en la revisión de mensajes"
 
-#: Y:\modules\bxpress/xoops_version.php:315
+#: xoops_version.php:313
 msgid "Post Maximun Number that will be shown in the post form."
 msgstr ""
 "Indica el número máximo de mensajes que serán mostrados en el formulario de "
 "mensajes."
 
-#: Y:\modules\bxpress/xoops_version.php:324
+#: xoops_version.php:322
 msgid "Post Number per Page"
 msgstr "Número de mensajes por página"
 
-#: Y:\modules\bxpress/xoops_version.php:325
+#: xoops_version.php:323
 msgid "This value can be configured individually for every user."
 msgstr "Este valor puede ser configurado individualmente para cada usuario."
 
-#: Y:\modules\bxpress/xoops_version.php:334
+#: xoops_version.php:332
 msgid "Topics Number per Page"
 msgstr "Número de temas por página"
 
-#: Y:\modules\bxpress/xoops_version.php:344
+#: xoops_version.php:342
 msgid "Date Format"
 msgstr "Formato de fecha"
 
-#: Y:\modules\bxpress/xoops_version.php:354
+#: xoops_version.php:352
 msgid "Limit post attachments"
 msgstr "Límite de archivos adjuntos por mensaje"
 
-#: Y:\modules\bxpress/xoops_version.php:364
+#: xoops_version.php:362
 msgid "Directory to storage the attachment"
 msgstr "Directorio para almacenar los archivos adjuntos"
 
-#: Y:\modules\bxpress/xoops_version.php:365
+#: xoops_version.php:363
 msgid ""
 "This directory must exist in the server and must have read and writing "
 "permisions."
@@ -2183,11 +2112,11 @@ msgstr ""
 "Este directorio debe existir en el servidor y debe contar con permisos de "
 "lectura y escritura."
 
-#: Y:\modules\bxpress/xoops_version.php:374
+#: xoops_version.php:372
 msgid "Activate Sticky Posts"
 msgstr "Activar mensajes pegadizos"
 
-#: Y:\modules\bxpress/xoops_version.php:375
+#: xoops_version.php:373
 msgid ""
 "By enabling this option, bXpress could create topics like \"sticky\". The "
 "sticky topics always will appear in the first positions. Even when this "
@@ -2199,181 +2128,169 @@ msgstr ""
 "moderadores podrán crear temas pegadizos incluso aunque esta opción este "
 "desactivada."
 
-#: Y:\modules\bxpress/xoops_version.php:384
+#: xoops_version.php:382
 msgid "Previous messages sent to can create sticky posts"
 msgstr "Número de mensajes enviados para poder crear temas pegadizos"
 
-#: Y:\modules\bxpress/xoops_version.php:394
+#: xoops_version.php:392
 msgid "Activate announcements in the module"
 msgstr "Activar anuncios en el módulo"
 
-#: Y:\modules\bxpress/xoops_version.php:404
+#: xoops_version.php:402
 msgid "Maximum number of announcements to show"
 msgstr "Número máximo de anuncios que se muestran"
 
-#: Y:\modules\bxpress/xoops_version.php:414
+#: xoops_version.php:412
 msgid "Mode to show announcements"
 msgstr "Modo para mostrar anuncios"
 
-#: Y:\modules\bxpress/xoops_version.php:419
+#: xoops_version.php:417
 msgid "Recents"
 msgstr "Recientes"
 
-#: Y:\modules\bxpress/xoops_version.php:419
+#: xoops_version.php:417
 msgid "Random"
 msgstr "Aleatorios"
 
-#: Y:\modules\bxpress/xoops_version.php:425
+#: xoops_version.php:423
 msgid "Recent topic time"
 msgstr "Tiempo para el tema reciente"
 
-#: Y:\modules\bxpress/xoops_version.php:426
+#: xoops_version.php:424
 msgid "Time to mark a topic as recent."
 msgstr "Tiemo para marcar un tema como reciente."
 
-#: Y:\modules\bxpress/xoops_version.php:435
+#: xoops_version.php:433
 msgid "Description of the Syndication option"
 msgstr "Descripción de la opción RSS"
 
-#: Y:\modules\bxpress/xoops_version.php:445
+#: xoops_version.php:443
 msgid "Order topics for recent post"
 msgstr "Ordenar temas por mensajes recientes"
 
-#: Y:\modules\bxpress/xoops_version.php:446
+#: xoops_version.php:444
 msgid "Indicate if the forum topics will be ordered per recent topics"
 msgstr ""
 "Inidia si los temas en el foro serán ordenados en base a los mensajes mas "
 "recientes."
 
-#: Y:\modules\bxpress/xoops_version.php:459
-msgid "Notifications related to forums"
-msgstr "Notificaciones relacionadas con los foros"
-
-#: Y:\modules\bxpress/xoops_version.php:466
-msgid "Notifications related to topics"
-msgstr "Notificaciones relacionadas con los temas"
-
-#: Y:\modules\bxpress/xoops_version.php:473
-msgid "Notifications related to all forums"
-msgstr "Notificaciones relacionadas con todos los foros"
-
-#: Y:\modules\bxpress/xoops_version.php:480
-msgid "New Added Topic"
-msgstr "Nuevo Tema Agregado"
-
-#: Y:\modules\bxpress/xoops_version.php:481
-msgid "Notify when a new topic is created in this forum"
-msgstr "Notifica cuando un tema es creado en este foro"
-
-#: Y:\modules\bxpress/xoops_version.php:482
-msgid "Sends a notification when a new topic is created in a given forum."
-msgstr ""
-"Envía una notificación cuando un nuevo tema se crea en un foro determinado."
-
-#: Y:\modules\bxpress/xoops_version.php:485
-msgid "New Topic Added"
-msgstr "Nuevo Tema Agregado"
-
-#: Y:\modules\bxpress/xoops_version.php:489
-msgid "New Post sent"
-msgstr "Nuevo Mensaje Enviado"
-
-#: Y:\modules\bxpress/xoops_version.php:490
-msgid "Notify when a new post is sent in this topic"
-msgstr "Notificar cuando un nuevo mensaje es enviado en este tema."
-
-#: Y:\modules\bxpress/xoops_version.php:491
-msgid "Send a notification when a new post is sent on a topic"
-msgstr "Enviar una notificación cuando un nuevo tema sea enviado en un tema"
-
-#: Y:\modules\bxpress/xoops_version.php:494
-msgid "A new post has been sent"
-msgstr "Un nuevo mensaje ha sido enviado"
-
-#: Y:\modules\bxpress/xoops_version.php:498
-msgid "New post in any forum"
-msgstr "Nuevos mensaje en cualquier foro"
-
-#: Y:\modules\bxpress/xoops_version.php:499
-msgid "Notify when a new topic is sent in any forum"
-msgstr "Notificar cuando un nuevo tema sea enviado en cualquier foro"
-
-#: Y:\modules\bxpress/xoops_version.php:500
-msgid "Send a notification when a new topic is sent in any forum"
-msgstr "Enviar una notificación cuando un tema sea creado en cualquier foro"
-
-#: Y:\modules\bxpress/xoops_version.php:503
-#: Y:\modules\bxpress/xoops_version.php:512
-msgid "New topic sent"
-msgstr "Nuevo tema creado"
-
-#: Y:\modules\bxpress/xoops_version.php:507
-msgid "New topic in forum"
-msgstr "Nuevo tema en foro"
-
-#: Y:\modules\bxpress/xoops_version.php:508
-msgid "Notify when a new topic is sent in this forum"
-msgstr "Notificar cuando un nuevo tema sea creado en este foro"
-
-#: Y:\modules\bxpress/xoops_version.php:509
-msgid "Sent a notification when a new topic is sent to this forum"
-msgstr "Enviar una notificación cuando un nuevo tema creado en este foro"
-
-#: Y:\modules\bxpress/xoops_version.php:519
+#: xoops_version.php:455
 msgid "Forum topics list"
 msgstr "Lista de temas"
 
-#: Y:\modules\bxpress/xoops_version.php:520
+#: xoops_version.php:456
 msgid "Show a list with topics in forum according to configured options"
 msgstr "Mostrar una lista con temas de acuerdo a las opciones configuradas"
 
-#: Y:\modules\bxpress/xoops_version.php:535
+#: xoops_version.php:471
 msgid "Status counter"
 msgstr "Contador de estado"
 
-#: Y:\modules\bxpress/xoops_version.php:536
+#: xoops_version.php:472
 msgid "Shows the counters for forum status"
 msgstr "Mostrar el contador para el estado del foro"
 
-#: Y:\modules\bxpress/xoops_version.php:542
+#: xoops_version.php:478
 msgid "members"
 msgstr "miembros"
 
-#: Y:\modules\bxpress/xoops_version.php:544
+#: xoops_version.php:480
 msgid "topics"
 msgstr "temas"
 
-#: Y:\modules\bxpress/xoops_version.php:546
+#: xoops_version.php:482
 msgid "replies"
 msgstr "respuestas"
 
-#: Y:\modules\bxpress/xoops_version.php:548
+#: xoops_version.php:484
 msgid "likes"
 msgstr "likes"
 
-#: Y:\modules\bxpress/xoops_version.php:550
+#: xoops_version.php:486
 msgid "files"
 msgstr "archivos"
 
-#: Y:\modules\bxpress/xoops_version.php:556
+#: xoops_version.php:492
 msgid "Users activity"
 msgstr "Actividad de usuarios"
 
-#: Y:\modules\bxpress/xoops_version.php:557
+#: xoops_version.php:493
 msgid "Show the activity from users"
 msgstr "Muestra la actividad de usuarios"
 
-#: Y:\modules\bxpress/xoops_version.php:572
+#: xoops_version.php:508
 msgid "Index"
 msgstr "Índice"
 
-#: Y:\modules\bxpress/xoops_version.php:576
+#: xoops_version.php:512
 msgid "Edit Post"
 msgstr "Editar Mensaje"
 
-#: Y:\modules\bxpress/xoops_version.php:578
+#: xoops_version.php:514
 msgid "Report post"
 msgstr "Reportar mensaje"
+
+#~ msgid "Last 30 days"
+#~ msgstr "Últimos 30 días"
+
+#~ msgid "Recent Posts in Topics"
+#~ msgstr "Mensajes recientes en temas"
+
+#~ msgid "Notifications related to forums"
+#~ msgstr "Notificaciones relacionadas con los foros"
+
+#~ msgid "Notifications related to topics"
+#~ msgstr "Notificaciones relacionadas con los temas"
+
+#~ msgid "Notifications related to all forums"
+#~ msgstr "Notificaciones relacionadas con todos los foros"
+
+#~ msgid "New Added Topic"
+#~ msgstr "Nuevo Tema Agregado"
+
+#~ msgid "Notify when a new topic is created in this forum"
+#~ msgstr "Notifica cuando un tema es creado en este foro"
+
+#~ msgid "Sends a notification when a new topic is created in a given forum."
+#~ msgstr ""
+#~ "Envía una notificación cuando un nuevo tema se crea en un foro "
+#~ "determinado."
+
+#~ msgid "New Topic Added"
+#~ msgstr "Nuevo Tema Agregado"
+
+#~ msgid "New Post sent"
+#~ msgstr "Nuevo Mensaje Enviado"
+
+#~ msgid "Notify when a new post is sent in this topic"
+#~ msgstr "Notificar cuando un nuevo mensaje es enviado en este tema."
+
+#~ msgid "Send a notification when a new post is sent on a topic"
+#~ msgstr "Enviar una notificación cuando un nuevo tema sea enviado en un tema"
+
+#~ msgid "A new post has been sent"
+#~ msgstr "Un nuevo mensaje ha sido enviado"
+
+#~ msgid "New post in any forum"
+#~ msgstr "Nuevos mensaje en cualquier foro"
+
+#~ msgid "Notify when a new topic is sent in any forum"
+#~ msgstr "Notificar cuando un nuevo tema sea enviado en cualquier foro"
+
+#~ msgid "Send a notification when a new topic is sent in any forum"
+#~ msgstr "Enviar una notificación cuando un tema sea creado en cualquier foro"
+
+#~ msgid "New topic sent"
+#~ msgstr "Nuevo tema creado"
+
+#~ msgid "New topic in forum"
+#~ msgstr "Nuevo tema en foro"
+
+#~ msgid "Notify when a new topic is sent in this forum"
+#~ msgstr "Notificar cuando un nuevo tema sea creado en este foro"
+
+#~ msgid "Sent a notification when a new topic is sent to this forum"
+#~ msgstr "Enviar una notificación cuando un nuevo tema creado en este foro"
 
 #~ msgid "Moderate Forum"
 #~ msgstr "Moderar Foro"

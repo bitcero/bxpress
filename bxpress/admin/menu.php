@@ -11,21 +11,21 @@
 $adminmenu[] = array(
     'title' => __('Dashboard','bxpress'),
     'link' => "admin/index.php",
-    'icon' => '../images/dash.png',
+    'icon' => 'svg-rmcommon-dashboard',
     'location' => "dashboard"
 );
 
 $adminmenu[] = array(
     'title' => __('Categories','bxpress'),
     'link' => "admin/categories.php",
-    'icon' => '../images/categos.png',
+    'icon' => 'svg-rmcommon-folder text-orange',
     'location' => "categories"
 );
 
 $adminmenu[] = array(
     'title' => __('Forums','bxpress'),
     'link' => "admin/forums.php",
-    'icon' => '../images/forums.png',
+    'icon' => 'svg-rmcommon-comments text-info',
     'location' => "forums"
 );
 
@@ -33,14 +33,14 @@ $adminmenu[] = array(
 $adminmenu[] = array(
     'title' => __('Announcements','bxpress'),
     'link' => "admin/announcements.php",
-    'icon' => '../images/bell.png',
+    'icon' => 'svg-rmcommon-bell text-brown',
     'location' => "messages"
 );
 
 $adminmenu[] = array(
     'title' => __('Reports','bxpress'),
     'link' => "admin/reports.php",
-    'icon' => '../images/reports.png',
+    'icon' => 'svg-rmcommon-error text-danger',
     'location' => "reports",
     'options' => array(
         array('title'=>__('All reports','bxpress'),'link'=>'admin/reports.php','selected'=>'allreps'),
@@ -51,6 +51,6 @@ $adminmenu[] = array(
 
 $adminmenu[5]['title'] = __('Prune','bxpress');
 $adminmenu[5]['link'] = "admin/prune.php";
-$adminmenu[5]['icon'] = '../images/prune.png';
+$adminmenu[5]['icon'] = 'svg-rmcommon-trash text-blue-grey';
 $adminmenu[5]['location'] = "prune";
 
