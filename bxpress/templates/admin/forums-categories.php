@@ -4,8 +4,10 @@
 
     <div class="col-md-4">
         <div class="cu-box">
+            <div class="box-header">
+                <h3 class="box-title"><?php _e('Add Category','bxpress'); ?></h3>
+            </div>
             <div class="box-content">
-                <h3><?php _e('Add Category','bxpress'); ?></h3>
                 <form name="frmNewCat" id="frm-new-categos" method="post" action="categories.php">
                     <div class="form-group">
                         <label for="cat-title"><?php _e('Name','bxpress'); ?></label>
@@ -58,60 +60,58 @@
                 <button type="button" id="the-op-top" onclick="before_submit('frm-categories');" class="btn btn-default"><?php _e('Apply','bxpress'); ?></button>
             </div>
 
-            <div class="cu-box">
-                <div class="box-content">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr class="head" align="center">
-                                <th width="20" class="text-center">
-                                    <input type="checkbox" id="checkall" data-checkbox="chk-categories">
-                                </th>
-                                <th width="20" class="text-center"><?php _e('ID','bxpress'); ?></th>
-                                <th align="left"><?php _e('Name','bxpress'); ?></th>
-                                <th class="text-center"><?php _e('Active','bxpress'); ?></th>
-                                <th align="left"><?php _e('Descripcion','bxpress'); ?></th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr class="head" align="center">
-                                <th width="20" class="text-center">
-                                    <input type="checkbox" id="checkall" data-checkbox="chk-categories">
-                                </th>
-                                <th width="20" class="text-center"><?php _e('ID','bxpress'); ?></th>
-                                <th align="left"><?php _e('Name','bxpress'); ?></th>
-                                <th class="text-center"><?php _e('Active','bxpress'); ?></th>
-                                <th align="left"><?php _e('Descripcion','bxpress'); ?></th>
-                            </tr>
-                            </tfoot>
+            <div class="panel">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr class="head" align="center">
+                            <th width="20" class="text-center">
+                                <input type="checkbox" id="checkall" data-checkbox="chk-categories">
+                            </th>
+                            <th width="20" class="text-center"><?php _e('ID','bxpress'); ?></th>
+                            <th align="left"><?php _e('Name','bxpress'); ?></th>
+                            <th class="text-center"><?php _e('Active','bxpress'); ?></th>
+                            <th align="left"><?php _e('Descripcion','bxpress'); ?></th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr class="head" align="center">
+                            <th width="20" class="text-center">
+                                <input type="checkbox" id="checkall" data-checkbox="chk-categories">
+                            </th>
+                            <th width="20" class="text-center"><?php _e('ID','bxpress'); ?></th>
+                            <th align="left"><?php _e('Name','bxpress'); ?></th>
+                            <th class="text-center"><?php _e('Active','bxpress'); ?></th>
+                            <th align="left"><?php _e('Descripcion','bxpress'); ?></th>
+                        </tr>
+                        </tfoot>
 
-                            <tbody>
-                            <?php if(empty($categos)): ?>
-                                <tr class="text-center">
-                                    <td colspan="5"><span class="label label-info"><?php _e('There are not categories created yet!','bxpress'); ?></span></td>
-                                </tr>
-                            <?php endif; ?>
+                        <tbody>
+                        <?php if(empty($categos)): ?>
+                            <tr class="text-center">
+                                <td colspan="5"><span class="label label-info"><?php _e('There are not categories created yet!','bxpress'); ?></span></td>
+                            </tr>
+                        <?php endif; ?>
 
-                            <?php foreach($categos as $cat): ?>
-                                <tr class="<?php echo tpl_cycle("even,odd"); ?>" align="left" valign="top">
-                                    <td align="center"><input type="checkbox" name="ids[]" id="item-<?php echo $cat['id']; ?>" value="<?php echo $cat['id']; ?>" data-oncheck="chk-categories"></td>
-                                    <td align="center"><?php echo $cat['id']; ?></td>
-                                    <td align="left">
-                                        <strong><a href="forums.php?catid=<?php echo $cat['id']; ?>"><?php echo $cat['title']; ?></a></strong>
+                        <?php foreach($categos as $cat): ?>
+                            <tr class="<?php echo tpl_cycle("even,odd"); ?>" align="left" valign="top">
+                                <td align="center"><input type="checkbox" name="ids[]" id="item-<?php echo $cat['id']; ?>" value="<?php echo $cat['id']; ?>" data-oncheck="chk-categories"></td>
+                                <td align="center"><?php echo $cat['id']; ?></td>
+                                <td align="left">
+                                    <strong><a href="forums.php?catid=<?php echo $cat['id']; ?>"><?php echo $cat['title']; ?></a></strong>
                                 <span class="cu-item-options">
                                     <a href="categories.php?action=edit&amp;id=<?php echo $cat['id']; ?>"><?php _e('Edit','bxpress'); ?></a> |
                                     <a href="#" class="delete_cat" id="cat-<?php echo $cat['id']; ?>" onclick="select_option(<?php echo $cat['id']; ?>,'delete','frm-categories');"><?php _e('Delete','bxpress'); ?></a>
                                 </span>
-                                    </td>
-                                    <td align="center">
-                                        <span class="fa <?php if($cat['status']): ?>fa-check text-success<?php else: ?>fa-ban text-danger<?php endif; ?>" border="0" alt="" />
-                                    </td>
-                                    <td><?php echo $cat['desc']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
+                                </td>
+                                <td align="center">
+                                    <span class="fa <?php if($cat['status']): ?>fa-check text-success<?php else: ?>fa-ban text-danger<?php endif; ?>" border="0" alt="" />
+                                </td>
+                                <td><?php echo $cat['desc']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

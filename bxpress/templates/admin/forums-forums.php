@@ -14,8 +14,13 @@
     <a href="forums.php?action=new" class="btn btn-success pull-right"><span class="fa fa-plus"></span> <?php _e('Create Forum','dtransport'); ?></a>
 </div>
 <!--//-->
-<div class="cu-box">
-    <div class="">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <?php _e('Existing Forums', 'bxpress'); ?>
+        </h3>
+    </div>
+
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -79,7 +84,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+
 </div>
 <!-- Bulk operations -->
 <div class="cu-bulk-actions">

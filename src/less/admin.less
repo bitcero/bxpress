@@ -126,3 +126,23 @@
 .zapped{font-size: 0.9em; color: #666;}
 .groups_field_list{list-style: none;margin: 0;padding: 0;overflow: hidden;}
 .groups_field_list li{padding: 3px; float: left;}
+
+.recent-posts{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li{
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+
+    &:first-child{
+      padding-top: 0;
+    }
+
+    &:last-child{
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+}

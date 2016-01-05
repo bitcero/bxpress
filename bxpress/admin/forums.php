@@ -116,7 +116,7 @@ function bx_show_form($edit = 0){
     // NOmbre
     $form->addElement(new RMFormText(__('Forum name','bxpress'), 'name', 50, 150, $edit ? $forum->name() : ''), true);
     // Descripcion
-    $form->addElement(new RMFormEditor(__('Forum description','bxpress'), 'desc', '90%', '300px', $edit ? $forum->getVar( 'desc', 'e' ) : ''));
+    $form->addElement(new RMFormEditor(__('Forum description','bxpress'), 'desc', '100%', '300px', $edit ? $forum->getVar( 'desc', 'e' ) : ''));
 
     $form->addElement( new RMFormImageUrl( __('Forum image', 'bxpress'), 'image', $edit ? $forum->image : '' ) );
 
