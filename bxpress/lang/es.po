@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bXpress Forum\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-04 17:29-0600\n"
-"PO-Revision-Date: 2016-01-04 17:31-0600\n"
+"POT-Creation-Date: 2016-01-22 13:12-0600\n"
+"PO-Revision-Date: 2016-01-22 13:15-0600\n"
 "Last-Translator: Eduardo Cortés <me@eduardocortes.mx>\n"
 "Language-Team: Red Mexico <i.bitcero@gmail.com>\n"
 "Language: es\n"
@@ -64,7 +64,7 @@ msgid "Module home page"
 msgstr "Página inicial del módulo"
 
 #: admin/announcements.php:99 admin/announcements.php:104 admin/header.php:28
-#: index.php:122 moderate.php:238 search.php:201
+#: index.php:122 moderate.php:252 search.php:201
 msgid "Forum"
 msgstr "Foro"
 
@@ -90,7 +90,7 @@ msgstr "Crear Anuncio"
 
 #: admin/announcements.php:132 admin/categories.php:96 admin/forums.php:154
 #: admin/forums.php:388 admin/prune.php:60 delete.php:74 delete.php:92
-#: edit.php:237 moderate.php:267 post.php:287
+#: edit.php:237 moderate.php:281 moderate.php:347 post.php:287
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -98,8 +98,8 @@ msgstr "Cancelar"
 #: admin/categories.php:123 admin/categories.php:198 admin/categories.php:247
 #: admin/forums.php:327 admin/forums.php:411 admin/prune.php:84
 #: admin/reports.php:94 admin/reports.php:129 delete.php:46 edit.php:52
-#: edit.php:98 edit.php:127 moderate.php:154 moderate.php:313 moderate.php:358
-#: moderate.php:408 moderate.php:465 post.php:65 report.php:75
+#: edit.php:98 edit.php:127 moderate.php:168 moderate.php:489 moderate.php:535
+#: moderate.php:585 moderate.php:643 post.php:65 report.php:75
 msgid "Session token expired!"
 msgstr "¡Identificador de sesión no válido!"
 
@@ -312,7 +312,7 @@ msgstr ""
 "foro."
 
 #: admin/forums.php:97 admin/forums.php:199 admin/forums.php:371 forum.php:26
-#: moderate.php:165 post.php:41
+#: moderate.php:179 post.php:41
 msgid "Specified forum does not exists!"
 msgstr "¡El foro especificado no existe!"
 
@@ -904,7 +904,7 @@ msgstr "¡El tema no pudo ser eliminado!"
 msgid "The post could not be deleted!"
 msgstr "¡El mensaje no pudo ser eliminado!"
 
-#: delete.php:72 moderate.php:121 templates/admin/forums-announcements.php:10
+#: delete.php:72 moderate.php:134 templates/admin/forums-announcements.php:10
 #: templates/admin/forums-announcements.php:64
 #: templates/admin/forums-announcements.php:80
 #: templates/admin/forums-categories.php:58
@@ -1088,104 +1088,104 @@ msgstr "¡No tienes permiso para ver este foro!"
 msgid "M d, Y"
 msgstr "M d, Y"
 
-#: forum.php:135 moderate.php:84 moderate.php:99 search.php:158 search.php:177
+#: forum.php:136 moderate.php:87 moderate.php:106 search.php:158 search.php:177
 #, php-format
 msgid "By: %s"
 msgstr "Por: %s"
 
-#: forum.php:184
+#: forum.php:185
 msgid "Pages:"
 msgstr "Páginas:"
 
-#: forum.php:185 index.php:123 templates/admin/forums-forums.php:33
+#: forum.php:186 index.php:123 templates/admin/forums-forums.php:33
 #: templates/admin/forums-forums.php:48 templates/admin/forums-index.php:64
 #: xoops_version.php:510
 msgid "Topics"
 msgstr "Temas"
 
-#: forum.php:186 moderate.php:107 search.php:197
+#: forum.php:187 moderate.php:119 search.php:197
 msgid "Replies"
 msgstr "Respuestas"
 
-#: forum.php:187 moderate.php:108 search.php:198
+#: forum.php:188 moderate.php:120 search.php:198
 msgid "Views"
 msgstr "Lecturas"
 
-#: forum.php:188 index.php:125 moderate.php:109
+#: forum.php:189 index.php:125 moderate.php:121
 msgid "Last Post"
 msgstr "Último Mensaje"
 
-#: forum.php:189
+#: forum.php:190
 msgid "No new posts"
 msgstr "Sin mensajes nuevos"
 
-#: forum.php:190
+#: forum.php:191
 msgid "New posts"
 msgstr "Nuevos mensajes"
 
-#: forum.php:191
+#: forum.php:192
 msgid "No hot topics"
 msgstr "Sin temas calientes"
 
-#: forum.php:192
+#: forum.php:193
 msgid "New hot topics"
 msgstr "Nuevos temas calientes"
 
-#: forum.php:193 moderate.php:110 moderate.php:116 search.php:199
+#: forum.php:194 moderate.php:122 moderate.php:128 search.php:199
 msgid "Sticky"
 msgstr "Pegadizo"
 
-#: forum.php:194
+#: forum.php:195
 msgid "Closed Topic"
 msgstr "Tema Cerrado"
 
-#: forum.php:196 topic.php:120
+#: forum.php:197 topic.php:120
 msgid "New Topic"
 msgstr "Nuevo Tema"
 
-#: forum.php:199 search.php:204
+#: forum.php:200 search.php:204
 msgid "New Posts"
 msgstr "Nuevos Mensajes"
 
-#: forum.php:205 xoops_version.php:513
+#: forum.php:206 xoops_version.php:513
 msgid "Moderate"
 msgstr "Moderar"
 
-#: forum.php:208
+#: forum.php:209
 msgid "Go to:"
 msgstr "Ir a:"
 
-#: forum.php:209 topic.php:320
+#: forum.php:210 topic.php:320
 msgid "Go!"
 msgstr "Ir!"
 
-#: forum.php:210
+#: forum.php:211
 #, php-format
 msgid "Updated on %s."
 msgstr "Actualizado el %s"
 
-#: forum.php:211
+#: forum.php:212
 msgid "Last reply"
 msgstr "Última respuesta"
 
-#: forum.php:212
+#: forum.php:213
 #, php-format
 msgid "%s by %s"
 msgstr "%s por %s"
 
-#: forum.php:213
+#: forum.php:214
 msgid "No replies yet"
 msgstr "Sin respuestas"
 
-#: forum.php:214 topic.php:326
+#: forum.php:215 topic.php:326
 msgid "Admin"
 msgstr "Admin"
 
-#: forum.php:215 topic.php:327
+#: forum.php:216 topic.php:327
 msgid "Mod"
 msgstr "Mod"
 
-#: forum.php:216 topic.php:325
+#: forum.php:217 moderate.php:337 topic.php:325
 msgid "User"
 msgstr "Usuario"
 
@@ -1270,107 +1270,171 @@ msgstr "¡Por favor especifica el tema que deseas moderar!"
 msgid "Specified forum doesn't exists!"
 msgstr "¡El foro especificado no existe!"
 
-#: moderate.php:106 search.php:196
+#: moderate.php:118 search.php:196
 msgid "Topic"
 msgstr "Tema"
 
-#: moderate.php:111
+#: moderate.php:123
 msgid "Moderating Forum"
 msgstr "Moderando Foro"
 
-#: moderate.php:112
+#: moderate.php:124
 msgid "Pages"
 msgstr "Páginas"
 
-#: moderate.php:113
+#: moderate.php:125
 msgid "Move"
 msgstr "Mover"
 
-#: moderate.php:114
+#: moderate.php:126
 msgid "Unlock"
 msgstr "Desbloquear"
 
-#: moderate.php:115
+#: moderate.php:127
 msgid "Lock"
 msgstr "Bloquear"
 
-#: moderate.php:117
+#: moderate.php:129
 msgid "Unsticky"
 msgstr "No pegadizo"
 
-#: moderate.php:118 topic.php:125
+#: moderate.php:130 topic.php:125
 msgid "Approved"
 msgstr "Aprobado"
 
-#: moderate.php:119 topic.php:350
+#: moderate.php:131 topic.php:350
 msgid "Approve"
 msgstr "Aprobar"
 
-#: moderate.php:120
+#: moderate.php:132
 msgid "Unapprove"
 msgstr "Desaprobar"
 
-#: moderate.php:122
+#: moderate.php:133
+msgid "Owner"
+msgstr "Propietario"
+
+#: moderate.php:135
 msgid "Do you really want to delete selected topics?"
 msgstr "¿Realmente deseas eliminar los temas seleccionados?"
 
-#: moderate.php:145
+#: moderate.php:159
 msgid "Select at least a topic to moderate!"
 msgstr "¡Selecciona al menos un tema para moderar!"
 
-#: moderate.php:159
+#: moderate.php:173
 msgid "Please select the target forum"
 msgstr "Selecciona el foro destino"
 
-#: moderate.php:215
+#: moderate.php:229
 msgid "Topics has been relocated!"
 msgstr "¡Los temas han sido reubicados!"
 
-#: moderate.php:227
+#: moderate.php:241
 msgid "Move Topics"
 msgstr "Mover Temas"
 
-#: moderate.php:237
+#: moderate.php:251
 msgid "Select the forum where you wish to move selected topics"
 msgstr "Selecciona el foro donde deseas mover los temas seleccionados"
 
-#: moderate.php:266
+#: moderate.php:280
 msgid "Move Topics Now!"
 msgstr "¡Mover Temas Ahora!"
 
-#: moderate.php:287
+#: moderate.php:300 moderate.php:360
+msgid "Session token is not valid!"
+msgstr "¡El identificador de sesión no es válido!"
+
+#: moderate.php:310 moderate.php:370
+msgid "Select one topic at least!"
+msgstr "¡Selecciona al menos un tema!"
+
+#: moderate.php:322
+msgid "Change topic owner"
+msgstr "Cambiar propietario del tema"
+
+#: moderate.php:334
+msgid "Select the user that will be assigned as owner for all selected topics"
+msgstr ""
+"Selecciona el usuario que será asignado como propietario de los temas "
+"seleccionador"
+
+#: moderate.php:340
+msgid "Change first post owner too?"
+msgstr "¿Cambiar el propietario del primer mensaje?"
+
+#: moderate.php:346
+msgid "Change Owner!"
+msgstr "¡Cambiar Propietario!"
+
+#: moderate.php:380
+msgid "You must select a user to set as owner of these topics!"
+msgstr ""
+"¡Debes seleccionar al menos un usuario para establecer como propietario del "
+"tema!"
+
+#: moderate.php:389
+msgid "Selected user does not exists!"
+msgstr "¡No existe el usuario seleccionado!"
+
+#: moderate.php:404
+#, php-format
+msgid "Topic width ID %u does not exists"
+msgstr "No existe el tema con ID %u"
+
+#: moderate.php:412
+#, php-format
+msgid "Errors occurs while trying to save topic %s: %s"
+msgstr "Ocurrieron errores al intentar guardar el tema %s: %s"
+
+#: moderate.php:431
+#, php-format
+msgid "First post from topic %s could not be modified"
+msgstr "No se pudo modificar el primer mensaje del tema %s"
+
+#: moderate.php:437
+msgid "Topics modified successfully!"
+msgstr "¡Temas modificados correctamente!"
+
+#: moderate.php:443
+#, php-format
+msgid "Some errors occurs while trying to modified topics: %s"
+msgstr "Ocurrieron algunos errores al intentar modificar los temas: %s"
+
+#: moderate.php:462
 msgid "Select at least one topic to moderate!"
 msgstr "¡Selecciona al menos un tema para moderar!"
 
-#: moderate.php:302 moderate.php:335 moderate.php:385 moderate.php:429
+#: moderate.php:477 moderate.php:511 moderate.php:562 moderate.php:606
 msgid "Action completed!"
 msgstr "¡Acción completada!"
 
-#: moderate.php:320
+#: moderate.php:496
 msgid "Select at least one topic to set as sticky!"
 msgstr "¡Selecciona al menos un tema para establecer como pegadizo!"
 
-#: moderate.php:349
+#: moderate.php:526
 msgid "Select at least one topic to delete!"
 msgstr "¡Selecciona la menos un tema para eliminar!"
 
-#: moderate.php:401
+#: moderate.php:578
 msgid "Select at least one topic to moderate"
 msgstr "Selecciona al menos un tema para moderar"
 
-#: moderate.php:445
+#: moderate.php:623
 msgid "Topic not valid!"
 msgstr "¡Tema no válido!"
 
-#: moderate.php:452
+#: moderate.php:630
 msgid "Post doesn't exists!"
 msgstr "¡El mensaje no existe!"
 
-#: moderate.php:459
+#: moderate.php:637
 msgid "You don't have permission to do this action!"
 msgstr "¡No tienes permiso para realizar esta acción!"
 
-#: moderate.php:476
+#: moderate.php:654
 msgid "Operation completed!"
 msgstr "¡Operación Completada!"
 
@@ -2229,6 +2293,9 @@ msgstr "Editar Mensaje"
 #: xoops_version.php:514
 msgid "Report post"
 msgstr "Reportar mensaje"
+
+#~ msgid "Change first poster owner too?"
+#~ msgstr "¿Cambiar el propietario del primer mensaje?"
 
 #~ msgid "Last 30 days"
 #~ msgstr "Últimos 30 días"

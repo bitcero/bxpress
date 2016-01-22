@@ -127,6 +127,7 @@ while ($row = $db->fetchArray($result)){
 	} else {
 		$pages = null;
 	}
+    
     $tpl->append('topics', array(
         'id'        => $topic->id(),
         'title'     => $topic->title(),

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bXpress Forum\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-04 17:29-0600\n"
-"PO-Revision-Date: 2016-01-04 17:29-0600\n"
+"POT-Creation-Date: 2016-01-22 13:15-0600\n"
+"PO-Revision-Date: 2016-01-22 13:15-0600\n"
 "Last-Translator: Eduardo Cortés <me@eduardocortes.mx>\n"
 "Language-Team: Red México <i.bitcero@gmail.com>\n"
 "Language: en\n"
@@ -64,7 +64,7 @@ msgid "Module home page"
 msgstr ""
 
 #: admin/announcements.php:99 admin/announcements.php:104 admin/header.php:28
-#: index.php:122 moderate.php:238 search.php:201
+#: index.php:122 moderate.php:252 search.php:201
 msgid "Forum"
 msgstr ""
 
@@ -88,7 +88,7 @@ msgstr ""
 
 #: admin/announcements.php:132 admin/categories.php:96 admin/forums.php:154
 #: admin/forums.php:388 admin/prune.php:60 delete.php:74 delete.php:92
-#: edit.php:237 moderate.php:267 post.php:287
+#: edit.php:237 moderate.php:281 moderate.php:347 post.php:287
 msgid "Cancel"
 msgstr ""
 
@@ -96,8 +96,8 @@ msgstr ""
 #: admin/categories.php:123 admin/categories.php:198 admin/categories.php:247
 #: admin/forums.php:327 admin/forums.php:411 admin/prune.php:84
 #: admin/reports.php:94 admin/reports.php:129 delete.php:46 edit.php:52
-#: edit.php:98 edit.php:127 moderate.php:154 moderate.php:313 moderate.php:358
-#: moderate.php:408 moderate.php:465 post.php:65 report.php:75
+#: edit.php:98 edit.php:127 moderate.php:168 moderate.php:489 moderate.php:535
+#: moderate.php:585 moderate.php:643 post.php:65 report.php:75
 msgid "Session token expired!"
 msgstr ""
 
@@ -307,7 +307,7 @@ msgid ""
 msgstr ""
 
 #: admin/forums.php:97 admin/forums.php:199 admin/forums.php:371 forum.php:26
-#: moderate.php:165 post.php:41
+#: moderate.php:179 post.php:41
 msgid "Specified forum does not exists!"
 msgstr ""
 
@@ -889,7 +889,7 @@ msgstr ""
 msgid "The post could not be deleted!"
 msgstr ""
 
-#: delete.php:72 moderate.php:121 templates/admin/forums-announcements.php:10
+#: delete.php:72 moderate.php:134 templates/admin/forums-announcements.php:10
 #: templates/admin/forums-announcements.php:64
 #: templates/admin/forums-announcements.php:80
 #: templates/admin/forums-categories.php:58
@@ -1068,104 +1068,104 @@ msgstr ""
 msgid "M d, Y"
 msgstr ""
 
-#: forum.php:135 moderate.php:84 moderate.php:99 search.php:158 search.php:177
+#: forum.php:136 moderate.php:87 moderate.php:106 search.php:158 search.php:177
 #, php-format
 msgid "By: %s"
 msgstr ""
 
-#: forum.php:184
+#: forum.php:185
 msgid "Pages:"
 msgstr ""
 
-#: forum.php:185 index.php:123 templates/admin/forums-forums.php:33
+#: forum.php:186 index.php:123 templates/admin/forums-forums.php:33
 #: templates/admin/forums-forums.php:48 templates/admin/forums-index.php:64
 #: xoops_version.php:510
 msgid "Topics"
 msgstr ""
 
-#: forum.php:186 moderate.php:107 search.php:197
+#: forum.php:187 moderate.php:119 search.php:197
 msgid "Replies"
 msgstr ""
 
-#: forum.php:187 moderate.php:108 search.php:198
+#: forum.php:188 moderate.php:120 search.php:198
 msgid "Views"
 msgstr ""
 
-#: forum.php:188 index.php:125 moderate.php:109
+#: forum.php:189 index.php:125 moderate.php:121
 msgid "Last Post"
 msgstr ""
 
-#: forum.php:189
+#: forum.php:190
 msgid "No new posts"
 msgstr ""
 
-#: forum.php:190
+#: forum.php:191
 msgid "New posts"
 msgstr ""
 
-#: forum.php:191
+#: forum.php:192
 msgid "No hot topics"
 msgstr ""
 
-#: forum.php:192
+#: forum.php:193
 msgid "New hot topics"
 msgstr ""
 
-#: forum.php:193 moderate.php:110 moderate.php:116 search.php:199
+#: forum.php:194 moderate.php:122 moderate.php:128 search.php:199
 msgid "Sticky"
 msgstr ""
 
-#: forum.php:194
+#: forum.php:195
 msgid "Closed Topic"
 msgstr ""
 
-#: forum.php:196 topic.php:120
+#: forum.php:197 topic.php:120
 msgid "New Topic"
 msgstr ""
 
-#: forum.php:199 search.php:204
+#: forum.php:200 search.php:204
 msgid "New Posts"
 msgstr ""
 
-#: forum.php:205 xoops_version.php:513
+#: forum.php:206 xoops_version.php:513
 msgid "Moderate"
 msgstr ""
 
-#: forum.php:208
+#: forum.php:209
 msgid "Go to:"
 msgstr ""
 
-#: forum.php:209 topic.php:320
+#: forum.php:210 topic.php:320
 msgid "Go!"
 msgstr ""
 
-#: forum.php:210
+#: forum.php:211
 #, php-format
 msgid "Updated on %s."
 msgstr ""
 
-#: forum.php:211
+#: forum.php:212
 msgid "Last reply"
 msgstr ""
 
-#: forum.php:212
+#: forum.php:213
 #, php-format
 msgid "%s by %s"
 msgstr ""
 
-#: forum.php:213
+#: forum.php:214
 msgid "No replies yet"
 msgstr ""
 
-#: forum.php:214 topic.php:326
+#: forum.php:215 topic.php:326
 msgid "Admin"
 msgstr ""
 
-#: forum.php:215 topic.php:327
+#: forum.php:216 topic.php:327
 msgid "Mod"
 msgstr ""
 
-#: forum.php:216 topic.php:325
+#: forum.php:217 moderate.php:337 topic.php:325
 msgid "User"
 msgstr ""
 
@@ -1248,107 +1248,167 @@ msgstr ""
 msgid "Specified forum doesn't exists!"
 msgstr ""
 
-#: moderate.php:106 search.php:196
+#: moderate.php:118 search.php:196
 msgid "Topic"
 msgstr ""
 
-#: moderate.php:111
+#: moderate.php:123
 msgid "Moderating Forum"
 msgstr ""
 
-#: moderate.php:112
+#: moderate.php:124
 msgid "Pages"
 msgstr ""
 
-#: moderate.php:113
+#: moderate.php:125
 msgid "Move"
 msgstr ""
 
-#: moderate.php:114
+#: moderate.php:126
 msgid "Unlock"
 msgstr ""
 
-#: moderate.php:115
+#: moderate.php:127
 msgid "Lock"
 msgstr ""
 
-#: moderate.php:117
+#: moderate.php:129
 msgid "Unsticky"
 msgstr ""
 
-#: moderate.php:118 topic.php:125
+#: moderate.php:130 topic.php:125
 msgid "Approved"
 msgstr ""
 
-#: moderate.php:119 topic.php:350
+#: moderate.php:131 topic.php:350
 msgid "Approve"
 msgstr ""
 
-#: moderate.php:120
+#: moderate.php:132
 msgid "Unapprove"
 msgstr ""
 
-#: moderate.php:122
+#: moderate.php:133
+msgid "Owner"
+msgstr ""
+
+#: moderate.php:135
 msgid "Do you really want to delete selected topics?"
 msgstr ""
 
-#: moderate.php:145
+#: moderate.php:159
 msgid "Select at least a topic to moderate!"
 msgstr ""
 
-#: moderate.php:159
+#: moderate.php:173
 msgid "Please select the target forum"
 msgstr ""
 
-#: moderate.php:215
+#: moderate.php:229
 msgid "Topics has been relocated!"
 msgstr ""
 
-#: moderate.php:227
+#: moderate.php:241
 msgid "Move Topics"
 msgstr ""
 
-#: moderate.php:237
+#: moderate.php:251
 msgid "Select the forum where you wish to move selected topics"
 msgstr ""
 
-#: moderate.php:266
+#: moderate.php:280
 msgid "Move Topics Now!"
 msgstr ""
 
-#: moderate.php:287
+#: moderate.php:300 moderate.php:360
+msgid "Session token is not valid!"
+msgstr ""
+
+#: moderate.php:310 moderate.php:370
+msgid "Select one topic at least!"
+msgstr ""
+
+#: moderate.php:322
+msgid "Change topic owner"
+msgstr ""
+
+#: moderate.php:334
+msgid "Select the user that will be assigned as owner for all selected topics"
+msgstr ""
+
+#: moderate.php:340
+msgid "Change first post owner too?"
+msgstr ""
+
+#: moderate.php:346
+msgid "Change Owner!"
+msgstr ""
+
+#: moderate.php:380
+msgid "You must select a user to set as owner of these topics!"
+msgstr ""
+
+#: moderate.php:389
+msgid "Selected user does not exists!"
+msgstr ""
+
+#: moderate.php:404
+#, php-format
+msgid "Topic width ID %u does not exists"
+msgstr ""
+
+#: moderate.php:412
+#, php-format
+msgid "Errors occurs while trying to save topic %s: %s"
+msgstr ""
+
+#: moderate.php:431
+#, php-format
+msgid "First post from topic %s could not be modified"
+msgstr ""
+
+#: moderate.php:437
+msgid "Topics modified successfully!"
+msgstr ""
+
+#: moderate.php:443
+#, php-format
+msgid "Some errors occurs while trying to modified topics: %s"
+msgstr ""
+
+#: moderate.php:462
 msgid "Select at least one topic to moderate!"
 msgstr ""
 
-#: moderate.php:302 moderate.php:335 moderate.php:385 moderate.php:429
+#: moderate.php:477 moderate.php:511 moderate.php:562 moderate.php:606
 msgid "Action completed!"
 msgstr ""
 
-#: moderate.php:320
+#: moderate.php:496
 msgid "Select at least one topic to set as sticky!"
 msgstr ""
 
-#: moderate.php:349
+#: moderate.php:526
 msgid "Select at least one topic to delete!"
 msgstr ""
 
-#: moderate.php:401
+#: moderate.php:578
 msgid "Select at least one topic to moderate"
 msgstr ""
 
-#: moderate.php:445
+#: moderate.php:623
 msgid "Topic not valid!"
 msgstr ""
 
-#: moderate.php:452
+#: moderate.php:630
 msgid "Post doesn't exists!"
 msgstr ""
 
-#: moderate.php:459
+#: moderate.php:637
 msgid "You don't have permission to do this action!"
 msgstr ""
 
-#: moderate.php:476
+#: moderate.php:654
 msgid "Operation completed!"
 msgstr ""
 
