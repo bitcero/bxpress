@@ -226,7 +226,6 @@ switch($op){
 			}
 			// Lista de Archivos Adjuntos
 			$list = new RMFormCheck(__('Cuerrent Attachments','bxpress'));
-			$list->asTable(1);
 			foreach ($post->attachments() as $file){
 				$list->addOption("<img src='".$file->getIcon()."' align='absmiddle' /> ".$file->name()." (".RMUtilities::formatBytesSize($file->size()).")", 'files[]', $file->id());
 			}
