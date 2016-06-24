@@ -65,6 +65,14 @@ switch($op){
 			redirect_header('./'.($create ? 'forum.php?id='.$forum->id() : 'topic.php?id='.$topic->id()), 2, __('Session token expired!','bxpress'));
 			die();
 		}
+
+        if($common->services()->service('captcha')){
+            if(!$common->services()->captcha->verify()){
+                $common->uris()->redirect_with_message(
+                    __('CAPTCHA challenge failed! Please try again', 'bxpress'), './'.($create ? 'forum.php?id='.$forum->id() : 'topic.php?id='.$topic->id()), RMMSG_DANGER
+                );
+            }
+        }
 		
 		$myts =& MyTextSanitizer::getInstance();
 		
@@ -278,6 +286,11 @@ switch($op){
 			$form->addElement($ele);
 			$form->setExtra('enctype="multipart/form-data"');
 		}
+
+        // Captcha support
+        if($common->services()->service('captcha')){
+            $form->addElement(new RMFormLabel(__('Captcha challenge:', 'bxpress'), $common->services()->captcha->render()));
+        }
 		
 		$form->addElement(new RMFormHidden('op','post'));
 		$form->addElement(new RMFormHidden('pid',$pid));
@@ -299,7 +312,7 @@ switch($op){
 				$post = new bXPost();
 				$post->assignVars($row);
 				$tpl->append('posts', array('id'=>$post->id(), 'text'=>$post->text(),
-						'time'=>date($xoopsConfig['datestring'], $post->date()),'uname'=>$post->uname()));
+						'time'=>date(_DATESTRING, $post->date()),'uname'=>$post->uname()));
 			}
 		}
 		

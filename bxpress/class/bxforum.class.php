@@ -331,7 +331,7 @@ class bXForum extends RMObject
         
         if ($type=='') return false;
         
-        $perms =& $this->permissions();
+        $perms = $this->permissions();
         if (!isset($perms[$type])) return false;
         
         // Comprobamos si "Todos" esta activo

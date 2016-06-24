@@ -65,12 +65,12 @@ $modversion = array(
     'rmversion'     => array(
         'major'     => 1,
         'minor'     => 2,
-        'revision'  => 30,
+        'revision'  => 33,
         'stage'     => -1,
         'name'      => 'bXpress'
     ),
     'rewrite'       => 0,
-    'updateurl'     => "http://www.xoopsmexico.net/modules/vcontrol/",
+    'updateurl'     => "https://www.xoopsmexico.net/modules/vcontrol/",
     'help'          => 'docs/readme.html',
 
     // Author information

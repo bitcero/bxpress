@@ -76,7 +76,9 @@ function bx_show_forums(){
 function bx_show_form($edit = 0){
     global $xoopsModule, $xoopsConfig;
 
-    if( !RMfunctions::plugin_installed('advform') ){
+    $installed = \Common\Core\Helpers\Plugins::isInstalled('advform') || \Common\Core\Helpers\Plugins::isInstalled('advform-pro');
+
+    if( !$installed  ){
         RMUris::redirect_with_message(
             sprintf(
                 __('<a href="%s">AdvancedForms</a> must be installed before to create any forum. Please download and install it.', 'bxpress'),
@@ -84,7 +86,7 @@ function bx_show_form($edit = 0){
             ), 'forums.php', RMMSG_ERROR
         );
     }
-    
+
     if ($edit){
         $id = RMHttpRequest::request( 'id', 'integer', 0 );
         if ($id<=0){
@@ -369,7 +371,6 @@ function bx_moderators(){
 	$forum = new bXForum($id);
 	if ($forum->isNew()){
 		redirectMsg('forums.php', __('Specified forum does not exists!','bxpress'), 1);
-		break;
 	}
 
     RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/#moderadores');
