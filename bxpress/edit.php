@@ -239,7 +239,7 @@ switch($op){
 			$forma->addElement(new RMFormHidden('id', $id));
 		}
 
-		$tpl->assign('topic_form', $form->render()."<br />".$forma->render());
+		$tpl->assign('topic_form', $form->render(). (isset($forma) ? "<br />".$forma->render() : ''));
 		
 		$tpl->assign('lang_topicreview', __('Topic Review (Newest First)','bxpress'));
 

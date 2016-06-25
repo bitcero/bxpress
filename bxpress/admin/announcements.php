@@ -87,7 +87,6 @@ function showForm($edit = 0){
 	xoops_cp_header();
 	
 	$form = new RMForm($edit ? __('Edit Announcement','bxpress') : __('New Announcement','bxpress'), 'frmAnnouncements', 'announcements.php');
-	$form->oddClass('oddForm');
 	$form->addElement(new RMFormEditor(__('Text','bxpress'), 'text', '100%','300px', $edit ? $an->text('e') : ''), true);
 	
 	// Caducidad
