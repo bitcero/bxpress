@@ -167,7 +167,7 @@ class bXCategoryHandler
         $result = $this->db->query("SELECT id_cat, title FROM $this->table ORDER BY `order`");
         $rtn = array();
         while (list($id,$title) = $this->db->fetchRow($result)){
-            $rtn[$id] = $title;
+            $rtn[$title] = $id;
         }
         return $rtn;
     }
