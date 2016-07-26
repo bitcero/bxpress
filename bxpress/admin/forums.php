@@ -111,7 +111,12 @@ function bx_show_form($edit = 0){
     
     $form = new RMForm($edit ? __('Edit Forum','bxpress') : __('New Forum','bxpress'), 'frmForum', 'forums.php');
     // Categorias
-    $ele = new RMFormSelect(__('Category','bxpress'), 'cat', 0, $edit ? array($forum->category()) : null);
+    $ele = new RMFormSelect([
+        'caption' => __('Category','bxpress'),
+        'name' => 'cat',
+        'selected' => $edit ? array($forum->category()) : null,
+        'class' => 'form-control'
+        ]);
     $ele->addOption(0, __('Select category...','bxpress'), $edit ? 0 : 1);
     $ele->addOptionsArray($bcHand->getForSelect());
     $form->addElement($ele, true, 'noselect:0');
