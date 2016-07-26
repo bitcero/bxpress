@@ -30,7 +30,7 @@ class bXFunctions
     * @desc Obtiene el último usuario registrado
     * @return objeto {@link XoopsUser}
     */
-    function getLastUser(){
+    static function getLastUser(){
         $db = XoopsDatabaseFactory::getDatabaseConnection();
         $result = $db->query("SELECT * FROM ".$db->prefix("users")." WHERE level>'0' ORDER BY uid DESC LIMIT 0,1");
         if ($db->getRowsNum($result)>0){
@@ -49,7 +49,7 @@ class bXFunctions
     *         2 Devuelve todos los usuarios conectados
     * @return int
     */
-    public function getOnlineCount($type = 1){
+    static function getOnlineCount($type = 1){
         global $xoopsModule;
         
         $db = XoopsDatabaseFactory::getDatabaseConnection();
@@ -69,7 +69,7 @@ class bXFunctions
     * @desc Total de Usuarios Registrados
     * @return int
     */
-    public function totalUsers(){
+    static function totalUsers(){
         $db = XoopsDatabaseFactory::getDatabaseConnection();
         list($num) = $db->fetchRow($db->query("SELECT COUNT(*) FROM ".$db->prefix("users")." WHERE level>'0'"));
         return $num;
@@ -77,7 +77,7 @@ class bXFunctions
     /**
     * @desc Total de Temas en los Foros
     */
-    public function totalTopics(){
+    static function totalTopics(){
         $db = XoopsDatabaseFactory::getDatabaseConnection();
         list($num) = $db->fetchRow($db->query("SELECT COUNT(*) FROM ".$db->prefix("mod_bxpress_topics")));
         return $num;
@@ -85,7 +85,7 @@ class bXFunctions
     /**
     * @desc Total de Mensajes en los Foros
     */
-    public function totalPosts(){
+    static function totalPosts(){
         $db = XoopsDatabaseFactory::getDatabaseConnection();
         list($num) = $db->fetchRow($db->query("SELECT COUNT(*) FROM ".$db->prefix("mod_bxpress_posts")));
         return $num;
@@ -93,7 +93,7 @@ class bXFunctions
     /**
     * @desc Formatea la fecha
     */
-    public function formatDate($time){
+    static function formatDate($time){
     	global $mc;
     	
     	$real = time() - $time;
@@ -114,7 +114,7 @@ class bXFunctions
     /**
     * @desc Creamos el encabezado del módulo
     */
-    public function makeHeader(){
+    static function makeHeader(){
     	global $xoopsTpl, $xoopsModuleConfig, $xoopsUser;
     	
         $tpl = $xoopsTpl;
@@ -212,7 +212,7 @@ class bXFunctions
          * @param int Where to search (0 = home page, 1 = froum, 2 = all module)
          * @return array
          */
-	public function loadAnnouncements($w, $forum=0){
+	static function loadAnnouncements($w, $forum=0){
 		global $xoopsModuleConfig, $tpl;
 		
 		if (!$xoopsModuleConfig['announcements']) return;

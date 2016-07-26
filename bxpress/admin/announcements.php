@@ -87,11 +87,15 @@ function showForm($edit = 0){
 	xoops_cp_header();
 	
 	$form = new RMForm($edit ? __('Edit Announcement','bxpress') : __('New Announcement','bxpress'), 'frmAnnouncements', 'announcements.php');
-	$form->oddClass('oddForm');
 	$form->addElement(new RMFormEditor(__('Text','bxpress'), 'text', '100%','300px', $edit ? $an->text('e') : ''), true);
 	
 	// Caducidad
-	$ele = new RMFormDate(__('Expire on','bxpress'), 'expire', $edit ? $an->expire() : time());
+	$ele = new RMFormDate([
+        'caption' => __('Expire on','bxpress'),
+        'name' => 'expire',
+        'value' => $edit ? $an->expire() : date('Y-m-d'),
+        'options' => 'date'
+    ]);
 	$form->addElement($ele);
 	// Mostran en
 	$ele = new RMFormRadio(__('Show on','bxpress'), 'where', 1, 0);
