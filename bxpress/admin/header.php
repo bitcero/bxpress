@@ -42,10 +42,3 @@ if (!file_exists($mc['attachdir'])){
 // Add css
 RMTemplate::get()->add_style('admin.min.css', 'bxpress');
 
-// Check that AdvancedForms has been installed
-if( !Common\Core\Helpers\Plugins::isInstalled('advform') && !Common\Core\Helpers\Plugins::isInstalled('advform-pro') ){
-    showMessage(
-        sprintf(__('<a href=\"%s\" target="_blank">AdvancedForms</a> must be installed in order to get <strong>bXpress</strong> working properly', 'bxpress'), 'https://github.com/bitcero/advform/'),
-        RMMSG_WARN
-    );
-}
