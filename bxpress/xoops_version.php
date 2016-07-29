@@ -65,7 +65,7 @@ $modversion = array(
     'rmversion'     => array(
         'major'     => 1,
         'minor'     => 2,
-        'revision'  => 35,
+        'revision'  => 36,
         'stage'     => 0,
         'name'      => 'bXpress'
     ),

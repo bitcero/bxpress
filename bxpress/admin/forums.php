@@ -79,11 +79,11 @@ function bx_show_form($edit = 0){
     $installed = \Common\Core\Helpers\Plugins::isInstalled('advform') || \Common\Core\Helpers\Plugins::isInstalled('advform-pro');
 
     if( !$installed  ){
-        RMUris::redirect_with_message(
+        showMessage(
             sprintf(
-                __('<a href="%s">AdvancedForms</a> must be installed before to create any forum. Please download and install it.', 'bxpress'),
+                __('BXpress recommends to use the plugin <a href=\"%s\">AdvancedForms</a>.', 'bxpress'),
                 'https://github.com/bitcero/advform'
-            ), 'forums.php', RMMSG_ERROR
+            ), RMMSG_WARN
         );
     }
 
@@ -125,7 +125,11 @@ function bx_show_form($edit = 0){
     // Descripcion
     $form->addElement(new RMFormEditor(__('Forum description','bxpress'), 'desc', '100%', '300px', $edit ? $forum->getVar( 'desc', 'e' ) : ''));
 
-    $form->addElement( new RMFormImageUrl( __('Forum image', 'bxpress'), 'image', $edit ? $forum->image : '' ) );
+    if($installed){
+        $form->addElement( new RMFormImageUrl( __('Forum image', 'bxpress'), 'image', $edit ? $forum->image : '' ) );
+    } else {
+        $form->addElement( new RMFormText( __('Forum image', 'bxpress'), 'image', $edit ? $forum->image : '' ) );
+    }
 
     // Activo
     $form->addElement(new RMFormYesNo(__('Activate forum','bxpress'), 'active', $edit ? $forum->active() : 1));
