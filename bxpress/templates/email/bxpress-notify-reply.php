@@ -932,7 +932,7 @@ table.divider {
 
                                         <h1 style="Margin-top: 0;color: #565656;font-weight: 700;font-size: 36px;Margin-bottom: 18px;font-family: sans-serif;line-height: 42px"><?php _e('New Reply!', 'bxpress'); ?></h1>
                                         <p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 16px;line-height: 25px;Margin-bottom: 25px">
-                                            <?php echo sprintf( __('A new reply has been sent in topic %s from forum %s:', 'bxpress'), '<strong>' . $topic->title() . '</strong>', '<strong>' . $forum->name() . '</strong>' ); ?>
+                                            <?php echo sprintf(__('A new reply has been sent in topic %s from forum %s:', 'bxpress'), '<strong>' . $topic->title() . '</strong>', '<strong>' . $forum->name() . '</strong>'); ?>
                                         </p>
 
                                         <table class="contents" style="border-collapse: collapse;border-spacing: 0;table-layout: fixed;width: 100%">
@@ -950,13 +950,15 @@ table.divider {
                                             </tbody></table>
 
                                         <p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 16px;line-height: 25px;Margin-bottom: 24px">
-                                            <?php echo sprintf( __('Click here to %s in %s', 'bxpress'),
-                                                    '<strong><a href="'.$post->permalink().'">'.__('view the message', 'bxpress').'</a></strong>',
-                                                    '<strong><a href="'.$forum->permalink().'">'.__('our forum', 'bxpress').'</a></strong>'); ?>
+                                            <?php echo sprintf(
+    __('Click here to %s in %s', 'bxpress'),
+    '<strong><a href="'.$post->permalink().'">'.__('view the message', 'bxpress').'</a></strong>',
+    '<strong><a href="'.$forum->permalink().'">'.__('our forum', 'bxpress').'</a></strong>'
+); ?>
                                         </p>
 
                                         <p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 16px;line-height: 25px;Margin-bottom: 24px">
-                                            <em><?php echo sprintf( __('The %s team.', 'bxpress'), '<strong>' . $xoopsConfig['sitename'] . '</strong>'); ?></em>
+                                            <em><?php echo sprintf(__('The %s team.', 'bxpress'), '<strong>' . $xoopsConfig['sitename'] . '</strong>'); ?></em>
                                         </p>
 
                                     </td>

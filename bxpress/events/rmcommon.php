@@ -10,40 +10,36 @@
 
 class BxpressRmcommonPreload
 {
-
-    public function eventRmcommonSavedSettings( $dirname, $save, $add, $delete ){
-
-        if ( 'bxpress' != $dirname )
+    public function eventRmcommonSavedSettings($dirname, $save, $add, $delete)
+    {
+        if ('bxpress' != $dirname) {
             return $dirname;
+        }
 
         // URL rewriting
-        $rule = "RewriteRule ^".trim($save['htbase'],'/')."/?(.*)$ modules/bxpress/$1 [L]";
-        if( 1 == $save['urlmode'] ){
-
+        $rule = "RewriteRule ^".trim($save['htbase'], '/')."/?(.*)$ modules/bxpress/$1 [L]";
+        if (1 == $save['urlmode']) {
             $ht = new RMHtaccess('bxpress');
             $htResult = $ht->write($rule);
-            if($htResult!==true)
-                showMessage(__('An error ocurred while trying to write .htaccess file!','bxpress'), RMMSG_ERROR);
-
+            if ($htResult!==true) {
+                showMessage(__('An error ocurred while trying to write .htaccess file!', 'bxpress'), RMMSG_ERROR);
+            }
         } else {
-
-            $ht = new RMHtaccess( 'bxpress' );
+            $ht = new RMHtaccess('bxpress');
             $ht->removeRule();
             $ht->write();
-
         }
 
         return null;
-
     }
 
-    public function eventRmcommonGetFeedsList($feeds){
-        
+    public function eventRmcommonGetFeedsList($feeds)
+    {
         load_mod_locale('bxpress');
         include_once XOOPS_ROOT_PATH.'/modules/bxpress/class/bxfunctions.class.php';
         include_once XOOPS_ROOT_PATH.'/modules/bxpress/class/bxforum.class.php';
         
-        $module = RMModules::load_module( 'bxpress' );
+        $module = RMModules::load_module('bxpress');
         $config = RMSettings::module_settings('bxpress');
         $url = XOOPS_URL.'/'.($config->urlmode ? $config->htbase : 'modules/bxpress').'/';
         $bxFunc = new bXFunctions();
@@ -57,15 +53,15 @@ class BxpressRmcommonPreload
         $options[] = array(
             'title'    => __('All Recent Messages', 'bxpress'),
             'params' => 'show=all',
-            'description' => __('Show all recent messages','bxpress')
+            'description' => __('Show all recent messages', 'bxpress')
         );
         
-        $forums = $bxFunc->forumList('',false);
+        $forums = $bxFunc->forumList('', false);
         
         $table = '<table cellpadding="2" cellspacing="2" width="100%"><tr class="even">';
         $count = 0;
-        foreach($forums as $forum){
-            if ($count>=3){
+        foreach ($forums as $forum) {
+            if ($count>=3) {
                 $count = 0;
                 $table .= '</tr><tr class="'.tpl_cycle("odd,even").'">';
             }
@@ -75,8 +71,8 @@ class BxpressRmcommonPreload
         $table .= '</tr></table>';
         
         $options[] = array(
-            'title' => __('Posts by forum','bxpress'),
-            'description' => __('Select a forum to see the messages posted recently.','bxpress').' <a href="javascript:;" onclick="$(\'#bxforums-feed\').slideToggle(\'slow\');">Show Forums</a>
+            'title' => __('Posts by forum', 'bxpress'),
+            'description' => __('Select a forum to see the messages posted recently.', 'bxpress').' <a href="javascript:;" onclick="$(\'#bxforums-feed\').slideToggle(\'slow\');">Show Forums</a>
                             <div id="bxforums-feed" style="padding: 10px; display: none;">'.$table.'</div>'
         );
         
@@ -85,6 +81,5 @@ class BxpressRmcommonPreload
         $feed = array('data'=>$data,'options'=>$options);
         $feeds[] = $feed;
         return $feeds;
-        
     }
 }

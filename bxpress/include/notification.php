@@ -16,51 +16,47 @@
 * @param array Parámetros adicionales
 * @return string
 */
-function bxNotifications($category,$id,$event,$params=array()){
-
+function bxNotifications($category, $id, $event, $params=array())
+{
     $bxf = bXFunctions::get();
-	
-	if ($category=='forum'){
-		//Notificación de nuevo tema en foro
-		if ($event=='newtopic'){
-			$forum=new bXForum($id);
-			$info['name']=$forum->name();
-			$info['url']= $bxf->url()."/topic.php?id=$params[topic]";
-			//$info['desc']=$param['topic'];
-			return $info;		
-		}
-		
-		//Notificación de nuevo mensaje en foro
-		if ($event=='postforum'){
-			$forum=new bXForum($id);
-			$info['name']=$forum->name();
-			$info['url']=$bxf->url()."/topic.php?pid=$params[post]#p$params[post]";
-			//$info['desc']=$param['topic'];
-			return $info;		
-		}
-	}
+    
+    if ($category=='forum') {
+        //Notificación de nuevo tema en foro
+        if ($event=='newtopic') {
+            $forum=new bXForum($id);
+            $info['name']=$forum->name();
+            $info['url']= $bxf->url()."/topic.php?id=$params[topic]";
+            //$info['desc']=$param['topic'];
+            return $info;
+        }
+        
+        //Notificación de nuevo mensaje en foro
+        if ($event=='postforum') {
+            $forum=new bXForum($id);
+            $info['name']=$forum->name();
+            $info['url']=$bxf->url()."/topic.php?pid=$params[post]#p$params[post]";
+            //$info['desc']=$param['topic'];
+            return $info;
+        }
+    }
 
-	//Notificación de nuevo mensaje en tema
-	if ($category=='topic'){
-		$topic=new bXTopic($id);
-		$info['name']=$topic->title();
-		$info['url']=$bxf->url()."/topic.php?pid=$params[post]#p$params[post]";
-		//$info['desc']=$param['topic'];
-		
-		return $info;
-	}
+    //Notificación de nuevo mensaje en tema
+    if ($category=='topic') {
+        $topic=new bXTopic($id);
+        $info['name']=$topic->title();
+        $info['url']=$bxf->url()."/topic.php?pid=$params[post]#p$params[post]";
+        //$info['desc']=$param['topic'];
+        
+        return $info;
+    }
 
 
-	//Notificación de mensaje en cualquier foro
-	if ($category=='any_forum'){
-		$forum=new bXForum($params['forum']);
-		$info['name']=$forum->name();
-		$info['url']=$bxf->url()."/topic.php?pid=$params[post]#p$params[post]";
-		//$info['desc']=$param['topic'];
-		return $info;
-
-	}
-	
-	
-	
+    //Notificación de mensaje en cualquier foro
+    if ($category=='any_forum') {
+        $forum=new bXForum($params['forum']);
+        $info['name']=$forum->name();
+        $info['url']=$bxf->url()."/topic.php?pid=$params[post]#p$params[post]";
+        //$info['desc']=$param['topic'];
+        return $info;
+    }
 }

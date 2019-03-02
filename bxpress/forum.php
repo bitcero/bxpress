@@ -8,7 +8,7 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-define('RMCLOCATION','forum');
+define('RMCLOCATION', 'forum');
 include '../../mainfile.php';
 $xoopsOption['template_main'] = "bxpress-forum.tpl";
 $xoopsOption['module_subpage'] = "forums";
@@ -16,33 +16,35 @@ include 'header.php';
 $myts =& MyTextSanitizer::getInstance();
 
 $id = isset($_GET['id']) ? $myts->addSlashes($_GET['id']) : '';
-if ($id==''){
-    redirect_header(BB_URL, 2, __('No forum ID has been specified','bxpress'));
+if ($id=='') {
+    redirect_header(BB_URL, 2, __('No forum ID has been specified', 'bxpress'));
     die();
 }
 
 $forum = new bXForum($id);
-if ($forum->isNew()){
-    redirect_header(BB_URL, 2, __('Specified forum does not exists!','bxpress'));
+if ($forum->isNew()) {
+    redirect_header(BB_URL, 2, __('Specified forum does not exists!', 'bxpress'));
     die();
 }
 
 /**
  * Check if module is inactive
  */
-$isModerator = $xoopsUser && ( $xoopsUser->isAdmin() || $forum->isModerator( $xoopsUser->uid() ) );
-if ( !$forum->active && !$isModerator )
+$isModerator = $xoopsUser && ($xoopsUser->isAdmin() || $forum->isModerator($xoopsUser->uid()));
+if (!$forum->active && !$isModerator) {
     RMUris::redirect_with_message(
         __('This forum is closed and you don\'t have permissions to view it', 'bxpress'),
-        BX_URL, RMMSG_WARN
+        BX_URL,
+        RMMSG_WARN
     );
+}
 
 /**
 * Comprobamos que el usuario actual tenga permisos
 * de acceso al foro
 */
-if (!$forum->isAllowed($xoopsUser ? $xoopsUser->getGroups() : array(0, XOOPS_GROUP_ANONYMOUS), BXPRESS_PERM_VIEW) ){
-    RMUris::redirect_with_message( __('You are not allowed to view this forum!','bxpress'), BX_URL, RMMSG_WARN );
+if (!$forum->isAllowed($xoopsUser ? $xoopsUser->getGroups() : array(0, XOOPS_GROUP_ANONYMOUS), BXPRESS_PERM_VIEW)) {
+    RMUris::redirect_with_message(__('You are not allowed to view this forum!', 'bxpress'), BX_URL, RMMSG_WARN);
     die();
 }
 
@@ -57,14 +59,18 @@ list($num)=$db->fetchRow($db->queryF($sql));
     
 $page = isset($_REQUEST['pag']) ? $_REQUEST['pag'] : '';
 $limit = $xoopsModuleConfig['topicperpage'] > 0 ? $xoopsModuleConfig['topicperpage'] : 15;
-if ($page > 0){ $page -= 1; }
+if ($page > 0) {
+    $page -= 1;
+}
         
 $start = $page * $limit;
 $tpages = (int)($num / $limit);
-if($num % $limit > 0) $tpages++;
+if ($num % $limit > 0) {
+    $tpages++;
+}
     
 $pactual = $page + 1;
-if ($pactual>$tpages){
+if ($pactual>$tpages) {
     $rest = $pactual - $tpages;
     $pactual = $pactual - $rest + 1;
     $start = ($pactual - 1) * $limit;
@@ -87,53 +93,55 @@ $result = $db->query($sql);
  */
 $posters = array();
 
-while ($row = $db->fetchArray($result)){
+while ($row = $db->fetchArray($result)) {
     $topic = new bXTopic();
     $topic->assignVars($row);
     $last = new bXPost($topic->lastPost());
 
-    if ( !isset( $posters[ $topic->poster ] ) )
-        $posters[$topic->poster] = new RMUser( $topic->poster );
+    if (!isset($posters[ $topic->poster ])) {
+        $posters[$topic->poster] = new RMUser($topic->poster);
+    }
 
-    if ( !isset( $posters[ $last->uid ] ) )
-        $posters[$last->uid] = new RMUser( $last->uid );
+    if (!isset($posters[ $last->uid ])) {
+        $posters[$last->uid] = new RMUser($last->uid);
+    }
 
     $poster = $posters[$topic->poster];
     $last_poster = $posters[$last->uid];
 
     $lastpost = array();
-    if (!$last->isNew()){
-    	$lastpost['date']   = formatTimeStamp( $last->date(), __('M d, Y') );
-    	$lastpost['time']   = $last->date();
-    	$lastpost['id']     = $last->id();
+    if (!$last->isNew()) {
+        $lastpost['date']   = formatTimeStamp($last->date(), __('M d, Y'));
+        $lastpost['time']   = $last->date();
+        $lastpost['id']     = $last->id();
         $lastpost['poster'] = array(
             'uid'       => $last->uid,
             'uname'     => $last->poster_name,
             'name'      => $last_poster->name != '' ? $last_poster->name : $last_poster->uname,
             'email'     => $last_poster->email,
-            'avatar'    => RMEvents::get()->run_event( 'rmcommon.get.avatar', $last_poster->getVar('email'), 50 ),
+            'avatar'    => RMEvents::get()->run_event('rmcommon.get.avatar', $last_poster->getVar('email'), 50),
             'link'      => XOOPS_URL . '/userinfo.php?uid=' . $last_poster->uid
         );
 
-    	if ($xoopsUser){
-    		$lastpost['new'] = $last->date()>$xoopsUser->getVar('last_login') && (time()-$last->date()) < $xoopsModuleConfig['time_new'];
-    	} else {
-    		$lastpost['new'] = (time()-$last->date())<=$xoopsModuleConfig['time_new'];
-		}
-	}
-	$tpages = ceil($topic->replies()/$xoopsModuleConfig['perpage']);
-	if ($tpages>1){
-		$pages = bXFunctions::paginateIndex($tpages);
-	} else {
-		$pages = null;
-	}
+        if ($xoopsUser) {
+            $lastpost['new'] = $last->date()>$xoopsUser->getVar('last_login') && (time()-$last->date()) < $xoopsModuleConfig['time_new'];
+        } else {
+            $lastpost['new'] = (time()-$last->date())<=$xoopsModuleConfig['time_new'];
+        }
+    }
+    $tpages = ceil($topic->replies()/$xoopsModuleConfig['perpage']);
+    if ($tpages>1) {
+        $pages = bXFunctions::paginateIndex($tpages);
+    } else {
+        $pages = null;
+    }
     
     $tpl->append('topics', array(
         'id'        => $topic->id(),
         'title'     => $topic->title(),
         'replies'   => $topic->replies(),
         'views'     => $topic->views(),
-        'by'        => sprintf(__('By: %s','bxpress'), $topic->posterName()),
+        'by'        => sprintf(__('By: %s', 'bxpress'), $topic->posterName()),
         'last'      => $lastpost,
         'popular'   => ($topic->replies()>=$forum->hotThreshold()),
         'sticky'    => $topic->sticky(),
@@ -145,8 +153,8 @@ while ($row = $db->fetchArray($result)){
             'uname'     => $poster->uname,
             'name'      => $poster->name,
             'email'     => $poster->email,
-            'avatar'    => RMEvents::get()->run_event( 'rmcommon.get.avatar', $poster->getVar('email'), 100 ),
-            'type'      => $poster->isAdmin() ? 'admin' : ( $forum->isModerator( $topic->poster ) ? 'moderator' : 'user' )
+            'avatar'    => RMEvents::get()->run_event('rmcommon.get.avatar', $poster->getVar('email'), 100),
+            'type'      => $poster->isAdmin() ? 'admin' : ($forum->isModerator($topic->poster) ? 'moderator' : 'user')
         )
     ));
 }
@@ -162,59 +170,59 @@ $events = Bxpress_Notifications::get();
 // New topics notifications
 $event = $events->event('newtopic')
     ->parameters($forum->id())
-    ->permissions( array(
+    ->permissions(array(
         'users' => $forum->moderators(),
         'groups' => array(XOOPS_GROUP_ADMIN)
     ));
-$notifications->add_item( $event );
+$notifications->add_item($event);
 
 // New posts notification
 $event = $events->event('forum-newpost')
     ->parameters($forum->id())
-    ->permissions( array(
+    ->permissions(array(
         'users' => $forum->moderators(),
         'groups' => array(XOOPS_GROUP_ADMIN)
     ));
 
-$notifications->add_item( $event );
+$notifications->add_item($event);
 
 // Assign output to a Smarty variable
 $tpl->assign('notifications', $notifications->render());
 
 
-$tpl->assign('lang_pages', __('Pages:','bxpress'));
-$tpl->assign('lang_topic', __('Topics','bxpress'));
-$tpl->assign('lang_replies', __('Replies','bxpress'));
-$tpl->assign('lang_views', __('Views','bxpress'));
-$tpl->assign('lang_lastpost', __('Last Post','bxpress'));
-$tpl->assign('lang_nonew', __('No new posts','bxpress'));
-$tpl->assign('lang_withnew', __('New posts','bxpress'));
-$tpl->assign('lang_hotnonew', __('No hot topics','bxpress'));
-$tpl->assign('lang_hotnew', __('New hot topics','bxpress'));
-$tpl->assign('lang_sticky', __('Sticky','bxpress'));
-$tpl->assign('lang_closed', __('Closed Topic','bxpress'));
-if ($forum->isAllowed($xoopsUser ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS, 'topic')){
-	$tpl->assign('lang_newtopic', __('New Topic'));
-	$tpl->assign('can_topic', 1);
+$tpl->assign('lang_pages', __('Pages:', 'bxpress'));
+$tpl->assign('lang_topic', __('Topics', 'bxpress'));
+$tpl->assign('lang_replies', __('Replies', 'bxpress'));
+$tpl->assign('lang_views', __('Views', 'bxpress'));
+$tpl->assign('lang_lastpost', __('Last Post', 'bxpress'));
+$tpl->assign('lang_nonew', __('No new posts', 'bxpress'));
+$tpl->assign('lang_withnew', __('New posts', 'bxpress'));
+$tpl->assign('lang_hotnonew', __('No hot topics', 'bxpress'));
+$tpl->assign('lang_hotnew', __('New hot topics', 'bxpress'));
+$tpl->assign('lang_sticky', __('Sticky', 'bxpress'));
+$tpl->assign('lang_closed', __('Closed Topic', 'bxpress'));
+if ($forum->isAllowed($xoopsUser ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS, 'topic')) {
+    $tpl->assign('lang_newtopic', __('New Topic'));
+    $tpl->assign('can_topic', 1);
 }
-$tpl->assign('lang_newposts', __('New Posts','bxpress'));
+$tpl->assign('lang_newposts', __('New Posts', 'bxpress'));
 
 bXFunctions::makeHeader();
 $tpl->assign('xoops_pagetitle', $forum->name().' &raquo; '.$xoopsModuleConfig['forum_title']);
-if ($xoopsUser){
-	if ($forum->isModerator($xoopsUser->uid()) || $xoopsUser->isAdmin() ){
-		$tpl->assign('lang_moderate', __('Moderate','bxpress'));
-	}
+if ($xoopsUser) {
+    if ($forum->isModerator($xoopsUser->uid()) || $xoopsUser->isAdmin()) {
+        $tpl->assign('lang_moderate', __('Moderate', 'bxpress'));
+    }
 }
-$tpl->assign('lang_goto', __('Go to:','bxpress'));
-$tpl->assign('lang_go', __('Go!','bxpress'));
-$tpl->assign('lang_updated', __('Updated on %s.','bxpress'));
-$tpl->assign('lang_lastreply', __('Last reply','bxpress'));
-$tpl->assign('lang_lastreply_by', __('%s by %s','bxpress'));
-$tpl->assign('lang_noreplies', __('No replies yet','bxpress'));
-$tpl->assign('lang_admin', __('Admin','bxpress'));
-$tpl->assign('lang_moderator', __('Mod','bxpress'));
-$tpl->assign('lang_user', __('User','bxpress'));
+$tpl->assign('lang_goto', __('Go to:', 'bxpress'));
+$tpl->assign('lang_go', __('Go!', 'bxpress'));
+$tpl->assign('lang_updated', __('Updated on %s.', 'bxpress'));
+$tpl->assign('lang_lastreply', __('Last reply', 'bxpress'));
+$tpl->assign('lang_lastreply_by', __('%s by %s', 'bxpress'));
+$tpl->assign('lang_noreplies', __('No replies yet', 'bxpress'));
+$tpl->assign('lang_admin', __('Admin', 'bxpress'));
+$tpl->assign('lang_moderator', __('Mod', 'bxpress'));
+$tpl->assign('lang_user', __('User', 'bxpress'));
 
 bXFunctions::forumList();
 bXFunctions::loadAnnouncements(1, $forum->id());

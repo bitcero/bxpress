@@ -8,29 +8,29 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-function xoops_module_pre_install_bxpress(&$mod){
-    
+function xoops_module_pre_install_bxpress(&$mod)
+{
     xoops_setActiveModules();
     
     $mods = xoops_getActiveModules();
     
-    if(!in_array("rmcommon", $mods)){
+    if (!in_array("rmcommon", $mods)) {
         $mod->setErrors('bXpress could not be instaled if <a href="http://www.redmexico.com.mx/w/common-utilities/" target="_blank">Common Utilities</a> has not be installed previously!<br />Please install <a href="http://www.redmexico.com.mx/w/common-utilities/" target="_blank">Common Utilities</a>.');
         return false;
     }
     
     return true;
-    
 }
 
-function xoops_module_update_bxpress($mod, $pre){
+function xoops_module_update_bxpress($mod, $pre)
+{
     global $xoopsDB;
 
     $db = $xoopsDB;
 
     $result = $db->query("SHOW TABLES LIKE '" . $db->prefix("bxpress_announcements")."'");
 
-    if ( $db->getRowsNum($result) > 0 ) {
+    if ($db->getRowsNum($result) > 0) {
         $db->queryF('RENAME TABLE `' . $db->prefix("bxpress_announcements") . '` TO  `' . $db->prefix("mod_bxpress_announcements") . '` ;');
         $db->queryF('ALTER TABLE `' . $db->prefix("mod_bxpress_announcements") . '` ENGINE = INNODB;');
 
@@ -61,9 +61,9 @@ function xoops_module_update_bxpress($mod, $pre){
     }
 
     $result = $db->query("SHOW TABLES LIKE '" . $db->prefix("mod_bxpress_likes")."'");
-    if ( $db->getRowsNum($result) <= 0 ) {
+    if ($db->getRowsNum($result) <= 0) {
         // Add likes table
-        $db->queryF( "CREATE TABLE `". $db->prefix("mod_bxpress_likes") . "` (
+        $db->queryF("CREATE TABLE `". $db->prefix("mod_bxpress_likes") . "` (
           `id_like` int(11) NOT NULL AUTO_INCREMENT,
           `post` int(11) NOT NULL,
           `uid` int(11) NOT NULL,
@@ -75,8 +75,7 @@ function xoops_module_update_bxpress($mod, $pre){
     }
 
     // Delete column friendname
-    $db->queryF( "ALTER TABLE " . $db->prefix("mod_bxpress_forums") . " DROP 'friendname'");
+    $db->queryF("ALTER TABLE " . $db->prefix("mod_bxpress_forums") . " DROP 'friendname'");
 
     return true;
-
 }

@@ -2,19 +2,19 @@
 /**
  * bXpress Forums
  * A light weight and easy to use XOOPS module to create forums
- * 
+ *
  * Copyright © 2014 Eduardo Cortés https://eduardocortes.mx
  * -----------------------------------------------------------------
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -27,10 +27,11 @@
  * @link          https://github.com/bitcero/bxpress
  */
 
-function bxpress_block_counter_show( $options ){
+function bxpress_block_counter_show($options)
+{
 
     // Load css styles
-    RMTemplate::get()->add_style( 'bxpress-blocks.min.css', 'bxpress' );
+    RMTemplate::get()->add_style('bxpress-blocks.min.css', 'bxpress');
 
     $counters = array();
     $db = XoopsDatabaseFactory::getDatabaseConnection();
@@ -42,31 +43,37 @@ function bxpress_block_counter_show( $options ){
 
     $sql = '';
 
-    if ( $options['members'] )
+    if ($options['members']) {
         $sql = "(SELECT COUNT(DISTINCT id_post) FROM $tbp) as members";
+    }
 
-    if ( $options['topics'] )
+    if ($options['topics']) {
         $sql .= ", (SELECT COUNT(*) FROM $tbt) as topics";
+    }
 
-    if ( $options['replies'] )
+    if ($options['replies']) {
         $sql .= ", (SELECT COUNT(*) FROM $tbp) as replies";
+    }
 
-    if ( $options['likes'] )
+    if ($options['likes']) {
         $sql .= ", (SELECT COUNT(*) FROM $tbl) as likes";
+    }
 
-    if ( $options['files'] )
+    if ($options['files']) {
         $sql .= ", (SELECT COUNT(*) FROM $tbf) as files";
+    }
 
-    if ( '' == $sql )
+    if ('' == $sql) {
         return null;
+    }
 
     $sql = "SELECT " . $sql;
 
-    $result = $db->query( $sql );
+    $result = $db->query($sql);
 
-    $row = $db->fetchArray( $result );
+    $row = $db->fetchArray($result);
 
-    foreach( $row as $counter => $value ){
+    foreach ($row as $counter => $value) {
         $counters[] = array(
             'count'     => $value,
             'caption'   => $options[$counter.'_caption']
@@ -74,13 +81,11 @@ function bxpress_block_counter_show( $options ){
     }
 
     return array('counters' => $counters);
-
 }
 
-function bxpress_block_counter_edit( $options ){
-
-    ob_start();
-    ?>
+function bxpress_block_counter_edit($options)
+{
+    ob_start(); ?>
 
     <div class="row form-group">
 
@@ -221,5 +226,4 @@ function bxpress_block_counter_edit( $options ){
     <?php
     $form = ob_get_clean();
     return $form;
-
 }

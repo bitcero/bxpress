@@ -20,13 +20,13 @@ include '../../../include/cp_header.php';
  /**
  * @todo Cambiar la url para trabajar con urls cortas
  */
-define('BB_URL',XOOPS_URL.'/modules/'.$xoopsModule->dirname());
-define('BB_PATH',XOOPS_ROOT_PATH.'/modules/'.$xoopsModule->dirname());
-define('BB_UPLOADS_PATH',XOOPS_ROOT_PATH.'/uploads/exmbb');
+define('BB_URL', XOOPS_URL.'/modules/'.$xoopsModule->dirname());
+define('BB_PATH', XOOPS_ROOT_PATH.'/modules/'.$xoopsModule->dirname());
+define('BB_UPLOADS_PATH', XOOPS_ROOT_PATH.'/uploads/exmbb');
 
-define('BX_FWHERE0',__('Home Page','bxpress'));
-define('BX_FWHERE1',__('Forum','bxpress'));
-define('BX_FWHERE2',__('All Module','bxpress'));
+define('BX_FWHERE0', __('Home Page', 'bxpress'));
+define('BX_FWHERE1', __('Forum', 'bxpress'));
+define('BX_FWHERE2', __('All Module', 'bxpress'));
 
 $mc =& $xoopsModuleConfig;
 
@@ -34,11 +34,10 @@ $mc =& $xoopsModuleConfig;
  * Comprobamos que existan los directorios requeridos
  * para el funcionamiento del módulo
  */
-if (!file_exists($mc['attachdir'])){
+if (!file_exists($mc['attachdir'])) {
     mkdir($mc['attachdir'], 0777);
     chmod($mc['attachdir'], 0777);
 }
 
 // Add css
 RMTemplate::get()->add_style('admin.min.css', 'bxpress');
-

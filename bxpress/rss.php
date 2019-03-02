@@ -9,7 +9,7 @@
 // --------------------------------------------------------------
 
 load_mod_locale("dtransport");
-$show = rmc_server_var($_GET,'show','all');
+$show = rmc_server_var($_GET, 'show', 'all');
 
 $xoopsModule = RMFunctions::load_module('bxpress');
 $config = RMSettings::module_settings('bxpress');
@@ -31,25 +31,25 @@ $tbl2 = $db->prefix('mod_bxpress_topics');
 $tbl3 = $db->prefix('mod_bxpress_posts_text');
 $tbl4 = $db->prefix('mod_bxpress_forums');
 
-switch($show){
+switch ($show) {
     
     case 'forum':
         
-        $id = rmc_server_var($_GET,'forum',0);
-        if ($id<=0){
-            redirect_header('backend.php', 1, __('Sorry, specified forum was not foud!','bxpress'));
+        $id = rmc_server_var($_GET, 'forum', 0);
+        if ($id<=0) {
+            redirect_header('backend.php', 1, __('Sorry, specified forum was not foud!', 'bxpress'));
             die();
         }
         
         $forum = new bXForum($id);
-        if ($forum->isNew()){
-            redirect_header('backend.php', 1, __('Sorry, specified forum was not foud!','bxpress'));
+        if ($forum->isNew()) {
+            redirect_header('backend.php', 1, __('Sorry, specified forum was not foud!', 'bxpress'));
             die();
         }
         
         $rss_channel['title'] = sprintf(__('%s :: Posts on forum %s'), $xoopsModule->name(), $forum->name());
         $rss_channel['link'] = $forum->permalink();
-        $rss_channel['description'] = sprintf(__('All recent messages posted on %s','dtransport'), $forum->name());
+        $rss_channel['description'] = sprintf(__('All recent messages posted on %s', 'dtransport'), $forum->name());
         $rss_channel['lastbuild'] = formatTimestamp(time(), 'rss');
         $rss_channel['webmaster'] = checkEmail($xoopsConfig['adminmail'], true);
         $rss_channel['editor'] = checkEmail($xoopsConfig['adminmail'], true);
@@ -67,8 +67,7 @@ switch($show){
         $post = new bXPost();
         $forum = new bXForum();
         
-        while ($row=$db->fetchArray($result)){
-            
+        while ($row=$db->fetchArray($result)) {
             $post = new bXPost();
             $post->assignVars($row);
             $topic = new bXTopic($post->topic());
@@ -81,7 +80,6 @@ switch($show){
             $item['pubdate'] = formatTimestamp($post->date(), 'rss');
             $item['guid'] = $post->permalink();
             $rss_items[] = $item;
-                                    
         }
 
         
@@ -92,7 +90,7 @@ switch($show){
     
         $rss_channel['title'] = $xoopsModule->name();
         $rss_channel['link'] = XOOPS_URL.($config->urlmode ? $config->htbase : '/modules/bxpress');
-        $rss_channel['description'] = __('All recent messages posted on forum','bxpress');
+        $rss_channel['description'] = __('All recent messages posted on forum', 'bxpress');
         $rss_channel['lastbuild'] = formatTimestamp(time(), 'rss');
         $rss_channel['webmaster'] = checkEmail($xoopsConfig['adminmail'], true);
         $rss_channel['editor'] = checkEmail($xoopsConfig['adminmail'], true);
@@ -111,8 +109,7 @@ switch($show){
         $forum = new bXForum();
         $tf = new RMTimeFormatter(0, '%T%-%d%-%Y% at %h%:%i%');
         
-        while ($row=$db->fetchArray($result)){
-            
+        while ($row=$db->fetchArray($result)) {
             $post = new bXPost();
             $post->assignVars($row);
             $topic = new bXTopic($post->topic());
@@ -125,7 +122,6 @@ switch($show){
             $item['pubdate'] = formatTimestamp($post->date(), 'rss');
             $item['guid'] = $post->permalink();
             $rss_items[] = $item;
-                                    
         }
 
         break;

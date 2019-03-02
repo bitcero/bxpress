@@ -13,156 +13,197 @@
 */
 class bXTopic extends RMObject
 {
-    function __construct($id = null){
-        
+    public function __construct($id = null)
+    {
         $this->db = XoopsDatabaseFactory::getDatabaseConnection();
         $this->_dbtable = $this->db->prefix("mod_bxpress_topics");
         $this->setNew();
         $this->initVarsFromTable();
         
-        if (!isset($id)) return;
+        if (!isset($id)) {
+            return;
+        }
         /**
          * Cargamos los datos del foro
          */
-        if (is_numeric($id)){
-            if (!$this->loadValues($id)) return;     
+        if (is_numeric($id)) {
+            if (!$this->loadValues($id)) {
+                return;
+            }
             $this->unsetNew();
         } else {
             $this->primary = 'friendname';
-            if ($this->loadValues($id)) $this->unsetNew();
+            if ($this->loadValues($id)) {
+                $this->unsetNew();
+            }
             $this->primary = 'id_topic';
         }
-        
     }
     /**
     * Funciones para obtener los datos del Tema
     */
-    public function id(){
+    public function id()
+    {
         return $this->getVar('id_topic');
     }
     
-    public function title(){
+    public function title()
+    {
         return $this->getVar('title');
     }
-    public function setTitle($value){
+    public function setTitle($value)
+    {
         return $this->setVar('title', $value);
     }
     
-    public function poster(){
+    public function poster()
+    {
         return $this->getVar('poster');
     }
-    public function setPoster($value){
+    public function setPoster($value)
+    {
         return $this->setVar('poster', $value);
     }
     
-    public function date(){
+    public function date()
+    {
         return $this->getVar('date');
     }
-    public function setDate($value){
+    public function setDate($value)
+    {
         return $this->setVar('date', $value);
     }
     
-    public function views(){
+    public function views()
+    {
         return $this->getVar('views');
     }
-    public function setViews($value){
+    public function setViews($value)
+    {
         return $this->setVar('views', $value);
     }
-    public function addView(){
+    public function addView()
+    {
         $this->setViews($this->views()+1);
     }
     
-    public function replies(){
+    public function replies()
+    {
         return $this->getVar('replies');
     }
-    public function setReplies($value){
+    public function setReplies($value)
+    {
         return $this->setVar('replies', $value);
     }
-    public function addReply(){
+    public function addReply()
+    {
         $this->setReplies($this->replies() + 1);
     }
     
-    public function lastPost(){
+    public function lastPost()
+    {
         return $this->getVar('last_post');
     }
-    public function setLastPost($value){
+    public function setLastPost($value)
+    {
         return $this->setVar('last_post', $value);
     }
-	
-    public function forum(){
+    
+    public function forum()
+    {
         return $this->getVar('id_forum');
     }
-    public function setForum($value){
+    public function setForum($value)
+    {
         return $this->setVar('id_forum', $value);
     }
     
-    public function status(){
+    public function status()
+    {
         return $this->getVar('status');
     }
-    public function setStatus($value){
+    public function setStatus($value)
+    {
         return $this->setVar('status', $value);
     }
     
-    public function sticky(){
+    public function sticky()
+    {
         return $this->getVar('sticky');
     }
-    public function setSticky($value){
-        return $this->setVar('sticky', $value);   
+    public function setSticky($value)
+    {
+        return $this->setVar('sticky', $value);
     }
     
-    public function digest(){
+    public function digest()
+    {
         return $this->getVar('digest');
     }
-    public function setDigest($value){
+    public function setDigest($value)
+    {
         return $this->setVar('digest', $value);
     }
     
-    public function digestTime(){
+    public function digestTime()
+    {
         return $this->getVar('digest_time');
     }
-    public function setDigestTime($value){
+    public function setDigestTime($value)
+    {
         return $this->setVar('digest_time', $value);
     }
     
-    public function approved(){
+    public function approved()
+    {
         return $this->getVar('approved');
     }
-    public function setApproved($value){
+    public function setApproved($value)
+    {
         return $this->setVar('approved', $value);
     }
     
-    public function posterName(){
+    public function posterName()
+    {
         return $this->getVar('poster_name');
     }
-    public function setPosterName($value){
+    public function setPosterName($value)
+    {
         return $this->setVar('poster_name', $value);
     }
     
-    public function rating(){
+    public function rating()
+    {
         return $this->getVar('rating');
     }
-    public function setRating($value){
+    public function setRating($value)
+    {
         return $this->setVar('rating', $value);
     }
     
-    public function votes(){
+    public function votes()
+    {
         return $this->getVar('votes');
     }
-    public function setVotes($value){
+    public function setVotes($value)
+    {
         return $this->setVar('votes', $value);
     }
     
-    public function friendName(){
+    public function friendName()
+    {
         return $this->getVar('friendname');
     }
-    public function setFriendName($value){
+    public function setFriendName($value)
+    {
         return $this->setVar('friendname', $value);
     }
     
-    public function permalink(){
+    public function permalink()
+    {
         $mc = RMSettings::module_settings('bxpress');
         
-        if($mc->urlmode){
+        if ($mc->urlmode) {
             $link = XOOPS_URL.$mc->htbase.'/topic.php?id='.$this->id();
         } else {
             $link = XOOPS_URL.'/modules/bxpress/';
@@ -172,50 +213,50 @@ class bXTopic extends RMObject
         return $link;
     }
     
-    public function getPosts($object = true, $id_as_key = true){
-    	$result = $this->db->query("SELECT * FROM ".$this->db->prefix("mod_bxpress_posts")." WHERE id_topic='".$this->id()."'");
-		$ret = array();
-		while ($row = $this->db->fetchArray($result)){
-			if ($object){
-				$attach = new bXPost();
-				$attach->assignVars($row);
-				if ($id_as_key){
-					$ret[$row['id_post']] = $attach;
-				} else {
-					$ret[] = $attach;
-				}
-			} else {
-				if ($id_as_key){
-					$ret[$row['id_post']] = $row;
-				} else {
-					$ret[] = $row;
-				}
-			}
-		}
-		
-		return $ret;
+    public function getPosts($object = true, $id_as_key = true)
+    {
+        $result = $this->db->query("SELECT * FROM ".$this->db->prefix("mod_bxpress_posts")." WHERE id_topic='".$this->id()."'");
+        $ret = array();
+        while ($row = $this->db->fetchArray($result)) {
+            if ($object) {
+                $attach = new bXPost();
+                $attach->assignVars($row);
+                if ($id_as_key) {
+                    $ret[$row['id_post']] = $attach;
+                } else {
+                    $ret[] = $attach;
+                }
+            } else {
+                if ($id_as_key) {
+                    $ret[$row['id_post']] = $row;
+                } else {
+                    $ret[] = $row;
+                }
+            }
+        }
+        
+        return $ret;
     }
     
-    public function save(){
-        if ($this->isNew()){
+    public function save()
+    {
+        if ($this->isNew()) {
             return $this->saveToTable();
         } else {
             return $this->updateTable();
         }
     }
     
-    public function delete(){
-    	
-    	foreach ($this->getPosts() as $post){
-    		$post->delete();
-    	}
-    	
-    	$forum = new bXForum($this->forum());
-    	$forum->setTopics($forum->topics()-1 > 0 ? $forum->topics()-1 : 0);
-	$forum->save();
-    	
-    	return $this->deleteFromTable();
-    	
+    public function delete()
+    {
+        foreach ($this->getPosts() as $post) {
+            $post->delete();
+        }
+        
+        $forum = new bXForum($this->forum());
+        $forum->setTopics($forum->topics()-1 > 0 ? $forum->topics()-1 : 0);
+        $forum->save();
+        
+        return $this->deleteFromTable();
     }
-    
 }

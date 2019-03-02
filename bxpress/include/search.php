@@ -12,7 +12,8 @@
 /**
 * @desc Realiza una búsqueda en el módulo desde EXM
 */
-function bxpressSearch($queryarray, $andor, $limit, $offset, $userid=0){
+function bxpressSearch($queryarray, $andor, $limit, $offset, $userid=0)
+{
     global $myts, $module;
     
     $db = XoopsDatabaseFactory::getDatabaseConnection();
@@ -21,10 +22,10 @@ function bxpressSearch($queryarray, $andor, $limit, $offset, $userid=0){
     $tbl2 = $db->prefix("mod_bxpress_posts_text");
     $tbl3 = $db->prefix("mod_bxpress_posts");
     
-    if ($userid<=0){
+    if ($userid<=0) {
         $sql = "SELECT a.*,b.*,c.* FROM $tbl1 a, $tbl2 b, $tbl3 c ";
         $sql1 = '';
-        foreach ($queryarray as $k){
+        foreach ($queryarray as $k) {
             $sql1 .= ($sql1=='' ? '' : " $andor ")." (
         	    (a.title LIKE '%$k%' AND a.id_topic=c.id_topic) OR 
         	     (b.post_text LIKE '%$k%' AND b.post_id=c.id_post))";
@@ -36,11 +37,10 @@ function bxpressSearch($queryarray, $andor, $limit, $offset, $userid=0){
         
         $result = $db->queryF($sql);
     } else {
-        
         $sql = "SELECT a.*, b.*, c.post_text FROM $tbl3 a, $tbl1 b, $tbl2 c WHERE a.uid='$userid' AND b.id_topic=a.id_topic 
                 AND c.post_id=a.id_post ";
         $sql1 = '';
-        foreach ($queryarray as $k){
+        foreach ($queryarray as $k) {
             $sql1 .= ($sql1=='' ? 'AND ' : " $andor ")."
                 b.title LIKE '%$k%' AND c.post_text LIKE '%$k%'";
         }
@@ -49,14 +49,13 @@ function bxpressSearch($queryarray, $andor, $limit, $offset, $userid=0){
                 LIMIT $offset, $limit";
 
         $result = $db->query($sql);
-        
     }
     
     include_once XOOPS_ROOT_PATH.'/modules/bxpress/class/bxpost.class.php';
     include_once XOOPS_ROOT_PATH.'/modules/bxpress/class/bxfunctions.class.php';
     $tc = TextCleaner::getInstance();
     $ret = array();
-    while ($row = $db->fetchArray($result)){
+    while ($row = $db->fetchArray($result)) {
         $post = new bXPost();
         $post->assignVars($row);
         $rtn = array();

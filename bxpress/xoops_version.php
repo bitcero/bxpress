@@ -2,19 +2,19 @@
 /**
  * bXpress Forums
  * A light weight and easy to use XOOPS module to create forums
- * 
+ *
  * Copyright © 2014 Eduardo Cortés https://eduardocortes.mx
  * -----------------------------------------------------------------
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -27,7 +27,7 @@
  */
 
 $amod = xoops_getActiveModules();
-if(!in_array("rmcommon",$amod)){
+if (!in_array("rmcommon", $amod)) {
     $error = "<strong>WARNING:</strong> bXpress requires that %s is installed!<br />Please install %s before trying to use bXpress";
     $error = str_replace("%s", '<a href="http://rmcommon.com/" target="_blank">Common Utilities</a>', $error);
     xoops_error($error);
@@ -37,19 +37,22 @@ if(!in_array("rmcommon",$amod)){
     echo "<br />";
 }
 
-if (!function_exists("__")){
-    function __($text, $d){
+if (!function_exists("__")) {
+    function __($text, $d)
+    {
         return $text;
     }
 }
 
-if(function_exists("load_mod_locale")) load_mod_locale('bxpress');
+if (function_exists("load_mod_locale")) {
+    load_mod_locale('bxpress');
+}
 
 $modversion = array(
 
     // General info
-    'name'          => __('bXpress','bxpress'),
-    'description'   => __('A simple forums module for XOOPS and common utilities.','bxpress'),
+    'name'          => __('bXpress', 'bxpress'),
+    'description'   => __('A simple forums module for XOOPS and common utilities.', 'bxpress'),
     'version'       => 1.2,
     'license'       => 'GPL 2',
     'dirname'       => 'bxpress',
@@ -218,11 +221,11 @@ $modversion['config'][] = array(
     'description' => __('This title will be used in header of module', 'bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'text',
-    'default' => __('bXpress Forums','bxpress'),
+    'default' => __('bXpress Forums', 'bxpress'),
 );
 
 // URL rewriting
-$modversion['config'][] = array( 
+$modversion['config'][] = array(
     'name' => 'urlmode',
     'title' => __('Enable permalinks:', 'bxpress'),
     'description' => __('When active, this option allow to module to manage shorter URLs', 'bxpress'),
@@ -230,7 +233,7 @@ $modversion['config'][] = array(
     'valuetype' => 'int',
     'default' => 0,
 );
-$modversion['config'][] = array( 
+$modversion['config'][] = array(
     'name' => 'htbase',
     'title' => __('Relative path for module', 'bxpress'),
     'description' => __('The relative path where module will respond to queries.', 'bxpress'),
@@ -299,8 +302,8 @@ $modversion['config'][] = array(
 // Mensajes Nuevos
 $modversion['config'][] = array(
     'name' => 'time_new',
-    'title' => __('Time to mark a post as new','bxpress'),
-    'description' => __('Specify this value in seconds','bxpress'),
+    'title' => __('Time to mark a post as new', 'bxpress'),
+    'description' => __('Specify this value in seconds', 'bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'int',
     'default' => 600
@@ -309,8 +312,8 @@ $modversion['config'][] = array(
 // Numero de mensajes en el formulario de envio
 $modversion['config'][] = array(
     'name' => 'numpost',
-    'title' => __('Post Limit in Review','bxpress'),
-    'description' => __('Post Maximun Number that will be shown in the post form.','bxpress'),
+    'title' => __('Post Limit in Review', 'bxpress'),
+    'description' => __('Post Maximun Number that will be shown in the post form.', 'bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'int',
     'default' => 10
@@ -319,8 +322,8 @@ $modversion['config'][] = array(
 // Numero de mensajes en cada página
 $modversion['config'][] = array(
     'name' => 'perpage',
-    'title' => __('Post Number per Page','bxpress'),
-    'description' => __('This value can be configured individually for every user.','bxpress'),
+    'title' => __('Post Number per Page', 'bxpress'),
+    'description' => __('This value can be configured individually for every user.', 'bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'int',
     'default' => 15
@@ -329,7 +332,7 @@ $modversion['config'][] = array(
 // Numero de temas en cada página
 $modversion['config'][] = array(
     'name' => 'topicperpage',
-    'title' => __('Topics Number per Page','bxpress'),
+    'title' => __('Topics Number per Page', 'bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'int',
@@ -339,7 +342,7 @@ $modversion['config'][] = array(
 // formato de Fechas
 $modversion['config'][] = array(
     'name' => 'dates',
-    'title' => __('Date Format','bxpress'),
+    'title' => __('Date Format', 'bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'text',
@@ -349,7 +352,7 @@ $modversion['config'][] = array(
 // Límite de archivos adjuntos por mensaje
 $modversion['config'][] = array(
     'name' => 'attachlimit',
-    'title' => __('Limit post attachments','bxpress'),
+    'title' => __('Limit post attachments', 'bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'int',
@@ -359,8 +362,8 @@ $modversion['config'][] = array(
 // Directorio para adjuntos
 $modversion['config'][] = array(
     'name' => 'attachdir',
-    'title' => __('Directory to storage the attachment','bxpress'),
-    'description' => __('This directory must exist in the server and must have read and writing permisions.','bxpress'),
+    'title' => __('Directory to storage the attachment', 'bxpress'),
+    'description' => __('This directory must exist in the server and must have read and writing permisions.', 'bxpress'),
     'formtype' => 'textbox',
     'valuetype' => 'text',
     'default' => XOOPS_UPLOAD_PATH.'/bxpress'
@@ -369,8 +372,8 @@ $modversion['config'][] = array(
 // Mensajes Fijos
 $modversion['config'][] = array(
     'name' => 'sticky',
-    'title' => __('Activate Sticky Posts','bxpress'),
-    'description' => __('By enabling this option, bXpress could create topics like "sticky". The sticky topics always will appear in the first positions. Even when this option is disabled with the administrators and moderators will create sticky posts.','bxpress'),
+    'title' => __('Activate Sticky Posts', 'bxpress'),
+    'description' => __('By enabling this option, bXpress could create topics like "sticky". The sticky topics always will appear in the first positions. Even when this option is disabled with the administrators and moderators will create sticky posts.', 'bxpress'),
     'formtype' => 'yesno',
     'valuetype' => 'int',
     'default' => 1
@@ -389,7 +392,7 @@ $modversion['config'][] = array(
 // Anuncios en el módulo
 $modversion['config'][] = array(
     'name' => 'announcements',
-    'title' => __('Activate announcements in the module','bxpress'),
+    'title' => __('Activate announcements in the module', 'bxpress'),
     'description' => '',
     'formtype' => 'yesno',
     'valuetype' => 'int',
@@ -399,7 +402,7 @@ $modversion['config'][] = array(
 // Numero de Anuncios en el módulo
 $modversion['config'][] = array(
     'name' => 'announcements_max',
-    'title' => __('Maximum number of announcements to show','bxpress'),
+    'title' => __('Maximum number of announcements to show', 'bxpress'),
     'description' => '',
     'formtype' => 'textbox',
     'valuetype' => 'int',
@@ -409,12 +412,12 @@ $modversion['config'][] = array(
 // Modo para los anuncios
 $modversion['config'][] = array(
     'name' => 'announcements_mode',
-    'title' => __('Mode to show announcements','bxpress'),
+    'title' => __('Mode to show announcements', 'bxpress'),
     'description' => '',
     'formtype' => 'select',
     'valuetype' => 'int',
     'default' => 0,
-    'options' => array(__('Recents','bxpress')=>0,__('Random','bxpress')=>1)
+    'options' => array(__('Recents', 'bxpress')=>0,__('Random', 'bxpress')=>1)
 );
 
 //Tiempo de temas recientes
@@ -430,7 +433,7 @@ $modversion['config'][] = array(
 //Tiempo de temas recientes
 $modversion['config'][] = array(
     'name' => 'rssdesc',
-    'title' => __('Description of the Syndication option','bxpress'),
+    'title' => __('Description of the Syndication option', 'bxpress'),
     'description' => '',
     'formtype' => 'textarea',
     'valuetype' => 'text',
@@ -440,8 +443,8 @@ $modversion['config'][] = array(
 //Ordenar por mensajes recientes
 $modversion['config'][] = array(
     'name' => 'order_post',
-    'title' => __('Order topics for recent post','bxpress'),
-    'description' => __('Indicate if the forum topics will be ordered per recent topics','bxpress'),
+    'title' => __('Order topics for recent post', 'bxpress'),
+    'description' => __('Indicate if the forum topics will be ordered per recent topics', 'bxpress'),
     'formtype' => 'yesno',
     'valuetype' => 'int',
     'default' => '0'
@@ -505,11 +508,11 @@ $modversion['blocks'] = array(
 
 
 //Páginas del Módulo
-$modversion['subpages']['index'] = __('Index','bxpress');
-$modversion['subpages']['forums'] = __('Forums','bxpress');
-$modversion['subpages']['topics'] = __('Topics','bxpress');
-$modversion['subpages']['post'] = __('Post','bxpress');
-$modversion['subpages']['edit'] = __('Edit Post','bxpress');
-$modversion['subpages']['moderate'] = __('Moderate','bxpress');
-$modversion['subpages']['report'] = __('Report post','bxpress');
-$modversion['subpages']['search'] = __('Search','bxpress');
+$modversion['subpages']['index'] = __('Index', 'bxpress');
+$modversion['subpages']['forums'] = __('Forums', 'bxpress');
+$modversion['subpages']['topics'] = __('Topics', 'bxpress');
+$modversion['subpages']['post'] = __('Post', 'bxpress');
+$modversion['subpages']['edit'] = __('Edit Post', 'bxpress');
+$modversion['subpages']['moderate'] = __('Moderate', 'bxpress');
+$modversion['subpages']['report'] = __('Report post', 'bxpress');
+$modversion['subpages']['search'] = __('Search', 'bxpress');

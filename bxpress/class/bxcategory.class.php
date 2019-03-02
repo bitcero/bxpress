@@ -10,87 +10,107 @@
 
 class bXCategory extends RMObject
 {
+    private $_tbl = '';
+    private $_found = false;
+    private $_grupos = array();
 
-	private $_tbl = '';
-	private $_found = false;
-	private $_grupos = array();
-
-	function __construct($id=null){
-		$this->db = XoopsDatabaseFactory::getDatabaseConnection();
+    public function __construct($id=null)
+    {
+        $this->db = XoopsDatabaseFactory::getDatabaseConnection();
         $this->_dbtable = $this->db->prefix("mod_bxpress_categories");
         $this->setNew();
         $this->initVarsFromTable();
         
         $this->setVarType('groups', XOBJ_DTYPE_ARRAY);
-		
-        if (!isset($id)) return;
-		/**
-		 * Cargamos los datos de la categoría seleccionada
-		 */
-        if (is_numeric($id)){
-		    if (!$this->loadValues($id)) return;     
+        
+        if (!isset($id)) {
+            return;
+        }
+        /**
+         * Cargamos los datos de la categoría seleccionada
+         */
+        if (is_numeric($id)) {
+            if (!$this->loadValues($id)) {
+                return;
+            }
             $this->unsetNew();
         } else {
             $this->primary = 'friendname';
-            if ($this->loadValues($id)) $this->unsetNew();
-            $this->primary = 'id_cat';   
+            if ($this->loadValues($id)) {
+                $this->unsetNew();
+            }
+            $this->primary = 'id_cat';
         }
-        
-	}
-	/**
+    }
+    /**
     * @desc Métodos para acceder a las propiedades
     */
-    function id(){
-        return $this->getVar('id_cat');   
+    public function id()
+    {
+        return $this->getVar('id_cat');
     }
     
-    function title(){
+    public function title()
+    {
         return $this->getVar('title');
     }
-    function setTitle($value){
-        return $this->setVar('title', $value);   
+    public function setTitle($value)
+    {
+        return $this->setVar('title', $value);
     }
     
-    function description(){
+    public function description()
+    {
         return $this->getVar('description');
     }
-    function setDescription($value){
-        return $this->setVar('description', $value);   
+    public function setDescription($value)
+    {
+        return $this->setVar('description', $value);
     }
     
-    function order(){
+    public function order()
+    {
         return $this->getVar('order');
     }
-    function setOrder($value){
-        return $this->setVar('order', $value);   
+    public function setOrder($value)
+    {
+        return $this->setVar('order', $value);
     }
     
-    function status(){
+    public function status()
+    {
         return $this->getVar('status');
     }
-    function setStatus($value){
-        return $this->setVar('status', $value);   
+    public function setStatus($value)
+    {
+        return $this->setVar('status', $value);
     }
     
-    function showDesc(){
+    public function showDesc()
+    {
         return $this->getVar('showdesc');
     }
-    function setShowDesc($value){
-        return $this->setVar('showdesc', $value);   
+    public function setShowDesc($value)
+    {
+        return $this->setVar('showdesc', $value);
     }
     
-    function groups(){
+    public function groups()
+    {
         return $this->getVar('groups');
     }
-    function setGroups($value){
-        return $this->setVar('groups', $value);   
+    public function setGroups($value)
+    {
+        return $this->setVar('groups', $value);
     }
     
-    function friendName(){
+    public function friendName()
+    {
         return $this->getVar('friendname');
     }
-    function setFriendName($value){
-        return $this->setVar('friendname', $value);   
+    public function setFriendName($value)
+    {
+        return $this->setVar('friendname', $value);
     }
     /**
     * @desc Obtiene los foros que pertenecen a esta categoría
@@ -103,14 +123,21 @@ class bXCategory extends RMObject
     * @param array $gid Array con ids de grupos
     * @return bool
     */
-    function groupAllowed($gid){
+    public function groupAllowed($gid)
+    {
         $groups =& $this->getVar('groups');
         
-        if (in_array(0, $groups)) return true;
+        if (in_array(0, $groups)) {
+            return true;
+        }
         
-        if (!is_array($gid)) return in_array($gid, $groups);
-        foreach($gid as $id){
-            if (in_array($id, $groups)) return true;
+        if (!is_array($gid)) {
+            return in_array($gid, $groups);
+        }
+        foreach ($gid as $id) {
+            if (in_array($id, $groups)) {
+                return true;
+            }
         }
         
         return false;
@@ -119,11 +146,12 @@ class bXCategory extends RMObject
     /**
     * @desc Almacena los valores de la categoría
     */
-    function save(){
-        if ($this->isNew()){
+    public function save()
+    {
+        if ($this->isNew()) {
             return $this->saveToTable();
         } else {
-            return $this->updateTable();   
+            return $this->updateTable();
         }
     }
 
@@ -132,18 +160,19 @@ class bXCategory extends RMObject
     /**
     * @desc Elimina las categorías
     **/
-    function delete(){
-	
+    public function delete()
+    {
+    
         //Eliminamos foros que pertenecen a la categoria
         $sql="DELETE FROM ".$this->db->prefix('mod_bxpress_forums')." WHERE cat=".$this->id();
         $result=$this->db->queryF($sql);
 
-        if (!$result) return false;
+        if (!$result) {
+            return false;
+        }
 
         return $this->deleteFromTable();
-	
     }
-    
 }
 
 /**
@@ -154,7 +183,8 @@ class bXCategoryHandler
     private $db;
     private $table = '';
     
-    function __construct(){
+    public function __construct()
+    {
         $this->db = XoopsDatabaseFactory::getDatabaseConnection();
         $this->table = $this->db->prefix("mod_bxpress_categories");
     }
@@ -162,11 +192,11 @@ class bXCategoryHandler
     /**
     * @desc Obtiene la lista de categorías en un array para utilizar en un campo RMSelect
     */
-    public function getForSelect(){
-        
+    public function getForSelect()
+    {
         $result = $this->db->query("SELECT id_cat, title FROM $this->table ORDER BY `order`");
         $rtn = array();
-        while (list($id,$title) = $this->db->fetchRow($result)){
+        while (list($id, $title) = $this->db->fetchRow($result)) {
             $rtn[$title] = $id;
         }
         return $rtn;
@@ -175,21 +205,21 @@ class bXCategoryHandler
     * @desc Obtiene las categorías especificadas
     * @param int $active Categorías activas o inactivas (1 o 0, 2 Todas);
     */
-    public function getObjects($active = 1){
+    public function getObjects($active = 1)
+    {
         $db = XoopsDatabaseFactory::getDatabaseConnection();
         $sql = "SELECT * FROM ".$db->prefix("mod_bxpress_categories");
-        if ($active==1 || $active==0){
+        if ($active==1 || $active==0) {
             $sql .= " WHERE status='$active'";
         }
         $sql .= " ORDER BY `order`";
         $result = $db->query($sql);
         $categos = array();
-        while ($row = $db->fetchArray($result)){
+        while ($row = $db->fetchArray($result)) {
             $catego = new bXCategory();
             $catego->assignVars($row);
             $categos[] = $catego;
         }
         return $categos;
     }
-    
 }

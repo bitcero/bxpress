@@ -58,7 +58,9 @@ function showItemsAndOptions()
 
     $start = $page * $limit;
     $tpages = (int)($num / $limit);
-    if ($num % $limit > 0) $tpages++;
+    if ($num % $limit > 0) {
+        $tpages++;
+    }
 
     $pactual = $page + 1;
     if ($pactual > $tpages) {
@@ -140,7 +142,6 @@ function showItemsAndOptions()
     RMTemplate::get()->add_xoops_style('style.css', 'bxpress');
 
     include 'footer.php';
-
 }
 
 /**
@@ -148,7 +149,6 @@ function showItemsAndOptions()
  */
 function moveTopics()
 {
-
     global $db, $xoopsModuleConfig, $xoopsSecurity, $forum, $xoopsUser, $xoopsOption, $xoopsConfig;
 
     $topics = isset($_REQUEST['topics']) ? $_REQUEST['topics'] : null;
@@ -163,7 +163,6 @@ function moveTopics()
     $topics = !is_array($topics) ? array($topics) : $topics;
 
     if ($ok) {
-
         if (!$xoopsSecurity->check()) {
             redirect_header('moderate.php?id=' . $moveforum, 2, __('Session token expired!', 'bxpress'));
             die();
@@ -183,7 +182,9 @@ function moveTopics()
         $lastpost = false;
         foreach ($topics as $k) {
             $topic = new bXTopic($k);
-            if ($topic->forum() != $forum->id()) continue;
+            if ($topic->forum() != $forum->id()) {
+                continue;
+            }
 
 
             //Verificamos si el tema contiene el último mensaje del foro
@@ -208,14 +209,12 @@ function moveTopics()
                         $v->setForum($moveforum);
                         $v->save();
                     }
-
                 }
             }
         }
 
         //Actualizamos el último mensaje del foro
         if ($lastpost) {
-
             $post = $forum->getLastPost();
             $forum->setPostId($post);
             $forum->save();
@@ -228,9 +227,7 @@ function moveTopics()
 
         redirect_header('moderate.php?id=' . $forum->id(), 1, __('Topics has been relocated!', 'bxpress'));
         die();
-
     } else {
-
         global $xoopsTpl;
         $tpl = $xoopsTpl;
         $xoopsOption['template_main'] = "bxpress-moderate-forms.tpl";
@@ -268,12 +265,10 @@ function moveTopics()
         }
 
         foreach ($categories as $cat) {
-
             $ele->addOption(0, $cat['title'], 0, true, 'color: #000; font-weight: bold; font-style: italic; border-bottom: 1px solid #c8c8c8;');
             foreach ($cat['forums'] as $cforum) {
                 $ele->addOption($cforum['id'], $cforum['name'], 0, false, 'padding-left: 10px;');
             }
-
         }
         $form->addElement($ele, true, "noselect:0");
         $ele = new RMFormButtonGroup();
@@ -283,9 +278,7 @@ function moveTopics()
         $tpl->assign('moderate_form', $form->render());
 
         include 'footer.php';
-
     }
-
 }
 
 /**
@@ -295,7 +288,7 @@ function changeOwner()
 {
     global $xoopsSecurity, $db, $xoopsUser, $xoopsTpl, $forum, $xoopsConfig, $xoopsOption;
 
-    if(!$xoopsSecurity->check()){
+    if (!$xoopsSecurity->check()) {
         RMUris::redirect_with_message(
             __('Session token is not valid!', 'bxpress'),
             'moderate.php?id=' . $forum->id(),
@@ -305,7 +298,7 @@ function changeOwner()
 
     $topics = RMHttpRequest::post('topics', 'array', array());
 
-    if(empty($topics)){
+    if (empty($topics)) {
         RMUris::redirect_with_message(
             __('Select one topic at least!', 'bxpress'),
             'moderate.php?id=' . $forum->id(),
@@ -334,7 +327,7 @@ function changeOwner()
         'caption' => __('Select the user that will be assigned as owner for all selected topics', 'bxpress'),
         'level' => 4
     ]));
-    $form->addElement( new RMFormUser(__('User', 'bxpress'), 'owner') );
+    $form->addElement(new RMFormUser(__('User', 'bxpress'), 'owner'));
 
     $form->addElement(new RMFormYesNo([
         'caption' => __('Change first post owner too?', 'bxpress'),
@@ -349,13 +342,13 @@ function changeOwner()
     $tpl->assign('moderate_form', $form->render());
 
     include 'footer.php';
-
 }
 
-function changeOwnerNow(){
+function changeOwnerNow()
+{
     global $xoopsSecurity, $forum, $xoopsDB;
 
-    if(!$xoopsSecurity->check()){
+    if (!$xoopsSecurity->check()) {
         RMUris::redirect_with_message(
             __('Session token is not valid!', 'bxpress'),
             'moderate.php?id=' . $forum->id(),
@@ -365,7 +358,7 @@ function changeOwnerNow(){
 
     $topics = RMHttpRequest::post('topics', 'array', array());
 
-    if(empty($topics)){
+    if (empty($topics)) {
         RMUris::redirect_with_message(
             __('Select one topic at least!', 'bxpress'),
             'moderate.php?id=' . $forum->id(),
@@ -375,7 +368,7 @@ function changeOwnerNow(){
 
     $owner = RMHttpRequest::post('owner', 'integer', 0);
 
-    if($owner <= 0){
+    if ($owner <= 0) {
         RMUris::redirect_with_message(
             __('You must select a user to set as owner of these topics!', 'bxpress'),
             'moderate.php?id=' . $forum->id(),
@@ -384,7 +377,7 @@ function changeOwnerNow(){
     }
 
     $newOwner = new RMUser($owner);
-    if($newOwner->isNew()){
+    if ($newOwner->isNew()) {
         RMUris::redirect_with_message(
             __('Selected user does not exists!', 'bxpress'),
             'moderate.php?id=' . $forum->id(),
@@ -397,10 +390,10 @@ function changeOwnerNow(){
     $errors = [];
 
     // Modify all topics
-    foreach($topics as $topicId){
+    foreach ($topics as $topicId) {
         $topic = new bXTopic($topicId);
 
-        if($topic->isNew()){
+        if ($topic->isNew()) {
             $errors[] = sprintf(__('Topic width ID %u does not exists', 'bxpress'), $topicId);
             continue;
         }
@@ -408,16 +401,16 @@ function changeOwnerNow(){
         $topic->setPoster($owner);
         $topic->setPosterName($newOwner->uname);
 
-        if(!$topic->save()){
+        if (!$topic->save()) {
             $errors[] = sprintf(__('Errors occurs while trying to save topic %s: %s', 'bxpress'), $topic->title(), $topic->getErrors());
         }
 
-        if(!$first){
+        if (!$first) {
             continue;
         }
 
         $result = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("mod_bxpress_posts")." WHERE id_topic='".$topic->id()."' ORDER BY id_post ASC LIMIT 0, 1");
-        if($xoopsDB->getRowsNum($result) <= 0){
+        if ($xoopsDB->getRowsNum($result) <= 0) {
             continue;
         }
 
@@ -427,12 +420,12 @@ function changeOwnerNow(){
         $firstPost->uid = $newOwner->id();
         $firstPost->poster_name = $newOwner->uname;
 
-        if(!$firstPost->save()){
+        if (!$firstPost->save()) {
             $errors[] = sprintf(__('First post from topic %s could not be modified', 'bxpress'), $topic->title());
         }
     }
 
-    if(empty($errors)){
+    if (empty($errors)) {
         RMUris::redirect_with_message(
             __('Topics modified successfully!', 'bxpress'),
             'moderate.php?id=' . $forum->id(),
@@ -445,7 +438,6 @@ function changeOwnerNow(){
             RMMSG_WARN
         );
     }
-
 }
 
 /**
@@ -467,15 +459,15 @@ function closeTopic($close)
 
     foreach ($topics as $k) {
         $topic = new bXTopic($k);
-        if ($topic->isNew()) continue;
+        if ($topic->isNew()) {
+            continue;
+        }
 
         $topic->setStatus($close);
         $topic->save();
-
     }
 
     redirect_header('moderate.php?id=' . $forum->id(), 1, __('Action completed!', 'bxpress'));
-
 }
 
 /**
@@ -501,15 +493,15 @@ function stickyTopic($sticky)
 
     foreach ($topics as $k) {
         $topic = new bXTopic($k);
-        if ($topic->isNew()) continue;
+        if ($topic->isNew()) {
+            continue;
+        }
 
         $topic->setSticky($sticky);
         $topic->save();
-
     }
 
     redirect_header('moderate.php?id=' . $forum->id(), 1, __('Action completed!', 'bxpress'));
-
 }
 
 /**
@@ -538,8 +530,12 @@ function deleteTopics()
 
     foreach ($topics as $k) {
         $topic = new bXTopic($k);
-        if ($topic->isNew()) continue;
-        if ($topic->forum() != $forum->id()) continue;
+        if ($topic->isNew()) {
+            continue;
+        }
+        if ($topic->forum() != $forum->id()) {
+            continue;
+        }
 
         //Verificamos si el tema contiene el último mensaje del foro
         if (!$lastpost && array_key_exists($forum->lastPostId(), $topic->getPosts(0))) {
@@ -547,7 +543,6 @@ function deleteTopics()
         }
 
         $topic->delete();
-
     }
 
     //Actualizamos el último mensaje del foro
@@ -560,7 +555,6 @@ function deleteTopics()
     }
 
     redirect_header('moderate.php?id=' . $forum->id(), 1, __('Action completed!', 'bxpress'));
-
 }
 
 
@@ -569,7 +563,6 @@ function deleteTopics()
  **/
 function approvedTopics($app = 0)
 {
-
     global $forum, $xoopsSecurity;
 
     $topics = isset($_REQUEST['topics']) ? $_REQUEST['topics'] : null;
@@ -589,13 +582,14 @@ function approvedTopics($app = 0)
     $lastpost = false;
     foreach ($topics as $k) {
         $topic = new bXTopic($k);
-        if ($topic->isNew()) continue;
+        if ($topic->isNew()) {
+            continue;
+        }
 
         $lastapp = $topic->approved();
 
         $topic->setApproved($app);
         $topic->save();
-
     }
 
     //Actualizamos el último mensaje del foro
@@ -604,7 +598,6 @@ function approvedTopics($app = 0)
     $forum->save();
 
     redirect_header('moderate.php?id=' . $forum->id(), 1, __('Action completed!', 'bxpress'));
-
 }
 
 
@@ -652,8 +645,6 @@ function approvedPosts($app = 0)
     $post->save();
 
     redirect_header('./topic.php?id=' . $post->topic(), 1, __('Operation completed!', 'bxpress'));
-
-
 }
 
 

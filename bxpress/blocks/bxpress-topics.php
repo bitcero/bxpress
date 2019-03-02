@@ -31,7 +31,6 @@ load_mod_locale('bxpress');
 
 function bxpress_block_topics_show($options)
 {
-
     $db = XoopsDatabaseFactory::getDatabaseConnection();
     $mc = RMSettings::module_settings('bxpress');
 
@@ -41,22 +40,21 @@ function bxpress_block_topics_show($options)
     $tbl4 = $db->prefix('mod_bxpress_forums');
 
     if ('activity' == $options['type']) {
-
         $sql = "SELECT DISTINCT id_topic FROM " . $tbl1 . " ORDER BY post_time DESC LIMIT 0, $options[limit]";
         $result = $db->query($sql);
         $topicsIds = array();
 
-        while($row = $db->fetchArray($result)){
+        while ($row = $db->fetchArray($result)) {
             $topicsIds[] = $row['id_topic'];
         }
 
         unset($result, $row, $sql);
-
     }
 
     // Calculate period of time
-    if (0 < $options['days'])
+    if (0 < $options['days']) {
         $period = time() - ($options['days'] * 86400);
+    }
 
     $order = 'DESC' == $options['order'] ? 'DESC' : 'ASC';
 
@@ -65,28 +63,22 @@ function bxpress_block_topics_show($options)
                 (SELECT post_time FROm $tbl1 WHERE id_topic=topics.id_topic ORDER BY post_time DESC LIMIT 0, 1) as updated
                 FROM $tbl2 as topics, $tbl4 as forums WHERE ";
 
-    if (0 < $options['days'])
+    if (0 < $options['days']) {
         $sql .= " topics.date > $period AND ";
+    }
 
     $sql .= "forums.id_forum=topics.id_forum";
 
     if ('recent' == $options['type']) {
-
         $sql .= " ORDER BY topics.id_topic $order LIMIT 0, $options[limit]";
-
     } elseif ('hot' == $options['type']) {
-
         $sql .= " ORDER BY topics.replies $order LIMIT 0, $options[limit]";
-
     } elseif ('hits' == $options['type']) {
-
         $sql .= " ORDER BY topics.views $order LIMIT 0, $options[limit]";
-
-    } elseif('activity' == $options['type']){
+    } elseif ('activity' == $options['type']) {
 
         //$sql .= ' AND topics.id_topic IN (' . implode(',', $topicsIds) . ')';
         $sql .= " ORDER BY updated DESC LIMIT 0, $options[limit]";
-
     }
 
     $result = $db->queryF($sql);
@@ -104,7 +96,6 @@ function bxpress_block_topics_show($options)
     $tf = new RMTimeFormatter(0, '%T% %d%, %Y%');
 
     while ($row = $db->fetchArray($result)) {
-
         $topic->assignVars($row);
         $forum->assignVars(array('id_forum' => $topic->forum()));
 
@@ -136,14 +127,11 @@ function bxpress_block_topics_show($options)
     RMTemplate::get()->add_style('bxpress-blocks.min.css', 'bxpress');
 
     return $block;
-
 }
 
 function bxpress_block_topics_edit($options)
 {
-
-    ob_start();
-    ?>
+    ob_start(); ?>
 
     <div class="form-group row">
 

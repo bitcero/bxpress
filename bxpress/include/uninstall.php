@@ -30,16 +30,13 @@
 /**
 * @desc Comprueba si se eliminaron los archivos pertenecientes al foro a ser eliminado
 **/
-function xoops_module_uninstall_exmbb(&$mod){
-	$path=XOOPS_ROOT_PATH."/uploads/exmbb/";
-	xoops_delete_directory($path);
-	if (!file_exists($path)){
-		return true;	
-	}
-	else{
-		return false;
-	}
+function xoops_module_uninstall_exmbb(&$mod)
+{
+    $path=XOOPS_ROOT_PATH."/uploads/exmbb/";
+    xoops_delete_directory($path);
+    if (!file_exists($path)) {
+        return true;
+    } else {
+        return false;
+    }
 }
-
-
-?>
