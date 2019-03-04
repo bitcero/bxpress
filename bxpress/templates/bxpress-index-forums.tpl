@@ -30,13 +30,13 @@
 
 <div class="row info-forums">
     <div class="col-sm-6">
-        <{$lang_lastuser}> <a href="<{$xoops_url}>/userinfo.php?uid=<{$user.id}>"><{$user.uname}></a><br />
-        <{$lang_regnum}> <strong><{$register_num}></strong><br />
-        <{$lang_annum}> <strong><{$anonymous_num}></strong><br />
+        <{$lang_lastuser}> <a href="<{$xoops_url}>/userinfo.php?uid=<{$user.id}>"><{$user.uname}></a><br>
+        <{$lang_regnum}> <strong><{$register_num}></strong><br>
+        <{$lang_annum}> <strong><{$anonymous_num}></strong><br>
     </div>
     <div class="col-sm-6 text-right">
-        <{$lang_totalusers}> <strong><{$total_users}></strong><br />
-        <{$lang_totaltopics}> <strong><{$total_topics}></strong><br />
+        <{$lang_totalusers}> <strong><{$total_users}></strong><br>
+        <{$lang_totaltopics}> <strong><{$total_topics}></strong><br>
         <{$lang_totalposts}> <strong><{$total_posts}></strong>
     </div>
 </div>

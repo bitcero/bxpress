@@ -141,7 +141,7 @@ function drawVisualization(w,h) {
                     <li>
                         <strong><a href="<?php echo $t['link']; ?>"><?php echo $t['title']; ?></a></strong>
                             <span class="tdata">
-                            <?php echo sprintf(__('Forum: %s', 'bxpress'), '<a href="'.$t['forum']['link'].'">'.$t['forum']['name'].'</a>'); ?><br />
+                            <?php echo sprintf(__('Forum: %s', 'bxpress'), '<a href="' . $t['forum']['link'] . '">' . $t['forum']['name'] . '</a>'); ?><br>
                                 <?php echo $t['post']['date']; ?> |
                             <em><a target="_blank" href="<?php echo XOOPS_URL; ?>/userinfo.php?uid=<?php echo $t['post']['uid']; ?>"><?php echo $t['post']['by']; ?></a></em>
                             </span>
@@ -164,8 +164,8 @@ function drawVisualization(w,h) {
                         <li>
                             <strong><a href="<?php echo $t['link']; ?>"><?php echo $t['title']; ?></a></strong>
                             <span class="tdata">
-                            <?php echo sprintf(__('Forum: %s', 'bxpress'), '<a href="'.$t['forum']['link'].'">'.$t['forum']['name'].'</a>'); ?><br />
-                                <?php echo $t['date']; ?> | <?php echo sprintf(__('Replies: %s', 'bxpress'), '<strong>'.$t['replies'].'</strong>'); ?>
+                            <?php echo sprintf(__('Forum: %s', 'bxpress'), '<a href="' . $t['forum']['link'] . '">' . $t['forum']['name'] . '</a>'); ?><br>
+                                <?php echo $t['date']; ?> | <?php echo sprintf(__('Replies: %s', 'bxpress'), '<strong>' . $t['replies'] . '</strong>'); ?>
                             </span>
                         </li>
                     <?php endforeach; ?>

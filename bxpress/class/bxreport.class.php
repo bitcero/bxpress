@@ -10,20 +10,19 @@
 
 class bXReport extends RMObject
 {
-    public function __construct($id=null)
+    public function __construct($id = null)
     {
         $this->db = XoopsDatabaseFactory::getDatabaseConnection();
-        $this->_dbtable = $this->db->prefix("mod_bxpress_report");
+        $this->_dbtable = $this->db->prefix('mod_bxpress_report');
         $this->setNew();
         $this->initVarsFromTable();
-        
-        
+
         if (!isset($id)) {
             return;
         }
         /**
-        	 * Cargamos los datos del reporte
-        	 */
+         * Cargamos los datos del reporte
+         */
         if (is_numeric($id)) {
             if (!$this->loadValues($id)) {
                 return;
@@ -32,11 +31,9 @@ class bXReport extends RMObject
         }
     }
 
-
     /**
-    * @desc Metodos para acceso a las propiedades
-    */
-   
+     * @desc Metodos para acceso a las propiedades
+     */
     public function id()
     {
         return $this->getVar('report_id');
@@ -47,7 +44,7 @@ class bXReport extends RMObject
     {
         return $this->getVar('post_id');
     }
- 
+
     public function setPost($post)
     {
         return $this->setVar('post_id', $post);
@@ -63,7 +60,7 @@ class bXReport extends RMObject
     {
         return $this->setVar('reporter_uid', $user);
     }
-    
+
     //Ip de usuario
     public function ip()
     {
@@ -86,13 +83,12 @@ class bXReport extends RMObject
         return $this->setVar('report_time', $time);
     }
 
-
     //Texto del reporte
     public function report()
     {
         return $this->getVar('report_text');
     }
-    
+
     public function setReport($report)
     {
         return $this->setVar('report_text', $report);
@@ -119,7 +115,7 @@ class bXReport extends RMObject
     {
         return $this->setVar('zappedtime', $zappedtime);
     }
-    
+
     //Indica reporte revisado
     public function zapped()
     {
@@ -135,9 +131,9 @@ class bXReport extends RMObject
     {
         if ($this->isNew()) {
             return $this->saveToTable();
-        } else {
-            return $this->UpdateTable();
         }
+
+        return $this->UpdateTable();
     }
 
     public function delete()

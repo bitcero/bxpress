@@ -25,21 +25,20 @@
  * @since         1.2
  * @license       GPL v2 (http://www.gnu.org/licenses/gpl-2.0.html)
  * @link          https://github.com/bitcero/bxpress
+ * @param mixed $options
  */
-
 function bxpress_block_counter_show($options)
 {
-
     // Load css styles
     RMTemplate::get()->add_style('bxpress-blocks.min.css', 'bxpress');
 
-    $counters = array();
+    $counters = [];
     $db = XoopsDatabaseFactory::getDatabaseConnection();
 
-    $tbp = $db->prefix("mod_bxpress_posts");
-    $tbt = $db->prefix("mod_bxpress_topics");
-    $tbl = $db->prefix("mod_bxpress_likes");
-    $tbf = $db->prefix("mod_bxpress_attachments");
+    $tbp = $db->prefix('mod_bxpress_posts');
+    $tbt = $db->prefix('mod_bxpress_topics');
+    $tbl = $db->prefix('mod_bxpress_likes');
+    $tbf = $db->prefix('mod_bxpress_attachments');
 
     $sql = '';
 
@@ -67,20 +66,20 @@ function bxpress_block_counter_show($options)
         return null;
     }
 
-    $sql = "SELECT " . $sql;
+    $sql = 'SELECT ' . $sql;
 
     $result = $db->query($sql);
 
     $row = $db->fetchArray($result);
 
     foreach ($row as $counter => $value) {
-        $counters[] = array(
-            'count'     => $value,
-            'caption'   => $options[$counter.'_caption']
-        );
+        $counters[] = [
+            'count' => $value,
+            'caption' => $options[$counter . '_caption'],
+        ];
     }
 
-    return array('counters' => $counters);
+    return ['counters' => $counters];
 }
 
 function bxpress_block_counter_edit($options)
@@ -94,11 +93,11 @@ function bxpress_block_counter_edit($options)
         </div>
         <div class="col-sm-8 col-lg-9">
             <label class="radio-inline">
-                <input type="radio" name="options[members]" value="1"<?php echo $options['members']==1?' checked':''; ?>>
+                <input type="radio" name="options[members]" value="1"<?php echo 1 == $options['members'] ? ' checked' : ''; ?>>
                 <?php _e('Yes', 'bxpress'); ?>
             </label>
             <label class="radio-inline">
-                <input type="radio" name="options[members]" value="0"<?php echo $options['members']==0?' checked':''; ?>>
+                <input type="radio" name="options[members]" value="0"<?php echo 0 == $options['members'] ? ' checked' : ''; ?>>
                 <?php _e('No', 'bxpress'); ?>
             </label>
         </div>
@@ -121,11 +120,11 @@ function bxpress_block_counter_edit($options)
         </div>
         <div class="col-sm-8 col-lg-9">
             <label class="radio-inline">
-                <input type="radio" name="options[topics]" value="1"<?php echo $options['topics']==1?' checked':''; ?>>
+                <input type="radio" name="options[topics]" value="1"<?php echo 1 == $options['topics'] ? ' checked' : ''; ?>>
                 <?php _e('Yes', 'bxpress'); ?>
             </label>
             <label class="radio-inline">
-                <input type="radio" name="options[topics]" value="0"<?php echo $options['topics']==0?' checked':''; ?>>
+                <input type="radio" name="options[topics]" value="0"<?php echo 0 == $options['topics'] ? ' checked' : ''; ?>>
                 <?php _e('No', 'bxpress'); ?>
             </label>
         </div>
@@ -148,11 +147,11 @@ function bxpress_block_counter_edit($options)
         </div>
         <div class="col-sm-8 col-lg-9">
             <label class="radio-inline">
-                <input type="radio" name="options[replies]" value="1"<?php echo $options['replies']==1?' checked':''; ?>>
+                <input type="radio" name="options[replies]" value="1"<?php echo 1 == $options['replies'] ? ' checked' : ''; ?>>
                 <?php _e('Yes', 'bxpress'); ?>
             </label>
             <label class="radio-inline">
-                <input type="radio" name="options[replies]" value="0"<?php echo $options['replies']==0?' checked':''; ?>>
+                <input type="radio" name="options[replies]" value="0"<?php echo 0 == $options['replies'] ? ' checked' : ''; ?>>
                 <?php _e('No', 'bxpress'); ?>
             </label>
         </div>
@@ -175,11 +174,11 @@ function bxpress_block_counter_edit($options)
         </div>
         <div class="col-sm-8 col-lg-9">
             <label class="radio-inline">
-                <input type="radio" name="options[likes]" value="1"<?php echo $options['likes']==1?' checked':''; ?>>
+                <input type="radio" name="options[likes]" value="1"<?php echo 1 == $options['likes'] ? ' checked' : ''; ?>>
                 <?php _e('Yes', 'bxpress'); ?>
             </label>
             <label class="radio-inline">
-                <input type="radio" name="options[likes]" value="0"<?php echo $options['likes']==0?' checked':''; ?>>
+                <input type="radio" name="options[likes]" value="0"<?php echo 0 == $options['likes'] ? ' checked' : ''; ?>>
                 <?php _e('No', 'bxpress'); ?>
             </label>
         </div>
@@ -202,11 +201,11 @@ function bxpress_block_counter_edit($options)
         </div>
         <div class="col-sm-8 col-lg-9">
             <label class="radio-inline">
-                <input type="radio" name="options[files]" value="1"<?php echo $options['files']==1?' checked':''; ?>>
+                <input type="radio" name="options[files]" value="1"<?php echo 1 == $options['files'] ? ' checked' : ''; ?>>
                 <?php _e('Yes', 'bxpress'); ?>
             </label>
             <label class="radio-inline">
-                <input type="radio" name="options[files]" value="0"<?php echo $options['files']==0?' checked':''; ?>>
+                <input type="radio" name="options[files]" value="0"<?php echo 0 == $options['files'] ? ' checked' : ''; ?>>
                 <?php _e('No', 'bxpress'); ?>
             </label>
         </div>
@@ -225,5 +224,6 @@ function bxpress_block_counter_edit($options)
 
     <?php
     $form = ob_get_clean();
+
     return $form;
 }

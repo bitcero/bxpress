@@ -26,13 +26,13 @@
 
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="showdesc" value="1" checked="checked" />
+                            <input type="checkbox" name="showdesc" value="1" checked>
                             <?php _e('Show description', 'bxpress'); ?>
                         </label>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="status" value="1" checked="checked" />
+                            <input type="checkbox" name="status" value="1" checked>
                             <?php _e('Activate category', 'bxpress'); ?>
                         </label>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg"><?php _e('Create Category', 'bxpress'); ?></button>
                     </div>
-                    <input type="hidden" name="action" value="save" />
+                    <input type="hidden" name="action" value="save">
                     <?php echo $xoopsSecurity->getTokenHTML(); ?>
                 </form>
             </div>
@@ -94,7 +94,7 @@
                         <?php endif; ?>
 
                         <?php foreach ($categos as $cat): ?>
-                            <tr class="<?php echo tpl_cycle("even,odd"); ?>" align="left" valign="top">
+                            <tr class="<?php echo tpl_cycle('even,odd'); ?>" align="left" valign="top">
                                 <td align="center"><input type="checkbox" name="ids[]" id="item-<?php echo $cat['id']; ?>" value="<?php echo $cat['id']; ?>" data-oncheck="chk-categories"></td>
                                 <td align="center"><?php echo $cat['id']; ?></td>
                                 <td align="left">
@@ -105,7 +105,7 @@
                                 </span>
                                 </td>
                                 <td align="center">
-                                    <span class="fa <?php if ($cat['status']): ?>fa-check text-success<?php else: ?>fa-ban text-danger<?php endif; ?>" border="0" alt="" />
+                                    <span class="fa <?php if ($cat['status']): ?>fa-check text-success<?php else: ?>fa-ban text-danger<?php endif; ?>" border="0" alt="">
                                 </td>
                                 <td><?php echo $cat['desc']; ?></td>
                             </tr>

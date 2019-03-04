@@ -9,7 +9,7 @@
     <hr>
     <div class="row">
         <div class="col-xs-12">
-            <header><strong><{$post.uname}></strong><br /><{$post.time}></header>
+            <header><strong><{$post.uname}></strong><br><{$post.time}></header>
             <{$post.text}>
         </div>
     </div>

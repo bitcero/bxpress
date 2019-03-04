@@ -29,7 +29,7 @@
             <table class="table" cellspacing="1" width="100%">
                 <thead>
                 <tr class="head" align="center">
-                    <th width="20"><input type="checkbox" id="checkall" onchange="$('#frm-announ').toggleCheckboxes(':not(#checkall)');" /></th>
+                    <th width="20"><input type="checkbox" id="checkall" onchange="$('#frm-announ').toggleCheckboxes(':not(#checkall)');"></th>
                     <th width="50"><?php _e('ID', 'bxpress'); ?></th>
                     <th><?php _e('Announcement', 'bxpress'); ?></th>
                     <th><?php _e('Expire', 'bxpress'); ?></th>
@@ -39,7 +39,7 @@
                 </thead>
                 <tfoot>
                 <tr class="head" align="center">
-                    <th width="20"><input type="checkbox" id="checkall2" onchange="$('#frm-announ').toggleCheckboxes(':not(#checkall2)');" /></th>
+                    <th width="20"><input type="checkbox" id="checkall2" onchange="$('#frm-announ').toggleCheckboxes(':not(#checkall2)');"></th>
                     <th width="50"><?php _e('ID', 'bxpress'); ?></th>
                     <th><?php _e('Announcement', 'bxpress'); ?></th>
                     <th><?php _e('Expire', 'bxpress'); ?></th>
@@ -54,8 +54,8 @@
                     </tr>
                 <?php endif; ?>
                 <?php foreach ($announcements as $item): ?>
-                    <tr class="<?php echo tpl_cycle("even,odd"); ?>" align="center" valign="top">
-                        <td><input type="checkbox" name="ids[]" id="item-<?php echo $item['id']; ?>" value="<?php echo $item['id']; ?>" /></td>
+                    <tr class="<?php echo tpl_cycle('even,odd'); ?>" align="center" valign="top">
+                        <td><input type="checkbox" name="ids[]" id="item-<?php echo $item['id']; ?>" value="<?php echo $item['id']; ?>"></td>
                         <td><strong><?php echo $item['id']; ?></strong></td>
                         <td align="left">
                             <?php echo $item['text']; ?>

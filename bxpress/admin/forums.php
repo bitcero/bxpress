@@ -9,30 +9,30 @@
 // --------------------------------------------------------------
 
 define('RMCLOCATION', 'forums');
-include 'header.php';
+require __DIR__ . '/header.php';
 
 /**
-* @desc Muestra la lista de foros existentes
-*/
+ * @desc Muestra la lista de foros existentes
+ */
 function bx_show_forums()
 {
     global $xoopsModule, $xoopsSecurity;
-    
+
     $catid = RMHttpRequest::request('catid', 'integer', 0);
 
     $db = XoopsDatabaseFactory::getDatabaseConnection();
-    
-    $sql = "SELECT * FROM ".$db->prefix("mod_bxpress_forums");
-    if ($catid>0) {
+
+    $sql = 'SELECT * FROM ' . $db->prefix('mod_bxpress_forums');
+    if ($catid > 0) {
         $sql .= " WHERE cat='$catid'";
     }
-    $sql .= " ORDER BY cat,`order`";
-    
-    $result = $db->query($sql);
-    $categos = array();
-    $forums = array();
+    $sql .= ' ORDER BY cat,`order`';
 
-    while ($row = $db->fetchArray($result)) {
+    $result = $db->query($sql);
+    $categos = [];
+    $forums = [];
+
+    while (false !== ($row = $db->fetchArray($result))) {
         $forum = new bXForum();
         $forum->assignVars($row);
         // Cargamos la categoría
@@ -43,36 +43,36 @@ function bx_show_forums()
             $catego = $categos[$forum->category()];
         }
         // Asignamos los valores
-        $forums[] = array(
-            'id'=>$forum->id(),
-            'title'=>$forum->name(),
-            'topics'=>$forum->topics(),
-            'posts'=>$forum->posts(),
-            'catego'=>$catego->title(),
-            'active'=>$forum->active(),
-            'attach'=>$forum->attachments(),
-            'order'=>$forum->order()
-        );
+        $forums[] = [
+            'id' => $forum->id(),
+            'title' => $forum->name(),
+            'topics' => $forum->topics(),
+            'posts' => $forum->posts(),
+            'catego' => $catego->title(),
+            'active' => $forum->active(),
+            'attach' => $forum->attachments(),
+            'order' => $forum->order(),
+        ];
     }
 
     $bc = RMBreadCrumb::get();
     $bc->add_crumb(__('Forums', 'bxpress'));
     xoops_cp_header();
-    
+
     RMTemplate::get()->add_help(__('Forums Help', 'bxpress'), 'http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/');
     RMTemplate::get()->add_script('admin.js', 'bxpress');
-    RMTemplate::get()->add_head_script('var bx_select_message = "'.__('You must select one forum at least in order to run this action!', 'bxpress').'";
-        var bx_message = "'.__('Do you really want to delete selected forums?\n\nAll posts sent in this forum will be deleted also!', 'bxpress').'";');
+    RMTemplate::get()->add_head_script('var bx_select_message = "' . __('You must select one forum at least in order to run this action!', 'bxpress') . '";
+        var bx_message = "' . __('Do you really want to delete selected forums?\n\nAll posts sent in this forum will be deleted also!', 'bxpress') . '";');
 
     include RMTemplate::get()->get_template('admin/forums-forums.php', 'module', 'bxpress');
-    
+
     xoops_cp_footer();
 }
 
 /**
-* @desc Muestra el formulario para creación de Foros
-* @param int $edit Determina si se esta editando un foro existente
-*/
+ * @desc Muestra el formulario para creación de Foros
+ * @param int $edit Determina si se esta editando un foro existente
+ */
 function bx_show_form($edit = 0)
 {
     global $xoopsModule, $xoopsConfig;
@@ -91,11 +91,11 @@ function bx_show_form($edit = 0)
 
     if ($edit) {
         $id = RMHttpRequest::request('id', 'integer', 0);
-        if ($id<=0) {
+        if ($id <= 0) {
             RMUris::redirect_with_message(__('Provided ID is not valid!', 'bxpress'), 'forums.php', RMMSG_WARN);
             die();
         }
-        
+
         $forum = new bXForum($id);
         if ($forum->isNew()) {
             RMUris::redirect_with_message(__('Specified forum does not exists!', 'bxpress'), 'forums.php', RMMSG_ERROR);
@@ -103,21 +103,20 @@ function bx_show_form($edit = 0)
         }
     }
 
-
     RMTemplate::get()->add_style('admin.css', 'bxpress');
-    xoops_cp_location("<a href='./'>".$xoopsModule->name()."</a> &raquo; ".($edit ? __('Edit Forum', 'bxpress') : __('New Forum', 'bxpress')));
+    xoops_cp_location("<a href='./'>" . $xoopsModule->name() . '</a> &raquo; ' . ($edit ? __('Edit Forum', 'bxpress') : __('New Forum', 'bxpress')));
     xoops_cp_header();
-    
+
     $bcHand = new bXCategoryHandler();
     $bfHand = new bXForumHandler();
-    
+
     $form = new RMForm($edit ? __('Edit Forum', 'bxpress') : __('New Forum', 'bxpress'), 'frmForum', 'forums.php');
     // Categorias
     $ele = new RMFormSelect([
         'caption' => __('Category', 'bxpress'),
         'name' => 'cat',
-        'selected' => $edit ? array($forum->category()) : null,
-        'class' => 'form-control'
+        'selected' => $edit ? [$forum->category()] : null,
+        'class' => 'form-control',
         ]);
     $ele->addOption(0, __('Select category...', 'bxpress'), $edit ? 0 : 1);
     $ele->addOptionsArray($bcHand->getForSelect());
@@ -146,22 +145,22 @@ function bx_show_form($edit = 0)
     $ele = new RMFormText(__('Maximum attachments file size', 'bxpress'), 'attach_maxkb', 10, 20, $edit ? $forum->maxSize() : 50);
     $ele->setDescription(__('Specify this value in Kilobytes', 'bxpress'));
     $form->addElement($ele, false, 'bigger:0');
-    $ele = new RMFormText(__('Allowed file types', 'bxpress'), 'attach_ext', 50, 0, $edit ? implode("|", $forum->extensions()) : 'zip|tar|jpg|gif|png|gz');
+    $ele = new RMFormText(__('Allowed file types', 'bxpress'), 'attach_ext', 50, 0, $edit ? implode('|', $forum->extensions()) : 'zip|tar|jpg|gif|png|gz');
     $ele->setDescription(__('Specified the extensions of allowed file types separating each one with "|" and without the dot.', 'bxpress'));
     $form->addElement($ele);
     // Grupos con permiso
     if ($edit) {
         $grupos = $forum->permissions();
     }
-    $form->addElement(new RMFormGroups(__('Can view the forum', 'bxpress'), 'perm_view', 1, 1, 5, $edit ? $grupos['view'] : array(0)));
-    $form->addElement(new RMFormGroups(__('Can start new topics', 'bxpress'), 'perm_topic', 1, 1, 5, $edit ? $grupos['topic'] : array(1,2)));
-    $form->addElement(new RMFormGroups(__('Can answer', 'bxpress'), 'perm_reply', 1, 1, 5, $edit ? $grupos['reply'] : array(1,2)));
-    $form->addElement(new RMFormGroups(__('Can edit their posts', 'bxpress'), 'perm_edit', 1, 1, 5, $edit ? $grupos['edit'] : array(1,2)));
-    $form->addElement(new RMFormGroups(__('Can delete', 'bxpress'), 'perm_delete', 1, 1, 5, $edit ? $grupos['delete'] : array(1)));
-    $form->addElement(new RMFormGroups(__('Can vote', 'bxpress'), 'perm_vote', 1, 1, 5, $edit ? $grupos['vote'] : array(1,2)));
-    $form->addElement(new RMFormGroups(__('Can attach', 'bxpress'), 'perm_attach', 1, 1, 5, $edit ? $grupos['attach'] : array(1,2)));
-    $form->addElement(new RMFormGroups(__('Can send without approval', 'bxpress'), 'perm_approve', 1, 1, 5, $edit ? $grupos['approve'] : array(1,2)));
-    
+    $form->addElement(new RMFormGroups(__('Can view the forum', 'bxpress'), 'perm_view', 1, 1, 5, $edit ? $grupos['view'] : [0]));
+    $form->addElement(new RMFormGroups(__('Can start new topics', 'bxpress'), 'perm_topic', 1, 1, 5, $edit ? $grupos['topic'] : [1, 2]));
+    $form->addElement(new RMFormGroups(__('Can answer', 'bxpress'), 'perm_reply', 1, 1, 5, $edit ? $grupos['reply'] : [1, 2]));
+    $form->addElement(new RMFormGroups(__('Can edit their posts', 'bxpress'), 'perm_edit', 1, 1, 5, $edit ? $grupos['edit'] : [1, 2]));
+    $form->addElement(new RMFormGroups(__('Can delete', 'bxpress'), 'perm_delete', 1, 1, 5, $edit ? $grupos['delete'] : [1]));
+    $form->addElement(new RMFormGroups(__('Can vote', 'bxpress'), 'perm_vote', 1, 1, 5, $edit ? $grupos['vote'] : [1, 2]));
+    $form->addElement(new RMFormGroups(__('Can attach', 'bxpress'), 'perm_attach', 1, 1, 5, $edit ? $grupos['attach'] : [1, 2]));
+    $form->addElement(new RMFormGroups(__('Can send without approval', 'bxpress'), 'perm_approve', 1, 1, 5, $edit ? $grupos['approve'] : [1, 2]));
+
     $ele = new RMFormButtonGroup();
     $ele->addButton('sbt', $edit ? __('Save Changes', 'bxpress') : __('Create Forum', 'bxpress'), 'submit', '', 1);
     $ele->addButton('cancel', __('Cancel', 'bxpress'), 'button', 'onclick="window.location=\'forums.php\';"');
@@ -171,37 +170,38 @@ function bx_show_form($edit = 0)
         $form->addElement(new RMFormHidden('id', $forum->id()));
     }
     $form->display();
-    
+
     xoops_cp_footer();
 }
 
 /**
-* @desc Almacena los datos de un foro
-*/
+ * @desc Almacena los datos de un foro
+ * @param mixed $edit
+ */
 function bx_save_forum($edit = 0)
 {
     global $xoopsSecurity, $xoopsModuleConfig, $xoopsConfig;
 
     $q = $edit ? 'action=edit' : 'action=new';
-    
+
     $prefix = 1;
     foreach ($_POST as $k => $v) {
-        if (substr($k, 0, 5)=='perm_') {
-            $permissions[substr($k, 5)] = $v;
+        if ('perm_' == mb_substr($k, 0, 5)) {
+            $permissions[mb_substr($k, 5)] = $v;
         } else {
             $$k = $v;
         }
 
-        if ($k=='XOOPS_TOKEN_REQUEST' || $k=='action') {
+        if ('XOOPS_TOKEN_REQUEST' == $k || 'action' == $k) {
             continue;
         }
-        $q .= '&'.$k.'='.$v;
+        $q .= '&' . $k . '=' . $v;
     }
 
     if (!$xoopsSecurity->check()) {
         RMUris::redirect_with_message(
             __('Session token expired', 'bxpress'),
-            'forums.php?'.$q,
+            'forums.php?' . $q,
             RMMSG_ERROR
         );
     }
@@ -209,14 +209,14 @@ function bx_save_forum($edit = 0)
     if ($edit) {
         $id = RMHttpRequest::request('id', 'integer', 0);
 
-        if ($id<=0) {
+        if ($id <= 0) {
             RMUris::redirect_with_message(
                 __('Specified id is not valid!', 'bxpress'),
                 'forums.php',
                 RMMSG_ERROR
             );
         }
-        
+
         $forum = new bXForum($id);
         if ($forum->isNew()) {
             RMUris::redirect_with_message(
@@ -228,7 +228,7 @@ function bx_save_forum($edit = 0)
     } else {
         $forum = new bXForum();
     }
-    
+
     $forum->setVar('name', $name);
     $forum->setVar('desc', $desc);
     $forum->setVar('image', $image);
@@ -253,22 +253,22 @@ function bx_save_forum($edit = 0)
 
     // Check if forum exists
     $db = XoopsDatabaseFactory::getDatabaseConnection();
-    $sql = "SELECT COUNT(*) FROM " . $db->prefix("mod_bxpress_forums") . " WHERE name='$name' AND cat=$cat";
+    $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('mod_bxpress_forums') . " WHERE name='$name' AND cat=$cat";
     if ($edit) {
-        $sql .= " AND id_forum != " . $forum->id();
+        $sql .= ' AND id_forum != ' . $forum->id();
     }
 
     list($exists) = $db->fetchRow($db->query($sql));
     if ($exists) {
         RMUris::redirect_with_message(
             sprintf(__('Another forum with name "%s" already exists in this category.', 'bxpress'), $name),
-            'forums.php?'.$q,
+            'forums.php?' . $q,
             RMMSG_ERROR
         );
     }
-    
+
     if ($forum->save()) {
-        if ($parent>0) {
+        if ($parent > 0) {
             $pf = new bXForum($parent);
             if (!$pf->isNew()) {
                 $pf->setSubforums($pf->subforums() + 1);
@@ -277,81 +277,82 @@ function bx_save_forum($edit = 0)
         }
         if (!$edit) {
             //Redireccionamos a ventana de selección de moderadores
-            redirectMsg('forums.php?action=moderators&id='.$forum->id(), __('Forum saved successfully! Redirecting to moderators assignment...', 'bxpress'), 0);
+            redirectMsg('forums.php?action=moderators&id=' . $forum->id(), __('Forum saved successfully! Redirecting to moderators assignment...', 'bxpress'), 0);
         } else {
             redirectMsg('forums.php', __('Changes saved successfully!', 'bxpress'), 0);
         }
     } else {
-        redirectMsg('forums.php?'.$q, __('Forum could not be saved!', 'bxpress') . $forum->errors(), 1);
+        redirectMsg('forums.php?' . $q, __('Forum could not be saved!', 'bxpress') . $forum->errors(), 1);
     }
 }
 
 /**
-* @desc Almacena los cambios realizados en la lista de foros
-*/
+ * @desc Almacena los cambios realizados en la lista de foros
+ */
 function bx_save_changes()
 {
     global $db,$util;
-    
+
     if (!$util->validateToken()) {
         redirectMsg('forums.php', _AS_BB_ERRTOKEN, 1);
         die();
     }
-    
+
     foreach ($_POST as $k => $v) {
         $$k = $v;
     }
-    
+
     /**
-    * Comprobamos que se haya proporcionado al menos un foro
-    */
+     * Comprobamos que se haya proporcionado al menos un foro
+     */
     if (!is_array($orders) || empty($orders)) {
         redirectMsg('forums.php', _AS_BB_NOSELECTFORUM, 1);
         die();
     }
-    
+
     foreach ($orders as $k => $v) {
-        $sql = "UPDATE ".$db->prefix("mod_bxpress_forums")." SET `order`='".$v."' WHERE id_forum='$k'";
+        $sql = 'UPDATE ' . $db->prefix('mod_bxpress_forums') . " SET `order`='" . $v . "' WHERE id_forum='$k'";
         $db->queryF($sql);
     }
-    
+
     redirectMsg('forums.php', _AS_BB_DBOK, 0);
 }
 
 /**
-* @desc Activa o desactiva un foro
-*/
-function bx_activate_forums($status=1)
+ * @desc Activa o desactiva un foro
+ * @param mixed $status
+ */
+function bx_activate_forums($status = 1)
 {
     global $xoopsDB, $xoopsSecurity;
-    
+
     if (!$xoopsSecurity->check()) {
         RMUris::redirect_with_message(__('Session token expired! Try again.', 'bxpress'), 'forums.php', RMMSG_ERROR);
     }
-    
+
     $forums = RMHttpRequest::post('ids', 'array', null);
-    
+
     if (!is_array($forums) || empty($forums)) {
         RMUris::redirect_with_message(__('No forum has been selected.', 'bxpress'), 'forums.php', RMMSG_ERROR);
     }
-    
-    $sql = "UPDATE ".$xoopsDB->prefix("mod_bxpress_forums")." SET active='$status' WHERE ";
+
+    $sql = 'UPDATE ' . $xoopsDB->prefix('mod_bxpress_forums') . " SET active='$status' WHERE ";
     $sql1 = '';
     foreach ($forums as $k => $v) {
-        $sql1.= $sql1 == '' ? "id_forum='$v' " : "OR id_forum='$v' ";
+        $sql1 .= '' == $sql1 ? "id_forum='$v' " : "OR id_forum='$v' ";
     }
-    
+
     $xoopsDB->queryF($sql . $sql1);
     RMUris::redirect_with_message(__('Database updated successfully!', 'bxpress'), 'forums.php', RMMSG_INFO);
 }
 
 /**
-* @desc Eliminar un foro
-*/
+ * @desc Eliminar un foro
+ */
 function bx_delete_forums()
 {
     global $tpl, $xoopsModule, $xoopsConfig, $xoopsSecurity;
-    
+
     $ids = rmc_server_var($_REQUEST, 'ids', 0);
 
     if (!$xoopsSecurity->check()) {
@@ -367,34 +368,32 @@ function bx_delete_forums()
             die();
         }
 
-
         if (!$forum->delete()) {
-            $errors = sprintf(__('Forum "%s" could not be deleted!', 'bxpress'), $forum->name()).'<br />'.$forum->errors();
+            $errors = sprintf(__('Forum "%s" could not be deleted!', 'bxpress'), $forum->name()) . '<br>' . $forum->errors();
         }
     }
 
-    if ($errors!='') {
-        redirectMsg('forums.php', __('Errors ocurred while trying to delete forums:', 'bxpress').'<br />'.$errors, 1);
+    if ('' != $errors) {
+        redirectMsg('forums.php', __('Errors ocurred while trying to delete forums:', 'bxpress') . '<br>' . $errors, 1);
     } else {
         redirectMsg('forums.php', __('Forums deleted without errors', 'bxpress'), 0);
     }
 }
 
-
 /**
-* @desc Visualiza lista de usuarios para determinar moderadores
-**/
+ * @desc Visualiza lista de usuarios para determinar moderadores
+ **/
 function bx_moderators()
 {
     global $xoopsModule;
 
-    $id= rmc_server_var($_REQUEST, 'id', 0);
-    
-    if ($id<=0) {
+    $id = rmc_server_var($_REQUEST, 'id', 0);
+
+    if ($id <= 0) {
         redirectMsg('forums.php', __('No forum ID has been provided!', 'bxpress'), 1);
         die();
     }
-    
+
     $forum = new bXForum($id);
     if ($forum->isNew()) {
         redirectMsg('forums.php', __('Specified forum does not exists!', 'bxpress'), 1);
@@ -403,18 +402,16 @@ function bx_moderators()
     RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/#moderadores');
     xoops_cp_header();
 
-
     //Lista de usuarios
     $form = new RMForm(sprintf(__('Forum "%s" Moderators', 'bxpress'), $forum->name()), 'formmdt', 'forums.php');
 
     $form->addElement(new RMFormUser(__('Moderators', 'bxpress'), 'users', 1, $forum->moderators(), 30), true, 'checked');
     $form->element('users')->setDescription(__('Choose from the list the moderators users', 'bxpress'));
 
-    
-    $buttons= new RMFormButtonGroup();
+    $buttons = new RMFormButtonGroup();
     $buttons->addButton('sbt', __('Save Moderators', 'bxpress'), 'submit');
     $buttons->addButton('cancel', __('Cancel', 'bxpress'), 'button', 'onclick="window.location.href=\'forums.php\';"');
-    
+
     $form->addElement($buttons);
 
     $form->addElement(new RMFormHidden('action', 'savemoderat'));
@@ -422,29 +419,28 @@ function bx_moderators()
 
     $form->display();
 
-
-    xoops_cp_location("<a href='./'>".$xoopsModule->name()."</a> &raquo; ".__('forum Moderators', 'bxpress'));
+    xoops_cp_location("<a href='./'>" . $xoopsModule->name() . '</a> &raquo; ' . __('forum Moderators', 'bxpress'));
     xoops_cp_footer();
 }
 
 /**
-* @desc Almacena los usuarios moderadores
-**/
+ * @desc Almacena los usuarios moderadores
+ **/
 function bx_save_moderators()
 {
     global $xoopsSecurity;
-    
+
     if (!$xoopsSecurity->check()) {
         redirectMsg('forums.php', __('Session token expired!', 'bxpress'), 1);
         die();
     }
-    
-    foreach ($_POST as $k=>$v) {
-        $$k=$v;
+
+    foreach ($_POST as $k => $v) {
+        $$k = $v;
     }
 
     //Verificamos si el foro es válido
-    if ($id<=0) {
+    if ($id <= 0) {
         redirectMsg('forums.php', __('A forum ID has not been provided!', 'bxpress'), 1);
         die();
     }
@@ -460,10 +456,9 @@ function bx_save_moderators()
     if ($forum->save()) {
         redirectMsg('forums.php', __('Moderator saved successfully!', 'bxpress'), 0);
     } else {
-        redirectMsg('forums.php', __('Moderators could not be saved!', 'bxpress').'<br />'.$forum->errors(), 1);
+        redirectMsg('forums.php', __('Moderators could not be saved!', 'bxpress') . '<br>' . $forum->errors(), 1);
     }
 }
-
 
 $action = RMHttpRequest::request('action', 'string', '');
 

@@ -8,48 +8,47 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-$adminmenu[] = array(
+$adminmenu[] = [
     'title' => __('Dashboard', 'bxpress'),
-    'link' => "admin/index.php",
+    'link' => 'admin/index.php',
     'icon' => 'svg-rmcommon-dashboard',
-    'location' => "dashboard"
-);
+    'location' => 'dashboard',
+];
 
-$adminmenu[] = array(
+$adminmenu[] = [
     'title' => __('Categories', 'bxpress'),
-    'link' => "admin/categories.php",
+    'link' => 'admin/categories.php',
     'icon' => 'svg-rmcommon-folder text-orange',
-    'location' => "categories"
-);
+    'location' => 'categories',
+];
 
-$adminmenu[] = array(
+$adminmenu[] = [
     'title' => __('Forums', 'bxpress'),
-    'link' => "admin/forums.php",
+    'link' => 'admin/forums.php',
     'icon' => 'svg-rmcommon-comments text-info',
-    'location' => "forums"
-);
+    'location' => 'forums',
+];
 
-
-$adminmenu[] = array(
+$adminmenu[] = [
     'title' => __('Announcements', 'bxpress'),
-    'link' => "admin/announcements.php",
+    'link' => 'admin/announcements.php',
     'icon' => 'svg-rmcommon-bell text-brown',
-    'location' => "messages"
-);
+    'location' => 'messages',
+];
 
-$adminmenu[] = array(
+$adminmenu[] = [
     'title' => __('Reports', 'bxpress'),
-    'link' => "admin/reports.php",
+    'link' => 'admin/reports.php',
     'icon' => 'svg-rmcommon-error text-danger',
-    'location' => "reports",
-    'options' => array(
-        array('title'=>__('All reports', 'bxpress'),'link'=>'admin/reports.php','selected'=>'allreps'),
-        array('title'=>__('Read', 'bxpress'),'link'=>'admin/reports.php?show=1','selected'=>'reviews'),
-        array('title'=>__('Not Read', 'bxpress'),'link'=>'admin/reports.php?show=2','selected'=>'noreviewd')
-    )
-);
+    'location' => 'reports',
+    'options' => [
+        ['title' => __('All reports', 'bxpress'), 'link' => 'admin/reports.php', 'selected' => 'allreps'],
+        ['title' => __('Read', 'bxpress'), 'link' => 'admin/reports.php?show=1', 'selected' => 'reviews'],
+        ['title' => __('Not Read', 'bxpress'), 'link' => 'admin/reports.php?show=2', 'selected' => 'noreviewd'],
+    ],
+];
 
 $adminmenu[5]['title'] = __('Prune', 'bxpress');
-$adminmenu[5]['link'] = "admin/prune.php";
+$adminmenu[5]['link'] = 'admin/prune.php';
 $adminmenu[5]['icon'] = 'svg-rmcommon-trash text-blue-grey';
-$adminmenu[5]['location'] = "prune";
+$adminmenu[5]['location'] = 'prune';

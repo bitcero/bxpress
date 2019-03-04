@@ -59,15 +59,15 @@
                     </tr>
                 <?php endif; ?>
                 <?php foreach ($reports as $report): ?>
-                    <tr class="<?php echo tpl_cycle("even,odd"); ?>" valign="top">
-                        <td align="center"><input type="checkbox" name="ids[]" id="item-<?php echo $report['id']; ?>" value="<?php echo $report['id']; ?>" /></td>
+                    <tr class="<?php echo tpl_cycle('even,odd'); ?>" valign="top">
+                        <td align="center"><input type="checkbox" name="ids[]" id="item-<?php echo $report['id']; ?>" value="<?php echo $report['id']; ?>"></td>
                         <td align="center"><?php echo $report['id']; ?></td>
                         <td align="right" class="reporter" nowrap="nowrap">
-                            <?php echo sprintf(__('By %s', 'bxpress'), '<a href="'.XOOPS_URL.'/userinfo.php?uid='.$report['uid'].'" target="_blank"><strong>'.$report['user'].'</strong></a>'); ?><br />
+                            <?php echo sprintf(__('By %s', 'bxpress'), '<a href="' . XOOPS_URL . '/userinfo.php?uid=' . $report['uid'] . '" target="_blank"><strong>' . $report['user'] . '</strong></a>'); ?><br>
                             <?php echo $report['date']; ?>
                         </td>
                         <td>
-            <span class="report_message<?php echo $report['zapped']?' read':''; ?>">
+            <span class="report_message<?php echo $report['zapped'] ? ' read' : ''; ?>">
                 <span class="brdcrm">
                     <a href="<?php echo $report['forum']['link']; ?>"><?php echo $report['forum']['name']; ?></a> →
                     <a href="<?php echo $report['topic']['link']; ?>"><?php echo $report['topic']['title']; ?></a> →
@@ -79,7 +79,7 @@
                 </span>
                 <?php if ($report['zapped']): ?>
                     <span class="zapped">
-                    <?php echo sprintf(__('Read on %s by %s', 'bxpress'), $report['zappedtime'], '<strong><a href="'.XOOPS_URL.'/userinfo.php?uid='.$report['zappedby']['uid'].'">'.$report['zappedby']['name'].'</a>'); ?>
+                    <?php echo sprintf(__('Read on %s by %s', 'bxpress'), $report['zappedtime'], '<strong><a href="' . XOOPS_URL . '/userinfo.php?uid=' . $report['zappedby']['uid'] . '">' . $report['zappedby']['name'] . '</a>'); ?>
                 </span>
                 <?php endif; ?>
             </span>
@@ -113,6 +113,6 @@
         </ul>
     </div>
 <?php echo $xoopsSecurity->getTokenHTML(); ?>
-    <input type="hidden" name="show" value="<?php echo $show; ?>" />
+    <input type="hidden" name="show" value="<?php echo $show; ?>">
 </form>
 

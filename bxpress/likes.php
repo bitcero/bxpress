@@ -29,16 +29,15 @@
 /**
  * This file handle the likes requests to add or remove likes from a specific post
  */
-
-require '../../mainfile.php';
+require dirname(__DIR__) . '/../mainfile.php';
 
 $xoopsLogger->activated = false;
 
-function response_json($error = 0, $message = '', $data = array(), $token = true)
+function response_json($error = 0, $message = '', $data = [], $token = true)
 {
     global $xoopsSecurity;
 
-    echo json_encode(array('message' => $message, 'data' => $data, 'error' => $error, 'token' => $token ? $xoopsSecurity->createToken(0, 'BXTOKEN') : '' ));
+    echo json_encode(['message' => $message, 'data' => $data, 'error' => $error, 'token' => $token ? $xoopsSecurity->createToken(0, 'BXTOKEN') : '' ]);
     exit();
 }
 
@@ -55,7 +54,7 @@ if (!$xoopsSecurity->check(true, false, 'BXTOKEN')) {
     response_json(
         1,
         __('Please refresh the page in order to register your likes.', 'bxpress'),
-        array(),
+        [],
         false
     );
 }
@@ -65,12 +64,12 @@ if ($post->isNew()) {
     response_json(
         1,
         __('The specified post does not exists! Verify it!', 'bxpress'),
-        array(),
+        [],
         true
     );
 }
 
-$sql = "SELECT COUNT(*) FROM " . $xoopsDB->prefix("mod_bxpress_likes") . " WHERE uid=" . $xoopsUser->uid() . " AND post=" . $post->id();
+$sql = 'SELECT COUNT(*) FROM ' . $xoopsDB->prefix('mod_bxpress_likes') . ' WHERE uid=' . $xoopsUser->uid() . ' AND post=' . $post->id();
 list($exists) = $xoopsDB->fetchRow($xoopsDB->query($sql));
 
 if ($exists > 0) {
@@ -80,26 +79,25 @@ if ($exists > 0) {
 }
 
 if ('like' == $action) {
-
     // Add to likes table
-    $sql = "INSERT INTO " . $xoopsDB->prefix("mod_bxpress_likes") . " (post,uid,time) VALUES (" . $post->id() . "," . $xoopsUser->uid() . "," . time() . ")";
+    $sql = 'INSERT INTO ' . $xoopsDB->prefix('mod_bxpress_likes') . ' (post,uid,time) VALUES (' . $post->id() . ',' . $xoopsUser->uid() . ',' . time() . ')';
 
     if (!$xoopsDB->queryF($sql)) {
-        response_json(1, __('We could not register your like for this post. Please try again.', 'bxpress'), array(), true);
+        response_json(1, __('We could not register your like for this post. Please try again.', 'bxpress'), [], true);
     }
 
-    $sql = "UPDATE " . $xoopsDB->prefix("mod_bxpress_posts") . " SET likes=likes+1 WHERE id_post = " . $post->id();
+    $sql = 'UPDATE ' . $xoopsDB->prefix('mod_bxpress_posts') . ' SET likes=likes+1 WHERE id_post = ' . $post->id();
     $xoopsDB->queryF($sql);
 
-    $data = array(
-        'likes'     => $post->likes + 1,
-        'uname'     => $xoopsUser->uname(),
-        'uid'       => $xoopsUser->uid(),
-        'name'      => $xoopsUser->getVar('name') != '' ? $xoopsUser->getVar('name') : $xoopsUser->getVar('uname'),
-        'avatar'    => RMEvents::get()->run_event("rmcommon.get.avatar", $xoopsUser->getVar('email'), 40),
-        'post'      => $post->id(),
-        'action'    => 'add'
-    );
+    $data = [
+        'likes' => $post->likes + 1,
+        'uname' => $xoopsUser->uname(),
+        'uid' => $xoopsUser->uid(),
+        'name' => '' != $xoopsUser->getVar('name') ? $xoopsUser->getVar('name') : $xoopsUser->getVar('uname'),
+        'avatar' => RMEvents::get()->run_event('rmcommon.get.avatar', $xoopsUser->getVar('email'), 40),
+        'post' => $post->id(),
+        'action' => 'add',
+    ];
 
     response_json(
         0,
@@ -108,29 +106,28 @@ if ('like' == $action) {
         true
     );
 } elseif ('unlike' == $action) {
-
     // Remove likes from table
-    $sql = "DELETE FROM " . $xoopsDB->prefix("mod_bxpress_likes") . " WHERE uid=" . $xoopsUser->uid() . " AND post=" . $post->id();
+    $sql = 'DELETE FROM ' . $xoopsDB->prefix('mod_bxpress_likes') . ' WHERE uid=' . $xoopsUser->uid() . ' AND post=' . $post->id();
 
     if (!$xoopsDB->queryF($sql)) {
-        response_json(1, __('We could not remove your like from this post. Please try again.', 'bxpress'), array(), true);
+        response_json(1, __('We could not remove your like from this post. Please try again.', 'bxpress'), [], true);
     }
 
     $rest = $xoopsDB->getAffectedRows();
 
-    $sql = "UPDATE " . $xoopsDB->prefix("mod_bxpress_posts") . " SET likes=likes-$rest WHERE id_post = " . $post->id();
+    $sql = 'UPDATE ' . $xoopsDB->prefix('mod_bxpress_posts') . " SET likes=likes-$rest WHERE id_post = " . $post->id();
     $xoopsDB->queryF($sql);
 
-    $data = array(
-        'likes'     => $post->likes - $rest,
-        'uname'     => $xoopsUser->uname(),
-        'uid'       => $xoopsUser->uid(),
-        'name'      => $xoopsUser->getVar('name') != '' ? $xoopsUser->getVar('name') : $xoopsUser->getVar('uname'),
-        'info'      => XOOPS_URL . '/userinfo.php?uid=' . $xoopsUser->uid(),
-        'avatar'    => RMEvents::get()->run_event("rmcommon.get.avatar", $xoopsUser->getVar('email'), 40),
-        'post'      => $post->id(),
-        'action'    => 'remove'
-    );
+    $data = [
+        'likes' => $post->likes - $rest,
+        'uname' => $xoopsUser->uname(),
+        'uid' => $xoopsUser->uid(),
+        'name' => '' != $xoopsUser->getVar('name') ? $xoopsUser->getVar('name') : $xoopsUser->getVar('uname'),
+        'info' => XOOPS_URL . '/userinfo.php?uid=' . $xoopsUser->uid(),
+        'avatar' => RMEvents::get()->run_event('rmcommon.get.avatar', $xoopsUser->getVar('email'), 40),
+        'post' => $post->id(),
+        'action' => 'remove',
+    ];
 
     response_json(
         0,

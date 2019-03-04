@@ -26,7 +26,6 @@
  * @license       GPL v2 (http://www.gnu.org/licenses/gpl-2.0.html)
  * @link          https://github.com/bitcero/bxpress
  */
-
 load_mod_locale('bxpress');
 
 function bxpress_block_topics_show($options)
@@ -40,11 +39,11 @@ function bxpress_block_topics_show($options)
     $tbl4 = $db->prefix('mod_bxpress_forums');
 
     if ('activity' == $options['type']) {
-        $sql = "SELECT DISTINCT id_topic FROM " . $tbl1 . " ORDER BY post_time DESC LIMIT 0, $options[limit]";
+        $sql = 'SELECT DISTINCT id_topic FROM ' . $tbl1 . " ORDER BY post_time DESC LIMIT 0, $options[limit]";
         $result = $db->query($sql);
-        $topicsIds = array();
+        $topicsIds = [];
 
-        while ($row = $db->fetchArray($result)) {
+        while (false !== ($row = $db->fetchArray($result))) {
             $topicsIds[] = $row['id_topic'];
         }
 
@@ -52,7 +51,7 @@ function bxpress_block_topics_show($options)
     }
 
     // Calculate period of time
-    if (0 < $options['days']) {
+    if ($options['days'] > 0) {
         $period = time() - ($options['days'] * 86400);
     }
 
@@ -63,11 +62,11 @@ function bxpress_block_topics_show($options)
                 (SELECT post_time FROm $tbl1 WHERE id_topic=topics.id_topic ORDER BY post_time DESC LIMIT 0, 1) as updated
                 FROM $tbl2 as topics, $tbl4 as forums WHERE ";
 
-    if (0 < $options['days']) {
+    if ($options['days'] > 0) {
         $sql .= " topics.date > $period AND ";
     }
 
-    $sql .= "forums.id_forum=topics.id_forum";
+    $sql .= 'forums.id_forum=topics.id_forum';
 
     if ('recent' == $options['type']) {
         $sql .= " ORDER BY topics.id_topic $order LIMIT 0, $options[limit]";
@@ -76,47 +75,45 @@ function bxpress_block_topics_show($options)
     } elseif ('hits' == $options['type']) {
         $sql .= " ORDER BY topics.views $order LIMIT 0, $options[limit]";
     } elseif ('activity' == $options['type']) {
-
         //$sql .= ' AND topics.id_topic IN (' . implode(',', $topicsIds) . ')';
         $sql .= " ORDER BY updated DESC LIMIT 0, $options[limit]";
     }
 
     $result = $db->queryF($sql);
 
-    $topics = array();
-    $block = array();
+    $topics = [];
+    $block = [];
 
-    include_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxforum.class.php';
-    include_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxpost.class.php';
-    include_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxtopic.class.php';
-    include_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxfunctions.class.php';
+    require_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxforum.class.php';
+    require_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxpost.class.php';
+    require_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxtopic.class.php';
+    require_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxfunctions.class.php';
 
     $topic = new bXTopic();
     $forum = new bXForum();
     $tf = new RMTimeFormatter(0, '%T% %d%, %Y%');
 
-    while ($row = $db->fetchArray($result)) {
+    while (false !== ($row = $db->fetchArray($result))) {
         $topic->assignVars($row);
-        $forum->assignVars(array('id_forum' => $topic->forum()));
+        $forum->assignVars(['id_forum' => $topic->forum()]);
 
-        $ret = array(
+        $ret = [
             'id' => $topic->id(),
             'title' => $topic->title,
             'link' => $topic->permalink(),
             'likes' => $topic->likes,
             'replies' => $topic->replies,
             'hits' => $topic->views,
-            'forum' => array(
+            'forum' => [
                 'name' => $row['name'],
                 'id' => $row['id_forum'],
-                'link' => $forum->permalink()
-            ),
+                'link' => $forum->permalink(),
+            ],
             'time' => $topic->date,
             'date' => $tf->ago($topic->date),
             'likes' => $row['likes'],
-            'updated' => 'full' == $options['format'] ? sprintf(__('Updated on %s', 'bxpress'), $tf->format($row['updated'])) : $tf->ago($row['updated'])
-
-        );
+            'updated' => 'full' == $options['format'] ? sprintf(__('Updated on %s', 'bxpress'), $tf->format($row['updated'])) : $tf->ago($row['updated']),
+        ];
         $topics[] = $ret;
     }
 

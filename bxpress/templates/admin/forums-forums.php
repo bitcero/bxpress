@@ -76,9 +76,9 @@
                         <td><?php echo $forum['topics']; ?></td>
                         <td><?php echo $forum['posts']; ?></td>
                         <td><?php echo $forum['catego']; ?></td>
-                        <td><img src="../images/<?php echo $forum['active'] ? 'ok' : 'no'; ?>.png" border="0" alt="" /></td>
-                        <td><img src="../images/<?php echo  $forum['attach'] ? 'ok' : 'no'; ?>.png" border="0" alt="" /></td>
-                        <td><input type="text" name="orders[<?php echo $forum['id']; ?>]" value="<?php echo $forum['order']; ?>" size="5" style="text-align: center;" /></td>
+                        <td><img src="../images/<?php echo $forum['active'] ? 'ok' : 'no'; ?>.png" border="0" alt=""></td>
+                        <td><img src="../images/<?php echo  $forum['attach'] ? 'ok' : 'no'; ?>.png" border="0" alt=""></td>
+                        <td><input type="text" name="orders[<?php echo $forum['id']; ?>]" value="<?php echo $forum['order']; ?>" size="5" style="text-align: center;"></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -99,5 +99,5 @@
 </div>
 <!--//-->
 <?php echo $xoopsSecurity->getTokenHTML(); ?>
-<input type="hidden" name="op" value="" />
+<input type="hidden" name="op" value="">
 </form>

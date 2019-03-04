@@ -8,7 +8,7 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-include '../../mainfile.php';
+require  dirname(dirname(__DIR__)) . '/mainfile.php';
 
 $id = RMHttpRequest::request('id', 'integer', 0);
 
@@ -37,15 +37,15 @@ function showItemsAndOptions()
     global $xoopsUser, $db, $xoopsOption, $tpl, $xoopsModule, $xoopsConfig, $xoopsSecurity;
     global $xoopsModuleConfig, $forum;
 
-    $xoopsOption['template_main'] = "bxpress-moderate.tpl";
-    $xoopsOption['module_subpage'] = "moderate";
-    include 'header.php';
+    $GLOBALS['xoopsOption']['template_main'] = 'bxpress-moderate.tpl';
+    $xoopsOption['module_subpage'] = 'moderate';
+    require __DIR__ . '/header.php';
 
     /**
      * Cargamos los temas
      */
-    $tbl1 = $db->prefix("mod_bxpress_topics");
-    $tbl2 = $db->prefix("mod_bxpress_forumtopics");
+    $tbl1 = $db->prefix('mod_bxpress_topics');
+    $tbl2 = $db->prefix('mod_bxpress_forumtopics');
 
     $sql = "SELECT COUNT(*) FROM $tbl1 WHERE id_forum='" . $forum->id() . "' ";
     list($num) = $db->fetchRow($db->queryF($sql));
@@ -75,15 +75,15 @@ function showItemsAndOptions()
         $tpl->assign('itemsNavPage', $nav->render(false));
     }
 
-    $sql = str_replace("COUNT(*)", '*', $sql);
+    $sql = str_replace('COUNT(*)', '*', $sql);
     $sql .= " ORDER BY sticky DESC, date DESC LIMIT $start,$limit";
     $result = $db->query($sql);
 
-    while ($row = $db->fetchArray($result)) {
+    while (false !== ($row = $db->fetchArray($result))) {
         $topic = new bXTopic();
         $topic->assignVars($row);
         $last = new bXPost($topic->lastPost());
-        $lastpost = array();
+        $lastpost = [];
         if (!$last->isNew()) {
             $lastpost['date'] = bXFunctions::formatDate($last->date());
             $lastpost['by'] = sprintf(__('By: %s', 'bxpress'), $last->uname());
@@ -112,11 +112,11 @@ function showItemsAndOptions()
             'pages' => $pages,
             'tpages' => $tpages,
             'approved' => $topic->approved(),
-            'closed' => $topic->status()
+            'closed' => $topic->status(),
         ]);
     }
 
-    $tpl->assign('forum', array('id' => $forum->id(), 'title' => $forum->name()));
+    $tpl->assign('forum', ['id' => $forum->id(), 'title' => $forum->name()]);
     $tpl->assign('lang_topic', __('Topic', 'bxpress'));
     $tpl->assign('lang_replies', __('Replies', 'bxpress'));
     $tpl->assign('lang_views', __('Views', 'bxpress'));
@@ -141,7 +141,7 @@ function showItemsAndOptions()
 
     RMTemplate::get()->add_xoops_style('style.css', 'bxpress');
 
-    include 'footer.php';
+    require __DIR__ . '/footer.php';
 }
 
 /**
@@ -160,7 +160,7 @@ function moveTopics()
         die();
     }
 
-    $topics = !is_array($topics) ? array($topics) : $topics;
+    $topics = !is_array($topics) ? [$topics] : $topics;
 
     if ($ok) {
         if (!$xoopsSecurity->check()) {
@@ -185,7 +185,6 @@ function moveTopics()
             if ($topic->forum() != $forum->id()) {
                 continue;
             }
-
 
             //Verificamos si el tema contiene el último mensaje del foro
             if (!$lastpost && array_key_exists($forum->lastPostId(), $topic->getPosts(0))) {
@@ -227,58 +226,57 @@ function moveTopics()
 
         redirect_header('moderate.php?id=' . $forum->id(), 1, __('Topics has been relocated!', 'bxpress'));
         die();
-    } else {
-        global $xoopsTpl;
-        $tpl = $xoopsTpl;
-        $xoopsOption['template_main'] = "bxpress-moderate-forms.tpl";
-        $xoopsOption['module_subpage'] = "moderate";
-        include 'header.php';
-
-        bXFunctions::makeHeader();
-        $form = new RMForm(__('Move Topics', 'bxpress'), 'frmMove', 'moderate.php');
-        $form->addElement(new RMFormHidden('id', $forum->id()));
-        $form->addElement(new RMFormHidden('op', 'move'));
-        $form->addElement(new RMFormHidden('ok', '1'));
-        $i = 0;
-        foreach ($topics as $k) {
-            $form->addElement(new RMFormHidden('topics[' . $i . ']', $k));
-            ++$i;
-        }
-        $form->addElement(new RMFormSubTitle('&nbsp', 1, ''));
-        $form->addElement(new RMFormSubTitle(__('Select the forum where you wish to move selected topics', 'bxpress'), 1, 'even'));
-        $ele = new RMFormSelect(__('Forum', 'bxpress'), 'moveforum');
-        $ele->addOption(0, '', 1);
-
-        $tbl1 = $db->prefix("mod_bxpress_categories");
-        $tbl2 = $db->prefix("mod_bxpress_forums");
-        $sql = "SELECT b.*, a.title FROM $tbl1 a, $tbl2 b WHERE b.cat=a.id_cat AND b.active='1' AND id_forum<>" . $forum->id() . " ORDER BY a.order, b.order";
-        $result = $db->query($sql);
-        $categories = array();
-        while ($row = $db->fetchArray($result)) {
-            $cforum = array('id' => $row['id_forum'], 'name' => $row['name']);
-            if (isset($categores[$row['cat']])) {
-                $categories[$row['cat']]['forums'][] = $cforum;
-            } else {
-                $categories[$row['cat']]['title'] = $row['title'];
-                $categories[$row['cat']]['forums'][] = $cforum;
-            }
-        }
-
-        foreach ($categories as $cat) {
-            $ele->addOption(0, $cat['title'], 0, true, 'color: #000; font-weight: bold; font-style: italic; border-bottom: 1px solid #c8c8c8;');
-            foreach ($cat['forums'] as $cforum) {
-                $ele->addOption($cforum['id'], $cforum['name'], 0, false, 'padding-left: 10px;');
-            }
-        }
-        $form->addElement($ele, true, "noselect:0");
-        $ele = new RMFormButtonGroup();
-        $ele->addButton('sbt', __('Move Topics Now!', 'bxpress'), 'submit');
-        $ele->addButton('cancel', __('Cancel', 'bxpress'), 'button', 'onclick="history.go(-1);"');
-        $form->addElement($ele);
-        $tpl->assign('moderate_form', $form->render());
-
-        include 'footer.php';
     }
+    global $xoopsTpl;
+    $tpl = $xoopsTpl;
+    $GLOBALS['xoopsOption']['template_main'] = 'bxpress-moderate-forms.tpl';
+    $xoopsOption['module_subpage'] = 'moderate';
+    require __DIR__ . '/header.php';
+
+    bXFunctions::makeHeader();
+    $form = new RMForm(__('Move Topics', 'bxpress'), 'frmMove', 'moderate.php');
+    $form->addElement(new RMFormHidden('id', $forum->id()));
+    $form->addElement(new RMFormHidden('op', 'move'));
+    $form->addElement(new RMFormHidden('ok', '1'));
+    $i = 0;
+    foreach ($topics as $k) {
+        $form->addElement(new RMFormHidden('topics[' . $i . ']', $k));
+        ++$i;
+    }
+    $form->addElement(new RMFormSubTitle('&nbsp', 1, ''));
+    $form->addElement(new RMFormSubTitle(__('Select the forum where you wish to move selected topics', 'bxpress'), 1, 'even'));
+    $ele = new RMFormSelect(__('Forum', 'bxpress'), 'moveforum');
+    $ele->addOption(0, '', 1);
+
+    $tbl1 = $db->prefix('mod_bxpress_categories');
+    $tbl2 = $db->prefix('mod_bxpress_forums');
+    $sql = "SELECT b.*, a.title FROM $tbl1 a, $tbl2 b WHERE b.cat=a.id_cat AND b.active='1' AND id_forum<>" . $forum->id() . ' ORDER BY a.order, b.order';
+    $result = $db->query($sql);
+    $categories = [];
+    while (false !== ($row = $db->fetchArray($result))) {
+        $cforum = ['id' => $row['id_forum'], 'name' => $row['name']];
+        if (isset($categores[$row['cat']])) {
+            $categories[$row['cat']]['forums'][] = $cforum;
+        } else {
+            $categories[$row['cat']]['title'] = $row['title'];
+            $categories[$row['cat']]['forums'][] = $cforum;
+        }
+    }
+
+    foreach ($categories as $cat) {
+        $ele->addOption(0, $cat['title'], 0, true, 'color: #000; font-weight: bold; font-style: italic; border-bottom: 1px solid #c8c8c8;');
+        foreach ($cat['forums'] as $cforum) {
+            $ele->addOption($cforum['id'], $cforum['name'], 0, false, 'padding-left: 10px;');
+        }
+    }
+    $form->addElement($ele, true, 'noselect:0');
+    $ele = new RMFormButtonGroup();
+    $ele->addButton('sbt', __('Move Topics Now!', 'bxpress'), 'submit');
+    $ele->addButton('cancel', __('Cancel', 'bxpress'), 'button', 'onclick="history.go(-1);"');
+    $form->addElement($ele);
+    $tpl->assign('moderate_form', $form->render());
+
+    require __DIR__ . '/footer.php';
 }
 
 /**
@@ -296,7 +294,7 @@ function changeOwner()
         );
     }
 
-    $topics = RMHttpRequest::post('topics', 'array', array());
+    $topics = RMHttpRequest::post('topics', 'array', []);
 
     if (empty($topics)) {
         RMUris::redirect_with_message(
@@ -307,9 +305,9 @@ function changeOwner()
     }
 
     $tpl = $xoopsTpl;
-    $xoopsOption['template_main'] = "bxpress-moderate-forms.tpl";
-    $xoopsOption['module_subpage'] = "moderate";
-    include 'header.php';
+    $GLOBALS['xoopsOption']['template_main'] = 'bxpress-moderate-forms.tpl';
+    $xoopsOption['module_subpage'] = 'moderate';
+    require __DIR__ . '/header.php';
 
     bXFunctions::makeHeader();
     $form = new RMForm(__('Change topic owner', 'bxpress'), 'frmOwner', 'moderate.php');
@@ -325,14 +323,14 @@ function changeOwner()
 
     $form->addElement(new RMFormSubTitle([
         'caption' => __('Select the user that will be assigned as owner for all selected topics', 'bxpress'),
-        'level' => 4
+        'level' => 4,
     ]));
     $form->addElement(new RMFormUser(__('User', 'bxpress'), 'owner'));
 
     $form->addElement(new RMFormYesNo([
         'caption' => __('Change first post owner too?', 'bxpress'),
         'value' => 'yes',
-        'name' => 'first'
+        'name' => 'first',
     ]));
 
     $ele = new RMFormButtonGroup();
@@ -341,7 +339,7 @@ function changeOwner()
     $form->addElement($ele);
     $tpl->assign('moderate_form', $form->render());
 
-    include 'footer.php';
+    require __DIR__ . '/footer.php';
 }
 
 function changeOwnerNow()
@@ -356,7 +354,7 @@ function changeOwnerNow()
         );
     }
 
-    $topics = RMHttpRequest::post('topics', 'array', array());
+    $topics = RMHttpRequest::post('topics', 'array', []);
 
     if (empty($topics)) {
         RMUris::redirect_with_message(
@@ -409,7 +407,7 @@ function changeOwnerNow()
             continue;
         }
 
-        $result = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("mod_bxpress_posts")." WHERE id_topic='".$topic->id()."' ORDER BY id_post ASC LIMIT 0, 1");
+        $result = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('mod_bxpress_posts') . " WHERE id_topic='" . $topic->id() . "' ORDER BY id_post ASC LIMIT 0, 1");
         if ($xoopsDB->getRowsNum($result) <= 0) {
             continue;
         }
@@ -442,11 +440,11 @@ function changeOwnerNow()
 
 /**
  * @desc Cerrar o abrir un tema
+ * @param mixed $close
  */
 function closeTopic($close)
 {
     global $xoopsSecurity, $forum, $xoopsUser;
-
 
     $topics = isset($_REQUEST['topics']) ? $_REQUEST['topics'] : null;
 
@@ -455,7 +453,7 @@ function closeTopic($close)
         die();
     }
 
-    $topics = !is_array($topics) ? array($topics) : $topics;
+    $topics = !is_array($topics) ? [$topics] : $topics;
 
     foreach ($topics as $k) {
         $topic = new bXTopic($k);
@@ -472,6 +470,7 @@ function closeTopic($close)
 
 /**
  * @desc Cerrar o abrir un tema
+ * @param mixed $sticky
  */
 function stickyTopic($sticky)
 {
@@ -489,7 +488,7 @@ function stickyTopic($sticky)
         die();
     }
 
-    $topics = !is_array($topics) ? array($topics) : $topics;
+    $topics = !is_array($topics) ? [$topics] : $topics;
 
     foreach ($topics as $k) {
         $topic = new bXTopic($k);
@@ -519,7 +518,7 @@ function deleteTopics()
         die();
     }
 
-    $topics = !is_array($topics) ? array($topics) : $topics;
+    $topics = !is_array($topics) ? [$topics] : $topics;
 
     $lastpost = false;
 
@@ -557,9 +556,9 @@ function deleteTopics()
     redirect_header('moderate.php?id=' . $forum->id(), 1, __('Action completed!', 'bxpress'));
 }
 
-
 /**
  * @desc Aprueba o no un tema
+ * @param mixed $app
  **/
 function approvedTopics($app = 0)
 {
@@ -572,7 +571,7 @@ function approvedTopics($app = 0)
         die();
     }
 
-    $topics = !is_array($topics) ? array($topics) : $topics;
+    $topics = !is_array($topics) ? [$topics] : $topics;
 
     if (!$xoopsSecurity->check()) {
         redirect_header('moderate.php?id=' . $forum->id(), 2, __('Session token expired!', 'bxpress'));
@@ -600,16 +599,15 @@ function approvedTopics($app = 0)
     redirect_header('moderate.php?id=' . $forum->id(), 1, __('Action completed!', 'bxpress'));
 }
 
-
 /**
  * @desc Aprueba o no un mensaje editado
+ * @param mixed $app
  **/
 function approvedPosts($app = 0)
 {
     global $xoopsUser, $xoopsSecurity;
 
     $posts = isset($_REQUEST['posts']) ? intval($_REQUEST['posts']) : 0;
-
 
     //Verifica que el mensaje sea válido
     if ($posts <= 0) {
@@ -631,7 +629,6 @@ function approvedPosts($app = 0)
         die();
     }
 
-
     if (!$xoopsSecurity->check()) {
         redirect_header('./topic.php?id=' . $posts, 2, __('Session token expired!', 'bxpress'));
         die();
@@ -646,7 +643,6 @@ function approvedPosts($app = 0)
 
     redirect_header('./topic.php?id=' . $post->topic(), 1, __('Operation completed!', 'bxpress'));
 }
-
 
 $op = isset($_REQUEST['op']) ? $_REQUEST['op'] : '';
 

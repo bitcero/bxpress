@@ -98,7 +98,7 @@
                                     <div class="post-attachments">
                                         <strong><span class="fa fa-paperclip"></span> <{$lang_attachments}></strong>
                                         <{foreach item=a from=$post.attachs}>
-                                            <img src="<{$a.icon}>" align="absmiddle" />
+                                            <img src="<{$a.icon}>" align="absmiddle">
                                             <a href="files.php?id=<{$a.id}>&amp;topic=<{$topic.id}>"><{$a.title}></a> (<{$a.size}>)
                                         <{/foreach}>
                                     </div>

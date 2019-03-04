@@ -26,41 +26,40 @@
  * @link         http://eduardocortes.mx
  * @link         http://rmcommon.com
  */
-
 class Bxpress_Notifications extends Rmcommon_ANotifications
 {
     use RMSingleton;
+
     public function __construct()
     {
-
         // Forum notifications
-        $this->events['newtopic'] = array(
-            'caption'       => __('Notify me when new topic is created in this forum', 'bxpress'),
-            'event'         => 'newtopic',
-            'element'        => 'bxpress',
-            'type'        => 'module',
-            'params'            => '',
-            'permissions'   => array()
-        );
+        $this->events['newtopic'] = [
+            'caption' => __('Notify me when new topic is created in this forum', 'bxpress'),
+            'event' => 'newtopic',
+            'element' => 'bxpress',
+            'type' => 'module',
+            'params' => '',
+            'permissions' => [],
+        ];
 
-        $this->events['forum-newpost'] = array(
-            'caption'       => __('Notify me when new message is posted in this forum', 'bxpress'),
-            'event'         => 'forum-newpost',
-            'element'        => 'bxpress',
-            'type'        => 'module',
-            'params'            => '',
-            'permissions'   => array()
-        );
+        $this->events['forum-newpost'] = [
+            'caption' => __('Notify me when new message is posted in this forum', 'bxpress'),
+            'event' => 'forum-newpost',
+            'element' => 'bxpress',
+            'type' => 'module',
+            'params' => '',
+            'permissions' => [],
+        ];
 
         // Topic notifications
-        $this->events['reply'] = array(
-            'caption'       => __('Notify me when new reply is sent in this topic', 'bxpress'),
-            'event'         => 'reply',
-            'element'        => 'bxpress',
-            'type'        => 'module',
-            'params'            => '',
-            'permissions'   => array()
-        );
+        $this->events['reply'] = [
+            'caption' => __('Notify me when new reply is sent in this topic', 'bxpress'),
+            'event' => 'reply',
+            'element' => 'bxpress',
+            'type' => 'module',
+            'params' => '',
+            'permissions' => [],
+        ];
     }
 
     public function is_valid($event)
@@ -73,6 +72,7 @@ class Bxpress_Notifications extends Rmcommon_ANotifications
         global $xoopsConfig;
         $mc = RMSettings::module_settings('bxpress');
         $ret = $xoopsConfig['sitename'] . ': ' . $mc->forum_title;
+
         return $ret;
     }
 
@@ -108,24 +108,27 @@ class Bxpress_Notifications extends Rmcommon_ANotifications
         $account_link = XOOPS_URL . '/user.php';
         $unsubscribe_link = XOOPS_URL . '/notifications.php?page=cu-notification-list';
 
-        if ($event->event == 'reply') {
+        if ('reply' == $event->event) {
             ob_start();
             include RMTemplate::get()->get_template('email/bxpress-notify-reply.php', 'module', 'bxpress');
             $body = ob_get_clean();
+
             return $body;
         }
 
-        if ($event->event == 'newtopic') {
+        if ('newtopic' == $event->event) {
             ob_start();
             include RMTemplate::get()->get_template('email/bxpress-notify-forum-topic.php', 'module', 'bxpress');
             $body = ob_get_clean();
+
             return $body;
         }
 
-        if ($event->event == 'forum-newpost') {
+        if ('forum-newpost' == $event->event) {
             ob_start();
             include RMTemplate::get()->get_template('email/bxpress-notify-forum-post.php', 'module', 'bxpress');
             $body = ob_get_clean();
+
             return $body;
         }
     }
@@ -134,20 +137,20 @@ class Bxpress_Notifications extends Rmcommon_ANotifications
     {
         $module = RMModules::load_module('bxpress');
 
-        include_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxfunctions.class.php';
+        require_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxfunctions.class.php';
 
-        $ret = array(
-            'name'  => $module->getVar('name'),
-            'link'  => bXFunctions::url(),
-        );
+        $ret = [
+            'name' => $module->getVar('name'),
+            'link' => bXFunctions::url(),
+        ];
 
         return $ret;
     }
 
     public function object_data($event)
     {
-        include_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxforum.class.php';
-        include_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxtopic.class.php';
+        require_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxforum.class.php';
+        require_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxtopic.class.php';
 
         switch ($event->event) {
             case 'reply':
@@ -156,10 +159,10 @@ class Bxpress_Notifications extends Rmcommon_ANotifications
                 if ($topic->isNew()) {
                     return null;
                 }
-                $ret = array(
-                    'name'  => $topic->title(),
-                    'link'  => $topic->permalink()
-                );
+                $ret = [
+                    'name' => $topic->title(),
+                    'link' => $topic->permalink(),
+                ];
                 break;
             case 'newtopic':
             case 'forum-newpost':
@@ -168,10 +171,10 @@ class Bxpress_Notifications extends Rmcommon_ANotifications
                 if ($forum->isNew()) {
                     return null;
                 }
-                $ret = array(
-                    'name'  => $forum->name(),
-                    'link'  => $forum->permalink()
-                );
+                $ret = [
+                    'name' => $forum->name(),
+                    'link' => $forum->permalink(),
+                ];
                 break;
         }
 

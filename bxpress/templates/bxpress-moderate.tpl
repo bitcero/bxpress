@@ -25,7 +25,7 @@
         <table class="table table-striped moderator-list" cellspacing="1" width="100%">
             <thead>
             <tr align="center">
-                <td width="20"><input type="checkbox" name="checkall" onchange="xoopsCheckAll('frmTopics','checkall');" /></td>
+                <td width="20"><input type="checkbox" name="checkall" onchange="xoopsCheckAll('frmTopics','checkall');"></td>
                 <td colspan="2" align="left"><{$lang_topic}></td>
                 <td><{$lang_replies}></td>
                 <td><{$lang_views}></td>
@@ -36,7 +36,7 @@
             <tbody>
             <{foreach item=topic from=$topics}>
                 <tr class="<{cycle values="even,odd"}>">
-                    <td align="center"><input type="checkbox" name="topics[]" value="<{$topic.id}>" /></td>
+                    <td align="center"><input type="checkbox" name="topics[]" value="<{$topic.id}>"></td>
                     <td width="26" align="center" class="indicators">
                         <{if $topic.sticky}>
                         <span class="fa fa-thumb-tack sticky"></span>
@@ -50,7 +50,7 @@
                     </td>
                     <td class="lighter">
                         <{if $topic.closed}>
-                    <img src="images/lock.png" align="absmiddle" alt="" />
+                    <img src="images/lock.png" align="absmiddle" alt="">
                         <{elseif $topic.sticky}>
                         <{$lang_sticky}>
                         <{/if}>
@@ -71,7 +71,7 @@
                     </td>
                     <td align="center"><{$topic.replies}></td>
                     <td align="center"><{$topic.views}></td>
-                    <td align="center"><{if $topic.approved}><img src="images/ok.png" border="0" /><{else}><img src="images/no.png" border="0" /><{/if}>
+                    <td align="center"><{if $topic.approved}><img src="images/ok.png" border="0"><{else}><img src="images/no.png" border="0"><{/if}>
                     <td class="lighter">
                         <a href="topic.php?id=<{$topic.id}>&amp;pid=<{$topic.last.id}>#post<{$topic.last.id}>"><{$topic.last.date}></a> <{$topic.last.by}>
                     </td>
@@ -100,8 +100,8 @@
 
         </table>
     </div>
-<input type="hidden" name="op" value="" />
-<input type="hidden" name="id" value="<{$forum.id}>" />
+<input type="hidden" name="op" value="">
+<input type="hidden" name="id" value="<{$forum.id}>">
 <{$token_input}>
 </form>
 

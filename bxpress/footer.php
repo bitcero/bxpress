@@ -8,4 +8,4 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-include '../../footer.php';
+require  dirname(dirname(__DIR__)) . '/footer.php';

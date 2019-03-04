@@ -26,17 +26,17 @@
 // @copyright:  2007 - 2008. Red México
 // @author: BitC3R0
 
-
 /**
-* @desc Comprueba si se eliminaron los archivos pertenecientes al foro a ser eliminado
-**/
+ * @desc Comprueba si se eliminaron los archivos pertenecientes al foro a ser eliminado
+ * @param mixed $mod
+ **/
 function xoops_module_uninstall_exmbb(&$mod)
 {
-    $path=XOOPS_ROOT_PATH."/uploads/exmbb/";
+    $path = XOOPS_ROOT_PATH . '/uploads/exmbb/';
     xoops_delete_directory($path);
     if (!file_exists($path)) {
         return true;
-    } else {
-        return false;
     }
+
+    return false;
 }

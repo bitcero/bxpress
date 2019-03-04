@@ -6,24 +6,24 @@
 	<tr class="odd">
 		<td><strong><{$lang_search}></strong>
 		    <input type="text" name="search" size="20" value="<{$search}>" >
-		    <label><input type="radio" name="type" value="0"<{if $type==0 }> checked="checked"<{/if}> /><{$lang_allwords}></label>
-		    <label><input type="radio" name="type" value="1"<{if $type==1 }> checked="checked"<{/if}> /><{$lang_anywords}></label>
-		    <label><input type="radio" name="type" value="2"<{if $type==2 }> checked="checked"<{/if}> /><{$lang_exactphrase}> </label>
-		    <input class="formButton" type="submit" name="sbt" value="<{$lang_search}>" />
+		    <label><input type="radio" name="type" value="0"<{if $type==0 }> checked<{/if}>><{$lang_allwords}></label>
+		    <label><input type="radio" name="type" value="1"<{if $type==1 }> checked<{/if}>><{$lang_anywords}></label>
+		    <label><input type="radio" name="type" value="2"<{if $type==2 }> checked<{/if}>><{$lang_exactphrase}> </label>
+		    <input class="formButton" type="submit" name="sbt" value="<{$lang_search}>">
 		</td>
 	</tr>
 	
 	<tr class="odd">
 		<td>
-		    <input type="radio" name="themes" value="0" <{if $themes==0 }>checked="checked"<{/if}> /><{$lang_alltopics}>
-		    <input type="radio" name="themes" value="1" <{if $themes==1 }>checked="checked"<{/if}> /><{$lang_recenttopics}>
-		    <input type="radio" name="themes" value="2" <{if $themes==2 }>checked="checked"<{/if}> /><{$lang_anunswered}>
+		    <input type="radio" name="themes" value="0" <{if $themes==0 }>checked<{/if}>><{$lang_alltopics}>
+		    <input type="radio" name="themes" value="1" <{if $themes==1 }>checked<{/if}>><{$lang_recenttopics}>
+		    <input type="radio" name="themes" value="2" <{if $themes==2 }>checked<{/if}>><{$lang_anunswered}>
 		</td>
 	</tr>
 
 </table>
 </form>
-<br />
+<br>
 <{$itemsNavPage}>
 
 <div class="table-responsive">
@@ -68,7 +68,7 @@
                             <{/foreach}>]
                         </span>
                     <{/if}>
-                    <br />
+                    <br>
                     <span class="text"><{$topic.post_text}></span>
                 </td>
                 <td class="text-center"><{$topic.forum}></td>

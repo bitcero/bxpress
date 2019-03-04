@@ -24,19 +24,18 @@
  * @since      1.2
  * @license    GPL v2 (http://www.gnu.org/licenses/gpl-2.0.html)
  * @link       https://github.com/bitcero/bxpress
+ * @param mixed $options
  */
-
 function bxpress_block_users_show($options)
 {
-
     // Add css styles
     RMTemplate::get()->add_style('bxpress-blocks.min.css', 'bxpress');
 
     $db = XoopsDatabaseFactory::getDatabaseConnection();
 
-    $tbu = $db->prefix("users");
-    $tbp = $db->prefix("mod_bxpress_posts");
-    $tbl = $db->prefix("mod_bxpress_likes");
+    $tbu = $db->prefix('users');
+    $tbp = $db->prefix('mod_bxpress_posts');
+    $tbl = $db->prefix('mod_bxpress_likes');
 
     if ('active' == $options['type']) {
         $sql = "SELECT DISTINCT posts.uid, users.uid, users.uname, users.email, users.name,
@@ -46,23 +45,24 @@ function bxpress_block_users_show($options)
     }
 
     $result = $db->query($sql);
-    $users = array();
+    $users = [];
     $user = new RMUser();
 
-    while ($row = $db->fetchArray($result)) {
+    while (false !== ($row = $db->fetchArray($result))) {
         $user->assignVars($row);
 
-        $users[] = array(
-            'id'        => $user->id(),
-            'name'      => '' != $user->name ? $user->name : $user->uname,
-            'uname'     => $user->uname,
-            'avatar'    => RMEvents::get()->run_event("rmcommon.get.avatar", $user->email, 0),
-            'posts'     => $row['total'],
-            'likes'     => $row['likes']
-        );
+        $users[] = [
+            'id' => $user->id(),
+            'name' => '' != $user->name ? $user->name : $user->uname,
+            'uname' => $user->uname,
+            'avatar' => RMEvents::get()->run_event('rmcommon.get.avatar', $user->email, 0),
+            'posts' => $row['total'],
+            'likes' => $row['likes'],
+        ];
     }
 
     $block['users'] = $users;
+
     return $block;
 }
 

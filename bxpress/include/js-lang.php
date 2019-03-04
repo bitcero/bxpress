@@ -25,7 +25,6 @@
  * @license    GPL v2 (http://www.gnu.org/licenses/gpl-2.0.html)
  * @link       https://github.com/bitcero/bxpress
  */
-
 ob_start();
 ?>
 
@@ -36,4 +35,5 @@ var bxpressLang = {
 
 <?php
 $lang = ob_get_clean();
+
 return $lang;
