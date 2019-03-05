@@ -10,7 +10,7 @@
 
 class BxpressRmcommonPreload
 {
-    public function eventRmcommonSavedSettings($dirname, $save, $add, $delete)
+    public static function eventRmcommonSavedSettings($dirname, $save, $add, $delete)
     {
         if ('bxpress' != $dirname) {
             return $dirname;
@@ -33,7 +33,7 @@ class BxpressRmcommonPreload
         return null;
     }
 
-    public function eventRmcommonGetFeedsList($feeds)
+    public static function eventRmcommonGetFeedsList($feeds)
     {
         load_mod_locale('bxpress');
         require_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxfunctions.class.php';

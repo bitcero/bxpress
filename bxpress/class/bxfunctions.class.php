@@ -20,7 +20,7 @@ class bXFunctions
         $this->db = XoopsDatabaseFactory::getDatabaseConnection();
     }
 
-    public function get()
+    public static function get()
     {
         static $instance;
         if (!isset($instance)) {
@@ -173,7 +173,7 @@ class bXFunctions
      * @desc Determina la página del tema dependiendo del id de un post
      * @param mixed $pid
      */
-    public function pageFromPID($pid)
+    public static function pageFromPID($pid)
     {
         global $xoopsModuleConfig;
 
@@ -196,7 +196,7 @@ class bXFunctions
                 break;
             }
         }
-        ++$i;	// we started at 0
+        ++$i;   // we started at 0
         $_GET['pag'] = ceil($i / $xoopsModuleConfig['perpage']);
 
         return $id;
@@ -208,7 +208,7 @@ class bXFunctions
      * @param mixed $topic_id
      * @return int
      */
-    public function getFirstId($topic_id)
+    public static function getFirstId($topic_id)
     {
         $db = XoopsDatabaseFactory::getDatabaseConnection();
         $sql = 'SELECT MIN(id_post) FROM ' . $db->prefix('mod_bxpress_posts') . " WHERE id_topic='" . $topic_id . "'";
@@ -217,7 +217,7 @@ class bXFunctions
         return $first_id;
     }
 
-    public function forumList($varname = 'forums', $assign = true)
+    public static function forumList($varname = 'forums', $assign = true)
     {
         global $db, $tpl;
         $db = XoopsDatabaseFactory::getDatabaseConnection();
@@ -296,7 +296,7 @@ class bXFunctions
      * @param mixed $moderators
      * @param mixed $edit
      **/
-    public function notifyAdmin($moderators, BBForum &$forum, BBTopic &$topic, BBPost &$post, $edit = 0)
+    public static function notifyAdmin($moderators, BBForum &$forum, BBTopic &$topic, BBPost &$post, $edit = 0)
     {
         global $db, $xoopsModule, $rmc_config;
 
@@ -355,7 +355,7 @@ class bXFunctions
         echo $xoopsMailer->getErrors();
     }
 
-    public function getRanks()
+    public static function getRanks()
     {
         $db =  XoopsDatabaseFactory::getDatabaseConnection();
         $myts =  MyTextSanitizer::getInstance();
