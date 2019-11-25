@@ -1,25 +1,25 @@
 <h1 class="cu-section-title"><?php _e('Forums Management', 'bxpress'); ?></h1>
 
 <form name="frmForums" id="frm-forums" method="post" action="forums.php">
-<!-- Bulk operations -->
-<div class="cu-bulk-actions">
-    <select name="action" id="bulk-top" class="form-control">
-        <option value=""><?php _e('Bulk actions...', 'bxpress'); ?></option>
-        <option value="enable"><?php _e('Activate', 'bxpress'); ?></option>
-        <option value="disable"><?php _e('Disable', 'bxpress'); ?></option>
-        <option value="delete"><?php _e('Delete', 'bxpress'); ?></option>
-    </select>
-    <button type="button" id="the-op-top" class="btn btn-default" onclick="before_submit('frm-forums');"><?php _e('Apply', 'bxpress'); ?></button>
+    <!-- Bulk operations -->
+    <div class="cu-bulk-actions">
+        <select name="action" id="bulk-top" class="form-control">
+            <option value=""><?php _e('Bulk actions...', 'bxpress'); ?></option>
+            <option value="enable"><?php _e('Activate', 'bxpress'); ?></option>
+            <option value="disable"><?php _e('Disable', 'bxpress'); ?></option>
+            <option value="delete"><?php _e('Delete', 'bxpress'); ?></option>
+        </select>
+        <button type="button" id="the-op-top" class="btn btn-default" onclick="before_submit('frm-forums');"><?php _e('Apply', 'bxpress'); ?></button>
 
-    <a href="forums.php?action=new" class="btn btn-success pull-right"><span class="fa fa-plus"></span> <?php _e('Create Forum', 'dtransport'); ?></a>
-</div>
-<!--//-->
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">
-            <?php _e('Existing Forums', 'bxpress'); ?>
-        </h3>
+        <a href="forums.php?action=new" class="btn btn-success pull-right"><span class="fa fa-plus"></span> <?php _e('Create Forum', 'dtransport'); ?></a>
     </div>
+    <!--//-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <?php _e('Existing Forums', 'bxpress'); ?>
+            </h3>
+        </div>
 
         <div class="table-responsive">
             <table class="table">
@@ -55,9 +55,11 @@
                 </tfoot>
                 <tbody>
                 <?php if (empty($forums)): ?>
-                    <tr class="text-center"><td colspan="9">
+                    <tr class="text-center">
+                        <td colspan="9">
                             <span class="label label-info"><?php _e('There are not forums created yet!', 'bxpress'); ?></span>
-                        </td></tr>
+                        </td>
+                    </tr>
                 <?php endif; ?>
                 <?php foreach ($forums as $forum): ?>
                     <tr class="text-center">
@@ -67,7 +69,7 @@
                         <td><strong><?php echo $forum['id']; ?></strong></td>
                         <td class="text-left">
                             <a href="../forum.php?id=<?php echo $forum['id']; ?>"><?php echo $forum['title']; ?></a>
-                <span class="cu-item-options">
+                            <span class="cu-item-options">
                     <a href="?action=edit&amp;id=<?php echo $forum['id']; ?>"><?php _e('Edit', 'bxpress'); ?></a> &bull;
                     <a href="#" onclick="select_option(<?php echo $forum['id']; ?>,'delete','frm-forums');"><?php _e('Delete', 'bxpress'); ?></a> &bull;
                     <a href="?action=moderators&amp;id=<?php echo $forum['id']; ?>"><?php _e('Moderators', 'bxpress'); ?></a>
@@ -77,7 +79,7 @@
                         <td><?php echo $forum['posts']; ?></td>
                         <td><?php echo $forum['catego']; ?></td>
                         <td><img src="../images/<?php echo $forum['active'] ? 'ok' : 'no'; ?>.png" border="0" alt=""></td>
-                        <td><img src="../images/<?php echo  $forum['attach'] ? 'ok' : 'no'; ?>.png" border="0" alt=""></td>
+                        <td><img src="../images/<?php echo $forum['attach'] ? 'ok' : 'no'; ?>.png" border="0" alt=""></td>
                         <td><input type="text" name="orders[<?php echo $forum['id']; ?>]" value="<?php echo $forum['order']; ?>" size="5" style="text-align: center;"></td>
                     </tr>
                 <?php endforeach; ?>
@@ -85,19 +87,19 @@
             </table>
         </div>
 
-</div>
-<!-- Bulk operations -->
-<div class="cu-bulk-actions">
-    <select name="actionb" id="bulk-bottom" class="form-control">
-        <option value=""><?php _e('Bulk actions...', 'bxpress'); ?></option>
-        <option value="enable"><?php _e('Activate', 'bxpress'); ?></option>
-        <option value="disable"><?php _e('Disable', 'bxpress'); ?></option>
-        <option value="delete"><?php _e('Delete', 'bxpress'); ?></option>
-    </select>
-    <button type="button" id="the-op-bottom" class="btn btn-default" onclick="before_submit('frm-forums');"><?php _e('Apply', 'bxpress'); ?></button>
-    <a href="forums.php?action=new" class="btn btn-success pull-right"><span class="fa fa-plus"></span> <?php _e('Create Forum', 'dtransport'); ?></a>
-</div>
-<!--//-->
-<?php echo $xoopsSecurity->getTokenHTML(); ?>
-<input type="hidden" name="op" value="">
+    </div>
+    <!-- Bulk operations -->
+    <div class="cu-bulk-actions">
+        <select name="actionb" id="bulk-bottom" class="form-control">
+            <option value=""><?php _e('Bulk actions...', 'bxpress'); ?></option>
+            <option value="enable"><?php _e('Activate', 'bxpress'); ?></option>
+            <option value="disable"><?php _e('Disable', 'bxpress'); ?></option>
+            <option value="delete"><?php _e('Delete', 'bxpress'); ?></option>
+        </select>
+        <button type="button" id="the-op-bottom" class="btn btn-default" onclick="before_submit('frm-forums');"><?php _e('Apply', 'bxpress'); ?></button>
+        <a href="forums.php?action=new" class="btn btn-success pull-right"><span class="fa fa-plus"></span> <?php _e('Create Forum', 'dtransport'); ?></a>
+    </div>
+    <!--//-->
+    <?php echo $xoopsSecurity->getTokenHTML(); ?>
+    <input type="hidden" name="op" value="">
 </form>

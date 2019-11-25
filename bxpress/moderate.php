@@ -8,7 +8,7 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-require  dirname(dirname(__DIR__)) . '/mainfile.php';
+require dirname(dirname(__DIR__)) . '/mainfile.php';
 
 $id = RMHttpRequest::request('id', 'integer', 0);
 
@@ -38,7 +38,7 @@ function showItemsAndOptions()
     global $xoopsModuleConfig, $forum;
 
     $GLOBALS['xoopsOption']['template_main'] = 'bxpress-moderate.tpl';
-    $xoopsOption['module_subpage'] = 'moderate';
+    $xoopsOption['module_subpage']           = 'moderate';
     require __DIR__ . '/header.php';
 
     /**
@@ -50,13 +50,13 @@ function showItemsAndOptions()
     $sql = "SELECT COUNT(*) FROM $tbl1 WHERE id_forum='" . $forum->id() . "' ";
     list($num) = $db->fetchRow($db->queryF($sql));
 
-    $page = isset($_REQUEST['pag']) ? $_REQUEST['pag'] : '';
+    $page  = isset($_REQUEST['pag']) ? $_REQUEST['pag'] : 0;
     $limit = $xoopsModuleConfig['topicperpage'] > 0 ? $xoopsModuleConfig['topicperpage'] : 15;
     if ($page > 0) {
         $page -= 1;
     }
 
-    $start = $page * $limit;
+    $start  = $page * $limit;
     $tpages = (int)($num / $limit);
     if ($num % $limit > 0) {
         $tpages++;
@@ -64,9 +64,9 @@ function showItemsAndOptions()
 
     $pactual = $page + 1;
     if ($pactual > $tpages) {
-        $rest = $pactual - $tpages;
+        $rest    = $pactual - $tpages;
         $pactual = $pactual - $rest + 1;
-        $start = ($pactual - 1) * $limit;
+        $start   = ($pactual - 1) * $limit;
     }
 
     if ($tpages > 0) {
@@ -75,19 +75,19 @@ function showItemsAndOptions()
         $tpl->assign('itemsNavPage', $nav->render(false));
     }
 
-    $sql = str_replace('COUNT(*)', '*', $sql);
-    $sql .= " ORDER BY sticky DESC, date DESC LIMIT $start,$limit";
+    $sql    = str_replace('COUNT(*)', '*', $sql);
+    $sql    .= " ORDER BY sticky DESC, date DESC LIMIT $start,$limit";
     $result = $db->query($sql);
 
     while (false !== ($row = $db->fetchArray($result))) {
         $topic = new bXTopic();
         $topic->assignVars($row);
-        $last = new bXPost($topic->lastPost());
+        $last     = new bXPost($topic->lastPost());
         $lastpost = [];
         if (!$last->isNew()) {
             $lastpost['date'] = bXFunctions::formatDate($last->date());
-            $lastpost['by'] = sprintf(__('By: %s', 'bxpress'), $last->uname());
-            $lastpost['id'] = $last->id();
+            $lastpost['by']   = sprintf(__('By: %s', 'bxpress'), $last->uname());
+            $lastpost['id']   = $last->id();
             if ($xoopsUser) {
                 $lastpost['new'] = $last->date() > $xoopsUser->getVar('last_login') && (time() - $last->date()) < $xoopsModuleConfig['time_new'];
             } else {
@@ -101,18 +101,18 @@ function showItemsAndOptions()
             $pages = null;
         }
         $tpl->append('topics', [
-            'id' => $topic->id(),
-            'title' => $topic->title(),
-            'replies' => $topic->replies(),
-            'views' => $topic->views(),
-            'by' => sprintf(__('By: %s', 'bxpress'), $topic->posterName()),
-            'last' => $lastpost,
-            'popular' => ($topic->replies() >= $forum->hotThreshold()),
-            'sticky' => $topic->sticky(),
-            'pages' => $pages,
-            'tpages' => $tpages,
+            'id'       => $topic->id(),
+            'title'    => $topic->title(),
+            'replies'  => $topic->replies(),
+            'views'    => $topic->views(),
+            'by'       => sprintf(__('By: %s', 'bxpress'), $topic->posterName()),
+            'last'     => $lastpost,
+            'popular'  => ($topic->replies() >= $forum->hotThreshold()),
+            'sticky'   => $topic->sticky(),
+            'pages'    => $pages,
+            'tpages'   => $tpages,
             'approved' => $topic->approved(),
-            'closed' => $topic->status(),
+            'closed'   => $topic->status(),
         ]);
     }
 
@@ -151,8 +151,8 @@ function moveTopics()
 {
     global $db, $xoopsModuleConfig, $xoopsSecurity, $forum, $xoopsUser, $xoopsOption, $xoopsConfig;
 
-    $topics = isset($_REQUEST['topics']) ? $_REQUEST['topics'] : null;
-    $ok = isset($_POST['ok']) ? $_POST['ok'] : 0;
+    $topics    = isset($_REQUEST['topics']) ? $_REQUEST['topics'] : null;
+    $ok        = isset($_POST['ok']) ? $_POST['ok'] : 0;
     $moveforum = rmc_server_var($_POST, 'moveforum', 0);
 
     if (empty($topics) || (is_array($topics) && empty($topics))) {
@@ -228,9 +228,9 @@ function moveTopics()
         die();
     }
     global $xoopsTpl;
-    $tpl = $xoopsTpl;
+    $tpl                                     = $xoopsTpl;
     $GLOBALS['xoopsOption']['template_main'] = 'bxpress-moderate-forms.tpl';
-    $xoopsOption['module_subpage'] = 'moderate';
+    $xoopsOption['module_subpage']           = 'moderate';
     require __DIR__ . '/header.php';
 
     bXFunctions::makeHeader();
@@ -248,17 +248,17 @@ function moveTopics()
     $ele = new RMFormSelect(__('Forum', 'bxpress'), 'moveforum');
     $ele->addOption(0, '', 1);
 
-    $tbl1 = $db->prefix('mod_bxpress_categories');
-    $tbl2 = $db->prefix('mod_bxpress_forums');
-    $sql = "SELECT b.*, a.title FROM $tbl1 a, $tbl2 b WHERE b.cat=a.id_cat AND b.active='1' AND id_forum<>" . $forum->id() . ' ORDER BY a.order, b.order';
-    $result = $db->query($sql);
+    $tbl1       = $db->prefix('mod_bxpress_categories');
+    $tbl2       = $db->prefix('mod_bxpress_forums');
+    $sql        = "SELECT b.*, a.title FROM $tbl1 a, $tbl2 b WHERE b.cat=a.id_cat AND b.active='1' AND id_forum<>" . $forum->id() . ' ORDER BY a.order, b.order';
+    $result     = $db->query($sql);
     $categories = [];
     while (false !== ($row = $db->fetchArray($result))) {
         $cforum = ['id' => $row['id_forum'], 'name' => $row['name']];
         if (isset($categores[$row['cat']])) {
             $categories[$row['cat']]['forums'][] = $cforum;
         } else {
-            $categories[$row['cat']]['title'] = $row['title'];
+            $categories[$row['cat']]['title']    = $row['title'];
             $categories[$row['cat']]['forums'][] = $cforum;
         }
     }
@@ -287,30 +287,22 @@ function changeOwner()
     global $xoopsSecurity, $db, $xoopsUser, $xoopsTpl, $forum, $xoopsConfig, $xoopsOption;
 
     if (!$xoopsSecurity->check()) {
-        RMUris::redirect_with_message(
-            __('Session token is not valid!', 'bxpress'),
-            'moderate.php?id=' . $forum->id(),
-            RMMSG_ERROR
-        );
+        RMUris::redirect_with_message(__('Session token is not valid!', 'bxpress'), 'moderate.php?id=' . $forum->id(), RMMSG_ERROR);
     }
 
     $topics = RMHttpRequest::post('topics', 'array', []);
 
     if (empty($topics)) {
-        RMUris::redirect_with_message(
-            __('Select one topic at least!', 'bxpress'),
-            'moderate.php?id=' . $forum->id(),
-            RMMSG_WARN
-        );
+        RMUris::redirect_with_message(__('Select one topic at least!', 'bxpress'), 'moderate.php?id=' . $forum->id(), RMMSG_WARN);
     }
 
-    $tpl = $xoopsTpl;
+    $tpl                                     = $xoopsTpl;
     $GLOBALS['xoopsOption']['template_main'] = 'bxpress-moderate-forms.tpl';
-    $xoopsOption['module_subpage'] = 'moderate';
+    $xoopsOption['module_subpage']           = 'moderate';
     require __DIR__ . '/header.php';
 
     bXFunctions::makeHeader();
-    $form = new RMForm(__('Change topic owner', 'bxpress'), 'frmOwner', 'moderate.php');
+    $form             = new RMForm(__('Change topic owner', 'bxpress'), 'frmOwner', 'moderate.php');
     $form->fieldClass = '';
     $form->addElement(new RMFormHidden('id', $forum->id()));
     $form->addElement(new RMFormHidden('op', 'change-owner'));
@@ -322,16 +314,16 @@ function changeOwner()
     }
 
     $form->addElement(new RMFormSubTitle([
-        'caption' => __('Select the user that will be assigned as owner for all selected topics', 'bxpress'),
-        'level' => 4,
-    ]));
+                                             'caption' => __('Select the user that will be assigned as owner for all selected topics', 'bxpress'),
+                                             'level'   => 4,
+                                         ]));
     $form->addElement(new RMFormUser(__('User', 'bxpress'), 'owner'));
 
     $form->addElement(new RMFormYesNo([
-        'caption' => __('Change first post owner too?', 'bxpress'),
-        'value' => 'yes',
-        'name' => 'first',
-    ]));
+                                          'caption' => __('Change first post owner too?', 'bxpress'),
+                                          'value'   => 'yes',
+                                          'name'    => 'first',
+                                      ]));
 
     $ele = new RMFormButtonGroup();
     $ele->addButton('sbt', __('Change Owner!', 'bxpress'), 'submit');
@@ -347,40 +339,24 @@ function changeOwnerNow()
     global $xoopsSecurity, $forum, $xoopsDB;
 
     if (!$xoopsSecurity->check()) {
-        RMUris::redirect_with_message(
-            __('Session token is not valid!', 'bxpress'),
-            'moderate.php?id=' . $forum->id(),
-            RMMSG_ERROR
-        );
+        RMUris::redirect_with_message(__('Session token is not valid!', 'bxpress'), 'moderate.php?id=' . $forum->id(), RMMSG_ERROR);
     }
 
     $topics = RMHttpRequest::post('topics', 'array', []);
 
     if (empty($topics)) {
-        RMUris::redirect_with_message(
-            __('Select one topic at least!', 'bxpress'),
-            'moderate.php?id=' . $forum->id(),
-            RMMSG_ERROR
-        );
+        RMUris::redirect_with_message(__('Select one topic at least!', 'bxpress'), 'moderate.php?id=' . $forum->id(), RMMSG_ERROR);
     }
 
     $owner = RMHttpRequest::post('owner', 'integer', 0);
 
     if ($owner <= 0) {
-        RMUris::redirect_with_message(
-            __('You must select a user to set as owner of these topics!', 'bxpress'),
-            'moderate.php?id=' . $forum->id(),
-            RMMSG_ERROR
-        );
+        RMUris::redirect_with_message(__('You must select a user to set as owner of these topics!', 'bxpress'), 'moderate.php?id=' . $forum->id(), RMMSG_ERROR);
     }
 
     $newOwner = new RMUser($owner);
     if ($newOwner->isNew()) {
-        RMUris::redirect_with_message(
-            __('Selected user does not exists!', 'bxpress'),
-            'moderate.php?id=' . $forum->id(),
-            RMMSG_ERROR
-        );
+        RMUris::redirect_with_message(__('Selected user does not exists!', 'bxpress'), 'moderate.php?id=' . $forum->id(), RMMSG_ERROR);
     }
 
     $first = RMHttpRequest::post('first', 'integer', 1);
@@ -412,10 +388,10 @@ function changeOwnerNow()
             continue;
         }
 
-        $row = $xoopsDB->fetchArray($result);
+        $row       = $xoopsDB->fetchArray($result);
         $firstPost = new bXPost();
         $firstPost->assignVars($row);
-        $firstPost->uid = $newOwner->id();
+        $firstPost->uid         = $newOwner->id();
         $firstPost->poster_name = $newOwner->uname;
 
         if (!$firstPost->save()) {
@@ -424,17 +400,9 @@ function changeOwnerNow()
     }
 
     if (empty($errors)) {
-        RMUris::redirect_with_message(
-            __('Topics modified successfully!', 'bxpress'),
-            'moderate.php?id=' . $forum->id(),
-            RMMSG_SUCCESS
-        );
+        RMUris::redirect_with_message(__('Topics modified successfully!', 'bxpress'), 'moderate.php?id=' . $forum->id(), RMMSG_SUCCESS);
     } else {
-        RMUris::redirect_with_message(
-            sprintf(__('Some errors occurs while trying to modified topics: %s', 'bxpress'), implode('<br>', $errors)),
-            'moderate.php?id=' . $forum->id(),
-            RMMSG_WARN
-        );
+        RMUris::redirect_with_message(sprintf(__('Some errors occurs while trying to modified topics: %s', 'bxpress'), implode('<br>', $errors)), 'moderate.php?id=' . $forum->id(), RMMSG_WARN);
     }
 }
 
@@ -510,7 +478,7 @@ function deleteTopics()
 {
     global $db, $xoopsModuleConfig, $bxpress, $forum, $xoopsUser, $xoopsSecurity;
 
-    $ok = isset($_POST['ok']) ? $_POST['ok'] : 0;
+    $ok     = isset($_POST['ok']) ? $_POST['ok'] : 0;
     $topics = isset($_REQUEST['topics']) ? $_REQUEST['topics'] : null;
 
     if (empty($topics) || (is_array($topics) && empty($topics))) {

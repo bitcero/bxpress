@@ -36,10 +36,10 @@ class bXFunctions
      */
     public static function getLastUser()
     {
-        $db = XoopsDatabaseFactory::getDatabaseConnection();
+        $db     = XoopsDatabaseFactory::getDatabaseConnection();
         $result = $db->query('SELECT * FROM ' . $db->prefix('users') . " WHERE level>'0' ORDER BY uid DESC LIMIT 0,1");
         if ($db->getRowsNum($result) > 0) {
-            $row = $db->fetchArray($result);
+            $row  = $db->fetchArray($result);
             $user = new XoopsUser();
             $user->assignVars($row);
 
@@ -52,16 +52,16 @@ class bXFunctions
     /**
      * @desc Obtiene el número de usuarios conectados
      * @param int $type Determina el tipo de usuario que devolvera:
-     *         0 Devuelve usuarios anonimos
-     *         1 Devuelve Usuarios registrados
-     *         2 Devuelve todos los usuarios conectados
+     *                  0 Devuelve usuarios anonimos
+     *                  1 Devuelve Usuarios registrados
+     *                  2 Devuelve todos los usuarios conectados
      * @return int
      */
     public static function getOnlineCount($type = 1)
     {
         global $xoopsModule;
 
-        $db = XoopsDatabaseFactory::getDatabaseConnection();
+        $db  = XoopsDatabaseFactory::getDatabaseConnection();
         $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('online') . " WHERE online_module='" . $xoopsModule->mid() . "'";
 
         if (0 == $type) {
@@ -129,7 +129,7 @@ class bXFunctions
             return sprintf(__('Yesterday %s', 'bxpress'), date('H:i:s', $time));
         }
 
-        return formatTimeStamp($time);
+        return formatTimestamp($time);
     }
 
     /**
@@ -161,7 +161,7 @@ class bXFunctions
         for ($i = 1; $i <= $tpages; $i++) {
             $ret[] = $i;
             if ($i == $limit && $tpages > $limit) {
-                $i = $tpages - 1;
+                $i     = $tpages - 1;
                 $ret[] = '...';
             }
         }
@@ -188,7 +188,7 @@ class bXFunctions
 
         // Determine on what page the post is located (depending on $pun_user['disp_posts'])
         $result = $db->query('SELECT id_post FROM ' . $db->prefix('mod_bxpress_posts') . " WHERE id_topic='$id' ORDER BY post_time");
-        $num = $db->getRowsNum($result);
+        $num    = $db->getRowsNum($result);
 
         for ($i = 0; $i < $num; ++$i) {
             list($cur_id) = $db->fetchRow($result);
@@ -210,7 +210,7 @@ class bXFunctions
      */
     public static function getFirstId($topic_id)
     {
-        $db = XoopsDatabaseFactory::getDatabaseConnection();
+        $db  = XoopsDatabaseFactory::getDatabaseConnection();
         $sql = 'SELECT MIN(id_post) FROM ' . $db->prefix('mod_bxpress_posts') . " WHERE id_topic='" . $topic_id . "'";
         list($first_id) = $db->fetchRow($db->query($sql));
 
@@ -220,8 +220,8 @@ class bXFunctions
     public static function forumList($varname = 'forums', $assign = true)
     {
         global $db, $tpl;
-        $db = XoopsDatabaseFactory::getDatabaseConnection();
-        $sql = 'SELECT * FROM ' . $db->prefix('mod_bxpress_forums') . " WHERE active='1' ORDER BY cat,`order`";
+        $db     = XoopsDatabaseFactory::getDatabaseConnection();
+        $sql    = 'SELECT * FROM ' . $db->prefix('mod_bxpress_forums') . " WHERE active='1' ORDER BY cat,`order`";
         $result = $db->query($sql);
 
         $forums = [];
@@ -259,7 +259,7 @@ class bXFunctions
         // Primero purgamos la tabla
         $db->queryF('DELETE FROM ' . $db->prefix('mod_bxpress_announcements') . " WHERE expire<='" . time() . "'");
 
-        $mc = &$xoopsModuleConfig;
+        $mc  =& $xoopsModuleConfig;
         $sql = 'SELECT * FROM ' . $db->prefix('mod_bxpress_announcements');
 
         switch ($w) {
@@ -277,7 +277,7 @@ class bXFunctions
             $sql .= ' ORDER BY `date` DESC ';
         }
 
-        $sql .= "LIMIT 0, $mc[announcements_max]";
+        $sql    .= "LIMIT 0, $mc[announcements_max]";
         $result = $db->query($sql);
 
         while (false !== ($row = $db->fetchArray($result))) {
@@ -290,7 +290,7 @@ class bXFunctions
     }
 
     /**
-     * @desc Notifica al grupo de administradores la creación de un nuevo tema no aprobado
+     * @desc  Notifica al grupo de administradores la creación de un nuevo tema no aprobado
      * @param {@link } Objetos de Foro, Tema y mensaje
      * @param int edit indica si es la edición de un mensaje o un nuevo tema no aprobado
      * @param mixed $moderators
@@ -302,9 +302,9 @@ class bXFunctions
 
         $bxf = self::get();
 
-        $mhand = new XoopsMemberHandler($db);
+        $mhand     = new XoopsMemberHandler($db);
         $configCat = new XoopsConfigCategory('mailer', 'mailer');
-        $config = &$configCat->getConfigs(3);
+        $config    =& $configCat->getConfigs(3);
 
         $users = $moderators;
 
@@ -347,7 +347,7 @@ class bXFunctions
             $user = new XoopsUser($k);
             $xoopsMailer->setToUsers($user);
             $xoopsMailer->isMail = 2 == $user->getVar('notify_method');
-            $xoopsMailer->isPM = 1 == $user->getVar('notify_method');
+            $xoopsMailer->isPM   = 1 == $user->getVar('notify_method');
             $xoopsMailer->send(true);
             $xoopsMailer->clearAddresses();
         }
@@ -357,10 +357,10 @@ class bXFunctions
 
     public static function getRanks()
     {
-        $db =  XoopsDatabaseFactory::getDatabaseConnection();
-        $myts =  MyTextSanitizer::getInstance();
-        $sql = sprintf('SELECT rank_id, rank_title, rank_image FROM ' . $db->prefix('ranks') . ' WHERE rank_special = %u', 1);
-        $ret = [];
+        $db     = XoopsDatabaseFactory::getDatabaseConnection();
+        $myts   = MyTextSanitizer::getInstance();
+        $sql    = sprintf('SELECT rank_id, rank_title, rank_image FROM ' . $db->prefix('ranks') . ' WHERE rank_special = %u', 1);
+        $ret    = [];
         $result = $db->query($sql);
         while (false !== ($myrow = $db->fetchArray($result))) {
             $ret[$myrow['rank_id']] = ['title' => $myrow['rank_title'], 'image' => $myrow['rank_image']];
@@ -391,8 +391,8 @@ class bXFunctions
         }
 
         extract(RMCustomCode::get()->atts([
-            'author' => '',
-        ], $att));
+                                              'author' => '',
+                                          ], $att));
 
         $author = urldecode($author);
 

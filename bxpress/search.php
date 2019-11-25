@@ -8,12 +8,12 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-require  dirname(dirname(__DIR__)) . '/mainfile.php';
+require dirname(dirname(__DIR__)) . '/mainfile.php';
 $GLOBALS['xoopsOption']['template_main'] = 'bxpress-search.tpl';
-$xoopsOption['module_subpage'] = 'search';
+$xoopsOption['module_subpage']           = 'search';
 require __DIR__ . '/header.php';
 
-$myts =  MyTextSanitizer::getInstance();
+$myts = MyTextSanitizer::getInstance();
 bXFunctions::makeHeader();
 
 $search = TextCleaner::getInstance()->addslashes(rmc_server_var($_REQUEST, 'search', ''));
@@ -32,7 +32,7 @@ $tbl4 = $db->prefix('mod_bxpress_forums');
 
 //Barra de navegación
 
-$sql = "SELECT COUNT(*) FROM $tbl1 a,$tbl2 b, $tbl3 c,$tbl4 d WHERE ";
+$sql  = "SELECT COUNT(*) FROM $tbl1 a,$tbl2 b, $tbl3 c,$tbl4 d WHERE ";
 $sql1 = '';
 $sql2 = '';
 
@@ -68,19 +68,18 @@ if (0 == $themes && '' == $search) {
 
     $sql2 .= ($sql1 ? ' AND ' : '') . ' c.approved=1 AND a.id_topic=c.id_topic AND b.post_id=c.id_post AND d.id_forum=c.id_forum ';
 
-    $sql2 .= ($themes ? (1 == $themes ? ' AND a.date>' . (time() - ($xoopsModuleConfig['time_topics'] * 3600)) :
-       (2 == $themes ? ' AND a.replies=0' : '')) : '');
+    $sql2 .= ($themes ? (1 == $themes ? ' AND a.date>' . (time() - ($xoopsModuleConfig['time_topics'] * 3600)) : (2 == $themes ? ' AND a.replies=0' : '')) : '');
 }
 
 list($num) = $db->fetchRow($db->queryF($sql . $sql1 . $sql2));
 
-$page = intval(rmc_server_var($_REQUEST, 'pag', 1));
+$page  = intval(rmc_server_var($_REQUEST, 'pag', 1));
 $limit = $xoopsModuleConfig['topicperpage'] > 0 ? $xoopsModuleConfig['topicperpage'] : 15;
 if ($page > 0) {
     $page -= 1;
 }
 
-$start = $page * $limit;
+$start  = $page * $limit;
 $tpages = (int)($num / $limit);
 if ($num % $limit > 0) {
     $tpages++;
@@ -88,9 +87,9 @@ if ($num % $limit > 0) {
 
 $pactual = $page + 1;
 if ($pactual > $tpages) {
-    $rest = $pactual - $tpages;
+    $rest    = $pactual - $tpages;
     $pactual = $pactual - $rest + 1;
-    $start = ($pactual - 1) * $limit;
+    $start   = ($pactual - 1) * $limit;
 }
 
 $nav = new RMPageNav($num, $limit, $pactual);
@@ -103,11 +102,11 @@ $sql1 = '';
 $sql2 = '';
 
 if (0 == $themes && '' == $search) {
-    $sql = " SELECT a.*,b.name FROM $tbl1 a,$tbl4 b WHERE a.id_forum=b.id_forum";
+    $sql  = " SELECT a.*,b.name FROM $tbl1 a,$tbl4 b WHERE a.id_forum=b.id_forum";
     $sql1 .= "  ORDER BY a.sticky DESC, a.date DESC LIMIT $start,$limit ";
 } else {
-    $sql = "SELECT a.id_topic,a.title,a.views,a.poster_name,a.date,a.replies,a.sticky,a.status,a.last_post,b.post_text,c.*,d.name FROM 
-	$tbl1 a,$tbl2 b, $tbl3 c,$tbl4 d WHERE ";
+    $sql = "SELECT a.id_topic,a.title,a.views,a.poster_name,a.date,a.replies,a.sticky,a.status,a.last_post,b.post_text,c.*,d.name FROM
+    $tbl1 a,$tbl2 b, $tbl3 c,$tbl4 d WHERE ";
 
     if ($search) {
         $sql1 = '(';
@@ -138,22 +137,21 @@ if (0 == $themes && '' == $search) {
 
     $sql2 .= ($sql1 ? ' AND ' : '') . ' c.approved=1 AND a.id_topic=c.id_topic AND b.post_id=c.id_post AND d.id_forum=c.id_forum ';
 
-    $sql2 .= ($themes ? (1 == $themes ? ' AND a.date>' . (time() - ($xoopsModuleConfig['time_topics'] * 3600)) :
-       (2 == $themes ? ' AND a.replies=0' : '')) : '');
+    $sql2 .= ($themes ? (1 == $themes ? ' AND a.date>' . (time() - ($xoopsModuleConfig['time_topics'] * 3600)) : (2 == $themes ? ' AND a.replies=0' : '')) : '');
     $sql2 .= "  ORDER BY a.sticky DESC, a.date DESC LIMIT $start,$limit";
 }
 
 $result = $db->queryF($sql . $sql1 . $sql2);
 while (false !== ($rows = $db->fetchArray($result))) {
-    $date = bXFunctions::formatDate($rows['date']);
-    $lastpost = [];
+    $date      = bXFunctions::formatDate($rows['date']);
+    $lastpost  = [];
     $firstpost = [];
     if (!$search && 0 == $themes) {
-        $firstpost = bXFunctions::getFirstId($rows['id_topic']);
-        $last = new bXPost($rows['last_post']);
+        $firstpost        = bXFunctions::getFirstId($rows['id_topic']);
+        $last             = new bXPost($rows['last_post']);
         $lastpost['date'] = bXFunctions::formatDate($last->date());
-        $lastpost['by'] = sprintf(__('By: %s', 'bxpress'), $last->uname());
-        $lastpost['id'] = $last->id();
+        $lastpost['by']   = sprintf(__('By: %s', 'bxpress'), $last->uname());
+        $lastpost['id']   = $last->id();
         if ($xoopsUser) {
             $lastpost['new'] = $last->date() > $xoopsUser->getVar('last_login') && (time() - $last->date()) < $xoopsModuleConfig['time_new'];
         } else {
@@ -162,21 +160,21 @@ while (false !== ($rows = $db->fetchArray($result))) {
     }
 
     $tpl->append('posts', [
-            'id' => $rows['id_topic'],
-            'title' => $rows['title'],
-            'sticky' => $rows['sticky'],
-            'user' => $rows['poster_name'],
-            'replies' => $rows['replies'],
-            'views' => $rows['views'],
-            'closed' => $rows['status'],
-            'date' => $date,
-            'by' => sprintf(__('By: %s', 'bxpress'), $rows['poster_name']),
-            'forum' => $rows['name'],
-            'id_post' => $rows['id_post'],
-            'post_text' => TextCleaner::getInstance()->truncate($rows['post_text'], 100),
-            'last' => $lastpost,
-            'firstpost' => $firstpost,
-       ]);
+        'id'        => $rows['id_topic'],
+        'title'     => $rows['title'],
+        'sticky'    => $rows['sticky'],
+        'user'      => $rows['poster_name'],
+        'replies'   => $rows['replies'],
+        'views'     => $rows['views'],
+        'closed'    => $rows['status'],
+        'date'      => $date,
+        'by'        => sprintf(__('By: %s', 'bxpress'), $rows['poster_name']),
+        'forum'     => $rows['name'],
+        'id_post'   => $rows['id_post'],
+        'post_text' => TextCleaner::getInstance()->truncate($rows['post_text'], 100),
+        'last'      => $lastpost,
+        'firstpost' => $firstpost,
+    ]);
 }
 
 $tpl->assign('lang_search', __('Search:', 'bxpress'));

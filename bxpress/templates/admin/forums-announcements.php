@@ -9,7 +9,7 @@
             <option value=""><?php _e('Bulk actions...', 'bxpress'); ?></option>
             <option value="delete"><?php _e('Delete', 'bxpress'); ?></option>
         </select>
-        <button type="button" id="the-op-top"onclick="before_submit('frm-announ');" class="btn btn-info"><?php _e('Apply', 'bxpress'); ?></button>
+        <button type="button" id="the-op-top" onclick="before_submit('frm-announ');" class="btn btn-info"><?php _e('Apply', 'bxpress'); ?></button>
 
         <ul class="nav nav-pills pull-right">
             <li>
@@ -74,20 +74,20 @@
         </div>
     </div>
 
-<div class="cu-bulk-actions">
+    <div class="cu-bulk-actions">
         <select name="actionb" id="bulk-bottom" class="form-control">
             <option value=""><?php _e('Bulk actions...', 'bxpress'); ?></option>
             <option value="delete"><?php _e('Delete', 'bxpress'); ?></option>
         </select>
         <button type="button" id="the-op-bottom" onclick="before_submit('frm-announ');" class="btn btn-info"><?php _e('Apply', 'bxpress'); ?></button>
-    <ul class="nav nav-pills pull-right">
-        <li>
-            <a href="announcements.php"><?php _e('Show All', 'bxpress'); ?></a>
-        </li>
-        <li>
-            <a href="announcements.php?action=new"><?php _e('New Announcement', 'bxpress'); ?></a>
-        </li>
-    </ul>
-</div>
-<?php echo $xoopsSecurity->getTokenHTML(); ?>
+        <ul class="nav nav-pills pull-right">
+            <li>
+                <a href="announcements.php"><?php _e('Show All', 'bxpress'); ?></a>
+            </li>
+            <li>
+                <a href="announcements.php?action=new"><?php _e('New Announcement', 'bxpress'); ?></a>
+            </li>
+        </ul>
+    </div>
+    <?php echo $xoopsSecurity->getTokenHTML(); ?>
 </form>

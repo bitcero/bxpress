@@ -21,20 +21,20 @@ function showAnnounces()
 {
     global $db, $xoopsModule, $xoopsSecurity;
 
-    $result = $db->query('SELECT * FROM ' . $db->prefix('mod_bxpress_announcements') . ' ORDER BY date');
+    $result        = $db->query('SELECT * FROM ' . $db->prefix('mod_bxpress_announcements') . ' ORDER BY date');
     $announcements = [];
 
     while (false !== ($row = $db->fetchArray($result))) {
         $an = new bXAnnouncement();
         $an->assignVars($row);
         $announcements[] = [
-            'id' => $an->id(),
-            'text' => TextCleaner::getInstance()->truncate($an->text(), 100),
-            'date' => formatTimestamp($an->date()),
-            'expire' => formatTimeStamp($an->expire()),
-            'where' => constant('BX_FWHERE' . $an->where()),
+            'id'        => $an->id(),
+            'text'      => TextCleaner::getInstance()->truncate($an->text(), 100),
+            'date'      => formatTimestamp($an->date()),
+            'expire'    => formatTimestamp($an->expire()),
+            'where'     => constant('BX_FWHERE' . $an->where()),
             'wherelink' => 1 == $an->where() ? '../forum.php?id=' . $an->forum() : '../',
-            'by' => $an->byName(),
+            'by'        => $an->byName(),
         ];
     }
 
@@ -90,11 +90,11 @@ function showForm($edit = 0)
 
     // Caducidad
     $ele = new RMFormDate([
-        'caption' => __('Expire on', 'bxpress'),
-        'name' => 'expire',
-        'value' => $edit ? $an->expire() : date('Y-m-d'),
-        'options' => 'date',
-    ]);
+                              'caption' => __('Expire on', 'bxpress'),
+                              'name'    => 'expire',
+                              'value'   => $edit ? $an->expire() : date('Y-m-d'),
+                              'options' => 'date',
+                          ]);
     $form->addElement($ele);
     // Mostran en
     $ele = new RMFormRadio(__('Show on', 'bxpress'), 'where', 1, 0);
@@ -106,17 +106,17 @@ function showForm($edit = 0)
     // Foros
     $ele = new RMFormSelect(__('Forum', 'bxpress'), 'forum', 0, $edit ? [$an->forum()] : []);
     $ele->setDescription(__('Please select the forum where this announcement will be shown. This option only is valid when "In Forum" has been selected.', 'bxpress'));
-    $tbl1 = $db->prefix('mod_bxpress_categories');
-    $tbl2 = $db->prefix('mod_bxpress_forums');
-    $sql = "SELECT b.*, a.title FROM $tbl1 a, $tbl2 b WHERE b.cat=a.id_cat AND b.active='1' ORDER BY a.order, b.order";
-    $result = $db->query($sql);
+    $tbl1       = $db->prefix('mod_bxpress_categories');
+    $tbl2       = $db->prefix('mod_bxpress_forums');
+    $sql        = "SELECT b.*, a.title FROM $tbl1 a, $tbl2 b WHERE b.cat=a.id_cat AND b.active='1' ORDER BY a.order, b.order";
+    $result     = $db->query($sql);
     $categories = [];
     while (false !== ($row = $db->fetchArray($result))) {
         $cforum = ['id' => $row['id_forum'], 'name' => $row['name']];
         if (isset($categores[$row['cat']])) {
             $categories[$row['cat']]['forums'][] = $cforum;
         } else {
-            $categories[$row['cat']]['title'] = $row['title'];
+            $categories[$row['cat']]['title']    = $row['title'];
             $categories[$row['cat']]['forums'][] = $cforum;
         }
     }

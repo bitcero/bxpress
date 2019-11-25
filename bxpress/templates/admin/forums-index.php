@@ -1,30 +1,31 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-google.load('visualization', '1.0', {'packages':['corechart']});
-function drawVisualization(w,h) {
-      // Create and populate the data table.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string','x');
-      <?php foreach ($forums as $f): ?>
-      data.addColumn('number', '<?php echo $f->name(); ?>');
-      <?php endforeach; ?>
-      <?php foreach ($days_rows as $r): ?>
-      data.addRow(<?php echo $r; ?>);    
-      <?php endforeach; ?>
+    google.load('visualization', '1.0', {'packages': ['corechart']});
 
-      // Create and draw the visualization.
-      new google.visualization.LineChart(document.getElementById('activity')).
-          draw(data, {curveType: "none",
-                        legend: 'none',
-                      width: w, height: h,
-                      vAxis: {maxValue: <?php echo $max; ?>},
-                      chartArea:{left:30,top:20,height:"90%"},
-              series: {
-                  0: {color: '#03A9F4', lineWidth: 4}
-              }
-                      }
-              );
-}
+    function drawVisualization(w, h) {
+        // Create and populate the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'x');
+        <?php foreach ($forums as $f): ?>
+        data.addColumn('number', '<?php echo $f->name(); ?>');
+        <?php endforeach; ?>
+        <?php foreach ($days_rows as $r): ?>
+        data.addRow(<?php echo $r; ?>);
+        <?php endforeach; ?>
+
+        // Create and draw the visualization.
+        new google.visualization.LineChart(document.getElementById('activity')).draw(data, {
+                curveType: "none",
+                legend: 'none',
+                width: w, height: h,
+                vAxis: {maxValue: <?php echo $max; ?>},
+                chartArea: {left: 30, top: 20, height: "90%"},
+                series: {
+                    0: {color: '#03A9F4', lineWidth: 4}
+                }
+            }
+        );
+    }
 </script>
 <h1 class="cu-section-title"><?php _e('Dashboard', 'bxpress'); ?></h1>
 <script type="text/javascript">
@@ -137,16 +138,16 @@ function drawVisualization(w,h) {
             </div>
             <div class="box-content">
                 <ul class="recent-posts">
-                <?php foreach ($topics as $t): ?>
-                    <li>
-                        <strong><a href="<?php echo $t['link']; ?>"><?php echo $t['title']; ?></a></strong>
+                    <?php foreach ($topics as $t): ?>
+                        <li>
+                            <strong><a href="<?php echo $t['link']; ?>"><?php echo $t['title']; ?></a></strong>
                             <span class="tdata">
                             <?php echo sprintf(__('Forum: %s', 'bxpress'), '<a href="' . $t['forum']['link'] . '">' . $t['forum']['name'] . '</a>'); ?><br>
                                 <?php echo $t['post']['date']; ?> |
                             <em><a target="_blank" href="<?php echo XOOPS_URL; ?>/userinfo.php?uid=<?php echo $t['post']['uid']; ?>"><?php echo $t['post']['by']; ?></a></em>
                             </span>
-                    </li>
-                <?php endforeach; ?>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </div>

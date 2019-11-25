@@ -26,12 +26,12 @@ define('BXPRESS_PERM_APPROVE', 'approve');
 class bXForum extends RMObject
 {
     /**
-     * @param int $id Identificador del Foro
+     * @param int    $id Identificador del Foro
      * @param string $id Identificador alfanumerico
      */
     public function __construct($id = null)
     {
-        $this->db = XoopsDatabaseFactory::getDatabaseConnection();
+        $this->db       = XoopsDatabaseFactory::getDatabaseConnection();
         $this->_dbtable = $this->db->prefix('mod_bxpress_forums');
         $this->setNew();
         $this->initVarsFromTable();
@@ -112,7 +112,7 @@ class bXForum extends RMObject
     }
 
     /**
-     * @param array $value Ids de los moderadores
+     * @param array  $value Ids de los moderadores
      * @param string $value Lista separada por comas con los ids
      */
     public function setModerators($value)
@@ -332,7 +332,7 @@ class bXForum extends RMObject
 
     /**
      * @desc Establece el tipo de extensiones permitidas para los archivos adjuntos
-     * @param array $value
+     * @param array  $value
      * @param string $value Extensiones separadas por coma
      */
     public function setExtensions($value)
@@ -407,7 +407,7 @@ class bXForum extends RMObject
      * especificos en el foro dependiendo de su grupo
      * @param int,array Id del grupo
      * @param string $type Tipo de permiso (view,topic,reply,edit,delete,vote,attach,approve)
-     * @param mixed $gid
+     * @param mixed  $gid
      * @return bool
      */
     public function isAllowed($gid, $type)
@@ -477,7 +477,7 @@ class bXForum extends RMObject
         $tbl1 = $this->db->prefix('mod_bxpress_topics');
         $tbl2 = $this->db->prefix('mod_bxpress_forumtopics');
 
-        $sql = "SELECT tbl1.* FROM $tbl1,$tbl2 WHERE $tbl2.forum='" . $this->id() . "' AND 
+        $sql = "SELECT tbl1.* FROM $tbl1,$tbl2 WHERE $tbl2.forum='" . $this->id() . "' AND
                 $tbl1.id_topic=$tbl2.topic ORDER BY sticky, date DESC";
     }
 
@@ -488,8 +488,8 @@ class bXForum extends RMObject
     {
         $post = 0;
 
-        $sql = 'SELECT a.* FROM ' . $this->db->prefix('mod_bxpress_posts') . ' a INNER JOIN ' . $this->db->prefix('mod_bxpress_topics') . ' b ON ';
-        $sql .= ' (a.id_topic=b.id_topic AND a.id_forum=' . $this->id() . ' AND b.approved=1) ORDER BY a.post_time DESC';
+        $sql    = 'SELECT a.* FROM ' . $this->db->prefix('mod_bxpress_posts') . ' a INNER JOIN ' . $this->db->prefix('mod_bxpress_topics') . ' b ON ';
+        $sql    .= ' (a.id_topic=b.id_topic AND a.id_forum=' . $this->id() . ' AND b.approved=1) ORDER BY a.post_time DESC';
         $result = $this->db->query($sql);
         while (false !== ($rows = $this->db->fetchArray($result))) {
             $post = $rows['id_post'];
@@ -514,7 +514,7 @@ class bXForum extends RMObject
      */
     public function delete()
     {
-        $sql = 'SELECT * FROM ' . $this->db->prefix('mod_bxpress_topics') . " WHERE id_forum='" . $this->id() . "'";
+        $sql    = 'SELECT * FROM ' . $this->db->prefix('mod_bxpress_topics') . " WHERE id_forum='" . $this->id() . "'";
         $result = $this->db->query($sql);
         while (false !== ($row = $this->db->fetchArray($result))) {
             $topic = new bXTopic();
@@ -536,26 +536,25 @@ class bXForumHandler
 
     public function __construct()
     {
-        $this->db = XoopsDatabaseFactory::getDatabaseConnection();
+        $this->db    = XoopsDatabaseFactory::getDatabaseConnection();
         $this->table = $this->db->prefix('mod_bxpress_forums');
     }
 
     /**
      * @desc Obtiene todos los foros de la base de datos
-     * @param int $parent Id del foro raíz
-     * @param int $category Identificador de la categoría. 0 indica todas
-     * @param int $activo -1 devuelve todos los foros, 0 solo los inactivos y 1 solo activos
-     * @param bool $object Indica si se devueven los objetos bXForum
+     * @param int   $parent   Id del foro raíz
+     * @param int   $category Identificador de la categoría. 0 indica todas
+     * @param int   $activo   -1 devuelve todos los foros, 0 solo los inactivos y 1 solo activos
+     * @param bool  $object   Indica si se devueven los objetos bXForum
      * @param mixed $active
      */
     public static function getForums($category = 0, $active = -1, $object = false)
     {
         $db = XoopsDatabaseFactory::getDatabaseConnection();
 
-        $sql = 'SELECT * FROM ' . $db->prefix('mod_bxpress_forums') . ($active > -1 || $category > 0 ? ' WHERE ' : '') . ($active > -1 ? " active='$active' " : '') .
-                ($category > 0 ? ($active > -1 ? ' AND ' : '') . " cat='$category' " : '') . ' ORDER BY `active` DESC, `cat`,`order`';
+        $sql = 'SELECT * FROM ' . $db->prefix('mod_bxpress_forums') . ($active > -1 || $category > 0 ? ' WHERE ' : '') . ($active > -1 ? " active='$active' " : '') . ($category > 0 ? ($active > -1 ? ' AND ' : '') . " cat='$category' " : '') . ' ORDER BY `active` DESC, `cat`,`order`';
 
-        $result = $db->queryF($sql);
+        $result  = $db->queryF($sql);
         $retorno = [];
         while (false !== ($row = $db->fetchArray($result))) {
             if ($object) {
@@ -572,24 +571,23 @@ class bXForumHandler
 
     /**
      * @desc Obtiene los foros ordenados en padres e hijos
-     * @param array $retorno Referencia al arreglo que se llenará
-     * @param int $parent Id del foro en el cual se empiezan a buscar hijos
-     * @param int $category Id de la categoria. 0 Indica todas
-     * @param int $saltos Número de saltos que se asignarán al nivel actual
-     * @param int $activo -1 devuelve todos los foros, 0 solo los inactivos y 1 solo activos
-     * @param bool $object Indica si se devueven los objetos bXForum
+     * @param array $retorno  Referencia al arreglo que se llenará
+     * @param int   $parent   Id del foro en el cual se empiezan a buscar hijos
+     * @param int   $category Id de la categoria. 0 Indica todas
+     * @param int   $saltos   Número de saltos que se asignarán al nivel actual
+     * @param int   $activo   -1 devuelve todos los foros, 0 solo los inactivos y 1 solo activos
+     * @param bool  $object   Indica si se devueven los objetos bXForum
      * @param mixed $active
      */
     private function getForumsTree($retorno, $parent = 0, $category = 0, $saltos = 0, $active = -1, $object = false)
     {
-        $sql = "SELECT * FROM $this->table WHERE `parent`='$parent'" . ($active > -1 ? " AND active='$active' " : '') .
-                ($category > 0 ? " AND cat='$category' " : '') . ' ORDER BY `cat`,`order`';
+        $sql    = "SELECT * FROM $this->table WHERE `parent`='$parent'" . ($active > -1 ? " AND active='$active' " : '') . ($category > 0 ? " AND cat='$category' " : '') . ' ORDER BY `cat`,`order`';
         $result = $this->db->queryF($sql);
         while (false !== ($row = $this->db->fetchArray($result))) {
             if ($object) {
                 $forum = new bXForum();
                 $forum->assignVars($row);
-                $retorno[] = &$forum;
+                $retorno[] =& $forum;
             } else {
                 $retorno[] = $row;
             }

@@ -28,9 +28,9 @@ function bx_show_forums()
     }
     $sql .= ' ORDER BY cat,`order`';
 
-    $result = $db->query($sql);
+    $result  = $db->query($sql);
     $categos = [];
-    $forums = [];
+    $forums  = [];
 
     while (false !== ($row = $db->fetchArray($result))) {
         $forum = new bXForum();
@@ -40,18 +40,18 @@ function bx_show_forums()
             $catego = $categos[$forum->category()];
         } else {
             $categos[$forum->category()] = new bXCategory($forum->category());
-            $catego = $categos[$forum->category()];
+            $catego                      = $categos[$forum->category()];
         }
         // Asignamos los valores
         $forums[] = [
-            'id' => $forum->id(),
-            'title' => $forum->name(),
+            'id'     => $forum->id(),
+            'title'  => $forum->name(),
             'topics' => $forum->topics(),
-            'posts' => $forum->posts(),
+            'posts'  => $forum->posts(),
             'catego' => $catego->title(),
             'active' => $forum->active(),
             'attach' => $forum->attachments(),
-            'order' => $forum->order(),
+            'order'  => $forum->order(),
         ];
     }
 
@@ -80,13 +80,7 @@ function bx_show_form($edit = 0)
     $installed = \Common\Core\Helpers\Plugins::isInstalled('advform') || \Common\Core\Helpers\Plugins::isInstalled('advform-pro');
 
     if (!$installed) {
-        showMessage(
-            sprintf(
-                __('BXpress recommends to use the plugin <a href=\"%s\">AdvancedForms</a>.', 'bxpress'),
-                'https://github.com/bitcero/advform'
-            ),
-            RMMSG_WARN
-        );
+        showMessage(sprintf(__('BXpress recommends to use the plugin <a href=\"%s\">AdvancedForms</a>.', 'bxpress'), 'https://github.com/bitcero/advform'), RMMSG_WARN);
     }
 
     if ($edit) {
@@ -113,11 +107,11 @@ function bx_show_form($edit = 0)
     $form = new RMForm($edit ? __('Edit Forum', 'bxpress') : __('New Forum', 'bxpress'), 'frmForum', 'forums.php');
     // Categorias
     $ele = new RMFormSelect([
-        'caption' => __('Category', 'bxpress'),
-        'name' => 'cat',
-        'selected' => $edit ? [$forum->category()] : null,
-        'class' => 'form-control',
-        ]);
+                                'caption'  => __('Category', 'bxpress'),
+                                'name'     => 'cat',
+                                'selected' => $edit ? [$forum->category()] : null,
+                                'class'    => 'form-control',
+                            ]);
     $ele->addOption(0, __('Select category...', 'bxpress'), $edit ? 0 : 1);
     $ele->addOptionsArray($bcHand->getForSelect());
     $form->addElement($ele, true, 'noselect:0');
@@ -199,31 +193,19 @@ function bx_save_forum($edit = 0)
     }
 
     if (!$xoopsSecurity->check()) {
-        RMUris::redirect_with_message(
-            __('Session token expired', 'bxpress'),
-            'forums.php?' . $q,
-            RMMSG_ERROR
-        );
+        RMUris::redirect_with_message(__('Session token expired', 'bxpress'), 'forums.php?' . $q, RMMSG_ERROR);
     }
 
     if ($edit) {
         $id = RMHttpRequest::request('id', 'integer', 0);
 
         if ($id <= 0) {
-            RMUris::redirect_with_message(
-                __('Specified id is not valid!', 'bxpress'),
-                'forums.php',
-                RMMSG_ERROR
-            );
+            RMUris::redirect_with_message(__('Specified id is not valid!', 'bxpress'), 'forums.php', RMMSG_ERROR);
         }
 
         $forum = new bXForum($id);
         if ($forum->isNew()) {
-            RMUris::redirect_with_message(
-                __('Specified forum does not exists!', 'bxpress'),
-                'forums.php',
-                RMMSG_ERROR
-            );
+            RMUris::redirect_with_message(__('Specified forum does not exists!', 'bxpress'), 'forums.php', RMMSG_ERROR);
         }
     } else {
         $forum = new bXForum();
@@ -252,7 +234,7 @@ function bx_save_forum($edit = 0)
     $forum->setPermissions($permissions);
 
     // Check if forum exists
-    $db = XoopsDatabaseFactory::getDatabaseConnection();
+    $db  = XoopsDatabaseFactory::getDatabaseConnection();
     $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('mod_bxpress_forums') . " WHERE name='$name' AND cat=$cat";
     if ($edit) {
         $sql .= ' AND id_forum != ' . $forum->id();
@@ -260,11 +242,7 @@ function bx_save_forum($edit = 0)
 
     list($exists) = $db->fetchRow($db->query($sql));
     if ($exists) {
-        RMUris::redirect_with_message(
-            sprintf(__('Another forum with name "%s" already exists in this category.', 'bxpress'), $name),
-            'forums.php?' . $q,
-            RMMSG_ERROR
-        );
+        RMUris::redirect_with_message(sprintf(__('Another forum with name "%s" already exists in this category.', 'bxpress'), $name), 'forums.php?' . $q, RMMSG_ERROR);
     }
 
     if ($forum->save()) {
@@ -291,7 +269,7 @@ function bx_save_forum($edit = 0)
  */
 function bx_save_changes()
 {
-    global $db,$util;
+    global $db, $util;
 
     if (!$util->validateToken()) {
         redirectMsg('forums.php', _AS_BB_ERRTOKEN, 1);
@@ -336,7 +314,7 @@ function bx_activate_forums($status = 1)
         RMUris::redirect_with_message(__('No forum has been selected.', 'bxpress'), 'forums.php', RMMSG_ERROR);
     }
 
-    $sql = 'UPDATE ' . $xoopsDB->prefix('mod_bxpress_forums') . " SET active='$status' WHERE ";
+    $sql  = 'UPDATE ' . $xoopsDB->prefix('mod_bxpress_forums') . " SET active='$status' WHERE ";
     $sql1 = '';
     foreach ($forums as $k => $v) {
         $sql1 .= '' == $sql1 ? "id_forum='$v' " : "OR id_forum='$v' ";

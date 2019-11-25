@@ -9,7 +9,7 @@
 // --------------------------------------------------------------
 
 define('BB_LOCATION', 'post');
-require  dirname(dirname(__DIR__)) . '/mainfile.php';
+require dirname(dirname(__DIR__)) . '/mainfile.php';
 
 $op = isset($_REQUEST['op']) ? $_REQUEST['op'] : '';
 
@@ -23,18 +23,18 @@ if ($fid <= 0 && $tid <= 0) {
 }
 
 if ($fid > 0) {
-    $forum = new bXForum($fid);
+    $forum   = new bXForum($fid);
     $retlink = './forum.php?id=' . $forum->id();
-    $create = true;
+    $create  = true;
 } else {
     $topic = new bXTopic($tid);
     if ($topic->isNew()) {
         redirect_header('./', 2, __('Specified topic does not exists!', 'bxpress'));
         die();
     }
-    $forum = new bXForum($topic->forum());
+    $forum   = new bXForum($topic->forum());
     $retlink = './topic.php?id=' . $topic->id();
-    $create = false;
+    $create  = false;
 }
 
 if ($forum->isNew()) {
@@ -69,15 +69,11 @@ switch ($op) {
 
         if ($common->services()->service('captcha')) {
             if (!$common->services()->captcha->verify()) {
-                $common->uris()->redirect_with_message(
-                    __('CAPTCHA challenge failed! Please try again', 'bxpress'),
-                    './' . ($create ? 'forum.php?id=' . $forum->id() : 'topic.php?id=' . $topic->id()),
-                    RMMSG_DANGER
-                );
+                $common->uris()->redirect_with_message(__('CAPTCHA challenge failed! Please try again', 'bxpress'), './' . ($create ? 'forum.php?id=' . $forum->id() : 'topic.php?id=' . $topic->id()), RMMSG_DANGER);
             }
         }
 
-        $myts =  MyTextSanitizer::getInstance();
+        $myts = MyTextSanitizer::getInstance();
 
         if ($create) {
             $topic = new bXTopic();
@@ -142,12 +138,12 @@ switch ($op) {
         // Adjuntamos archivos si existen
         if ($forum->attachments() && $forum->isAllowed($xoopsUser ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS, 'attach')) {
             $folder = $xoopsModuleConfig['attachdir'];
-            $exts = [];
+            $exts   = [];
 
             require_once RMCPATH . '/class/uploader.php';
             $up = new RMFileUploader($folder, $xoopsModuleConfig['maxfilesize'] * 1024, $forum->extensions());
 
-            $errors = '';
+            $errors   = '';
             $filename = '';
 
             if ($up->fetchMedia('attach')) {
@@ -186,19 +182,17 @@ switch ($op) {
 
         // Incrementamos el nivel de posts del usuario
         if ($xoopsUser) {
-            $memberHandler =  xoops_getHandler('member');
+            $memberHandler = xoops_getHandler('member');
             $memberHandler->updateUserByField($xoopsUser, 'posts', $xoopsUser->getVar('posts') + 1);
         }
 
         // Notificaciones
         $notifications = RMNotifications::get();
-        $events = Bxpress_Notifications::get();
-        $event = $events->event('newtopic')
-            ->parameters($forum->id())
-            ->permissions([
-                'users' => $forum->moderators(),
-                'groups' => [XOOPS_GROUP_ADMIN],
-            ]);
+        $events        = Bxpress_Notifications::get();
+        $event         = $events->event('newtopic')->parameters($forum->id())->permissions([
+                                                                                               'users'  => $forum->moderators(),
+                                                                                               'groups' => [XOOPS_GROUP_ADMIN],
+                                                                                           ]);
 
         // Notificar cuando se crea un tema
         if ($create) {
@@ -206,12 +200,10 @@ switch ($op) {
         }
 
         // Notificar cuando se envía un mensaje en el foro
-        $event = $events->event('forum-newpost')
-            ->parameters($forum->id())
-            ->permissions([
-                'users' => $forum->moderators(),
-                'groups' => [XOOPS_GROUP_ADMIN],
-            ]);
+        $event = $events->event('forum-newpost')->parameters($forum->id())->permissions([
+                                                                                            'users'  => $forum->moderators(),
+                                                                                            'groups' => [XOOPS_GROUP_ADMIN],
+                                                                                        ]);
 
         if (!$create) {
             $notifications->notify($event, ['forum' => $forum, 'topic' => $topic, 'post' => $post]);
@@ -219,25 +211,19 @@ switch ($op) {
 
         // Notificar cuando una respuesta es enviada en un tema
         $permissions = $forum->permissions();
-        $event = $events->event('reply')
-            ->parameters($topic->id())
-            ->permissions([
-                'groups' => in_array(0, $permissions['view'], true) ? [] : $permissions['view'],
-            ]);
+        $event       = $events->event('reply')->parameters($topic->id())->permissions([
+                                                                                          'groups' => in_array(0, $permissions['view'], true) ? [] : $permissions['view'],
+                                                                                      ]);
         $notifications->notify($event, ['forum' => $forum, 'topic' => $topic, 'post' => $post]);
 
         // Redirect to topic
-        RMUris::redirect_with_message(
-            '' == $errors ? __('Your posts has been sent!', 'bxpress') : __('Message posted, however some errors ocurred while sending!', 'bxpress'),
-            'topic.php?pid=' . $post->id() . '#p' . $post->id(),
-            '' == $errors ? RMMSG_SUCCESS : RMMSG_ERROR
-        );
+        RMUris::redirect_with_message('' == $errors ? __('Your posts has been sent!', 'bxpress') : __('Message posted, however some errors ocurred while sending!', 'bxpress'), 'topic.php?pid=' . $post->id() . '#p' . $post->id(), '' == $errors ? RMMSG_SUCCESS : RMMSG_ERROR);
 
         break;
     default:
 
         $GLOBALS['xoopsOption']['template_main'] = 'bxpress-postform.tpl';
-        $xoopsOption['module_subpage'] = 'post';
+        $xoopsOption['module_subpage']           = 'post';
 
         require __DIR__ . '/header.php';
 
@@ -276,14 +262,14 @@ switch ($op) {
             $quote = '[quote author=' . str_replace(' ', '+', ('' != $user->name ? $user->name : $user->uname)) . ']' . $post->getVar('post_text', 'n') . "[/quote]\n\n";
         }
 
-                $type = $rmc_config['editor_type'];
+        $type = $rmc_config['editor_type'];
 
-                // Verificamos el tipo de editor
-                if (!$xoopsModuleConfig['html']) {
-                    if ('tiny' == $type || 'html' == $type) {
-                        $type = 'simple';
-                    }
-                }
+        // Verificamos el tipo de editor
+        if (!$xoopsModuleConfig['html']) {
+            if ('tiny' == $type || 'html' == $type) {
+                $type = 'simple';
+            }
+        }
 
         $form->addElement(new RMFormEditor(__('Post', 'bxpress'), 'msg', 'auto', '400px', isset($quote) ? $quote : ''), true);
 
@@ -314,13 +300,17 @@ switch ($op) {
          * @desc Cargamos los mensajes realizados en este tema
          */
         if ($mc['numpost'] > 0 && !$create) {
-            $sql = 'SELECT * FROM ' . $db->prefix('mod_bxpress_posts') . " WHERE id_topic='" . $topic->id() . "' ORDER BY post_time DESC LIMIT 0, $mc[numpost]";
+            $sql    = 'SELECT * FROM ' . $db->prefix('mod_bxpress_posts') . " WHERE id_topic='" . $topic->id() . "' ORDER BY post_time DESC LIMIT 0, $mc[numpost]";
             $result = $db->query($sql);
             while (false !== ($row = $db->fetchArray($result))) {
                 $post = new bXPost();
                 $post->assignVars($row);
-                $tpl->append('posts', ['id' => $post->id(), 'text' => $post->text(),
-                        'time' => date(_DATESTRING, $post->date()), 'uname' => $post->uname(), ]);
+                $tpl->append('posts', [
+                    'id'    => $post->id(),
+                    'text'  => $post->text(),
+                    'time'  => date(_DATESTRING, $post->date()),
+                    'uname' => $post->uname(),
+                ]);
             }
         }
 

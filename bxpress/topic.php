@@ -9,15 +9,16 @@
 // --------------------------------------------------------------
 
 define('BB_LOCATION', 'topics');
-require  dirname(dirname(__DIR__)) . '/mainfile.php';
+require dirname(dirname(__DIR__)) . '/mainfile.php';
+
 
 $rmCodes->add('quote', 'bXFunctions::quote_code');
 
-$myts =  MyTextSanitizer::getInstance();
+$myts = MyTextSanitizer::getInstance();
 
-$id = rmc_server_var($_GET, 'id', '');
+$id  = rmc_server_var($_GET, 'id', '');
 $pid = rmc_server_var($_GET, 'pid', 0);
-$op = rmc_server_var($_GET, 'op', '');
+$op  = rmc_server_var($_GET, 'op', '');
 
 if ('' == $id && $pid <= 0) {
     redirect_header('./', 2, __('Specified topic does not exists!', 'bxpress'));
@@ -34,7 +35,7 @@ if ($pid) {
 
     if ($newid) {
         header('Location: topic.php?pid=' . $newid . '#p' . $newid);
-    } else {	// If there is no new post, we go to the last post
+    } else {    // If there is no new post, we go to the last post
         header('Location: topic.php?id=' . $id . '&op=last');
     }
 
@@ -76,7 +77,7 @@ if (!$forum->isAllowed($xoopsUser ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYM
 if (!isset($_SESSION['topics_viewed'])) {
     $topic->addView();
     $topic->save();
-    $_SESSION['topics_viewed'] = [];
+    $_SESSION['topics_viewed']   = [];
     $_SESSION['topics_viewed'][] = $topic->id();
 } else {
     if (!in_array($topic->id(), $_SESSION['topics_viewed'], true)) {
@@ -87,22 +88,22 @@ if (!isset($_SESSION['topics_viewed'])) {
 }
 
 $GLOBALS['xoopsOption']['template_main'] = 'bxpress-topic.tpl';
-$xoopsOption['module_subpage'] = 'topics';
+$xoopsOption['module_subpage']           = 'topics';
 require __DIR__ . '/header.php';
 
 bXFunctions::makeHeader();
 
 $tpl->assign('forum', [
-    'id' => $forum->id(),
-    'title' => $forum->name(),
+    'id'        => $forum->id(),
+    'title'     => $forum->name(),
     'moderator' => $xoopsUser ? ($forum->isModerator($xoopsUser->uid())) || $xoopsUser->isAdmin() : false,
 ]);
 
 $tpl->assign('topic', [
-    'id' => $topic->id(),
-    'title' => $topic->title(),
-    'closed' => $topic->status(),
-    'sticky' => $topic->sticky(),
+    'id'       => $topic->id(),
+    'title'    => $topic->title(),
+    'closed'   => $topic->status(),
+    'sticky'   => $topic->sticky(),
     'approved' => $topic->approved(),
 ]);
 
@@ -125,24 +126,27 @@ if ($forum->isAllowed($xoopsUser ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMO
 // Obtenemos los rangos para usar posteriormente
 $ranks = bXFunctions::getRanks();
 
+$start  = $page = $limit = 0;
+
 // Obtenemos los mensajes
 $sql = 'SELECT COUNT(*) FROM ' . $db->prefix('mod_bxpress_posts') . ' a, ' . $db->prefix('mod_bxpress_posts_text') . " b WHERE
-		a.id_topic='" . $topic->id() . "' AND b.post_id=a.id_post";
+        a.id_topic='" . $topic->id() . "' AND b.post_id=a.id_post";
 list($num) = $db->fetchRow($db->query($sql));
-$page = isset($_GET['pag']) ? $_GET['pag'] : '';
+//$page  = isset($_GET['pag']) ? $_GET['pag'] : '';
+$page = \Xmf\Request::getInt('id', 0, 'GET');
 $limit = $mc['perpage'];
 $limit = $limit <= 0 ? 15 : $limit;
-$page = isset($page) ? $page : 0;
+$page  = isset($page) ? $page : 0;
 if ($page > 0) {
     $page -= 1;
 }
-$start = $page * $limit;
-$tpages = ceil($num / $limit);
+$start   =    $page *    $limit;
+$tpages  = ceil($num / $limit);
 $pactual = $page + 1;
 if ($pactual > $tpages) {
-    $rest = $pactual - $tpages;
+    $rest    = $pactual - $tpages;
     $pactual = $pactual - $rest + 1;
-    $start = ($pactual - 1) * $limit;
+    $start   = ($pactual - 1) * $limit;
 }
 
 if ($tpages > 1) {
@@ -154,11 +158,11 @@ if ($tpages > 1) {
 $groups = $xoopsUser ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
 
 // Permisos
-$edit = $forum->isAllowed($groups, 'edit');
-$delete = $forum->isAllowed($groups, 'delete');
-$report = $forum->isAllowed($groups, 'reply');
+$edit      = $forum->isAllowed($groups, 'edit');
+$delete    = $forum->isAllowed($groups, 'delete');
+$report    = $forum->isAllowed($groups, 'reply');
 $moderator = $xoopsUser ? $forum->isModerator($xoopsUser->uid()) : false;
-$admin = $xoopsUser ? $xoopsUser->isAdmin() : false;
+$admin     = $xoopsUser ? $xoopsUser->isAdmin() : false;
 
 $tbl1 = $db->prefix('mod_bxpress_posts');
 $tbl2 = $db->prefix('mod_bxpress_posts_text');
@@ -185,17 +189,17 @@ $sql = "SELECT
         LIMIT
             $start,$limit";
 
-$result = $db->query($sql);
-$users = [];
+$result    = $db->query($sql);
+$users     = [];
 $posts_ids = [];
-$posts = [];
+$posts     = [];
 
 while (false !== ($row = $db->fetchArray($result))) {
     $post = new bXPost();
     $post->assignVars($row);
 
     // Permisos de edición y eliminación
-    $canedit = $moderator || $admin ? true : $edit && $post->isOwner();
+    $canedit   = $moderator || $admin ? true : $edit && $post->isOwner();
     $candelete = $moderator || $admin ? true : $delete && $post->isOwner();
     //Permiso de visualizar mensaje
     $canshow = $moderator || $admin ? true : false;
@@ -205,40 +209,46 @@ while (false !== ($row = $db->fetchArray($result))) {
         if (!isset($users[$post->user()])) {
             $users[$post->user()] = new XoopsUser($post->user());
         }
-        $bbUser = $users[$post->user()];
-        $userData = [];
-        $userData['id'] = $bbUser->uid();
+        $bbUser            = $users[$post->user()];
+        $userData          = [];
+        $userData['id']    = $bbUser->uid();
         $userData['uname'] = $bbUser->uname();
-        $userData['name'] = '' != $bbUser->getVar('name') ? $bbUser->getVar('name') : $bbUser->uname();
+        $userData['name']  = '' != $bbUser->getVar('name') ? $bbUser->getVar('name') : $bbUser->uname();
         //$userData['rank'] = $ranks[$bbUser->getVar('rank')]['title'];
         //$userData['rank_image'] = $ranks[$bbUser->getVar('rank')]['image'];
         $userData['registered'] = sprintf(__('Registered: %s', 'bxpress'), date($mc['dates'], $bbUser->getVar('user_regdate')));
-        $userData['avatar'] = RMEvents::get()->run_event('rmcommon.get.avatar', $bbUser->getVar('email'), 0);
-        $userData['posts'] = sprintf(__('Posts: %u', 'bxpress'), $bbUser->getVar('posts'));
+        $userData['avatar']     = RMEvents::get()->run_event('rmcommon.get.avatar', $bbUser->getVar('email'), 0);
+        $userData['posts']      = sprintf(__('Posts: %u', 'bxpress'), $bbUser->getVar('posts'));
         if ($xoopsUser && ($moderator || $admin)) {
             $userData['ip'] = sprintf(__('IP: %s', 'bxpress'), $post->ip());
         }
         $userData['online'] = $bbUser->isOnline();
-        $userData['type'] = $bbUser->isAdmin() ? 'admin' : ($forum->isModerator($bbUser->uid()) ? 'moderator' : 'user');
+        $userData['type']   = $bbUser->isAdmin() ? 'admin' : ($forum->isModerator($bbUser->uid()) ? 'moderator' : 'user');
     } else {
-        $userData = [];
-        $userData['id'] = 0;
+        $userData          = [];
+        $userData['id']    = 0;
         $userData['uname'] = $xoopsModuleConfig['anonymous_prefix'] . $post->uname();
         //$userData['rank'] = $xoopsConfig['anonymous'];
         //$userData['rank_image'] = '';
         $userData['registered'] = '';
-        $userData['avatar'] = RMEvents::get()->run_event('rmcommon.get.avatar', '', 0);
+        $userData['avatar']     = RMEvents::get()->run_event('rmcommon.get.avatar', '', 0);
 
-        $userData['posts'] = sprintf(__('Posts: %u', 'bxpress'), 0);
+        $userData['posts']  = sprintf(__('Posts: %u', 'bxpress'), 0);
         $userData['online'] = false;
-        $userData['type'] = 'anon';
+        $userData['type']   = 'anon';
     }
 
     // Adjuntos
     $attachs = [];
     foreach ($post->attachments() as $k) {
-        $attachs[] = ['title' => $k->name(), 'downs' => $k->downloads(), 'id' => $k->id(), 'ext' => $k->extension(),
-                    'size' => RMUtilities::formatBytesSize($k->size()), 'icon' => $k->getIcon(), ];
+        $attachs[] = [
+            'title' => $k->name(),
+            'downs' => $k->downloads(),
+            'id'    => $k->id(),
+            'ext'   => $k->extension(),
+            'size'  => RMUtilities::formatBytesSize($k->size()),
+            'icon'  => $k->getIcon(),
+        ];
     }
 
     $tf = new RMTimeFormatter(0, __('%T% %d%, %Y%', 'bxpress'));
@@ -258,30 +268,30 @@ while (false !== ($row = $db->fetchArray($result))) {
         $like_user = $users[$like];
 
         $likes[] = [
-            'uid' => $like,
-            'uname' => $like_user->getVar('uname'),
-            'name' => '' != $like_user->getVar('name') ? $like_user->getVar('name') : $like_user->getVar('uname'),
+            'uid'    => $like,
+            'uname'  => $like_user->getVar('uname'),
+            'name'   => '' != $like_user->getVar('name') ? $like_user->getVar('name') : $like_user->getVar('uname'),
             'avatar' => RMEvents::get()->run_event('rmcommon.get.avatar', $like_user->getVar('email'), 40),
         ];
     }
 
     $posts[$post->id()] = [
-        'id' => $post->id(),
-        'text' => $post->text(),
-        'edit' => $post->editText(),
-        'approved' => $post->approved(),
-        'date' => $tf->ago($post->date()),
-        'canedit' => $canedit,
-        'candelete' => $candelete,
-        'canshow' => $canshow,
-        'canreport' => $report,
-        'poster' => $userData,
-        'attachs' => $attachs,
+        'id'           => $post->id(),
+        'text'         => $post->text(),
+        'edit'         => $post->editText(),
+        'approved'     => $post->approved(),
+        'date'         => $tf->ago($post->date()),
+        'canedit'      => $canedit,
+        'candelete'    => $candelete,
+        'canshow'      => $canshow,
+        'canreport'    => $report,
+        'poster'       => $userData,
+        'attachs'      => $attachs,
         'attachscount' => count($attachs),
-        'parent' => $post->parent,
-        'replies' => $row['replies'],
-        'likes_count' => $row['likes'],
-        'likes' => $likes,
+        'parent'       => $post->parent,
+        'replies'      => $row['replies'],
+        'likes_count'  => $row['likes'],
+        'likes'        => $likes,
     ];
 
     $posts_ids[] = $post->id();
@@ -293,17 +303,15 @@ unset($userData, $bbUser, $users);
 
 // Common Utilities Notifications
 $notifications = RMNotifications::get();
-$events = Bxpress_Notifications::get();
-$permissions = $forum->permissions();
+$events        = Bxpress_Notifications::get();
+$permissions   = $forum->permissions();
 
 // New topics notifications
-$event = $events->event('reply')
-    ->parameters($topic->id())
-    ->permissions([
-        'groups' => in_array(0, $permissions['view'], true) ? [] : $permissions['view'],
-    ]);
+$event = $events->event('reply')->parameters($topic->id())->permissions([
+                                                                            'groups' => in_array(0, $permissions['view'], true) ? [] : $permissions['view'],
+                                                                        ]);
 $notifications->add_item($event);
-unset($event,$permissions);
+unset($event, $permissions);
 $tpl->assign('notifications', $notifications->render());
 
 $tpl->assign('lang_edit', __('Edit', 'bxpress'));
@@ -351,6 +359,13 @@ if ($xoopsUser) {
         $tpl->assign('lang_noapp', __('Unnaprove', 'bxpress'));
     }
 }
+
+//if (!isset($xoTheme)) {
+//    $xoTheme = $GLOBALS['xoTheme'];
+//}
+////Add style css
+//$xoTheme->addStylesheet('modules/bxpress/assets/css/style.css');
+
 RMTemplate::getInstance()->add_style('style.css', 'bxpress'); //mb
 
 bXFunctions::loadAnnouncements(1, $forum->id());
