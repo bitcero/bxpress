@@ -29,7 +29,7 @@
 function bxpress_block_users_show($options)
 {
     // Add css styles
-    RMTemplate::get()->add_style('bxpress-blocks.min.css', 'bxpress');
+    RMTemplate::getInstance()->add_style('bxpress-blocks.min.css', 'bxpress');
 
     $db = XoopsDatabaseFactory::getDatabaseConnection();
 
@@ -45,19 +45,19 @@ function bxpress_block_users_show($options)
     }
 
     $result = $db->query($sql);
-    $users = [];
-    $user = new RMUser();
+    $users  = [];
+    $user   = new RMUser();
 
     while (false !== ($row = $db->fetchArray($result))) {
         $user->assignVars($row);
 
         $users[] = [
-            'id' => $user->id(),
-            'name' => '' != $user->name ? $user->name : $user->uname,
-            'uname' => $user->uname,
+            'id'     => $user->id(),
+            'name'   => '' != $user->name ? $user->name : $user->uname,
+            'uname'  => $user->uname,
             'avatar' => RMEvents::get()->run_event('rmcommon.get.avatar', $user->email, 0),
-            'posts' => $row['total'],
-            'likes' => $row['likes'],
+            'posts'  => $row['total'],
+            'likes'  => $row['likes'],
         ];
     }
 

@@ -39,8 +39,8 @@ function bxpress_block_topics_show($options)
     $tbl4 = $db->prefix('mod_bxpress_forums');
 
     if ('activity' == $options['type']) {
-        $sql = 'SELECT DISTINCT id_topic FROM ' . $tbl1 . " ORDER BY post_time DESC LIMIT 0, $options[limit]";
-        $result = $db->query($sql);
+        $sql       = 'SELECT DISTINCT id_topic FROM ' . $tbl1 . " ORDER BY post_time DESC LIMIT 0, $options[limit]";
+        $result    = $db->query($sql);
         $topicsIds = [];
 
         while (false !== ($row = $db->fetchArray($result))) {
@@ -82,7 +82,7 @@ function bxpress_block_topics_show($options)
     $result = $db->queryF($sql);
 
     $topics = [];
-    $block = [];
+    $block  = [];
 
     require_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxforum.class.php';
     require_once XOOPS_ROOT_PATH . '/modules/bxpress/class/bxpost.class.php';
@@ -91,27 +91,27 @@ function bxpress_block_topics_show($options)
 
     $topic = new bXTopic();
     $forum = new bXForum();
-    $tf = new RMTimeFormatter(0, '%T% %d%, %Y%');
+    $tf    = new RMTimeFormatter(0, '%T% %d%, %Y%');
 
     while (false !== ($row = $db->fetchArray($result))) {
         $topic->assignVars($row);
         $forum->assignVars(['id_forum' => $topic->forum()]);
 
-        $ret = [
-            'id' => $topic->id(),
-            'title' => $topic->title,
-            'link' => $topic->permalink(),
-            'likes' => $topic->likes,
+        $ret      = [
+            'id'      => $topic->id(),
+            'title'   => $topic->title,
+            'link'    => $topic->permalink(),
+            'likes'   => $topic->likes,
             'replies' => $topic->replies,
-            'hits' => $topic->views,
-            'forum' => [
+            'hits'    => $topic->views,
+            'forum'   => [
                 'name' => $row['name'],
-                'id' => $row['id_forum'],
+                'id'   => $row['id_forum'],
                 'link' => $forum->permalink(),
             ],
-            'time' => $topic->date,
-            'date' => $tf->ago($topic->date),
-            'likes' => $row['likes'],
+            'time'    => $topic->date,
+            'date'    => $tf->ago($topic->date),
+            'likes'   => $row['likes'],
             'updated' => 'full' == $options['format'] ? sprintf(__('Updated on %s', 'bxpress'), $tf->format($row['updated'])) : $tf->ago($row['updated']),
         ];
         $topics[] = $ret;
@@ -121,7 +121,7 @@ function bxpress_block_topics_show($options)
     $block['format'] = $options['format'];
 
     // Add css styles
-    RMTemplate::get()->add_style('bxpress-blocks.min.css', 'bxpress');
+    RMTemplate::getInstance()->add_style('bxpress-blocks.min.css', 'bxpress');
 
     return $block;
 }

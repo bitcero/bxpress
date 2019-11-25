@@ -40,20 +40,17 @@ function showAnnounces()
 
     $announcements = RMEvents::get()->run_event('bxpress.announcements.list', $announcements);
 
-    RMTemplate::get()->add_help(
-        __('Announcements Help', 'bxpress'),
-        '#'
-    );
+    RMTemplate::getInstance()->add_help(__('Announcements Help', 'bxpress'), '#');
 
     $bc = RMBreadCrumb::get();
     $bc->add_crumb(__('Announcements Management', 'bxpress'));
 
     xoops_cp_header();
 
-    RMTemplate::get()->add_script('jquery.checkboxes.js', 'rmcommon', ['directory' => 'include']);
-    RMTemplate::get()->add_style('admin.css', 'bxpress');
-    RMTemplate::get()->add_script('admin.js', 'bxpress');
-    include RMTemplate::get()->get_template('admin/forums-announcements.php', 'module', 'bxpress');
+    RMTemplate::getInstance()->add_script('jquery.checkboxes.js', 'rmcommon', ['directory' => 'include']);
+    RMTemplate::getInstance()->add_style('admin.css', 'bxpress');
+    RMTemplate::getInstance()->add_script('admin.js', 'bxpress');
+    include RMTemplate::getInstance()->get_template('admin/forums-announcements.php', 'module', 'bxpress');
 
     xoops_cp_footer();
 }
@@ -80,7 +77,7 @@ function showForm($edit = 0)
         }
     }
 
-    RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/anuncios/standalone/1/#crear-un-anuncio');
+    RMTemplate::getInstance()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/anuncios/standalone/1/#crear-un-anuncio');
 
     $bc = RMBreadCrumb::get();
     $bc->add_crumb(__('Announcements', 'bxpress'), 'announcements.php');

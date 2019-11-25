@@ -30,10 +30,10 @@
 function bxpress_block_counter_show($options)
 {
     // Load css styles
-    RMTemplate::get()->add_style('bxpress-blocks.min.css', 'bxpress');
+    RMTemplate::getInstance()->add_style('bxpress-blocks.min.css', 'bxpress');
 
     $counters = [];
-    $db = XoopsDatabaseFactory::getDatabaseConnection();
+    $db       = XoopsDatabaseFactory::getDatabaseConnection();
 
     $tbp = $db->prefix('mod_bxpress_posts');
     $tbt = $db->prefix('mod_bxpress_topics');
@@ -74,7 +74,7 @@ function bxpress_block_counter_show($options)
 
     foreach ($row as $counter => $value) {
         $counters[] = [
-            'count' => $value,
+            'count'   => $value,
             'caption' => $options[$counter . '_caption'],
         ];
     }

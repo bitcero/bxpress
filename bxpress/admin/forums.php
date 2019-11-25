@@ -59,12 +59,12 @@ function bx_show_forums()
     $bc->add_crumb(__('Forums', 'bxpress'));
     xoops_cp_header();
 
-    RMTemplate::get()->add_help(__('Forums Help', 'bxpress'), 'http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/');
-    RMTemplate::get()->add_script('admin.js', 'bxpress');
-    RMTemplate::get()->add_head_script('var bx_select_message = "' . __('You must select one forum at least in order to run this action!', 'bxpress') . '";
+    RMTemplate::getInstance()->add_help(__('Forums Help', 'bxpress'), 'http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/');
+    RMTemplate::getInstance()->add_script('admin.js', 'bxpress');
+    RMTemplate::getInstance()->add_head_script('var bx_select_message = "' . __('You must select one forum at least in order to run this action!', 'bxpress') . '";
         var bx_message = "' . __('Do you really want to delete selected forums?\n\nAll posts sent in this forum will be deleted also!', 'bxpress') . '";');
 
-    include RMTemplate::get()->get_template('admin/forums-forums.php', 'module', 'bxpress');
+    include RMTemplate::getInstance()->get_template('admin/forums-forums.php', 'module', 'bxpress');
 
     xoops_cp_footer();
 }
@@ -103,7 +103,7 @@ function bx_show_form($edit = 0)
         }
     }
 
-    RMTemplate::get()->add_style('admin.css', 'bxpress');
+    RMTemplate::getInstance()->add_style('admin.css', 'bxpress');
     xoops_cp_location("<a href='./'>" . $xoopsModule->name() . '</a> &raquo; ' . ($edit ? __('Edit Forum', 'bxpress') : __('New Forum', 'bxpress')));
     xoops_cp_header();
 
@@ -399,7 +399,7 @@ function bx_moderators()
         redirectMsg('forums.php', __('Specified forum does not exists!', 'bxpress'), 1);
     }
 
-    RMTemplate::get()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/#moderadores');
+    RMTemplate::getInstance()->set_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/#moderadores');
     xoops_cp_header();
 
     //Lista de usuarios

@@ -8,21 +8,21 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-require  dirname(dirname(__DIR__)) . '/header.php';
+require dirname(dirname(__DIR__)) . '/header.php';
 
 define('BX_URL', XOOPS_URL . '/modules/bxpress');
 
 // Actualizamos los usuarios online
-$db = XoopsDatabaseFactory::getDatabaseConnection();
+$db  = XoopsDatabaseFactory::getDatabaseConnection();
 $tpl = $xoopsTpl;
 require_once XOOPS_ROOT_PATH . '/kernel/online.php';
 $online = new XoopsOnlineHandler($db);
 $online->write($xoopsUser ? $xoopsUser->uid() : 0, $xoopsUser ? $xoopsUser->uname() : '', time(), $xoopsModule->mid(), $_SERVER['REMOTE_ADDR']);
 
-$mc = &$xoopsModuleConfig;
+$mc =& $xoopsModuleConfig;
 
-RMTemplate::get()->add_style('bxpress.min.css', 'bxpress');
-RMTemplate::get()->add_script('bxpress.min.js', 'bxpress', ['footer' => 1]);
+RMTemplate::getInstance()->add_style('bxpress.min.css', 'bxpress');
+RMTemplate::getInstance()->add_script('bxpress.min.js', 'bxpress', ['footer' => 1]);
 
 // Header language
 $xoopsTpl->assign('lang_search_ph', __('Search for...', 'bxpress')); // Search placeholder

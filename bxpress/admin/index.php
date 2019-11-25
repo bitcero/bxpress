@@ -117,11 +117,12 @@ while (false !== ($row = $db->fetchArray($result))) {
 
 unset($post,$pt,$topic,$result,$row,$sql,$tbl1,$tbl2,$tbl3);
 
-RMTemplate::get()->add_style('dashboard.css', 'bxpress');
-RMTemplate::get()->add_script('dashboard.js', 'bxpress', [
+RMTemplate::getInstance()->add_style('dashboard.css', 'bxpress');
+RMTemplate::getInstance()->add_style('style.css', 'bxpress'); //mb
+RMTemplate::getInstance()->add_script('dashboard.js', 'bxpress', [
     'footer' => 1,
 ]);
-RMTemplate::get()->add_help('Ayuda de bXpress', 'http://www.xoopsmexico.net/docs/bitcero/bxpress-forums/standalone/1/');
+RMTemplate::getInstance()->add_help('Ayuda de bXpress', 'http://www.xoopsmexico.net/docs/bitcero/bxpress-forums/standalone/1/');
 
 // Activity
 // 30 Days
@@ -168,6 +169,6 @@ RMTemplate::getInstance()->add_body_class('dashboard');
 
 xoops_cp_header();
 
-include RMTemplate::get()->path('admin/forums-index.php', 'module', 'bxpress');
+include RMTemplate::getInstance()->path('admin/forums-index.php', 'module', 'bxpress');
 
 xoops_cp_footer();

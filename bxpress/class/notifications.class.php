@@ -1,4 +1,5 @@
 <?php
+
 /**
  * bXpress Forums
  * A lightweight forum module for XOOPS and Common Utilities
@@ -34,30 +35,30 @@ class Bxpress_Notifications extends Rmcommon_ANotifications
     {
         // Forum notifications
         $this->events['newtopic'] = [
-            'caption' => __('Notify me when new topic is created in this forum', 'bxpress'),
-            'event' => 'newtopic',
-            'element' => 'bxpress',
-            'type' => 'module',
-            'params' => '',
+            'caption'     => __('Notify me when new topic is created in this forum', 'bxpress'),
+            'event'       => 'newtopic',
+            'element'     => 'bxpress',
+            'type'        => 'module',
+            'params'      => '',
             'permissions' => [],
         ];
 
         $this->events['forum-newpost'] = [
-            'caption' => __('Notify me when new message is posted in this forum', 'bxpress'),
-            'event' => 'forum-newpost',
-            'element' => 'bxpress',
-            'type' => 'module',
-            'params' => '',
+            'caption'     => __('Notify me when new message is posted in this forum', 'bxpress'),
+            'event'       => 'forum-newpost',
+            'element'     => 'bxpress',
+            'type'        => 'module',
+            'params'      => '',
             'permissions' => [],
         ];
 
         // Topic notifications
         $this->events['reply'] = [
-            'caption' => __('Notify me when new reply is sent in this topic', 'bxpress'),
-            'event' => 'reply',
-            'element' => 'bxpress',
-            'type' => 'module',
-            'params' => '',
+            'caption'     => __('Notify me when new reply is sent in this topic', 'bxpress'),
+            'event'       => 'reply',
+            'element'     => 'bxpress',
+            'type'        => 'module',
+            'params'      => '',
             'permissions' => [],
         ];
     }
@@ -70,7 +71,7 @@ class Bxpress_Notifications extends Rmcommon_ANotifications
     public function from_name()
     {
         global $xoopsConfig;
-        $mc = RMSettings::module_settings('bxpress');
+        $mc  = RMSettings::module_settings('bxpress');
         $ret = $xoopsConfig['sitename'] . ': ' . $mc->forum_title;
 
         return $ret;
@@ -105,12 +106,12 @@ class Bxpress_Notifications extends Rmcommon_ANotifications
         global $xoopsConfig;
 
         extract($params);
-        $account_link = XOOPS_URL . '/user.php';
+        $account_link     = XOOPS_URL . '/user.php';
         $unsubscribe_link = XOOPS_URL . '/notifications.php?page=cu-notification-list';
 
         if ('reply' == $event->event) {
             ob_start();
-            include RMTemplate::get()->get_template('email/bxpress-notify-reply.php', 'module', 'bxpress');
+            include RMTemplate::getInstance()->get_template('email/bxpress-notify-reply.php', 'module', 'bxpress');
             $body = ob_get_clean();
 
             return $body;
@@ -118,7 +119,7 @@ class Bxpress_Notifications extends Rmcommon_ANotifications
 
         if ('newtopic' == $event->event) {
             ob_start();
-            include RMTemplate::get()->get_template('email/bxpress-notify-forum-topic.php', 'module', 'bxpress');
+            include RMTemplate::getInstance()->get_template('email/bxpress-notify-forum-topic.php', 'module', 'bxpress');
             $body = ob_get_clean();
 
             return $body;
@@ -126,7 +127,7 @@ class Bxpress_Notifications extends Rmcommon_ANotifications
 
         if ('forum-newpost' == $event->event) {
             ob_start();
-            include RMTemplate::get()->get_template('email/bxpress-notify-forum-post.php', 'module', 'bxpress');
+            include RMTemplate::getInstance()->get_template('email/bxpress-notify-forum-post.php', 'module', 'bxpress');
             $body = ob_get_clean();
 
             return $body;

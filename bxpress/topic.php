@@ -351,6 +351,7 @@ if ($xoopsUser) {
         $tpl->assign('lang_noapp', __('Unnaprove', 'bxpress'));
     }
 }
+RMTemplate::getInstance()->add_style('style.css', 'bxpress'); //mb
 
 bXFunctions::loadAnnouncements(1, $forum->id());
 bXFunctions::include_js_language();

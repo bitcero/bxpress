@@ -139,7 +139,7 @@ function showItemsAndOptions()
 
     bXFunctions::makeHeader();
 
-    RMTemplate::get()->add_xoops_style('style.css', 'bxpress');
+    RMTemplate::getInstance()->add_style('style.css', 'bxpress');
 
     require __DIR__ . '/footer.php';
 }

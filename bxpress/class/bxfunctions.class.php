@@ -381,7 +381,7 @@ class bXFunctions
 
     public static function help()
     {
-        RMTemplate::get()->add_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/#crear-foro');
+        RMTemplate::getInstance()->add_help('http://www.redmexico.com.mx/docs/bxpress-forums/foros/standalone/1/#crear-foro');
     }
 
     public static function quote_code($att, $content)
