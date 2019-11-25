@@ -20,21 +20,21 @@ function showCategories()
 
     $db = XoopsDatabaseFactory::getDatabaseConnection();
 
-    $result = $db->query('SELECT * FROM ' . $db->prefix('mod_bxpress_categories') . ' ORDER BY `order`, title');
+    $result  = $db->query('SELECT * FROM ' . $db->prefix('mod_bxpress_categories') . ' ORDER BY `order`, title');
     $categos = [];
 
     while (false !== ($row = $db->fetchArray($result))) {
         $catego = new bXCategory();
         $catego->assignVars($row);
         $categos[] = [
-            'id' => $catego->id(),
-            'title' => $catego->title(),
-            'desc' => $catego->description(),
+            'id'     => $catego->id(),
+            'title'  => $catego->title(),
+            'desc'   => $catego->description(),
             'status' => $catego->status(),
         ];
     }
 
-    $form = new RMForm('', '', '');
+    $form   = new RMForm('', '', '');
     $groups = new RMFormGroups('', 'groups', 1, 1, 2, [0]);
 
     $bc = RMBreadCrumb::get();
@@ -42,13 +42,13 @@ function showCategories()
 
     xoops_cp_header();
 
-    RMTemplate::get()->add_script('admin.js', 'bxpress');
-    RMTemplate::get()->add_help(__('Categories', 'bxpress'), 'http://www.redmexico.com.mx/docs/bxpress-forums/categorias/standalone/1/');
+    RMTemplate::getInstance()->add_script('admin.js', 'bxpress');
+    RMTemplate::getInstance()->add_help(__('Categories', 'bxpress'), 'http://www.redmexico.com.mx/docs/bxpress-forums/categorias/standalone/1/');
 
-    RMTemplate::get()->add_head_script('var bx_select_message = "' . __('You must select a category at least in order to run this action!', 'bxpress') . '";
+    RMTemplate::getInstance()->add_head_script('var bx_select_message = "' . __('You must select a category at least in order to run this action!', 'bxpress') . '";
         var bx_message = "' . __('Do you really want to delete selected categories?\n\nAll forums under this category will be deleted also!', 'bxpress') . '";');
 
-    include RMTemplate::get()->get_template('admin/forums-categories.php', 'module', 'bxpress');
+    include RMTemplate::getInstance()->get_template('admin/forums-categories.php', 'module', 'bxpress');
 
     xoops_cp_footer();
 }
@@ -115,13 +115,13 @@ function bxpress_save_category($edit = 0)
 
     $db = XoopsDatabaseFactory::getDatabaseConnection();
 
-    $title = '';
+    $title      = '';
     $friendname = '';
-    $showdesc = 0;
-    $status = 0;
-    $id = 0;
-    $desc = '';
-    $order = '';
+    $showdesc   = 0;
+    $status     = 0;
+    $id         = 0;
+    $desc       = '';
+    $order      = '';
 
     $q = ''; //Query string
     foreach ($_POST as $k => $v) {
