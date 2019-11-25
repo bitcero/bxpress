@@ -1,0 +1,6 @@
+.separator {
+    clear: both;
+    /* float: left; */
+    height: 1px;
+    width: 100%;
+}
